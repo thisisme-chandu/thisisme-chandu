@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chandra Sekhar Bhamidi — Applications Engineer focused on advanced-node physical design, static timing analysis, timing closure, and EDA automation." />
+  <meta name="theme-color" content="#07111f" />
+  <title>Chandra Sekhar Bhamidi | Physical Design & STA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050a12;
+      --bg2:#08111e;
+      --panel:rgba(12,24,39,.76);
+      --panel2:rgba(8,18,31,.9);
+      --line:rgba(111,211,255,.16);
+      --line2:rgba(147,197,253,.1);
+      --text:#edf7ff;
+      --muted:#93a9ba;
+      --cyan:#63dcff;
+      --blue:#4da3ff;
+      --green:#7cf7c4;
+      --amber:#ffc978;
+      --violet:#a995ff;
+      --shadow:0 24px 90px rgba(0,0,0,.38);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 10%, rgba(77,163,255,.14), transparent 26%),
+        radial-gradient(circle at 85% 20%, rgba(124,247,196,.08), transparent 24%),
+        radial-gradient(circle at 60% 78%, rgba(169,149,255,.08), transparent 24%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 55%,#040810);
+      min-height:100vh;
+      overflow-x:hidden;
+      line-height:1.65;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+      background-image:
+        linear-gradient(rgba(99,220,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(99,220,255,.035) 1px, transparent 1px);
+      background-size:42px 42px;
+      mask-image:linear-gradient(to bottom,black,transparent 82%);
+    }
+    body:after{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      z-index:-3;
+      background:conic-gradient(from 180deg at 50% 50%, transparent,rgba(77,163,255,.035),transparent,rgba(124,247,196,.03),transparent);
+      animation:drift 28s linear infinite;
+    }
+    @keyframes drift{to{transform:rotate(360deg)}}
+    a{color:inherit}
+    .mono{font-family:"IBM Plex Mono",monospace}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(5,10,18,.72);
+      backdrop-filter:blur(18px);
+    }
+    .nav-inner{
+      height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700
+    }
+    .chipmark{
+      width:36px;height:36px;border:1px solid rgba(99,220,255,.58);border-radius:9px;
+      display:grid;place-items:center;color:var(--cyan);font:600 12px "IBM Plex Mono",monospace;
+      box-shadow:inset 0 0 22px rgba(99,220,255,.08),0 0 24px rgba(99,220,255,.08);
+      position:relative
+    }
+    .chipmark:before,.chipmark:after{content:"";position:absolute;left:-5px;right:-5px;height:1px;background:rgba(99,220,255,.45);box-shadow:0 8px rgba(99,220,255,.35),0 -8px rgba(99,220,255,.35)}
+    .brand small{display:block;color:var(--muted);font-weight:500;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+    .navlinks{display:flex;gap:22px;align-items:center}
+    .navlinks a{
+      text-decoration:none;color:#b9cbd8;font-size:13px;font-weight:600;transition:.2s
+    }
+    .navlinks a:hover{color:var(--cyan)}
+    .nav-cta{
+      border:1px solid rgba(99,220,255,.28);padding:9px 13px;border-radius:10px!important;color:var(--cyan)!important
+    }
+    .hero{padding:152px 0 94px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:68px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid rgba(124,247,196,.19);
+      border-radius:999px;color:var(--green);font:500 11px "IBM Plex Mono",monospace;letter-spacing:.06em;
+      background:rgba(124,247,196,.04);margin-bottom:20px
+    }
+    .pulse{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}
+    h1{font-size:clamp(44px,7vw,78px);line-height:.98;letter-spacing:-.055em;margin:0 0 22px;max-width:780px}
+    .gradient{
+      background:linear-gradient(100deg,#fff 15%,#9de9ff 55%,#88f1c8);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .hero-role{
+      font:600 clamp(15px,2vw,18px) "IBM Plex Mono",monospace;color:var(--cyan);margin-bottom:16px
+    }
+    .hero-copy{max-width:710px;color:#a9bccb;font-size:17px;margin:0 0 28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;text-decoration:none;padding:12px 17px;border-radius:12px;
+      font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.08);transition:.2s
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{color:#001018;background:linear-gradient(135deg,var(--cyan),var(--green));border:0}
+    .btn.secondary{background:rgba(255,255,255,.035);color:#d6e8f4}
+    .hero-meta{margin-top:27px;display:flex;flex-wrap:wrap;gap:18px;color:#7f97aa;font:500 11px "IBM Plex Mono",monospace}
+    .hero-meta span:before{content:"// ";color:#4e6e84}
+    .die{
+      position:relative;aspect-ratio:1/1;max-width:430px;margin-left:auto;
+      border:1px solid rgba(99,220,255,.2);border-radius:28px;padding:28px;
+      background:linear-gradient(145deg,rgba(10,24,40,.88),rgba(4,11,19,.72));box-shadow:var(--shadow);
+      overflow:hidden
+    }
+    .die:before{
+      content:"";position:absolute;inset:19px;border:1px dashed rgba(99,220,255,.13);border-radius:20px
+    }
+    .die-grid{
+      height:100%;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);gap:8px;
+      position:relative;z-index:2
+    }
+    .cell{border:1px solid rgba(99,220,255,.1);background:linear-gradient(135deg,rgba(99,220,255,.08),rgba(77,163,255,.025));border-radius:5px;animation:flicker 5s ease-in-out infinite}
+    .cell:nth-child(4n){background:linear-gradient(135deg,rgba(124,247,196,.12),rgba(124,247,196,.02));border-color:rgba(124,247,196,.13)}
+    .cell:nth-child(7n){background:linear-gradient(135deg,rgba(169,149,255,.12),rgba(169,149,255,.02));border-color:rgba(169,149,255,.13)}
+    @keyframes flicker{0%,100%{opacity:.68}50%{opacity:1}}
+    .die-label{
+      position:absolute;left:34px;bottom:30px;z-index:3;background:rgba(4,10,18,.88);padding:10px 12px;border:1px solid rgba(255,255,255,.07);
+      border-radius:9px;font:600 11px "IBM Plex Mono",monospace;color:var(--cyan)
+    }
+    section{padding:88px 0}
+    .section-head{display:grid;grid-template-columns:.6fr 1.4fr;gap:50px;margin-bottom:42px;align-items:end}
+    .kicker{color:var(--cyan);font:600 11px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.15em}
+    h2{font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.04em;margin:8px 0 0}
+    .section-intro{color:#8fa6b8;max-width:720px;margin:0}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+    .stat{
+      background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px;
+      box-shadow:inset 0 1px rgba(255,255,255,.02)
+    }
+    .stat strong{display:block;font-size:28px;letter-spacing:-.04em;color:#fff}
+    .stat span{display:block;color:#87a0b2;font:500 10px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em;margin-top:4px}
+    .expertise{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{
+      background:linear-gradient(180deg,rgba(12,24,39,.82),rgba(8,16,28,.76));
+      border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden
+    }
+    .card:after{content:"";position:absolute;inset:auto -25% -55% 30%;height:180px;background:radial-gradient(circle,rgba(99,220,255,.07),transparent 68%)}
+    .card-num{color:#56758a;font:600 10px "IBM Plex Mono",monospace;margin-bottom:30px}
+    .card h3{margin:0 0 12px;font-size:18px;letter-spacing:-.02em}
+    .card p{margin:0;color:#8fa6b8;font-size:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+    .tag{
+      border:1px solid rgba(99,220,255,.15);border-radius:999px;padding:6px 9px;color:#a8dff0;
+      background:rgba(99,220,255,.045);font:500 10px "IBM Plex Mono",monospace
+    }
+    .timeline{position:relative;margin-top:12px}
+    .timeline:before{content:"";position:absolute;left:16px;top:12px;bottom:12px;width:1px;background:linear-gradient(var(--cyan),rgba(99,220,255,.05))}
+    .role{display:grid;grid-template-columns:52px 1fr;gap:16px;margin-bottom:20px}
+    .dot{width:33px;height:33px;border:1px solid rgba(99,220,255,.35);border-radius:50%;display:grid;place-items:center;background:#07111d;z-index:2}
+    .dot i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px rgba(99,220,255,.8)}
+    .rolebox{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:24px}
+    .role-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:12px}
+    .role h3{margin:0;font-size:20px}
+    .company{color:var(--cyan);font:600 12px "IBM Plex Mono",monospace;margin-top:5px}
+    .date{color:#7f97aa;font:500 10px "IBM Plex Mono",monospace;white-space:nowrap}
+    .role p{color:#9db0bf;margin:0 0 14px;font-size:14px}
+    .bullets{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px;padding:0;margin:0;list-style:none}
+    .bullets li{color:#8da4b5;font-size:13px;padding-left:14px;position:relative}
+    .bullets li:before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--green)}
+    .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .project{
+      min-height:305px;background:linear-gradient(155deg,rgba(13,27,44,.92),rgba(6,14,24,.9));
+      border:1px solid rgba(255,255,255,.075);border-radius:22px;padding:25px;position:relative;overflow:hidden
+    }
+    .project:before{content:"";position:absolute;right:-35px;top:-35px;width:160px;height:160px;border:1px solid rgba(99,220,255,.09);transform:rotate(45deg)}
+    .project-type{font:600 10px "IBM Plex Mono",monospace;color:var(--green);text-transform:uppercase;letter-spacing:.1em}
+    .project h3{font-size:22px;margin:10px 0 6px;max-width:80%}
+    .project-sub{font:500 11px "IBM Plex Mono",monospace;color:#7991a4;margin-bottom:18px}
+    .project p{font-size:14px;color:#94a9b9;margin:0 0 20px;max-width:92%}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto}
+    .metric{padding:12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.055)}
+    .metric strong{display:block;color:#e9f7ff;font-size:14px}
+    .metric span{display:block;color:#6f899c;font:500 9px "IBM Plex Mono",monospace;margin-top:3px;text-transform:uppercase}
+    .tool-wall{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .tool{padding:16px 10px;border:1px solid rgba(255,255,255,.065);border-radius:13px;background:rgba(255,255,255,.027);text-align:center;color:#aec1cf;font:600 11px "IBM Plex Mono",monospace}
+    .tool:hover{border-color:rgba(99,220,255,.26);color:var(--cyan)}
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .edu h3{margin:0 0 6px;font-size:18px}
+    .edu .where{color:var(--cyan);font:600 11px "IBM Plex Mono",monospace}
+    .edu p{color:#8da4b5;font-size:14px;margin-bottom:0}
+    .publication{margin-top:18px;border-left:2px solid var(--violet)}
+    .publication .where{color:var(--violet)}
+    .contact{
+      background:
+        linear-gradient(135deg,rgba(99,220,255,.08),rgba(124,247,196,.035) 45%,rgba(169,149,255,.05)),
+        rgba(7,16,27,.9);
+      border:1px solid rgba(99,220,255,.16);border-radius:28px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center
+    }
+    .contact h2{margin:8px 0 12px}
+    .contact p{color:#93a9ba;max-width:660px}
+    .contact-links{display:grid;gap:10px}
+    .contact-links a{display:flex;justify-content:space-between;gap:20px;align-items:center;text-decoration:none;padding:13px 14px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(0,0,0,.12);font:500 11px "IBM Plex Mono",monospace;color:#b7cbd9}
+    .contact-links a:hover{border-color:rgba(99,220,255,.3);color:var(--cyan)}
+    footer{padding:32px 0 44px;color:#668095;font:500 10px "IBM Plex Mono",monospace}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.06);padding-top:24px}
+    .confidentiality{color:#5e7383;max-width:760px}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){
+      .navlinks a:not(.nav-cta){display:none}
+      .hero-grid,.section-head,.contact{grid-template-columns:1fr}
+      .hero{padding-top:130px}
+      .die{margin:25px auto 0;max-width:360px}
+      .stats{grid-template-columns:1fr 1fr}
+      .expertise{grid-template-columns:1fr}
+      .work-grid{grid-template-columns:1fr}
+      .tool-wall{grid-template-columns:repeat(3,1fr)}
+      .bullets{grid-template-columns:1fr}
+      .edu-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .wrap{width:min(var(--max),calc(100% - 26px))}
+      .brand .brandtext{font-size:12px}
+      h1{font-size:44px}
+      section{padding:68px 0}
+      .stats{grid-template-columns:1fr 1fr}
+      .stat strong{font-size:23px}
+      .role{grid-template-columns:38px 1fr;gap:10px}
+      .dot{width:28px;height:28px}
+      .rolebox{padding:18px}
+      .role-top{display:block}
+      .date{margin-top:8px}
+      .tool-wall{grid-template-columns:repeat(2,1fr)}
+      .contact{padding:26px}
+      .project h3{max-width:100%}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="chipmark">CSB</span>
+        <span class="brandtext">Chandra Sekhar Bhamidi<small>Physical Design · STA</small></span>
+      </a>
+      <div class="navlinks">
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Implementation</a>
+        <a href="#education">Education</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> Applications Engineer · Tokyo, Japan</div>
+          <h1><span class="gradient">Physical Design.</span><br>Timing Closure.<br>EDA Automation.</h1>
+          <div class="hero-role">7nm CPU Implementation // Static Timing Analysis // RTL-to-GDSII</div>
+          <p class="hero-copy">
+            Applications Engineer at Synopsys Tokyo with hands-on experience in advanced-node physical design,
+            timing analysis and implementation methodologies. Experience spans floorplanning, routing optimization,
+            setup closure, timing ECOs and TCL-based timing-debug automation.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#work">Explore Implementation Work →</a>
+            <a class="btn secondary" href="assets/Chandra_Sekhar_Bhamidi_Resume.pdf" target="_blank" rel="noopener">View Résumé</a>
+            <a class="btn secondary" href="https://github.com/thisisme-chandu" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <div class="hero-meta">
+            <span>Work authorization: Japan through Jul 2030</span>
+            <span>No sponsorship required</span>
+          </div>
+        </div>
+        <div class="die" aria-label="Abstract semiconductor die illustration">
+          <div class="die-grid">
+            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          </div>
+          <div class="die-label">ADVANCED-NODE IMPLEMENTATION</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="kicker">01 // Profile</div><h2>Engineering at implementation scale.</h2></div>
+          <p class="section-intro">
+            Focused on physical implementation and setup timing convergence for CPU-class designs, with experience
+            using Synopsys implementation and signoff tools alongside open-source EDA benchmarking.
+          </p>
+        </div>
+        <div class="stats reveal">
+          <div class="stat"><strong>7nm</strong><span>Advanced-node CPU</span></div>
+          <div class="stat"><strong>3.5M+</strong><span>Instances</span></div>
+          <div class="stat"><strong>350+</strong><span>Macros</span></div>
+          <div class="stat"><strong>2.47 GHz</strong><span>Post-DFT result</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="kicker">02 // Core Expertise</div><h2>Physical design with timing awareness.</h2></div>
+          <p class="section-intro">
+            Implementation work centered on floorplanning, placement and routing optimization, static timing analysis,
+            QoR convergence and targeted ECO techniques.
+          </p>
+        </div>
+        <div class="expertise">
+          <article class="card reveal">
+            <div class="card-num">PD / 01</div>
+            <h3>Physical Design</h3>
+            <p>Floorplanning, macro placement, placement optimization, routing optimization, congestion reduction and DRC closure.</p>
+            <div class="tags"><span class="tag">Floorplanning</span><span class="tag">Placement</span><span class="tag">CTS</span><span class="tag">Routing</span><span class="tag">DRC</span></div>
+          </article>
+          <article class="card reveal">
+            <div class="card-num">STA / 02</div>
+            <h3>Static Timing Analysis</h3>
+            <p>PrimeTime-based WNS/TNS debug, path-based analysis, setup timing convergence and timing ECO closure.</p>
+            <div class="tags"><span class="tag">PrimeTime</span><span class="tag">PBA</span><span class="tag">WNS/TNS</span><span class="tag">VT Swap</span><span class="tag">Buffering</span></div>
+          </article>
+          <article class="card reveal">
+            <div class="card-num">AUTO / 03</div>
+            <h3>EDA Automation</h3>
+            <p>TCL scripting for timing report parsing, QoR tracking and path filtering to shorten timing-debug turnaround.</p>
+            <div class="tags"><span class="tag">TCL</span><span class="tag">QoR Tracking</span><span class="tag">Report Parsing</span><span class="tag">Path Filtering</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="kicker">03 // Experience</div><h2>From synthesis to timing closure.</h2></div>
+          <p class="section-intro">
+            Professional experience across 7nm and 28nm implementations using Fusion Compiler, ICC2, PrimeTime,
+            Design Compiler, StarRC and Formality.
+          </p>
+        </div>
+        <div class="timeline">
+          <article class="role reveal">
+            <div class="dot"><i></i></div>
+            <div class="rolebox">
+              <div class="role-top">
+                <div><h3>Applications Engineer</h3><div class="company">Synopsys · Tokyo, Japan</div></div>
+                <div class="date">NOV 2024 — PRESENT</div>
+              </div>
+              <p>7nm FinFET ARM-based CPU core · Fusion Compiler · PrimeTime · StarRC · IC Compiler II</p>
+              <ul class="bullets">
+                <li>Contributed to physical design and setup timing closure for a 3.5M+ instance, 350+ macro CPU implementation.</li>
+                <li>Contributed to 2.54 GHz pre-DFT and 2.47 GHz post-DFT results against a 2.6 GHz target.</li>
+                <li>Explored 20+ floorplan variants to improve macro locality, critical-path wirelength and routability.</li>
+                <li>Executed clock-uncertainty sweeps and analyzed WNS/TNS, runtime and timing-margin tradeoffs.</li>
+                <li>Performed manual timing ECOs using upsizing, VT swaps and buffer insertion on top critical paths.</li>
+                <li>Built a TCL flow to rank worst path groups by WNS, reducing timing-debug turnaround by 30%.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="dot"><i></i></div>
+            <div class="rolebox">
+              <div class="role-top">
+                <div><h3>Digital Implementation Trainee</h3><div class="company">ZOICX Technologies · Hyderabad, India</div></div>
+                <div class="date">JUN 2024 — OCT 2024</div>
+              </div>
+              <p>28nm ARM Core · Design Compiler · IC Compiler II · Formality</p>
+              <ul class="bullets">
+                <li>Executed the physical design flow for a 300K+ gate ARM core with 29 macros and one clock domain.</li>
+                <li>Achieved the 500 MHz target and verified post-synthesis netlist equivalence with Formality.</li>
+                <li>Ran 10+ floorplan trials across core shapes and utilization targets to eliminate routing congestion.</li>
+                <li>Benchmarked OpenROAD, Yosys and OpenSTA against Synopsys commercial flow stages.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="dot"><i></i></div>
+            <div class="rolebox">
+              <div class="role-top">
+                <div><h3>Physical Design Engineer — Trainee</h3><div class="company">RiseTime Semiconductor · Hyderabad, India</div></div>
+                <div class="date">OCT 2023 — MAR 2024</div>
+              </div>
+              <p>28nm design · Design Compiler · IC Compiler II · Formality</p>
+              <ul class="bullets">
+                <li>Executed synthesis-to-post-route flow for a 72K-gate design with 6 macros and 2 clocks at 454 MHz.</li>
+                <li>Covered synthesis, floorplanning, placement, CTS, routing and timing checks.</li>
+                <li>Resolved missing-via, pin-density and congestion issues through keepout-margin and floorplan optimization.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="kicker">04 // Selected Implementation Work</div><h2>Resume-backed design work.</h2></div>
+          <p class="section-intro">
+            Only implementation work explicitly documented in the résumé is shown here. Employer projects are described
+            at a high level and do not expose proprietary design data.
+          </p>
+        </div>
+        <div class="work-grid">
+          <article class="project reveal">
+            <div class="project-type">Professional · Advanced Node</div>
+            <h3>7nm ARM-based CPU Core</h3>
+            <div class="project-sub">PHYSICAL DESIGN // SETUP CLOSURE // TIMING ECO</div>
+            <p>Large-scale CPU implementation work spanning floorplan exploration, timing sensitivity studies, incremental placement and routing optimization, DFT timing isolation and post-route ECO closure.</p>
+            <div class="metrics">
+              <div class="metric"><strong>3.5M+</strong><span>Instances</span></div>
+              <div class="metric"><strong>350+</strong><span>Macros</span></div>
+              <div class="metric"><strong>2.47 GHz</strong><span>Post-DFT</span></div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-type">Professional · 28nm</div>
+            <h3>ARM Core Implementation</h3>
+            <div class="project-sub">SYNTHESIS // P&R // EQUIVALENCE</div>
+            <p>Full physical design flow with synthesis and formal equivalence verification, backed by repeated floorplan trials and congestion-focused optimization.</p>
+            <div class="metrics">
+              <div class="metric"><strong>300K+</strong><span>Gates</span></div>
+              <div class="metric"><strong>29</strong><span>Macros</span></div>
+              <div class="metric"><strong>500 MHz</strong><span>Target Met</span></div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-type">Professional · 28nm</div>
+            <h3>Synthesis-to-Post-Route Design</h3>
+            <div class="project-sub">FLOORPLAN // CTS // ROUTING // TIMING</div>
+            <p>End-to-end implementation of a dual-clock design with floorplan iterations addressing missing-via, pin-density and congestion issues.</p>
+            <div class="metrics">
+              <div class="metric"><strong>72K</strong><span>Gates</span></div>
+              <div class="metric"><strong>6</strong><span>Macros</span></div>
+              <div class="metric"><strong>454 MHz</strong><span>Frequency</span></div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-type">Academic · Physical Design</div>
+            <h3>ALU Design — RTL to GDSII</h3>
+            <div class="project-sub">SUMEDHA IT // SYNOPSYS TOOLS</div>
+            <p>Academic RTL-to-GDSII ALU design work completed as part of the Post Graduate Diploma in Physical Design.</p>
+            <div class="metrics">
+              <div class="metric"><strong>RTL</strong><span>Design Entry</span></div>
+              <div class="metric"><strong>GDSII</strong><span>Implementation</span></div>
+              <div class="metric"><strong>PD</strong><span>Academic Project</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="kicker">05 // Toolchain</div><h2>Commercial and open-source EDA.</h2></div>
+          <p class="section-intro">Tools and methodologies explicitly listed in the résumé.</p>
+        </div>
+        <div class="tool-wall reveal">
+          <div class="tool">Fusion Compiler</div><div class="tool">PrimeTime</div><div class="tool">IC Compiler II</div><div class="tool">Design Compiler</div><div class="tool">StarRC</div>
+          <div class="tool">Formality</div><div class="tool">OpenROAD</div><div class="tool">Yosys</div><div class="tool">OpenSTA</div><div class="tool">TCL</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="kicker">06 // Education & Publication</div><h2>Foundation in VLSI and ECE.</h2></div>
+          <p class="section-intro">Education, publication and certification details from the résumé.</p>
+        </div>
+        <div class="edu-grid">
+          <article class="card edu reveal">
+            <h3>Post Graduate Diploma — Physical Design</h3>
+            <div class="where">Sumedha IT · Hyderabad · 2022–2023</div>
+            <p>ALU Design — RTL-to-GDSII with Synopsys tools.</p>
+          </article>
+          <article class="card edu reveal">
+            <h3>B.Tech — Electronics & Communication Engineering</h3>
+            <div class="where">JNTU · Hyderabad · 2018–2022</div>
+            <p>NPTEL Certified: VLSI Design Flow RTL to GDS.</p>
+          </article>
+        </div>
+        <article class="card edu publication reveal">
+          <h3>IEEE Publication — J-Pole Antenna for ADS-B Signals</h3>
+          <div class="where">April 2022</div>
+          <p>Publication listed in the résumé under B.Tech education.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact reveal">
+          <div>
+            <div class="kicker">07 // Contact</div>
+            <h2>Connect for physical design and STA opportunities.</h2>
+            <p>Based in Tokyo, Japan, with work authorization valid through July 2030. Contact details below intentionally exclude a public phone number.</p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:bkbschandu2000@gmail.com"><span>Email</span><span>↗</span></a>
+            <a href="https://www.linkedin.com/in/chandrasekhar-bhamidi" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
+            <a href="https://github.com/thisisme-chandu" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Chandra Sekhar Bhamidi</span>
+      <span class="confidentiality">Professional project descriptions intentionally remain high-level; no proprietary employer design data is published here.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
