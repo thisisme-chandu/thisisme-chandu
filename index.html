@@ -3,37 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Chandra Sekhar Bhamidi — Applications Engineer specializing in physical design, static timing analysis, timing closure, RTL-to-GDSII implementation and EDA automation." />
-  <meta name="theme-color" content="#050912" />
+  <meta name="description" content="Chandra Sekhar Bhamidi — Applications Engineer focused on physical design, static timing analysis, timing closure and EDA automation." />
+  <meta name="theme-color" content="#06080c" />
   <meta property="og:title" content="Chandra Sekhar Bhamidi | Physical Design & STA" />
-  <meta property="og:description" content="VLSI semiconductor portfolio — advanced-node CPU implementation, physical design, timing closure and EDA automation." />
+  <meta property="og:description" content="A VLSI semiconductor portfolio focused on advanced-node implementation, timing closure and EDA automation." />
   <title>Chandra Sekhar Bhamidi | Physical Design & STA</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#050912;
-      --bg2:#07111e;
-      --panel:#0a1422;
-      --panel2:#0d1929;
-      --panel3:#101e31;
-      --text:#f2f7fb;
-      --muted:#98a9b9;
-      --muted2:#71869a;
-      --line:rgba(151,192,222,.12);
-      --line2:rgba(101,220,255,.23);
-      --cyan:#65dcff;
-      --teal:#70efbf;
-      --blue:#65aaff;
+      --black:#06080c;
+      --black2:#0a0f16;
+      --panel:#0d141e;
+      --panel2:#121c28;
+      --white:#f5f3ee;
+      --paper:#eceae4;
+      --ink:#0b1118;
+      --text:#f4f7fa;
+      --muted:#97a8b9;
+      --muted2:#6f8194;
+      --line:rgba(255,255,255,.09);
+      --line-dark:rgba(11,17,24,.13);
+      --cyan:#68dcff;
+      --teal:#72edbf;
       --amber:#ffc46a;
-      --violet:#9f94ff;
-      --red:#ff897d;
-      --shadow:0 28px 90px rgba(0,0,0,.42);
-      --radius:22px;
-      --max:1180px;
+      --violet:#9e93ff;
+      --blue:#6ba9ff;
+      --red:#ff887e;
+      --max:1200px;
+      --radius:26px;
+      --shadow:0 30px 100px rgba(0,0,0,.38);
     }
 
     *{box-sizing:border-box}
@@ -44,243 +45,156 @@
       overflow-x:hidden;
       font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--text);
-      line-height:1.62;
-      background:
-        radial-gradient(circle at 12% 7%,rgba(101,170,255,.12),transparent 25%),
-        radial-gradient(circle at 87% 16%,rgba(112,239,191,.07),transparent 22%),
-        linear-gradient(180deg,#040811 0%,#07111e 48%,#040811 100%);
+      background:var(--black);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
-
-    body:before{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-3;
-      pointer-events:none;
-      background-image:
-        linear-gradient(rgba(101,220,255,.022) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(101,220,255,.022) 1px,transparent 1px);
-      background-size:48px 48px;
-      mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 88%);
-    }
-
+    body.menu-open{overflow:hidden}
     a{color:inherit}
     button{font:inherit}
     svg{display:block;max-width:100%}
     .wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
     .mono{font-family:"JetBrains Mono",monospace}
-    .section{padding:94px 0;position:relative}
-    .section + .section{border-top:1px solid rgba(255,255,255,.035)}
-    .eyebrow{
-      color:var(--cyan);
-      font:600 10px "JetBrains Mono",monospace;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      margin-bottom:9px;
-    }
-    h2{
-      margin:0;
-      font-size:clamp(33px,4.2vw,50px);
-      line-height:1.06;
-      letter-spacing:-.045em;
-    }
-    .section-head{
-      display:grid;
-      grid-template-columns:.72fr 1.28fr;
-      gap:54px;
-      align-items:end;
-      margin-bottom:40px;
-    }
-    .section-head p{
-      margin:0;
-      max-width:720px;
-      color:var(--muted);
-      font-size:15px;
-    }
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
     .nav{
       position:fixed;
       inset:0 0 auto 0;
       z-index:100;
-      background:rgba(4,8,17,.79);
-      border-bottom:1px solid rgba(255,255,255,.06);
-      backdrop-filter:blur(20px);
+      background:rgba(6,8,12,.74);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.055);
     }
     .nav-inner{
-      height:72px;
+      height:70px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:24px;
     }
     .brand{
-      min-width:0;
       display:flex;
       align-items:center;
-      gap:13px;
+      gap:12px;
+      min-width:0;
       text-decoration:none;
     }
-    .brand-mark{
+    .brand-chip{
       width:38px;height:38px;
       flex:0 0 auto;
       display:grid;
       place-items:center;
-      border-radius:8px;
+      border-radius:9px;
       position:relative;
-      border:1px solid rgba(101,220,255,.38);
-      background:linear-gradient(135deg,rgba(101,220,255,.09),rgba(112,239,191,.025)),#07111e;
-      box-shadow:inset 0 0 20px rgba(101,220,255,.04);
+      border:1px solid rgba(104,220,255,.35);
+      color:var(--cyan);
+      background:linear-gradient(145deg,rgba(104,220,255,.1),rgba(114,237,191,.03)),#09111a;
+      font:600 10px "JetBrains Mono",monospace;
     }
-    .brand-mark:before,.brand-mark:after{
+    .brand-chip:before,.brand-chip:after{
       content:"";
       position:absolute;
       left:-5px;right:-5px;
       height:1px;
-      background:rgba(101,220,255,.32);
-      box-shadow:0 9px rgba(101,220,255,.22),0 -9px rgba(101,220,255,.22);
-    }
-    .brand-mark span{
-      color:var(--cyan);
-      font:600 10px "JetBrains Mono",monospace;
-      letter-spacing:.06em;
+      background:rgba(104,220,255,.34);
+      box-shadow:0 9px rgba(104,220,255,.22),0 -9px rgba(104,220,255,.22);
     }
     .brand-copy{min-width:0}
-    .brand-copy strong{
-      display:block;
-      font-size:13px;
-      line-height:1.2;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .brand-copy small{
-      display:block;
-      margin-top:4px;
-      color:var(--muted2);
-      font:500 9px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-      letter-spacing:.15em;
-      white-space:nowrap;
-    }
-    .nav-links{display:flex;align-items:center;gap:22px}
-    .nav-links a{
-      color:#afbfcd;
-      text-decoration:none;
-      font-size:12px;
-      font-weight:650;
-      transition:.2s ease;
-    }
+    .brand-copy strong{display:block;font-size:13px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand-copy small{display:block;margin-top:4px;color:#71859a;font:500 8px "JetBrains Mono",monospace;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
+    .nav-links{display:flex;align-items:center;gap:21px}
+    .nav-links a{color:#afbdc9;text-decoration:none;font-size:11px;font-weight:650;transition:.2s}
     .nav-links a:hover{color:var(--cyan)}
-    .nav-links .nav-cta{
-      color:var(--text);
-      padding:9px 13px;
-      border-radius:10px;
-      border:1px solid rgba(101,220,255,.18);
-      background:rgba(101,220,255,.04);
-    }
+    .nav-links .cta{padding:9px 13px;border:1px solid rgba(104,220,255,.18);border-radius:10px;color:#eff6fa;background:rgba(104,220,255,.035)}
     .menu-btn{
       display:none;
       width:40px;height:40px;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(255,255,255,.08);
+      align-items:center;justify-content:center;
       border-radius:10px;
+      border:1px solid rgba(255,255,255,.08);
+      color:#eef5fa;
       background:rgba(255,255,255,.025);
-      color:var(--text);
       cursor:pointer;
     }
     .mobile-menu{
       display:none;
-      padding:0 24px 16px;
+      padding:0 24px 18px;
+      background:rgba(6,8,12,.98);
       border-top:1px solid rgba(255,255,255,.04);
-      background:rgba(4,8,17,.98);
     }
     .mobile-menu.open{display:grid}
-    .mobile-menu a{
-      padding:13px 0;
-      color:#afc0cf;
-      text-decoration:none;
-      font-size:13px;
-      font-weight:600;
-      border-bottom:1px solid rgba(255,255,255,.05);
-    }
+    .mobile-menu a{padding:13px 0;color:#b3c1cd;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.055);font-size:13px;font-weight:600}
 
     .hero{
       min-height:100vh;
       display:flex;
       align-items:center;
-      padding:138px 0 72px;
       position:relative;
       overflow:hidden;
+      padding:132px 0 62px;
+      background:
+        radial-gradient(circle at 18% 11%,rgba(107,169,255,.12),transparent 25%),
+        radial-gradient(circle at 86% 24%,rgba(114,237,191,.07),transparent 23%),
+        linear-gradient(180deg,#06080c 0%,#070c12 100%);
     }
     .hero:before{
       content:"";
       position:absolute;
-      width:720px;height:720px;
-      right:-290px;top:80px;
-      border:1px solid rgba(101,220,255,.04);
-      border-radius:50%;
-      box-shadow:0 0 0 72px rgba(101,220,255,.012),0 0 0 145px rgba(101,220,255,.008);
+      inset:0;
       pointer-events:none;
+      background-image:linear-gradient(rgba(104,220,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(104,220,255,.018) 1px,transparent 1px);
+      background-size:52px 52px;
+      mask-image:linear-gradient(to bottom,black,transparent 86%);
     }
     .hero-grid{
       display:grid;
       grid-template-columns:1.02fr .98fr;
-      gap:58px;
       align-items:center;
+      gap:54px;
+      position:relative;
+      z-index:1;
     }
-    .hero-status{
+    .hero-kicker{
       display:inline-flex;
       align-items:center;
-      gap:9px;
+      gap:8px;
       padding:7px 10px;
-      margin-bottom:17px;
+      margin-bottom:19px;
+      border:1px solid rgba(114,237,191,.17);
       border-radius:999px;
-      border:1px solid rgba(112,239,191,.17);
-      background:rgba(112,239,191,.035);
+      background:rgba(114,237,191,.035);
       color:var(--teal);
-      font:500 10px "JetBrains Mono",monospace;
-      letter-spacing:.055em;
+      font:500 9px "JetBrains Mono",monospace;
+      letter-spacing:.07em;
     }
-    .hero-status i{
-      width:6px;height:6px;border-radius:50%;
-      background:var(--teal);
-      box-shadow:0 0 10px rgba(112,239,191,.8);
-    }
-    .hero-name{
-      margin-bottom:12px;
-      color:#a0b1c1;
-      font:500 10px "JetBrains Mono",monospace;
-      letter-spacing:.15em;
+    .hero-kicker i{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px rgba(114,237,191,.85)}
+    .hero-title{
+      margin:0;
+      max-width:780px;
+      font-size:clamp(54px,7.2vw,94px);
+      line-height:.88;
+      letter-spacing:-.067em;
       text-transform:uppercase;
     }
-    h1{
-      margin:0 0 20px;
-      max-width:700px;
-      font-size:clamp(48px,6.1vw,78px);
-      line-height:.98;
-      letter-spacing:-.055em;
-    }
-    h1 .accent{
-      background:linear-gradient(105deg,#f8fbff 8%,#9ce9ff 58%,#7cf0c5 105%);
-      -webkit-background-clip:text;
-      background-clip:text;
+    .hero-title .outline{
       color:transparent;
+      -webkit-text-stroke:1.4px rgba(244,247,250,.72);
+    }
+    .hero-title .grad{
+      background:linear-gradient(100deg,#fff 12%,#a8ebff 59%,#7ef0c6 105%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
     }
     .hero-role{
-      max-width:720px;
-      margin-bottom:17px;
+      margin:24px 0 15px;
       color:var(--cyan);
-      font:600 clamp(12px,1.45vw,15px) "JetBrains Mono",monospace;
-      line-height:1.58;
+      font:600 clamp(11px,1.4vw,14px) "JetBrains Mono",monospace;
+      line-height:1.65;
     }
     .hero-copy{
-      max-width:685px;
-      margin:0 0 26px;
-      color:#a5b5c3;
-      font-size:16px;
+      max-width:620px;
+      margin:0 0 25px;
+      color:#a1b1bf;
+      font-size:15px;
     }
     .hero-actions{display:flex;flex-wrap:wrap;gap:9px}
     .btn{
@@ -288,897 +202,690 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:0 17px;
+      padding:0 16px;
       border-radius:11px;
+      text-decoration:none;
       border:1px solid rgba(255,255,255,.08);
       background:rgba(255,255,255,.026);
-      color:#dce6ee;
-      text-decoration:none;
-      font-size:12px;
+      color:#e1eaf0;
+      font-size:11px;
       font-weight:750;
       transition:.2s ease;
     }
-    .btn:hover{transform:translateY(-2px);border-color:rgba(101,220,255,.25)}
-    .btn.primary{
-      color:#031019;
-      border:0;
-      background:linear-gradient(135deg,var(--cyan),var(--teal));
-      box-shadow:0 12px 34px rgba(101,220,255,.11);
-    }
-    .hero-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px 20px;
-      margin-top:23px;
-      color:#71879a;
-      font:500 9px "JetBrains Mono",monospace;
-    }
-    .hero-meta span:before{content:"// ";color:#456177}
+    .btn:hover{transform:translateY(-2px);border-color:rgba(104,220,255,.24)}
+    .btn.primary{border:0;color:#041018;background:linear-gradient(135deg,var(--cyan),var(--teal));box-shadow:0 14px 36px rgba(104,220,255,.11)}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:14px 18px;margin-top:22px;color:#71869a;font:500 8px "JetBrains Mono",monospace}
+    .hero-meta span:before{content:"// ";color:#466176}
 
-    .hero-visual{
-      min-height:515px;
-      border:1px solid rgba(101,220,255,.15);
-      border-radius:24px;
-      overflow:hidden;
-      background:linear-gradient(180deg,rgba(12,25,41,.96),rgba(6,14,25,.96));
-      box-shadow:var(--shadow);
-      position:relative;
-    }
-    .visual-top{
-      height:44px;
-      padding:0 15px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid rgba(255,255,255,.055);
-      background:rgba(255,255,255,.012);
-    }
-    .visual-top span:first-child{
-      color:#8aa1b4;
-      font:500 9px "JetBrains Mono",monospace;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .window-dots{display:flex;gap:6px}
-    .window-dots i{
-      width:6px;height:6px;border-radius:50%;
-      display:block;background:#365267;
-    }
-    .window-dots i:nth-child(1){background:var(--red)}
-    .window-dots i:nth-child(2){background:var(--amber)}
-    .window-dots i:nth-child(3){background:var(--teal)}
-
-    .hero-svg-wrap{padding:18px 18px 11px}
-    .hero-svg{
-      width:100%;
-      aspect-ratio:1.35/1;
-      border:1px solid rgba(101,220,255,.12);
-      border-radius:15px;
-      background:
-        linear-gradient(rgba(101,220,255,.024) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(101,220,255,.024) 1px,transparent 1px),
-        #07111d;
-      background-size:16px 16px;
-    }
-    .wafer-ring{fill:none;stroke:rgba(101,220,255,.12);stroke-width:1}
-    .die-outline{fill:rgba(9,21,35,.72);stroke:rgba(101,220,255,.26);stroke-width:1.2}
-    .std-field{fill:url(#stdPattern);stroke:rgba(101,220,255,.06);stroke-width:1}
-    .macro-block{fill:rgba(112,239,191,.1);stroke:rgba(112,239,191,.33);stroke-width:1}
-    .special-block{fill:rgba(159,148,255,.09);stroke:rgba(159,148,255,.27);stroke-width:1}
-    .route-line{fill:none;stroke:rgba(101,170,255,.38);stroke-width:1.2}
-    .route-line.active{stroke:var(--blue);stroke-dasharray:5 8;animation:routeMove 6s linear infinite}
-    .critical-line{fill:none;stroke:var(--amber);stroke-width:2.2;stroke-dasharray:7 8;animation:pathMove 5.5s linear infinite;filter:drop-shadow(0 0 4px rgba(255,196,106,.28))}
-    .critical-node{fill:var(--amber)}
-    .clock-node{fill:#07111d;stroke:rgba(101,220,255,.5);stroke-width:1}
-    .clock-tree{fill:none;stroke:rgba(101,220,255,.4);stroke-width:1.1}
-    .pulse-node{animation:pulseNode 2.4s ease-in-out infinite;transform-origin:center}
-    @keyframes routeMove{to{stroke-dashoffset:-65}}
-    @keyframes pathMove{to{stroke-dashoffset:-80}}
-    @keyframes pulseNode{0%,100%{opacity:.45}50%{opacity:1}}
-
-    .hero-legend{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      padding:0 18px 10px;
-      color:#6f8599;
-      font:500 8px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .hero-legend span{display:flex;align-items:center;gap:5px}
-    .hero-legend i{width:7px;height:7px;border-radius:2px;background:var(--teal)}
-    .hero-legend span:nth-child(2) i{background:var(--blue)}
-    .hero-legend span:nth-child(3) i{background:var(--amber)}
-    .hero-legend span:nth-child(4) i{background:var(--cyan)}
-
-    .hero-qor{
+    .hero-art{
+      min-height:540px;
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:7px;
-      padding:0 18px 18px;
+      place-items:center;
+      position:relative;
+      perspective:900px;
     }
-    .hero-qor div{
-      min-height:68px;
-      padding:9px;
-      border:1px solid rgba(255,255,255,.05);
-      border-radius:10px;
-      background:rgba(255,255,255,.019);
+    .orbit{
+      position:absolute;
+      inset:7%;
+      border:1px solid rgba(104,220,255,.09);
+      border-radius:50%;
+      animation:orbitSpin 24s linear infinite;
     }
-    .hero-qor small{
+    .orbit:before,.orbit:after{
+      content:"";
+      position:absolute;
+      width:9px;height:9px;
+      border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 16px rgba(104,220,255,.55);
+    }
+    .orbit:before{left:12%;top:19%}
+    .orbit:after{right:13%;bottom:16%;background:var(--teal)}
+    @keyframes orbitSpin{to{transform:rotate(360deg)}}
+
+    .chip-scene{
+      width:min(430px,88%);
+      aspect-ratio:1/1;
+      position:relative;
+      transform-style:preserve-3d;
+      transition:transform .18s ease-out;
+      will-change:transform;
+    }
+    .chip-shadow{
+      position:absolute;
+      left:13%;right:13%;bottom:4%;
+      height:17%;
+      background:radial-gradient(ellipse,rgba(0,0,0,.68),transparent 67%);
+      filter:blur(13px);
+      transform:translateZ(-80px);
+    }
+    .chip-body{
+      position:absolute;
+      inset:12%;
+      border-radius:28px;
+      transform:rotateX(58deg) rotateZ(-36deg) translateZ(34px);
+      background:linear-gradient(145deg,#16293c,#09131f 64%);
+      border:1px solid rgba(104,220,255,.28);
+      box-shadow:0 50px 80px rgba(0,0,0,.45),inset 0 0 32px rgba(104,220,255,.04);
+      transform-style:preserve-3d;
+    }
+    .chip-body:before{
+      content:"";
+      position:absolute;
+      inset:8%;
+      border-radius:19px;
+      border:1px solid rgba(104,220,255,.14);
+      background:
+        linear-gradient(rgba(104,220,255,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(104,220,255,.028) 1px,transparent 1px),
+        #07111d;
+      background-size:14px 14px;
+    }
+    .die-grid{
+      position:absolute;
+      inset:18%;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      grid-template-rows:repeat(6,1fr);
+      gap:5px;
+      transform:translateZ(12px);
+    }
+    .die-grid i{
       display:block;
-      color:#61798d;
+      border-radius:3px;
+      border:1px solid rgba(104,220,255,.11);
+      background:linear-gradient(135deg,rgba(104,220,255,.09),rgba(107,169,255,.03));
+      animation:cellPulse 4.5s ease-in-out infinite;
+    }
+    .die-grid i:nth-child(4n){border-color:rgba(114,237,191,.19);background:rgba(114,237,191,.08)}
+    .die-grid i:nth-child(7n){border-color:rgba(158,147,255,.19);background:rgba(158,147,255,.07)}
+    @keyframes cellPulse{0%,100%{opacity:.64}50%{opacity:1}}
+    .pins{
+      position:absolute;
+      inset:5%;
+      z-index:1;
+      transform:translateZ(-6px);
+      background:
+        repeating-linear-gradient(90deg,transparent 0 17px,rgba(104,220,255,.35) 17px 19px,transparent 19px 28px) top/100% 8px no-repeat,
+        repeating-linear-gradient(90deg,transparent 0 17px,rgba(104,220,255,.35) 17px 19px,transparent 19px 28px) bottom/100% 8px no-repeat,
+        repeating-linear-gradient(0deg,transparent 0 17px,rgba(104,220,255,.35) 17px 19px,transparent 19px 28px) left/8px 100% no-repeat,
+        repeating-linear-gradient(0deg,transparent 0 17px,rgba(104,220,255,.35) 17px 19px,transparent 19px 28px) right/8px 100% no-repeat;
+    }
+    .chip-caption{
+      position:absolute;
+      left:6%;bottom:5%;
+      padding:9px 11px;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:9px;
+      background:rgba(6,8,12,.72);
+      color:#8198aa;
       font:500 7px "JetBrains Mono",monospace;
-      text-transform:uppercase;
       letter-spacing:.07em;
-      margin-bottom:4px;
+      text-transform:uppercase;
+      backdrop-filter:blur(8px);
     }
-    .hero-qor strong{display:block;font-size:14px;letter-spacing:-.02em}
-    .hero-qor em{
-      display:block;
-      margin-top:3px;
-      color:#70879a;
+    .float-label{
+      position:absolute;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:999px;
+      background:rgba(8,13,20,.72);
+      color:#8aa0b2;
       font:500 7px "JetBrains Mono",monospace;
-      font-style:normal;
+      backdrop-filter:blur(8px);
+    }
+    .fl1{top:14%;left:2%;animation:floatY 5s ease-in-out infinite}
+    .fl2{right:1%;top:29%;animation:floatY 6s ease-in-out infinite reverse}
+    .fl3{right:10%;bottom:13%;animation:floatY 5.4s ease-in-out infinite}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+    .statement{
+      padding:88px 0 76px;
+      background:var(--white);
+      color:var(--ink);
+    }
+    .statement-grid{display:grid;grid-template-columns:.43fr 1.57fr;gap:52px;align-items:start}
+    .statement-kicker{font:600 9px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#64717d;padding-top:11px}
+    .statement h2{
+      margin:0;
+      max-width:950px;
+      font-size:clamp(48px,7vw,92px);
+      line-height:.92;
+      letter-spacing:-.06em;
+      text-transform:uppercase;
+    }
+    .statement h2 span{color:transparent;-webkit-text-stroke:1.2px rgba(11,17,24,.65)}
+    .statement p{max-width:700px;margin:26px 0 0;color:#4c5863;font-size:14px}
+
+    .services{
+      background:var(--paper);
+      color:var(--ink);
+      padding:76px 0 86px;
+    }
+    .light-head{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:flex-end;
+      padding-bottom:24px;
+      border-bottom:1px solid var(--line-dark);
+    }
+    .light-head h2{margin:0;font-size:clamp(37px,5vw,64px);letter-spacing:-.055em;line-height:.96;text-transform:uppercase}
+    .light-head p{max-width:500px;margin:0;color:#5b6670;font-size:12px}
+    .service-list{margin-top:6px}
+    .service{
+      border-bottom:1px solid var(--line-dark);
+    }
+    .service-button{
+      width:100%;
+      min-height:112px;
+      display:grid;
+      grid-template-columns:86px 1fr 42px;
+      align-items:center;
+      gap:18px;
+      padding:0;
+      border:0;
+      background:transparent;
+      color:var(--ink);
+      text-align:left;
+      cursor:pointer;
+    }
+    .service-number{font:600 19px "JetBrains Mono",monospace;color:#26313a}
+    .service-title{font-size:clamp(29px,4vw,49px);font-weight:850;letter-spacing:-.045em;text-transform:uppercase}
+    .service-plus{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(11,17,24,.18);border-radius:50%;font-size:20px;transition:.25s}
+    .service.open .service-plus{transform:rotate(45deg);background:var(--ink);color:var(--white)}
+    .service-body{
+      display:grid;
+      grid-template-rows:0fr;
+      transition:grid-template-rows .32s ease;
+    }
+    .service.open .service-body{grid-template-rows:1fr}
+    .service-body-inner{overflow:hidden}
+    .service-content{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:32px;
+      padding:0 0 28px 104px;
+    }
+    .service-content p{margin:0;color:#59646f;font-size:12px;max-width:490px}
+    .service-visual{
+      min-height:165px;
+      border:1px solid rgba(11,17,24,.12);
+      border-radius:16px;
+      overflow:hidden;
+      background:#f7f5ef;
     }
 
-    .flow-shell{
-      border-top:1px solid rgba(255,255,255,.04);
-      border-bottom:1px solid rgba(255,255,255,.04);
-      background:rgba(5,10,18,.55);
+    .dark-section{
+      padding:92px 0;
+      background:
+        radial-gradient(circle at 90% 5%,rgba(104,220,255,.06),transparent 23%),
+        #070a0f;
     }
-    .flow-label{
-      padding:19px 0 0;
-      color:#637a8e;
-      font:500 8px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-      letter-spacing:.1em;
+    .section-head{
+      display:grid;
+      grid-template-columns:.72fr 1.28fr;
+      gap:48px;
+      align-items:end;
+      margin-bottom:36px;
+    }
+    .section-kicker{color:var(--cyan);font:600 9px "JetBrains Mono",monospace;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px}
+    .section-head h2{margin:0;font-size:clamp(37px,5vw,63px);line-height:.95;letter-spacing:-.055em;text-transform:uppercase}
+    .section-head p{margin:0;max-width:690px;color:#8fa1b2;font-size:13px}
+
+    .flow-box{
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:22px;
+      overflow:hidden;
+      background:linear-gradient(180deg,rgba(14,24,36,.88),rgba(7,13,20,.92));
     }
     .flow-tabs{
       display:grid;
       grid-template-columns:repeat(9,1fr);
-      gap:6px;
-      padding:11px 0 16px;
+      gap:0;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      overflow:auto;
+      scrollbar-width:none;
     }
+    .flow-tabs::-webkit-scrollbar{display:none}
     .flow-tab{
-      min-width:0;
-      min-height:54px;
-      padding:7px 5px;
-      border:1px solid rgba(255,255,255,.055);
-      border-radius:9px;
-      background:rgba(255,255,255,.018);
-      color:#7d93a6;
+      min-width:108px;
+      min-height:72px;
+      padding:8px;
+      border:0;
+      border-right:1px solid rgba(255,255,255,.045);
+      background:transparent;
+      color:#74899b;
       cursor:pointer;
       font:500 8px "JetBrains Mono",monospace;
       text-transform:uppercase;
-      letter-spacing:.04em;
-      transition:.2s ease;
+      letter-spacing:.05em;
     }
-    .flow-tab:hover,.flow-tab:focus-visible{
-      border-color:rgba(101,220,255,.18);
-      color:#c9d8e3;
-      outline:none;
-    }
-    .flow-tab.active{
-      color:var(--cyan);
-      border-color:rgba(101,220,255,.28);
-      background:rgba(101,220,255,.05);
-    }
-    .flow-tab span{display:block;color:#4d6579;font-size:7px;margin-bottom:4px}
-    .flow-detail{
+    .flow-tab span{display:block;margin-bottom:5px;color:#485f73;font-size:7px}
+    .flow-tab:hover,.flow-tab:focus-visible{outline:none;color:#b9cad7;background:rgba(255,255,255,.018)}
+    .flow-tab.active{color:var(--cyan);background:rgba(104,220,255,.045);box-shadow:inset 0 -2px var(--cyan)}
+    .flow-stage{
       display:grid;
-      grid-template-columns:.68fr 1.32fr;
+      grid-template-columns:.85fr 1.15fr;
       gap:26px;
       align-items:center;
-      padding:0 0 22px;
+      padding:22px;
     }
-    .flow-detail-visual{
-      min-height:142px;
+    .flow-art{
+      min-height:240px;
       display:grid;
       place-items:center;
       border:1px solid rgba(255,255,255,.055);
-      border-radius:14px;
-      background:linear-gradient(180deg,rgba(12,25,40,.78),rgba(7,15,26,.72));
-      overflow:hidden;
-    }
-    .flow-detail-copy h3{
-      margin:0 0 7px;
-      font-size:17px;
-      letter-spacing:-.02em;
-    }
-    .flow-detail-copy p{
-      margin:0;
-      color:#879caf;
-      font-size:12px;
-    }
-    .flow-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-      margin-top:12px;
-    }
-    .flow-tags span{
-      border:1px solid rgba(101,220,255,.11);
-      border-radius:999px;
-      background:rgba(101,220,255,.03);
-      color:#90cbdc;
-      padding:5px 8px;
-      font:500 7.5px "JetBrains Mono",monospace;
-    }
-
-    .metric-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:10px;
-    }
-    .metric-button{
-      min-height:118px;
-      padding:16px;
-      text-align:left;
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.06);
       border-radius:16px;
-      background:linear-gradient(150deg,rgba(14,29,47,.87),rgba(7,15,26,.8));
-      color:var(--text);
-      position:relative;
+      background:#07111b;
       overflow:hidden;
-      transition:.2s ease;
     }
-    .metric-button:before{
-      content:"";
-      position:absolute;
-      top:0;left:0;right:0;
-      height:2px;
-      background:linear-gradient(90deg,var(--cyan),transparent 75%);
-      opacity:.4;
-    }
-    .metric-button:hover,.metric-button:focus-visible{
-      transform:translateY(-2px);
-      border-color:rgba(101,220,255,.18);
-      outline:none;
-    }
-    .metric-button.active{
-      border-color:rgba(101,220,255,.26);
-      background:linear-gradient(150deg,rgba(15,34,53,.95),rgba(7,16,27,.9));
-    }
-    .metric-button small{
-      display:block;
-      margin-bottom:16px;
-      color:#536d82;
-      font:500 8px "JetBrains Mono",monospace;
-    }
-    .metric-button strong{
-      display:block;
-      font-size:24px;
-      line-height:1;
-      letter-spacing:-.045em;
-    }
-    .metric-button span{
-      display:block;
-      margin-top:6px;
-      color:#8197a9;
-      font:500 8px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .metric-detail{
-      margin-top:12px;
-      padding:17px 18px;
-      border:1px solid rgba(101,220,255,.09);
-      border-radius:14px;
-      background:rgba(101,220,255,.022);
-      color:#8fa4b5;
-      font-size:12px;
-    }
-    .metric-detail strong{color:#dfeaf1}
-
-    .expertise-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-    .expertise-card{
-      min-height:315px;
-      padding:22px;
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:19px;
-      background:linear-gradient(180deg,rgba(13,27,44,.9),rgba(7,15,26,.82));
-      transition:.22s ease;
-    }
-    .expertise-card:hover{transform:translateY(-3px);border-color:rgba(101,220,255,.17)}
-    .expertise-visual{
-      height:128px;
-      margin-bottom:20px;
-      border:1px solid rgba(255,255,255,.05);
-      border-radius:13px;
-      overflow:hidden;
-      background:#07111d;
-    }
-    .expertise-card .index{
-      color:#516a7e;
-      font:500 8px "JetBrains Mono",monospace;
-      margin-bottom:6px;
-    }
-    .expertise-card h3{margin:0 0 9px;font-size:18px;letter-spacing:-.02em}
-    .expertise-card p{margin:0;color:#8da2b4;font-size:12px}
-    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px}
-    .tag{
-      padding:5px 8px;
-      border:1px solid rgba(101,220,255,.1);
-      border-radius:999px;
-      background:rgba(101,220,255,.025);
-      color:#91cadb;
-      font:500 7.5px "JetBrains Mono",monospace;
-    }
-
-    .experience{position:relative}
-    .experience:before{
-      content:"";
-      position:absolute;
-      left:17px;top:18px;bottom:18px;
-      width:1px;
-      background:linear-gradient(var(--cyan),rgba(101,220,255,.04));
-    }
-    .role{
-      display:grid;
-      grid-template-columns:52px 1fr;
-      gap:15px;
-      margin-bottom:17px;
-      position:relative;
-    }
-    .role-marker{
-      width:35px;height:35px;
-      margin-top:3px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      border:1px solid rgba(101,220,255,.26);
-      background:#07111d;
-      z-index:2;
-    }
-    .role-marker i{
-      width:7px;height:7px;border-radius:50%;
-      background:var(--cyan);
-      box-shadow:0 0 11px rgba(101,220,255,.64);
-    }
-    .role-card{
-      padding:22px;
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:18px;
-      background:linear-gradient(180deg,rgba(13,26,43,.88),rgba(7,15,26,.8));
-    }
-    .role-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:12px}
-    .role-card h3{margin:0;font-size:19px;letter-spacing:-.025em}
-    .company{margin-top:5px;color:var(--cyan);font:600 9px "JetBrains Mono",monospace}
-    .date{padding-top:3px;color:#70879a;font:500 8px "JetBrains Mono",monospace;white-space:nowrap}
-    .role-tech{
-      margin-bottom:13px;
-      padding:8px 10px;
-      border:1px solid rgba(255,255,255,.045);
-      border-radius:9px;
-      background:rgba(255,255,255,.018);
-      color:#7f95a8;
-      font:500 8px "JetBrains Mono",monospace;
-    }
-    .role-list{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:8px 18px;
-      padding:0;margin:0;
-      list-style:none;
-    }
-    .role-list li{
-      padding-left:14px;
-      color:#8ca1b3;
-      font-size:11.5px;
-      position:relative;
-    }
-    .role-list li:before{
-      content:"";
-      position:absolute;
-      left:0;top:.68em;
-      width:5px;height:5px;border-radius:50%;
-      background:var(--teal);
-    }
+    .flow-copy h3{margin:0 0 8px;font-size:24px;letter-spacing:-.035em}
+    .flow-copy p{margin:0;color:#8ca0b1;font-size:12px}
+    .flow-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+    .flow-tags span{padding:5px 8px;border:1px solid rgba(104,220,255,.11);border-radius:999px;background:rgba(104,220,255,.025);color:#90c9da;font:500 7px "JetBrains Mono",monospace}
 
     .flagship{
-      border:1px solid rgba(101,220,255,.12);
-      border-radius:23px;
-      overflow:hidden;
-      background:linear-gradient(160deg,rgba(14,30,49,.96),rgba(6,14,24,.96));
-      box-shadow:var(--shadow);
-    }
-    .flagship-grid{
-      display:grid;
-      grid-template-columns:1.04fr .96fr;
-    }
-    .explorer{
-      padding:22px;
-      border-right:1px solid rgba(255,255,255,.055);
-    }
-    .explorer-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:18px;
-      margin-bottom:13px;
-    }
-    .explorer-kicker{
-      color:var(--teal);
-      font:600 8px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-    }
-    .concept-note{
-      color:#627b8e;
-      font:500 7px "JetBrains Mono",monospace;
-      text-align:right;
-    }
-    .floorplan-explorer{
+      padding:92px 0 96px;
+      background:#090d13;
       position:relative;
-      border:1px solid rgba(255,255,255,.055);
-      border-radius:15px;
-      background:#07111d;
       overflow:hidden;
     }
-    .floorplan-explorer svg{width:100%;aspect-ratio:1.28/1}
-    .fp-layer{transition:opacity .22s ease,filter .22s ease}
-    .floorplan-explorer[data-view="macro"] .fp-layer:not(.macro-layer),
-    .floorplan-explorer[data-view="std"] .fp-layer:not(.std-layer),
-    .floorplan-explorer[data-view="routing"] .fp-layer:not(.routing-layer),
-    .floorplan-explorer[data-view="critical"] .fp-layer:not(.critical-layer){
-      opacity:.15;
+    .flagship:before{
+      content:"07NM";
+      position:absolute;
+      top:-20px;right:-10px;
+      color:rgba(255,255,255,.018);
+      font-size:22vw;
+      font-weight:900;
+      line-height:1;
+      letter-spacing:-.08em;
+      pointer-events:none;
     }
-    .floorplan-explorer[data-view="macro"] .macro-layer,
-    .floorplan-explorer[data-view="std"] .std-layer,
-    .floorplan-explorer[data-view="routing"] .routing-layer,
-    .floorplan-explorer[data-view="critical"] .critical-layer{
-      opacity:1;
-      filter:drop-shadow(0 0 4px rgba(101,220,255,.1));
+    .flagship-intro{position:relative;z-index:1}
+    .flagship-title{
+      margin:0;
+      max-width:900px;
+      font-size:clamp(50px,7vw,93px);
+      line-height:.9;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
     }
-    .fp-controls{
+    .flagship-title .stroke{color:transparent;-webkit-text-stroke:1.2px rgba(244,247,250,.7)}
+    .flagship-sub{margin:18px 0 0;color:#7d92a4;font:500 9px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+
+    .flagship-grid{
+      margin-top:38px;
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:6px;
-      margin-top:9px;
+      grid-template-columns:1.15fr .85fr;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:24px;
+      overflow:hidden;
+      background:linear-gradient(160deg,rgba(15,28,43,.96),rgba(7,13,20,.97));
+      box-shadow:var(--shadow);
+      position:relative;
+      z-index:1;
     }
-    .fp-control{
+    .fp-side{padding:20px;border-right:1px solid rgba(255,255,255,.055)}
+    .fp-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:12px}
+    .fp-top .label{color:var(--teal);font:600 8px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.09em}
+    .fp-top .note{color:#60798d;font:500 7px "JetBrains Mono",monospace;text-align:right}
+    .floorplan{
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:16px;
+      overflow:hidden;
+      background:#07111b;
+      position:relative;
+    }
+    .floorplan svg{width:100%;aspect-ratio:1.27/1}
+    .fp-layer{transition:.25s ease}
+    .floorplan[data-layer="macro"] .fp-layer:not(.macro-layer),
+    .floorplan[data-layer="std"] .fp-layer:not(.std-layer),
+    .floorplan[data-layer="routing"] .fp-layer:not(.routing-layer),
+    .floorplan[data-layer="critical"] .fp-layer:not(.critical-layer),
+    .floorplan[data-layer="clock"] .fp-layer:not(.clock-layer){opacity:.14}
+    .floorplan[data-layer="macro"] .macro-layer,
+    .floorplan[data-layer="std"] .std-layer,
+    .floorplan[data-layer="routing"] .routing-layer,
+    .floorplan[data-layer="critical"] .critical-layer,
+    .floorplan[data-layer="clock"] .clock-layer{opacity:1;filter:drop-shadow(0 0 5px rgba(104,220,255,.12))}
+    .fp-controls{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:9px}
+    .fp-btn{
       min-height:42px;
-      padding:6px;
+      padding:5px;
       border:1px solid rgba(255,255,255,.055);
       border-radius:9px;
-      background:rgba(255,255,255,.018);
-      color:#7c92a5;
-      font:500 7.5px "JetBrains Mono",monospace;
+      background:rgba(255,255,255,.017);
+      color:#788ea2;
       cursor:pointer;
-      transition:.2s ease;
+      font:500 7px "JetBrains Mono",monospace;
     }
-    .fp-control:hover,.fp-control:focus-visible{border-color:rgba(101,220,255,.18);outline:none}
-    .fp-control.active{color:var(--cyan);border-color:rgba(101,220,255,.28);background:rgba(101,220,255,.05)}
+    .fp-btn.active{color:var(--cyan);border-color:rgba(104,220,255,.28);background:rgba(104,220,255,.05)}
     .fp-detail{
-      min-height:82px;
+      min-height:80px;
       margin-top:9px;
-      padding:12px 13px;
-      border:1px solid rgba(255,255,255,.05);
-      border-radius:10px;
-      background:rgba(255,255,255,.018);
-    }
-    .fp-detail strong{display:block;margin-bottom:4px;font-size:12px}
-    .fp-detail p{margin:0;color:#8499ab;font-size:10.5px}
-
-    .flagship-copy{padding:25px}
-    .flagship-copy h3{margin:8px 0 8px;font-size:29px;letter-spacing:-.04em}
-    .flagship-sub{
-      color:#70889b;
-      font:500 8px "JetBrains Mono",monospace;
-      margin-bottom:15px;
-    }
-    .flagship-copy > p{margin:0 0 18px;color:#8fa4b6;font-size:12.5px}
-    .tech-paths{
-      display:grid;
-      gap:8px;
-    }
-    .tech-path{
-      display:grid;
-      grid-template-columns:94px 1fr;
-      gap:11px;
-      align-items:start;
-      padding:10px 11px;
+      padding:12px;
       border:1px solid rgba(255,255,255,.05);
       border-radius:10px;
       background:rgba(255,255,255,.017);
     }
-    .tech-path b{
-      color:#b7c9d6;
-      font:600 8px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-    }
-    .tech-path span{color:#8197a9;font-size:10.5px}
-    .flagship-stats{
+    .fp-detail strong{display:block;margin-bottom:4px;font-size:11px}
+    .fp-detail p{margin:0;color:#8297aa;font-size:10px}
+
+    .case-side{padding:24px}
+    .case-side h3{margin:7px 0 8px;font-size:30px;letter-spacing:-.04em}
+    .case-tag{color:var(--teal);font:600 8px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.09em}
+    .case-side > p{margin:0 0 16px;color:#8da2b4;font-size:12px}
+    .case-row{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:7px;
-      margin-top:17px;
+      grid-template-columns:92px 1fr;
+      gap:10px;
+      padding:9px 0;
+      border-bottom:1px solid rgba(255,255,255,.045);
     }
-    .flagship-stat{
+    .case-row b{color:#b9c9d5;font:600 7px "JetBrains Mono",monospace;text-transform:uppercase}
+    .case-row span{color:#8298aa;font-size:10.5px}
+    .case-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:16px}
+    .case-metric{
+      min-height:74px;
       padding:10px;
       border:1px solid rgba(255,255,255,.05);
-      border-radius:9px;
+      border-radius:10px;
       background:rgba(255,255,255,.018);
-    }
-    .flagship-stat strong{display:block;font-size:13px}
-    .flagship-stat span{
-      display:block;
-      margin-top:3px;
-      color:#637b8f;
-      font:500 7px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-    }
-
-    .project-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:13px;
-      margin-top:15px;
-    }
-    details.project-card{
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:18px;
-      background:linear-gradient(180deg,rgba(12,25,41,.86),rgba(7,15,26,.8));
-      overflow:hidden;
-    }
-    details.project-card[open]{border-color:rgba(101,220,255,.14)}
-    details.project-card summary{
-      list-style:none;
       cursor:pointer;
-      display:block;
+      text-align:left;
+      color:var(--text);
     }
-    details.project-card summary::-webkit-details-marker{display:none}
-    .project-art{
-      height:155px;
-      border-bottom:1px solid rgba(255,255,255,.05);
-      background:#07111d;
-      overflow:hidden;
-    }
-    .project-body{padding:18px}
-    .project-kicker{
-      color:var(--teal);
-      font:600 7.5px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-      letter-spacing:.09em;
-    }
-    .project-body h3{margin:7px 0 6px;font-size:17px;letter-spacing:-.02em}
-    .project-sub{
-      color:#6e8699;
-      font:500 7.5px "JetBrains Mono",monospace;
-      margin-bottom:12px;
-    }
-    .project-body p{margin:0;color:#879cae;font-size:11px}
-    .project-metrics{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:6px;
-      margin-top:13px;
-    }
-    .project-metrics div{
-      padding:8px;
-      border:1px solid rgba(255,255,255,.05);
-      border-radius:8px;
-      background:rgba(255,255,255,.017);
-    }
-    .project-metrics strong{display:block;font-size:11.5px}
-    .project-metrics span{
-      display:block;
-      margin-top:2px;
-      color:#61788c;
-      font:500 6.5px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-    }
-    .expand-cue{
-      margin-top:14px;
-      color:#7190a6;
-      font:500 7.5px "JetBrains Mono",monospace;
-    }
-    details[open] .expand-cue{display:none}
-    .project-more{
-      padding:0 18px 18px;
-      color:#8399ab;
-      font-size:10.5px;
-    }
-    .project-more ul{margin:0;padding-left:18px}
-    .project-more li{margin:5px 0}
+    .case-metric strong{display:block;font-size:15px}
+    .case-metric span{display:block;margin-top:4px;color:#637b8e;font:500 7px "JetBrains Mono",monospace;text-transform:uppercase}
+    .case-metric:hover,.case-metric.active{border-color:rgba(104,220,255,.22);background:rgba(104,220,255,.035)}
+    .case-metric-detail{margin-top:8px;color:#7890a4;font-size:9.5px;min-height:45px}
 
-    .tool-shell{
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:19px;
+    .project-section{
+      padding:90px 0;
+      background:var(--white);
+      color:var(--ink);
+    }
+    .project-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:28px}
+    .project-heading h2{margin:0;font-size:clamp(42px,6vw,78px);line-height:.92;letter-spacing:-.06em;text-transform:uppercase}
+    .project-heading p{max-width:470px;margin:0;color:#5c6872;font-size:12px}
+    .projects{display:grid;grid-template-columns:1.15fr .85fr;gap:13px}
+    .project-card{
+      border:1px solid rgba(11,17,24,.12);
+      border-radius:22px;
       overflow:hidden;
-      background:linear-gradient(180deg,rgba(12,25,41,.86),rgba(7,15,26,.82));
+      background:#f7f5ef;
     }
-    .tool-head{
-      min-height:46px;
-      padding:0 17px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      border-bottom:1px solid rgba(255,255,255,.05);
-      color:#6e869a;
-      font:500 8px "JetBrains Mono",monospace;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-    .tool-grid{display:grid;grid-template-columns:repeat(5,1fr)}
-    .tool{
-      min-height:88px;
-      padding:14px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      border-right:1px solid rgba(255,255,255,.04);
-      border-bottom:1px solid rgba(255,255,255,.04);
-      transition:.2s ease;
-    }
-    .tool:nth-child(5n){border-right:0}
-    .tool:hover{background:rgba(101,220,255,.024)}
-    .tool small{color:#506a7f;font:500 7px "JetBrains Mono",monospace}
-    .tool strong{color:#bfd0dc;font-size:11.5px;line-height:1.3}
+    .project-card.featured{grid-row:span 2}
+    .project-image{height:310px;background:#0a1119;overflow:hidden}
+    .project-card:not(.featured) .project-image{height:170px}
+    .project-copy{padding:20px}
+    .project-kicker{color:#4c6372;font:600 8px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.09em}
+    .project-copy h3{margin:7px 0 7px;font-size:24px;letter-spacing:-.035em}
+    .project-card:not(.featured) .project-copy h3{font-size:19px}
+    .project-copy p{margin:0;color:#596570;font-size:11px}
+    details.project-details{margin-top:12px}
+    details.project-details summary{cursor:pointer;list-style:none;color:#2d3b46;font:600 8px "JetBrains Mono",monospace}
+    details.project-details summary::-webkit-details-marker{display:none}
+    details.project-details summary:after{content:" +"}
+    details.project-details[open] summary:after{content:" −"}
+    .detail-list{margin:10px 0 0;padding:0 0 0 16px;color:#5c6872;font-size:10px}
+    .detail-list li{margin:5px 0}
+    .project-metrics{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+    .project-metrics span{padding:6px 8px;border:1px solid rgba(11,17,24,.1);border-radius:999px;color:#52616c;font:600 7px "JetBrains Mono",monospace;background:#efede7}
 
-    .method-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:12px;
-      margin-top:12px;
+    .impact{
+      padding:88px 0;
+      background:#080b10;
     }
-    .method-card{
+    .impact-title{margin:0 0 28px;font-size:clamp(45px,7vw,92px);line-height:.9;letter-spacing:-.065em;text-transform:uppercase}
+    .impact-title .stroke{color:transparent;-webkit-text-stroke:1.2px rgba(244,247,250,.63)}
+    .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .impact-card{
+      min-height:190px;
       padding:18px;
-      border:1px solid rgba(255,255,255,.055);
-      border-radius:15px;
-      background:rgba(255,255,255,.016);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:18px;
+      background:linear-gradient(160deg,rgba(16,29,44,.88),rgba(7,13,20,.86));
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
     }
-    .method-card h3{margin:0 0 11px;font-size:14px}
-    .method-list{display:flex;flex-wrap:wrap;gap:6px}
-    .method-list span{
-      padding:6px 8px;
-      border:1px solid rgba(255,255,255,.05);
-      border-radius:8px;
-      background:rgba(255,255,255,.015);
-      color:#899fb1;
-      font:500 7.5px "JetBrains Mono",monospace;
-    }
+    .impact-card:before{content:"";position:absolute;inset:auto -20% -55% 20%;height:180px;background:radial-gradient(circle,rgba(104,220,255,.09),transparent 68%)}
+    .impact-index{color:#4e6679;font:500 7px "JetBrains Mono",monospace}
+    .impact-card strong{display:block;margin-top:30px;font-size:36px;letter-spacing:-.055em;line-height:1}
+    .impact-card span{display:block;margin-top:8px;color:#7d92a5;font:500 8px "JetBrains Mono",monospace;text-transform:uppercase}
+    .impact-card p{margin:12px 0 0;color:#8298aa;font-size:10px;opacity:.0;transform:translateY(5px);transition:.2s}
+    .impact-card:hover p,.impact-card.active p{opacity:1;transform:none}
+    .impact-card.active{border-color:rgba(104,220,255,.2)}
 
-    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .tools-section{
+      padding:88px 0;
+      background:var(--paper);
+      color:var(--ink);
+    }
+    .tools-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:46px;align-items:end;margin-bottom:30px}
+    .tools-head h2{margin:0;font-size:clamp(39px,5.5vw,68px);line-height:.94;letter-spacing:-.058em;text-transform:uppercase}
+    .tools-head p{margin:0;color:#5d6872;font-size:12px}
+    .tool-marquee{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .tool-pill{
+      padding:14px 16px;
+      border:1px solid rgba(11,17,24,.12);
+      border-radius:999px;
+      background:#f6f4ee;
+      color:#26333e;
+      font:600 9px "JetBrains Mono",monospace;
+      transition:.2s;
+    }
+    .tool-pill:hover{background:var(--ink);color:var(--white);transform:translateY(-2px)}
+    .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    .method-card{padding:18px;border:1px solid rgba(11,17,24,.11);border-radius:16px;background:#f7f5ef}
+    .method-card h3{margin:0 0 11px;font-size:15px}
+    .method-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .method-tags span{padding:6px 8px;border:1px solid rgba(11,17,24,.09);border-radius:8px;color:#5b6771;font:500 7px "JetBrains Mono",monospace;background:#efede7}
+
+    .education{
+      padding:88px 0;
+      background:#090c11;
+    }
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
     .edu-card{
-      min-height:185px;
+      min-height:190px;
       padding:21px;
       border:1px solid rgba(255,255,255,.06);
-      border-radius:17px;
-      background:linear-gradient(180deg,rgba(13,26,43,.82),rgba(7,15,26,.78));
+      border-radius:18px;
+      background:linear-gradient(180deg,rgba(14,25,38,.86),rgba(8,14,21,.86));
     }
-    .edu-card .year{
-      margin-bottom:24px;
-      color:#627a8e;
-      font:500 8px "JetBrains Mono",monospace;
-    }
-    .edu-card h3{margin:0 0 6px;font-size:17px;letter-spacing:-.02em}
-    .edu-card .school{color:var(--cyan);font:600 9px "JetBrains Mono",monospace}
-    .edu-card p{margin:11px 0 0;color:#879daf;font-size:11px}
-    .credential-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-    .credential{
-      min-height:116px;
-      display:flex;
-      gap:13px;
-      align-items:flex-start;
-      padding:17px;
-      border:1px solid rgba(255,255,255,.055);
-      border-radius:15px;
-      background:rgba(255,255,255,.016);
-    }
-    .credential-icon{
-      width:34px;height:34px;
-      flex:0 0 auto;
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(159,148,255,.18);
-      border-radius:9px;
-      background:rgba(159,148,255,.05);
-      color:var(--violet);
-      font:600 8px "JetBrains Mono",monospace;
-    }
+    .edu-year{color:#60798d;font:500 8px "JetBrains Mono",monospace;margin-bottom:27px}
+    .edu-card h3{margin:0 0 6px;font-size:18px;letter-spacing:-.025em}
+    .edu-school{color:var(--cyan);font:600 8px "JetBrains Mono",monospace}
+    .edu-card p{margin:11px 0 0;color:#8499aa;font-size:10.5px}
+    .credential-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:11px}
+    .credential{display:flex;gap:12px;padding:16px;border:1px solid rgba(255,255,255,.055);border-radius:15px;background:rgba(255,255,255,.015)}
+    .credential-icon{width:36px;height:36px;flex:0 0 auto;display:grid;place-items:center;border-radius:9px;border:1px solid rgba(158,147,255,.18);background:rgba(158,147,255,.05);color:var(--violet);font:600 7px "JetBrains Mono",monospace}
     .credential h3{margin:0 0 4px;font-size:13px}
-    .credential p{margin:0;color:#7d93a6;font-size:10.5px}
+    .credential p{margin:0;color:#748a9c;font-size:9.5px}
 
-    .contact-panel{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:34px;
-      align-items:center;
-      padding:36px;
-      border:1px solid rgba(101,220,255,.12);
-      border-radius:22px;
-      background:
-        radial-gradient(circle at 10% 12%,rgba(101,220,255,.07),transparent 34%),
-        radial-gradient(circle at 92% 82%,rgba(112,239,191,.04),transparent 30%),
-        #08121f;
-      overflow:hidden;
+    .contact{
+      padding:90px 0 76px;
+      background:var(--white);
+      color:var(--ink);
       position:relative;
+      overflow:hidden;
     }
-    .contact-panel:after{
+    .contact:after{
       content:"";
       position:absolute;
-      right:-70px;top:-70px;
-      width:210px;height:210px;
-      border:1px solid rgba(101,220,255,.07);
-      transform:rotate(45deg);
+      width:390px;height:390px;
+      right:-150px;top:-140px;
+      border:1px solid rgba(11,17,24,.09);
+      border-radius:50%;
+      box-shadow:0 0 0 50px rgba(11,17,24,.025),0 0 0 100px rgba(11,17,24,.018);
     }
-    .contact-panel h2{margin-bottom:11px}
-    .contact-panel p{margin:0;max-width:650px;color:#8da3b5;font-size:12.5px}
-    .contact-links{display:grid;gap:8px;position:relative;z-index:1}
+    .contact h2{
+      margin:0;
+      max-width:900px;
+      font-size:clamp(53px,8vw,104px);
+      line-height:.88;
+      letter-spacing:-.07em;
+      text-transform:uppercase;
+      position:relative;
+      z-index:1;
+    }
+    .contact h2 span{color:transparent;-webkit-text-stroke:1.2px rgba(11,17,24,.66)}
+    .contact-bottom{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:end;
+      position:relative;
+      z-index:1;
+    }
+    .contact-bottom p{margin:0;max-width:560px;color:#56626d;font-size:12px}
+    .contact-links{display:grid;gap:7px}
     .contact-links a{
-      min-height:45px;
-      padding:0 13px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border:1px solid rgba(255,255,255,.06);
+      min-height:48px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 14px;
+      border:1px solid rgba(11,17,24,.12);
       border-radius:10px;
-      background:rgba(0,0,0,.12);
-      color:#aec1cf;
+      background:#f7f5ef;
+      color:#26323c;
       text-decoration:none;
-      font:500 9px "JetBrains Mono",monospace;
-      transition:.2s ease;
+      font:600 8px "JetBrains Mono",monospace;
+      transition:.2s;
     }
-    .contact-links a:hover{transform:translateX(2px);color:var(--cyan);border-color:rgba(101,220,255,.2)}
-
-    footer{
-      padding:28px 0 42px;
-      color:#5f768a;
-      font:500 8px "JetBrains Mono",monospace;
-    }
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:24px;
-      padding-top:21px;
-      border-top:1px solid rgba(255,255,255,.04);
-    }
+    .contact-links a:hover{background:var(--ink);color:var(--white);transform:translateX(2px)}
+    footer{padding:26px 0 38px;background:var(--white);color:#68747e;font:500 7px "JetBrains Mono",monospace}
+    .footer-inner{display:flex;justify-content:space-between;gap:22px;padding-top:20px;border-top:1px solid rgba(11,17,24,.1)}
     .footer-note{max-width:720px;text-align:right}
 
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .58s ease,transform .58s ease}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
     .reveal.visible{opacity:1;transform:none}
+    .line-reveal{overflow:hidden}
+    .line-reveal > span{display:block;transform:translateY(110%);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+    .line-reveal.visible > span{transform:none}
 
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
       *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
       .reveal{opacity:1;transform:none}
+      .line-reveal > span{transform:none}
     }
 
     @media(max-width:1020px){
       .nav-links{display:none}
       .menu-btn{display:flex}
-      .hero{min-height:auto;padding:124px 0 62px}
-      .hero-grid{grid-template-columns:1fr;gap:36px}
-      .hero-visual{max-width:720px;width:100%;min-height:auto}
-      .section-head{grid-template-columns:1fr;gap:15px}
-      .flow-tabs{grid-template-columns:repeat(5,1fr)}
-      .metric-grid{grid-template-columns:repeat(3,1fr)}
-      .expertise-grid{grid-template-columns:1fr}
-      .expertise-card{min-height:auto}
-      .role-list{grid-template-columns:1fr}
+      .hero{min-height:auto;padding:116px 0 56px}
+      .hero-grid{grid-template-columns:1fr;gap:22px}
+      .hero-art{min-height:480px;max-width:690px;width:100%}
+      .statement-grid,.section-head,.tools-head{grid-template-columns:1fr;gap:18px}
+      .service-content{grid-template-columns:1fr;padding-left:104px}
+      .flow-stage{grid-template-columns:1fr}
       .flagship-grid{grid-template-columns:1fr}
-      .explorer{border-right:0;border-bottom:1px solid rgba(255,255,255,.05)}
-      .project-grid{grid-template-columns:1fr 1fr}
-      .tool-grid{grid-template-columns:repeat(3,1fr)}
-      .tool:nth-child(5n){border-right:1px solid rgba(255,255,255,.04)}
-      .tool:nth-child(3n){border-right:0}
-      .method-grid,.contact-panel{grid-template-columns:1fr}
+      .fp-side{border-right:0;border-bottom:1px solid rgba(255,255,255,.055)}
+      .projects{grid-template-columns:1fr}
+      .project-card.featured{grid-row:auto}
+      .project-card:not(.featured) .project-image{height:240px}
+      .impact-grid{grid-template-columns:1fr 1fr}
+      .contact-bottom{grid-template-columns:1fr}
     }
 
     @media(max-width:720px){
       .wrap{width:min(var(--max),calc(100% - 28px))}
       .nav-inner{height:64px}
-      .brand-mark{width:34px;height:34px}
+      .brand-chip{width:34px;height:34px}
       .brand-copy strong{font-size:12px}
-      .brand-copy small{font-size:8px}
-      .hero{padding:105px 0 46px}
-      .hero-status{font-size:9px;margin-bottom:14px}
-      .hero-name{font-size:8.5px;margin-bottom:9px}
-      h1{font-size:clamp(41px,12vw,58px);margin-bottom:16px}
-      .hero-role{font-size:10.5px;margin-bottom:12px}
-      .hero-copy{font-size:13.5px;line-height:1.64;margin-bottom:21px}
-      .btn{min-height:42px;padding:0 13px;font-size:10.5px}
-      .hero-meta{margin-top:17px;font-size:8px;gap:8px 12px}
-      .visual-top{height:40px}
-      .visual-top span:first-child{font-size:7.5px}
-      .hero-svg-wrap{padding:11px 11px 8px}
-      .hero-legend{padding:0 11px 8px;font-size:6.5px;gap:8px}
-      .hero-qor{padding:0 11px 11px;gap:5px}
-      .hero-qor div{min-height:58px;padding:7px}
-      .hero-qor small,.hero-qor em{font-size:6px}
-      .hero-qor strong{font-size:11.5px}
-      .flow-label{font-size:7px}
-      .flow-tabs{grid-template-columns:repeat(3,1fr);gap:5px}
-      .flow-tab{min-height:48px;font-size:7px}
-      .flow-detail{grid-template-columns:1fr;gap:9px}
-      .flow-detail-visual{min-height:115px}
-      .flow-detail-copy h3{font-size:15px}
-      .flow-detail-copy p{font-size:10.5px}
-      .section{padding:65px 0}
-      .section-head{margin-bottom:27px}
-      .eyebrow{font-size:8.5px}
-      h2{font-size:34px}
-      .section-head p{font-size:12.5px}
-      .metric-grid{grid-template-columns:1fr 1fr;gap:7px}
-      .metric-button{min-height:102px;padding:13px}
-      .metric-button small{font-size:6.8px;margin-bottom:13px}
-      .metric-button strong{font-size:21px}
-      .metric-button span{font-size:6.8px}
-      .metric-detail{padding:13px;font-size:10.5px}
-      .expertise-grid{gap:9px}
-      .expertise-card{padding:16px;border-radius:15px}
-      .expertise-visual{height:102px;margin-bottom:16px}
-      .expertise-card h3{font-size:16px}
-      .expertise-card p{font-size:11px}
-      .tag{font-size:6.8px;padding:4px 7px}
-      .experience:before{left:13px}
-      .role{grid-template-columns:39px 1fr;gap:8px;margin-bottom:11px}
-      .role-marker{width:28px;height:28px}
-      .role-card{padding:16px;border-radius:15px}
-      .role-top{display:block;margin-bottom:9px}
-      .role-card h3{font-size:16px}
-      .company{font-size:8px}
-      .date{font-size:7px;margin-top:5px}
-      .role-tech{font-size:7px;padding:7px;margin-bottom:10px}
-      .role-list{gap:6px}
-      .role-list li{font-size:10.5px}
-      .flagship{border-radius:17px}
-      .explorer,.flagship-copy{padding:16px}
-      .explorer-top{display:block}
-      .concept-note{text-align:left;margin-top:4px}
-      .fp-controls{grid-template-columns:1fr 1fr;gap:5px}
-      .fp-control{min-height:40px;font-size:7px}
-      .fp-detail{min-height:75px}
-      .fp-detail p{font-size:9.5px}
-      .flagship-copy h3{font-size:23px}
-      .flagship-copy > p{font-size:11px}
-      .tech-path{grid-template-columns:82px 1fr;padding:8px}
-      .tech-path b{font-size:7px}
-      .tech-path span{font-size:9.5px}
-      .flagship-stats{gap:5px}
-      .flagship-stat{padding:8px}
-      .flagship-stat strong{font-size:11.5px}
-      .flagship-stat span{font-size:6px}
-      .project-grid{grid-template-columns:1fr;gap:9px}
-      .project-art{height:130px}
-      .project-body{padding:15px}
-      .project-body h3{font-size:16px}
-      .project-body p{font-size:10.5px}
-      .project-more{padding:0 15px 15px;font-size:10px}
-      .tool-grid{grid-template-columns:repeat(2,1fr)}
-      .tool:nth-child(3n){border-right:1px solid rgba(255,255,255,.04)}
-      .tool:nth-child(2n){border-right:0}
-      .tool{min-height:74px;padding:11px}
-      .tool strong{font-size:10px}
-      .tool-head{font-size:6.8px;padding:0 12px}
-      .method-grid{gap:8px}
+      .brand-copy small{font-size:7px}
+      .hero{padding:103px 0 42px}
+      .hero-kicker{font-size:8px;margin-bottom:14px}
+      .hero-title{font-size:clamp(45px,15vw,66px)}
+      .hero-role{margin:17px 0 11px;font-size:10px}
+      .hero-copy{font-size:13px;margin-bottom:19px}
+      .btn{min-height:42px;padding:0 13px;font-size:10px}
+      .hero-meta{margin-top:16px;font-size:7px;gap:8px 11px}
+      .hero-art{min-height:355px}
+      .float-label{font-size:6px;padding:6px 8px}
+      .chip-caption{font-size:6px}
+      .statement{padding:62px 0 58px}
+      .statement-grid{gap:14px}
+      .statement-kicker{font-size:7px;padding-top:0}
+      .statement h2{font-size:42px}
+      .statement p{font-size:11.5px;margin-top:18px}
+      .services{padding:58px 0 64px}
+      .light-head{display:block;padding-bottom:18px}
+      .light-head h2{font-size:39px}
+      .light-head p{margin-top:12px;font-size:11px}
+      .service-button{min-height:83px;grid-template-columns:48px 1fr 34px;gap:9px}
+      .service-number{font-size:13px}
+      .service-title{font-size:25px}
+      .service-plus{width:32px;height:32px}
+      .service-content{padding:0 0 20px 57px;gap:12px}
+      .service-content p{font-size:10.5px}
+      .service-visual{min-height:132px}
+      .dark-section,.flagship,.project-section,.impact,.tools-section,.education,.contact{padding:64px 0}
+      .section-head{margin-bottom:25px}
+      .section-kicker{font-size:8px}
+      .section-head h2{font-size:36px}
+      .section-head p{font-size:11px}
+      .flow-tabs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:108px}
+      .flow-stage{padding:14px;gap:12px}
+      .flow-art{min-height:170px}
+      .flow-copy h3{font-size:19px}
+      .flow-copy p{font-size:10.5px}
+      .flagship-title{font-size:43px}
+      .flagship-sub{font-size:7px}
+      .flagship-grid{margin-top:25px;border-radius:17px}
+      .fp-side,.case-side{padding:14px}
+      .fp-controls{grid-template-columns:1fr 1fr}
+      .fp-btn:last-child{grid-column:1/-1}
+      .case-side h3{font-size:23px}
+      .case-side > p{font-size:10.5px}
+      .case-row{grid-template-columns:78px 1fr}
+      .case-row b{font-size:6.5px}
+      .case-row span{font-size:9.5px}
+      .case-metrics{gap:5px}
+      .case-metric{min-height:64px;padding:8px}
+      .case-metric strong{font-size:13px}
+      .case-metric span{font-size:6px}
+      .project-heading{display:block}
+      .project-heading h2{font-size:42px}
+      .project-heading p{margin-top:12px;font-size:10.5px}
+      .project-image,.project-card:not(.featured) .project-image{height:190px}
+      .project-copy{padding:16px}
+      .project-copy h3,.project-card:not(.featured) .project-copy h3{font-size:18px}
+      .project-copy p{font-size:10.5px}
+      .impact-title{font-size:44px}
+      .impact-grid{grid-template-columns:1fr;gap:8px}
+      .impact-card{min-height:155px}
+      .impact-card strong{font-size:31px;margin-top:22px}
+      .impact-card p{opacity:1;transform:none;font-size:9.5px}
+      .tools-head h2{font-size:38px}
+      .tools-head p{font-size:10.5px}
+      .tool-pill{padding:11px 12px;font-size:7.5px}
+      .method-grid{grid-template-columns:1fr;gap:8px}
       .method-card{padding:14px}
-      .method-list span{font-size:6.7px;padding:5px 7px}
       .edu-grid,.credential-grid{grid-template-columns:1fr;gap:8px}
       .edu-card{min-height:auto;padding:17px}
-      .edu-card .year{margin-bottom:17px}
-      .credential{min-height:auto;padding:14px}
-      .contact-panel{padding:21px;border-radius:17px;gap:20px}
-      .contact-panel p{font-size:11px}
-      .contact-links a{min-height:42px;font-size:8.5px}
+      .edu-year{margin-bottom:18px}
+      .contact h2{font-size:47px}
+      .contact-bottom{margin-top:24px;gap:18px}
+      .contact-bottom p{font-size:10.5px}
       .footer-inner{display:block}
-      .footer-note{text-align:left;margin-top:9px}
+      .footer-note{text-align:left;margin-top:8px}
     }
 
     @media(max-width:380px){
       .brand-copy strong{max-width:200px}
-      h1{font-size:39px}
-      .hero-qor{grid-template-columns:1fr 1fr}
-      .flagship-stats{grid-template-columns:1fr 1fr}
+      .hero-title{font-size:41px}
+      .hero-art{min-height:320px}
+      .case-metrics{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
@@ -1187,7 +894,7 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#home" aria-label="Portfolio home">
-        <span class="brand-mark"><span>CSB</span></span>
+        <span class="brand-chip">CSB</span>
         <span class="brand-copy">
           <strong>Chandra Sekhar Bhamidi</strong>
           <small>Physical Design · Static Timing Analysis</small>
@@ -1195,12 +902,12 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
         <a href="#flow">Flow</a>
-        <a href="#profile">Profile</a>
-        <a href="#experience">Experience</a>
         <a href="#work">Implementation</a>
         <a href="#tools">Toolchain</a>
-        <a class="nav-cta" href="#contact">Contact</a>
+        <a class="cta" href="#contact">Contact</a>
       </nav>
 
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">
@@ -1211,9 +918,9 @@
     </div>
 
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#about">About</a>
+      <a href="#expertise">Expertise</a>
       <a href="#flow">Flow</a>
-      <a href="#profile">Profile</a>
-      <a href="#experience">Experience</a>
       <a href="#work">Implementation</a>
       <a href="#tools">Toolchain</a>
       <a href="#contact">Contact</a>
@@ -1221,20 +928,22 @@
   </header>
 
   <main id="home">
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="hero-status"><i></i> Applications Engineer · Tokyo, Japan</div>
-          <div class="hero-name">Chandra Sekhar Bhamidi</div>
-          <h1><span class="accent">Physical Design.</span><br>Timing Closure.<br>EDA Automation.</h1>
-          <div class="hero-role">7nm CPU IMPLEMENTATION // STATIC TIMING ANALYSIS // RTL-to-GDSII</div>
+          <div class="hero-kicker"><i></i> Applications Engineer · Tokyo, Japan</div>
+          <h1 class="hero-title">
+            <span class="grad">HI, I'M</span><br>
+            <span>CHANDRA.</span><br>
+            <span class="outline">I BUILD</span><br>
+            <span>PHYSICAL.</span>
+          </h1>
+          <div class="hero-role">PHYSICAL DESIGN // STATIC TIMING ANALYSIS // 7NM CPU IMPLEMENTATION</div>
           <p class="hero-copy">
-            Applications Engineer at Synopsys Tokyo with hands-on experience in advanced-node physical design,
-            timing analysis and implementation methodologies. Experience spans floorplanning, routing optimization,
-            setup closure, timing ECOs and TCL-based timing-debug automation.
+            Advanced-node implementation, timing closure and EDA automation — presented as a visual engineering portfolio.
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#work">Explore implementation work →</a>
+            <a class="btn primary" href="#work">View implementation work →</a>
             <a class="btn" href="https://github.com/thisisme-chandu" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
           <div class="hero-meta">
@@ -1243,668 +952,509 @@
           </div>
         </div>
 
-        <figure class="hero-visual" aria-label="Conceptual physical design visualization">
-          <div class="visual-top">
-            <span>Conceptual implementation view // floorplan + routing + timing</span>
-            <span class="window-dots"><i></i><i></i><i></i></span>
+        <div class="hero-art" id="heroArt" aria-label="Conceptual semiconductor die artwork">
+          <div class="orbit"></div>
+          <div class="float-label fl1">MACRO PLACEMENT</div>
+          <div class="float-label fl2">SETUP CLOSURE</div>
+          <div class="float-label fl3">TIMING ECO</div>
+
+          <div class="chip-scene" id="chipScene">
+            <div class="chip-shadow"></div>
+            <div class="chip-body">
+              <div class="pins"></div>
+              <div class="die-grid" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
           </div>
-
-          <div class="hero-svg-wrap">
-            <svg class="hero-svg" viewBox="0 0 540 400" role="img" aria-label="Conceptual chip floorplan with macros, routing, clock tree and critical timing path">
-              <defs>
-                <pattern id="stdPattern" width="12" height="8" patternUnits="userSpaceOnUse">
-                  <rect width="12" height="8" fill="rgba(101,220,255,.012)"></rect>
-                  <rect y="1" width="12" height="2" fill="rgba(101,220,255,.06)"></rect>
-                </pattern>
-              </defs>
-
-              <circle class="wafer-ring" cx="270" cy="200" r="184"></circle>
-              <circle class="wafer-ring" cx="270" cy="200" r="166"></circle>
-
-              <rect class="die-outline" x="82" y="48" width="376" height="304" rx="8"></rect>
-              <rect class="std-field" x="126" y="88" width="288" height="228" rx="3"></rect>
-
-              <g class="macro-layer">
-                <rect class="macro-block" x="98" y="72" width="93" height="68" rx="4"></rect>
-                <rect class="macro-block" x="347" y="76" width="94" height="77" rx="4"></rect>
-                <rect class="macro-block" x="103" y="254" width="105" height="78" rx="4"></rect>
-                <rect class="macro-block" x="357" y="236" width="80" height="92" rx="4"></rect>
-                <rect class="special-block" x="239" y="62" width="63" height="54" rx="4"></rect>
-              </g>
-
-              <g class="routing-layer">
-                <path class="route-line active" d="M191 106 H348"></path>
-                <path class="route-line active" d="M208 293 H356"></path>
-                <path class="route-line" d="M146 140 V254"></path>
-                <path class="route-line" d="M395 153 V237"></path>
-                <path class="route-line" d="M239 104 V308"></path>
-                <path class="route-line" d="M303 103 V315"></path>
-                <path class="route-line" d="M109 194 H421"></path>
-                <path class="route-line" d="M116 221 H422"></path>
-              </g>
-
-              <g class="clock-layer">
-                <path class="clock-tree" d="M270 116 V153 M270 153 H202 M270 153 H338 M202 153 V196 M338 153 V196 M202 196 H160 M202 196 H241 M338 196 H301 M338 196 H383"></path>
-                <circle class="clock-node pulse-node" cx="270" cy="116" r="5"></circle>
-                <circle class="clock-node" cx="202" cy="196" r="4"></circle>
-                <circle class="clock-node" cx="338" cy="196" r="4"></circle>
-                <circle class="clock-node" cx="160" cy="196" r="3"></circle>
-                <circle class="clock-node" cx="241" cy="196" r="3"></circle>
-                <circle class="clock-node" cx="301" cy="196" r="3"></circle>
-                <circle class="clock-node" cx="383" cy="196" r="3"></circle>
-              </g>
-
-              <g class="critical-layer">
-                <path class="critical-line" d="M129 286 H181 V236 H224 V263 H289 V178 H349 V208 H410"></path>
-                <circle class="critical-node" cx="129" cy="286" r="4"></circle>
-                <circle class="critical-node" cx="410" cy="208" r="4"></circle>
-              </g>
-            </svg>
-          </div>
-
-          <div class="hero-legend" aria-hidden="true">
-            <span><i></i>Macro blocks</span>
-            <span><i></i>Routing</span>
-            <span><i></i>Critical setup path</span>
-            <span><i></i>Clock tree</span>
-          </div>
-
-          <div class="hero-qor">
-            <div><small>Node</small><strong>7nm</strong><em>FinFET</em></div>
-            <div><small>Scale</small><strong>3.5M+</strong><em>instances</em></div>
-            <div><small>Macros</small><strong>350+</strong><em>blocks</em></div>
-            <div><small>Post-DFT</small><strong>2.47</strong><em>GHz</em></div>
-          </div>
-        </figure>
+          <div class="chip-caption">Conceptual silicon artwork · not proprietary layout data</div>
+        </div>
       </div>
     </section>
 
-    <section class="flow-shell" id="flow">
+    <section class="statement" id="about">
+      <div class="wrap statement-grid">
+        <div class="statement-kicker">01 // About</div>
+        <div>
+          <div class="line-reveal"><span><h2>ENGINEERING <span>AT IMPLEMENTATION</span> SCALE.</h2></span></div>
+          <p class="reveal">
+            Applications Engineer at Synopsys Tokyo with hands-on experience in advanced-node physical design,
+            timing analysis and implementation methodologies for CPU-class designs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="expertise">
       <div class="wrap">
-        <div class="flow-label">Interactive implementation explorer — select a stage</div>
-        <div class="flow-tabs" role="tablist" aria-label="RTL to GDSII implementation stages">
-          <button class="flow-tab active" type="button" role="tab" aria-selected="true" data-stage="rtl"><span>01</span>RTL</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="synthesis"><span>02</span>Synthesis</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="floorplan"><span>03</span>Floorplan</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="placement"><span>04</span>Placement</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="cts"><span>05</span>CTS</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="routing"><span>06</span>Routing</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="sta"><span>07</span>STA</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="eco"><span>08</span>ECO</button>
-          <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="gds"><span>09</span>GDSII</button>
+        <div class="light-head reveal">
+          <h2>WHAT I DO.</h2>
+          <p>Tap a discipline to reveal the résumé-backed scope and a purpose-built semiconductor visualization.</p>
         </div>
 
-        <div class="flow-detail">
-          <div class="flow-detail-visual" id="flowVisual" aria-live="polite"></div>
-          <div class="flow-detail-copy">
-            <h3 id="flowTitle">RTL / design entry</h3>
-            <p id="flowDescription">The résumé includes an academic ALU project completed from RTL to GDSII, establishing the front end of the implementation flow represented here.</p>
-            <div class="flow-tags" id="flowTags"><span>ALU</span><span>RTL-to-GDSII</span><span>Academic project</span></div>
-          </div>
+        <div class="service-list">
+          <article class="service open">
+            <button class="service-button" type="button" aria-expanded="true">
+              <span class="service-number">01</span>
+              <span class="service-title">Physical Design</span>
+              <span class="service-plus">+</span>
+            </button>
+            <div class="service-body">
+              <div class="service-body-inner">
+                <div class="service-content">
+                  <p>Floorplanning, macro placement, placement optimization, routing optimization, congestion reduction and DRC closure.</p>
+                  <div class="service-visual">
+                    <svg viewBox="0 0 620 190" role="img" aria-label="Conceptual macro floorplan">
+                      <rect width="620" height="190" fill="#f7f5ef"></rect>
+                      <rect x="30" y="20" width="560" height="150" rx="8" fill="#eef0ed" stroke="rgba(11,17,24,.16)"></rect>
+                      <g stroke="rgba(11,17,24,.05)">
+                        <path d="M30 50H590M30 80H590M30 110H590M30 140H590M86 20V170M142 20V170M198 20V170M254 20V170M310 20V170M366 20V170M422 20V170M478 20V170M534 20V170"></path>
+                      </g>
+                      <g fill="#d8eee5" stroke="#7b9e90">
+                        <rect x="52" y="40" width="108" height="54" rx="5"></rect>
+                        <rect x="450" y="37" width="112" height="59" rx="5"></rect>
+                        <rect x="58" y="114" width="125" height="38" rx="5"></rect>
+                        <rect x="461" y="111" width="91" height="42" rx="5"></rect>
+                      </g>
+                      <rect x="220" y="42" width="178" height="105" rx="4" fill="#e5ebea" stroke="rgba(11,17,24,.08)"></rect>
+                      <g stroke="#8fb1bb" stroke-width="1">
+                        <path d="M220 58H398M220 72H398M220 86H398M220 100H398M220 114H398M220 128H398"></path>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service">
+            <button class="service-button" type="button" aria-expanded="false">
+              <span class="service-number">02</span>
+              <span class="service-title">Static Timing Analysis</span>
+              <span class="service-plus">+</span>
+            </button>
+            <div class="service-body">
+              <div class="service-body-inner">
+                <div class="service-content">
+                  <p>PrimeTime, WNS/TNS debug, path-based analysis, clock-uncertainty sweeps and timing sensitivity studies.</p>
+                  <div class="service-visual">
+                    <svg viewBox="0 0 620 190" role="img" aria-label="Conceptual static timing path">
+                      <rect width="620" height="190" fill="#f7f5ef"></rect>
+                      <g stroke="rgba(11,17,24,.07)">
+                        <path d="M0 38H620M0 76H620M0 114H620M0 152H620M103 0V190M206 0V190M309 0V190M412 0V190M515 0V190"></path>
+                      </g>
+                      <polyline points="25,145 82,145 82,52 150,52 150,108 232,108 232,69 310,69 310,138 393,138 393,90 469,90 469,121 590,121" fill="none" stroke="#c68e37" stroke-width="4" stroke-linejoin="round"></polyline>
+                      <line x1="25" y1="162" x2="590" y2="162" stroke="#557a69" stroke-width="2"></line>
+                      <g fill="#27323a" font-family="JetBrains Mono,monospace" font-size="11">
+                        <text x="30" y="24">DATA PATH</text>
+                        <text x="492" y="180">REQUIRED TIME</text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service">
+            <button class="service-button" type="button" aria-expanded="false">
+              <span class="service-number">03</span>
+              <span class="service-title">Timing Closure</span>
+              <span class="service-plus">+</span>
+            </button>
+            <div class="service-body">
+              <div class="service-body-inner">
+                <div class="service-content">
+                  <p>Setup convergence through path-group prioritization and manual ECOs including cell upsizing, VT swaps and buffer insertion.</p>
+                  <div class="service-visual">
+                    <svg viewBox="0 0 620 190" role="img" aria-label="Conceptual timing ECO path">
+                      <rect width="620" height="190" fill="#f7f5ef"></rect>
+                      <g fill="#e9ece9" stroke="#8e9aa3">
+                        <rect x="55" y="65" width="90" height="60" rx="8"></rect>
+                        <rect x="205" y="65" width="90" height="60" rx="8"></rect>
+                        <rect x="355" y="65" width="90" height="60" rx="8"></rect>
+                        <rect x="505" y="65" width="70" height="60" rx="8"></rect>
+                      </g>
+                      <g stroke="#bd8736" stroke-width="3">
+                        <path d="M145 95H205M295 95H355M445 95H505"></path>
+                      </g>
+                      <g fill="#2a363f" font-family="JetBrains Mono,monospace" font-size="10" text-anchor="middle">
+                        <text x="100" y="100">CELL</text><text x="250" y="100">VT SWAP</text><text x="400" y="100">BUFFER</text><text x="540" y="100">SINK</text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service">
+            <button class="service-button" type="button" aria-expanded="false">
+              <span class="service-number">04</span>
+              <span class="service-title">EDA Automation</span>
+              <span class="service-plus">+</span>
+            </button>
+            <div class="service-body">
+              <div class="service-body-inner">
+                <div class="service-content">
+                  <p>TCL scripting for timing report parsing, QoR tracking and path filtering, including a WNS-ranking flow that reduced timing-debug turnaround by 30%.</p>
+                  <div class="service-visual">
+                    <svg viewBox="0 0 620 190" role="img" aria-label="Conceptual EDA automation console">
+                      <rect width="620" height="190" fill="#111923"></rect>
+                      <rect x="24" y="20" width="572" height="150" rx="10" fill="#0a1017" stroke="rgba(104,220,255,.16)"></rect>
+                      <g font-family="JetBrains Mono,monospace" font-size="12">
+                        <text x="50" y="53" fill="#68dcff">set</text><text x="80" y="53" fill="#9eb0bd"> groups [get_path_groups *]</text>
+                        <text x="50" y="80" fill="#72edbf">foreach</text><text x="105" y="80" fill="#9eb0bd"> g $groups {</text>
+                        <text x="73" y="107" fill="#9eb0bd">report_timing -group $g</text>
+                        <text x="73" y="134" fill="#788c9c"># rank worst WNS paths</text>
+                        <text x="50" y="155" fill="#9eb0bd">}</text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="profile">
+    <section class="dark-section" id="flow">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <div class="eyebrow">01 // Profile</div>
-            <h2>Implementation at CPU scale.</h2>
+            <div class="section-kicker">02 // Interactive Flow</div>
+            <h2>RTL → GDSII.</h2>
           </div>
-          <p>
-            Resume-backed metrics only. Select any tile to see the context behind the number
-            rather than treating the portfolio as a static list of claims.
-          </p>
+          <p>Select a stage. The explanation changes to show only what the résumé actually supports, including where experience comes from an academic project versus professional implementation work.</p>
         </div>
 
-        <div class="metric-grid reveal" id="metricGrid">
-          <button class="metric-button active" type="button" data-metric="node"><small>NODE / 01</small><strong>7nm</strong><span>FinFET CPU</span></button>
-          <button class="metric-button" type="button" data-metric="instances"><small>SCALE / 02</small><strong>3.5M+</strong><span>Instances</span></button>
-          <button class="metric-button" type="button" data-metric="macros"><small>MACROS / 03</small><strong>350+</strong><span>Macros</span></button>
-          <button class="metric-button" type="button" data-metric="layers"><small>METAL / 04</small><strong>9</strong><span>Metal layers</span></button>
-          <button class="metric-button" type="button" data-metric="target"><small>TARGET / 05</small><strong>2.6</strong><span>GHz target</span></button>
-          <button class="metric-button" type="button" data-metric="predft"><small>PRE-DFT / 06</small><strong>2.54</strong><span>GHz</span></button>
-          <button class="metric-button" type="button" data-metric="postdft"><small>POST-DFT / 07</small><strong>2.47</strong><span>GHz</span></button>
-          <button class="metric-button" type="button" data-metric="floorplans"><small>FLOORPLAN / 08</small><strong>20+</strong><span>Variants</span></button>
-          <button class="metric-button" type="button" data-metric="corners"><small>MCMM / 09</small><strong>3</strong><span>PVT corners</span></button>
-          <button class="metric-button" type="button" data-metric="automation"><small>AUTOMATION / 10</small><strong>30%</strong><span>Debug reduction</span></button>
-        </div>
+        <div class="flow-box reveal">
+          <div class="flow-tabs" role="tablist" aria-label="RTL to GDSII flow">
+            <button class="flow-tab active" type="button" role="tab" aria-selected="true" data-stage="rtl"><span>01</span>RTL</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="synth"><span>02</span>Synthesis</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="fp"><span>03</span>Floorplan</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="place"><span>04</span>Placement</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="cts"><span>05</span>CTS</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="route"><span>06</span>Routing</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="sta"><span>07</span>STA</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="eco"><span>08</span>ECO</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="gds"><span>09</span>GDSII</button>
+          </div>
 
-        <div class="metric-detail reveal" id="metricDetail" aria-live="polite">
-          <strong>7nm FinFET:</strong> Professional work at Synopsys Tokyo includes physical design and setup timing closure on a 7nm ARM-based CPU core.
+          <div class="flow-stage">
+            <div class="flow-art" id="flowArt" aria-live="polite"></div>
+            <div class="flow-copy">
+              <h3 id="flowTitle">RTL / design entry</h3>
+              <p id="flowText">The résumé explicitly lists an academic ALU Design project completed from RTL to GDSII during the Post Graduate Diploma in Physical Design.</p>
+              <div class="flow-tags" id="flowTags"><span>ALU</span><span>Academic</span><span>RTL-to-GDSII</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="expertise">
+    <section class="flagship" id="work">
       <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">02 // Core Expertise</div>
-            <h2>Physical design with timing awareness.</h2>
-          </div>
-          <p>
-            Visuals below are conceptual illustrations of the work areas listed in the résumé.
-            They do not reproduce proprietary layouts, reports or tool interfaces.
-          </p>
+        <div class="flagship-intro reveal">
+          <div class="section-kicker">03 // Flagship Case Study</div>
+          <h2 class="flagship-title">7NM ARM-BASED <span class="stroke">CPU CORE.</span></h2>
+          <div class="flagship-sub">Synopsys Tokyo · Physical Design · Setup Closure · Timing ECO · EDA Automation</div>
         </div>
 
-        <div class="expertise-grid">
-          <article class="expertise-card reveal">
-            <div class="expertise-visual">
-              <svg viewBox="0 0 340 128" role="img" aria-label="Conceptual macro floorplan">
-                <rect x="14" y="12" width="312" height="104" rx="5" fill="#07111d" stroke="rgba(101,220,255,.13)"></rect>
-                <g stroke="rgba(101,220,255,.035)">
-                  <path d="M14 32H326M14 52H326M14 72H326M14 92H326M54 12V116M94 12V116M134 12V116M174 12V116M214 12V116M254 12V116M294 12V116"></path>
-                </g>
-                <g fill="rgba(112,239,191,.1)" stroke="rgba(112,239,191,.3)">
-                  <rect x="28" y="25" width="58" height="34" rx="3"></rect>
-                  <rect x="243" y="22" width="68" height="39" rx="3"></rect>
-                  <rect x="35" y="76" width="73" height="29" rx="3"></rect>
-                  <rect x="252" y="73" width="51" height="34" rx="3"></rect>
-                </g>
-                <rect x="122" y="28" width="95" height="72" rx="3" fill="url(#smallStd)" stroke="rgba(101,220,255,.07)"></rect>
+        <div class="flagship-grid reveal">
+          <div class="fp-side">
+            <div class="fp-top">
+              <div class="label">Interactive physical-design explorer</div>
+              <div class="note">Conceptual illustration<br>not proprietary design data</div>
+            </div>
+
+            <div class="floorplan" id="floorplan" data-layer="macro">
+              <svg viewBox="0 0 540 425" role="img" aria-label="Conceptual interactive physical design floorplan">
                 <defs>
-                  <pattern id="smallStd" width="10" height="7" patternUnits="userSpaceOnUse">
-                    <rect width="10" height="2" y="1" fill="rgba(101,220,255,.07)"></rect>
+                  <pattern id="rows" width="11" height="8" patternUnits="userSpaceOnUse">
+                    <rect width="11" height="2" y="1" fill="rgba(104,220,255,.065)"></rect>
                   </pattern>
+                  <radialGradient id="hot1"><stop offset="0%" stop-color="rgba(255,136,126,.34)"></stop><stop offset="100%" stop-color="rgba(255,136,126,0)"></stop></radialGradient>
+                  <radialGradient id="hot2"><stop offset="0%" stop-color="rgba(255,196,106,.28)"></stop><stop offset="100%" stop-color="rgba(255,196,106,0)"></stop></radialGradient>
                 </defs>
+
+                <rect x="46" y="34" width="448" height="354" rx="9" fill="#07111b" stroke="rgba(104,220,255,.22)"></rect>
+
+                <g class="fp-layer std-layer">
+                  <rect x="104" y="84" width="326" height="258" rx="3" fill="url(#rows)" stroke="rgba(104,220,255,.05)"></rect>
+                </g>
+
+                <g class="fp-layer macro-layer">
+                  <rect x="65" y="58" width="108" height="82" rx="4" fill="rgba(114,237,191,.13)" stroke="rgba(114,237,191,.4)"></rect>
+                  <rect x="365" y="62" width="106" height="90" rx="4" fill="rgba(114,237,191,.13)" stroke="rgba(114,237,191,.4)"></rect>
+                  <rect x="70" y="294" width="122" height="74" rx="4" fill="rgba(114,237,191,.13)" stroke="rgba(114,237,191,.4)"></rect>
+                  <rect x="377" y="280" width="87" height="88" rx="4" fill="rgba(114,237,191,.13)" stroke="rgba(114,237,191,.4)"></rect>
+                  <rect x="232" y="55" width="73" height="58" rx="4" fill="rgba(158,147,255,.1)" stroke="rgba(158,147,255,.33)"></rect>
+                </g>
+
+                <g class="fp-layer routing-layer" fill="none" stroke="rgba(107,169,255,.45)" stroke-width="1.2">
+                  <path d="M173 99H365"></path><path d="M191 330H376"></path>
+                  <path d="M118 141V294"></path><path d="M420 152V280"></path>
+                  <path d="M229 112V343"></path><path d="M307 113V342"></path>
+                  <path d="M86 194H454"></path><path d="M82 229H458"></path><path d="M96 260H445"></path>
+                </g>
+                <g class="fp-layer routing-layer">
+                  <ellipse cx="260" cy="211" rx="108" ry="81" fill="url(#hot1)"></ellipse>
+                  <ellipse cx="347" cy="268" rx="81" ry="66" fill="url(#hot2)"></ellipse>
+                </g>
+
+                <g class="fp-layer clock-layer" fill="none" stroke="rgba(104,220,255,.46)" stroke-width="1.25">
+                  <path d="M269 113V151M269 151H196M269 151H343M196 151V198M343 151V198M196 198H151M196 198H238M343 198H301M343 198H389"></path>
+                  <g fill="#07111b" stroke="rgba(104,220,255,.58)">
+                    <circle cx="269" cy="113" r="5"></circle><circle cx="151" cy="198" r="3"></circle><circle cx="238" cy="198" r="3"></circle><circle cx="301" cy="198" r="3"></circle><circle cx="389" cy="198" r="3"></circle>
+                  </g>
+                </g>
+
+                <g class="fp-layer critical-layer">
+                  <path d="M102 329H160V262H215V289H282V198H347V234H426" fill="none" stroke="#ffc46a" stroke-width="2.6" stroke-dasharray="7 8" style="animation:pathDash 5.5s linear infinite"></path>
+                  <circle cx="102" cy="329" r="4" fill="#ffc46a"></circle><circle cx="426" cy="234" r="4" fill="#ffc46a"></circle>
+                </g>
               </svg>
             </div>
-            <div class="index">PD / 01</div>
-            <h3>Physical Design</h3>
-            <p>Floorplanning, macro placement, placement optimization, routing optimization, congestion reduction and DRC closure.</p>
-            <div class="tags"><span class="tag">Floorplanning</span><span class="tag">Placement</span><span class="tag">CTS</span><span class="tag">Routing</span><span class="tag">DRC</span></div>
+
+            <div class="fp-controls">
+              <button class="fp-btn active" type="button" data-layer="macro">Macro Placement</button>
+              <button class="fp-btn" type="button" data-layer="std">Standard Cells</button>
+              <button class="fp-btn" type="button" data-layer="routing">Routing / Congestion</button>
+              <button class="fp-btn" type="button" data-layer="critical">Critical Path</button>
+              <button class="fp-btn" type="button" data-layer="clock">Clock Tree</button>
+            </div>
+
+            <div class="fp-detail" id="fpDetail" aria-live="polite">
+              <strong>Macro placement</strong>
+              <p>20+ floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability.</p>
+            </div>
+          </div>
+
+          <div class="case-side">
+            <div class="case-tag">Advanced-node implementation</div>
+            <h3>Physical implementation at CPU scale.</h3>
+            <p>High-level résumé-backed case study. No employer layout, internal report, customer database or proprietary interface is reproduced.</p>
+
+            <div class="case-row"><b>Floorplanning</b><span>20+ variants for macro locality, critical-path wirelength and routability.</span></div>
+            <div class="case-row"><b>Uncertainty</b><span>Compile / CTS / route sweeps with WNS/TNS, runtime and timing-margin analysis.</span></div>
+            <div class="case-row"><b>Path groups</b><span>Focused optimization on the two most timing-critical path groups.</span></div>
+            <div class="case-row"><b>Routing</b><span>Incremental placement and route_auto tuning for timing/DRC convergence.</span></div>
+            <div class="case-row"><b>DFT timing</b><span>Scan/test ports constrained to reduce non-functional timing noise during functional closure.</span></div>
+            <div class="case-row"><b>Timing ECO</b><span>Cell upsizing, VT swaps and buffer insertion on top-10 critical post-route paths.</span></div>
+
+            <div class="case-metrics" id="caseMetrics">
+              <button class="case-metric active" type="button" data-key="node"><strong>7nm</strong><span>FinFET</span></button>
+              <button class="case-metric" type="button" data-key="scale"><strong>3.5M+</strong><span>Instances</span></button>
+              <button class="case-metric" type="button" data-key="macros"><strong>350+</strong><span>Macros</span></button>
+              <button class="case-metric" type="button" data-key="metal"><strong>9</strong><span>Metal layers</span></button>
+              <button class="case-metric" type="button" data-key="target"><strong>2.6 GHz</strong><span>Target</span></button>
+              <button class="case-metric" type="button" data-key="predft"><strong>2.54 GHz</strong><span>Pre-DFT</span></button>
+              <button class="case-metric" type="button" data-key="postdft"><strong>2.47 GHz</strong><span>Post-DFT</span></button>
+              <button class="case-metric" type="button" data-key="debug"><strong>30%</strong><span>Debug reduction</span></button>
+            </div>
+            <div class="case-metric-detail" id="caseMetricDetail">7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="wrap">
+        <div class="project-heading reveal">
+          <h2>MORE IMPLEMENTATION WORK.</h2>
+          <p>Large visual cards first; deeper technical details are available only when the visitor chooses to expand them.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project-card featured reveal">
+            <div class="project-image">
+              <svg viewBox="0 0 720 360" role="img" aria-label="Conceptual 28nm ARM core floorplan and routing">
+                <rect width="720" height="360" fill="#08111a"></rect>
+                <rect x="58" y="40" width="604" height="280" rx="10" fill="none" stroke="rgba(104,220,255,.18)"></rect>
+                <g stroke="rgba(104,220,255,.038)">
+                  <path d="M58 80H662M58 120H662M58 160H662M58 200H662M58 240H662M58 280H662M128 40V320M198 40V320M268 40V320M338 40V320M408 40V320M478 40V320M548 40V320M618 40V320"></path>
+                </g>
+                <g fill="rgba(114,237,191,.1)" stroke="rgba(114,237,191,.3)">
+                  <rect x="83" y="70" width="126" height="78" rx="6"></rect>
+                  <rect x="511" y="67" width="125" height="86" rx="6"></rect>
+                  <rect x="92" y="226" width="148" height="67" rx="6"></rect>
+                  <rect x="530" y="216" width="92" height="77" rx="6"></rect>
+                </g>
+                <rect x="260" y="77" width="199" height="205" rx="5" fill="rgba(104,220,255,.025)" stroke="rgba(104,220,255,.07)"></rect>
+                <g stroke="rgba(107,169,255,.32)">
+                  <path d="M209 109H511M240 260H530M148 148V226M573 153V216M311 77V282M404 77V282M73 181H648"></path>
+                </g>
+                <ellipse cx="363" cy="181" rx="126" ry="90" fill="rgba(255,136,126,.08)"></ellipse>
+                <text x="72" y="340" fill="#657d8e" font-family="JetBrains Mono,monospace" font-size="10">CONCEPTUAL 28NM IMPLEMENTATION VIEW</text>
+              </svg>
+            </div>
+            <div class="project-copy">
+              <div class="project-kicker">ZOICX Technologies · 28nm / 9 layers</div>
+              <h3>ARM Core Implementation</h3>
+              <p>Full physical-design flow with synthesis, equivalence verification and congestion-focused floorplan optimization.</p>
+              <div class="project-metrics"><span>300K+ gates</span><span>29 macros</span><span>1 clock</span><span>500 MHz achieved</span><span>10+ floorplan trials</span></div>
+              <details class="project-details">
+                <summary>Technical details</summary>
+                <ul class="detail-list">
+                  <li>Logic synthesis with Design Compiler.</li>
+                  <li>Post-synthesis netlist equivalence verification using Formality.</li>
+                  <li>Missing-via violations addressed during floorplanning.</li>
+                  <li>OpenROAD, Yosys and OpenSTA benchmarked against commercial flow stages.</li>
+                </ul>
+              </details>
+            </div>
           </article>
 
-          <article class="expertise-card reveal">
-            <div class="expertise-visual">
-              <svg viewBox="0 0 340 128" role="img" aria-label="Conceptual clock tree visualization">
-                <g stroke="rgba(101,220,255,.07)">
-                  <path d="M0 32H340M0 64H340M0 96H340M85 0V128M170 0V128M255 0V128"></path>
+          <article class="project-card reveal">
+            <div class="project-image">
+              <svg viewBox="0 0 520 240" role="img" aria-label="Conceptual dual clock tree">
+                <rect width="520" height="240" fill="#08111a"></rect>
+                <g stroke="rgba(104,220,255,.055)"><path d="M0 60H520M0 120H520M0 180H520M130 0V240M260 0V240M390 0V240"></path></g>
+                <g fill="none" stroke="rgba(104,220,255,.43)" stroke-width="2">
+                  <path d="M158 39V76M158 76H94M158 76H218M94 76V130M218 76V130M94 130H54M94 130H132M218 130H181M218 130H255"></path>
                 </g>
-                <g fill="none" stroke="rgba(101,220,255,.43)" stroke-width="1.4">
-                  <path d="M170 18V42M170 42H98M170 42H242M98 42V68M242 42V68M98 68H54M98 68H139M242 68H201M242 68H286M54 68V96M139 68V96M201 68V96M286 68V96"></path>
+                <g fill="none" stroke="rgba(158,147,255,.42)" stroke-width="2">
+                  <path d="M365 43V79M365 79H312M365 79H423M312 79V136M423 79V136M312 136H279M312 136H343M423 136H391M423 136H461"></path>
                 </g>
-                <g fill="#07111d" stroke="rgba(101,220,255,.55)">
-                  <circle cx="170" cy="18" r="5"></circle>
-                  <circle cx="98" cy="68" r="4"></circle>
-                  <circle cx="242" cy="68" r="4"></circle>
-                  <circle cx="54" cy="96" r="3"></circle>
-                  <circle cx="139" cy="96" r="3"></circle>
-                  <circle cx="201" cy="96" r="3"></circle>
-                  <circle cx="286" cy="96" r="3"></circle>
-                </g>
-                <circle cx="170" cy="18" r="3" fill="#65dcff" class="pulse-node"></circle>
+                <g fill="#08111a" stroke="rgba(104,220,255,.58)"><circle cx="158" cy="39" r="6"></circle><circle cx="54" cy="130" r="4"></circle><circle cx="132" cy="130" r="4"></circle><circle cx="181" cy="130" r="4"></circle><circle cx="255" cy="130" r="4"></circle></g>
+                <g fill="#08111a" stroke="rgba(158,147,255,.58)"><circle cx="365" cy="43" r="6"></circle><circle cx="279" cy="136" r="4"></circle><circle cx="343" cy="136" r="4"></circle><circle cx="391" cy="136" r="4"></circle><circle cx="461" cy="136" r="4"></circle></g>
               </svg>
             </div>
-            <div class="index">STA / CTS / 02</div>
-            <h3>Timing & Clock Analysis</h3>
-            <p>PrimeTime-based WNS/TNS debug, path-based analysis, uncertainty sweeps and setup timing convergence across implementation stages.</p>
-            <div class="tags"><span class="tag">PrimeTime</span><span class="tag">PBA</span><span class="tag">WNS/TNS</span><span class="tag">Uncertainty Sweep</span></div>
+            <div class="project-copy">
+              <div class="project-kicker">RiseTime Semiconductor · 28nm / 9 layers</div>
+              <h3>Synthesis-to-Post-Route Design</h3>
+              <p>Implementation covering synthesis, floorplanning, placement, CTS, routing and timing checks.</p>
+              <div class="project-metrics"><span>72K gates</span><span>6 macros</span><span>2 clocks</span><span>454 MHz</span></div>
+              <details class="project-details">
+                <summary>Technical details</summary>
+                <ul class="detail-list">
+                  <li>Missing-via, pin-density and congestion issues addressed.</li>
+                  <li>Keepout-margin optimization and multiple floorplan trials used for convergence.</li>
+                </ul>
+              </details>
+            </div>
           </article>
 
-          <article class="expertise-card reveal">
-            <div class="expertise-visual">
-              <svg viewBox="0 0 340 128" role="img" aria-label="Conceptual static timing waveform">
-                <g stroke="rgba(101,220,255,.06)">
-                  <path d="M0 26H340M0 52H340M0 78H340M0 104H340M68 0V128M136 0V128M204 0V128M272 0V128"></path>
+          <article class="project-card reveal">
+            <div class="project-image">
+              <svg viewBox="0 0 520 240" role="img" aria-label="Conceptual RTL to GDSII ALU flow">
+                <rect width="520" height="240" fill="#08111a"></rect>
+                <g font-family="JetBrains Mono,monospace" text-anchor="middle">
+                  <g><rect x="28" y="88" width="74" height="62" rx="7" fill="rgba(104,220,255,.06)" stroke="rgba(104,220,255,.22)"></rect><text x="65" y="123" fill="#a0b4c3" font-size="11">RTL</text></g>
+                  <g><rect x="132" y="88" width="88" height="62" rx="7" fill="rgba(104,220,255,.06)" stroke="rgba(104,220,255,.22)"></rect><text x="176" y="123" fill="#a0b4c3" font-size="11">SYNTH</text></g>
+                  <g><rect x="251" y="88" width="82" height="62" rx="7" fill="rgba(114,237,191,.06)" stroke="rgba(114,237,191,.22)"></rect><text x="292" y="123" fill="#a0b4c3" font-size="11">P&amp;R</text></g>
+                  <g><rect x="364" y="88" width="58" height="62" rx="7" fill="rgba(255,196,106,.05)" stroke="rgba(255,196,106,.22)"></rect><text x="393" y="123" fill="#a0b4c3" font-size="11">STA</text></g>
+                  <g><rect x="451" y="88" width="48" height="62" rx="7" fill="rgba(158,147,255,.06)" stroke="rgba(158,147,255,.24)"></rect><text x="475" y="123" fill="#a0b4c3" font-size="11">GDS</text></g>
                 </g>
-                <polyline points="10,94 44,94 44,35 89,35 89,76 129,76 129,47 177,47 177,92 224,92 224,61 270,61 270,82 327,82" fill="none" stroke="#ffc46a" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"></polyline>
-                <line x1="10" y1="108" x2="327" y2="108" stroke="rgba(112,239,191,.34)" stroke-width="1"></line>
+                <g stroke="rgba(104,220,255,.3)"><path d="M102 119H132M220 119H251M333 119H364M422 119H451"></path></g>
               </svg>
             </div>
-            <div class="index">ECO / AUTO / 03</div>
-            <h3>Closure & Automation</h3>
-            <p>Timing ECOs with cell upsizing, VT swaps and buffer insertion, plus TCL automation for timing report parsing and path-group ranking.</p>
-            <div class="tags"><span class="tag">VT Swap</span><span class="tag">Buffering</span><span class="tag">Upsizing</span><span class="tag">TCL</span></div>
+            <div class="project-copy">
+              <div class="project-kicker">Sumedha IT · Academic Physical Design</div>
+              <h3>ALU Design — RTL to GDSII</h3>
+              <p>Academic RTL-to-GDSII ALU design completed with Synopsys tools during the Post Graduate Diploma in Physical Design.</p>
+              <div class="project-metrics"><span>RTL</span><span>Physical Design</span><span>GDSII</span></div>
+              <details class="project-details">
+                <summary>Technical details</summary>
+                <ul class="detail-list"><li>The résumé explicitly supports the RTL-to-GDSII scope and use of Synopsys tools.</li></ul>
+              </details>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="experience">
+    <section class="impact">
       <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">03 // Experience</div>
-            <h2>From synthesis to timing closure.</h2>
-          </div>
-          <p>
-            Professional experience across 7nm and 28nm implementations using Fusion Compiler, IC Compiler II,
-            PrimeTime, Design Compiler, StarRC and Formality.
-          </p>
-        </div>
-
-        <div class="experience">
-          <article class="role reveal">
-            <div class="role-marker"><i></i></div>
-            <div class="role-card">
-              <div class="role-top">
-                <div>
-                  <h3>Applications Engineer</h3>
-                  <div class="company">Synopsys · Tokyo, Japan</div>
-                </div>
-                <div class="date">NOV 2024 — PRESENT</div>
-              </div>
-              <div class="role-tech">7nm FinFET · ARM-based CPU · Fusion Compiler · PrimeTime · StarRC · IC Compiler II</div>
-              <ul class="role-list">
-                <li>Contributed to physical design and setup timing closure for a 3.5M+ instance, 350+ macro CPU implementation.</li>
-                <li>Contributed to 2.54 GHz pre-DFT and 2.47 GHz post-DFT results against a 2.6 GHz target.</li>
-                <li>Explored 20+ floorplan variants to improve macro locality, critical-path wirelength and routability.</li>
-                <li>Analyzed clock-uncertainty sweeps across compile, CTS and route stages using WNS/TNS, runtime and timing margin.</li>
-                <li>Performed manual timing ECOs using cell upsizing, VT swaps and buffer insertion on top critical paths.</li>
-                <li>Developed a TCL flow to rank worst path groups by WNS, reducing timing-debug turnaround by 30%.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="role reveal">
-            <div class="role-marker"><i></i></div>
-            <div class="role-card">
-              <div class="role-top">
-                <div>
-                  <h3>Digital Implementation Trainee</h3>
-                  <div class="company">ZOICX Technologies · Hyderabad, India</div>
-                </div>
-                <div class="date">JUN 2024 — OCT 2024</div>
-              </div>
-              <div class="role-tech">28nm · ARM Core · Design Compiler · IC Compiler II · Formality</div>
-              <ul class="role-list">
-                <li>Executed the physical design flow for a 300K+ gate ARM core with 29 macros and one clock domain.</li>
-                <li>Achieved the 500 MHz target and verified post-synthesis netlist equivalence using Formality.</li>
-                <li>Ran 10+ floorplan trials across core shapes and utilization targets to eliminate routing congestion.</li>
-                <li>Benchmarked OpenROAD, Yosys and OpenSTA against Synopsys commercial flow stages.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="role reveal">
-            <div class="role-marker"><i></i></div>
-            <div class="role-card">
-              <div class="role-top">
-                <div>
-                  <h3>Physical Design Engineer — Trainee</h3>
-                  <div class="company">RiseTime Semiconductor · Hyderabad, India</div>
-                </div>
-                <div class="date">OCT 2023 — MAR 2024</div>
-              </div>
-              <div class="role-tech">28nm · 72K-gate design · Design Compiler · IC Compiler II · Formality</div>
-              <ul class="role-list">
-                <li>Executed synthesis-to-post-route physical design for a 72K-gate design with 6 macros and 2 clocks at 454 MHz.</li>
-                <li>Covered synthesis, floorplanning, placement, CTS, routing and timing checks.</li>
-                <li>Resolved missing-via, pin-density and congestion issues through keepout-margin optimization and floorplan trials.</li>
-              </ul>
-            </div>
-          </article>
+        <h2 class="impact-title reveal">ENGINEERING <span class="stroke">IMPACT.</span></h2>
+        <div class="impact-grid">
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">01 / ADVANCED NODE</div><strong>2.54 GHz</strong><span>Pre-DFT</span><p>Contributed to achieving the pre-DFT result against a 2.6 GHz target through setup timing optimization.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">02 / POST-DFT</div><strong>2.47 GHz</strong><span>Post-DFT</span><p>Resume-listed post-DFT result for the 7nm ARM-based CPU core.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">03 / FLOORPLAN</div><strong>20+</strong><span>7nm variants</span><p>Explored to improve macro locality, critical-path wirelength and routability.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">04 / 28NM ARM</div><strong>500 MHz</strong><span>Target achieved</span><p>Achieved on the 300K+ gate, 29-macro ARM core at ZOICX Technologies.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">05 / 28NM FLOORPLAN</div><strong>10+</strong><span>Trials</span><p>Core shape and utilization trials used to eliminate routing congestion.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">06 / TCL AUTOMATION</div><strong>30%</strong><span>Debug turnaround reduction</span><p>WNS-based worst-path-group filtering and ranking shortened timing-debug turnaround.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="work">
+    <section class="tools-section" id="tools">
       <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">04 // Selected Implementation Work</div>
-            <h2>Flagship 7nm case study.</h2>
-          </div>
-          <p>
-            All employer-related graphics are conceptual illustrations built for this portfolio.
-            They are not recreations of confidential layouts, reports, customer designs or proprietary tool interfaces.
-          </p>
+        <div class="tools-head reveal">
+          <h2>EDA TOOLCHAIN.</h2>
+          <p>Commercial implementation/signoff tools plus the open-source EDA tools explicitly listed in the résumé.</p>
         </div>
 
-        <article class="flagship reveal">
-          <div class="flagship-grid">
-            <div class="explorer">
-              <div class="explorer-top">
-                <div>
-                  <div class="explorer-kicker">Interactive physical-design explorer</div>
-                </div>
-                <div class="concept-note">Conceptual visualization<br>not proprietary design data</div>
-              </div>
-
-              <div class="floorplan-explorer" id="floorplanExplorer" data-view="macro">
-                <svg viewBox="0 0 520 405" role="img" aria-label="Interactive conceptual floorplan explorer">
-                  <defs>
-                    <pattern id="rowsPattern" width="11" height="8" patternUnits="userSpaceOnUse">
-                      <rect width="11" height="2" y="1" fill="rgba(101,220,255,.065)"></rect>
-                    </pattern>
-                    <radialGradient id="hotA">
-                      <stop offset="0%" stop-color="rgba(255,137,125,.32)"></stop>
-                      <stop offset="100%" stop-color="rgba(255,137,125,0)"></stop>
-                    </radialGradient>
-                    <radialGradient id="hotB">
-                      <stop offset="0%" stop-color="rgba(255,196,106,.28)"></stop>
-                      <stop offset="100%" stop-color="rgba(255,196,106,0)"></stop>
-                    </radialGradient>
-                  </defs>
-
-                  <rect x="44" y="32" width="432" height="338" rx="8" fill="#07111d" stroke="rgba(101,220,255,.22)"></rect>
-
-                  <g class="fp-layer std-layer">
-                    <rect x="101" y="78" width="318" height="250" rx="3" fill="url(#rowsPattern)" stroke="rgba(101,220,255,.05)"></rect>
-                  </g>
-
-                  <g class="fp-layer macro-layer">
-                    <rect x="62" y="55" width="105" height="79" rx="4" fill="rgba(112,239,191,.13)" stroke="rgba(112,239,191,.4)"></rect>
-                    <rect x="356" y="59" width="101" height="87" rx="4" fill="rgba(112,239,191,.13)" stroke="rgba(112,239,191,.4)"></rect>
-                    <rect x="68" y="281" width="118" height="70" rx="4" fill="rgba(112,239,191,.13)" stroke="rgba(112,239,191,.4)"></rect>
-                    <rect x="367" y="269" width="84" height="84" rx="4" fill="rgba(112,239,191,.13)" stroke="rgba(112,239,191,.4)"></rect>
-                    <rect x="223" y="52" width="71" height="56" rx="4" fill="rgba(159,148,255,.1)" stroke="rgba(159,148,255,.33)"></rect>
-                  </g>
-
-                  <g class="fp-layer routing-layer" fill="none" stroke="rgba(101,170,255,.45)" stroke-width="1.2">
-                    <path d="M168 94H355"></path>
-                    <path d="M185 314H366"></path>
-                    <path d="M112 136V279"></path>
-                    <path d="M408 146V269"></path>
-                    <path d="M221 106V329"></path>
-                    <path d="M296 108V328"></path>
-                    <path d="M82 187H440"></path>
-                    <path d="M78 220H443"></path>
-                    <path d="M92 249H430"></path>
-                  </g>
-
-                  <g class="fp-layer routing-layer">
-                    <ellipse cx="252" cy="202" rx="104" ry="78" fill="url(#hotA)"></ellipse>
-                    <ellipse cx="336" cy="251" rx="77" ry="64" fill="url(#hotB)"></ellipse>
-                  </g>
-
-                  <g class="fp-layer critical-layer">
-                    <path d="M100 314H156V251H211V279H274V191H334V226H414" fill="none" stroke="#ffc46a" stroke-width="2.5" stroke-dasharray="7 8" class="critical-line"></path>
-                    <circle cx="100" cy="314" r="4" fill="#ffc46a"></circle>
-                    <circle cx="414" cy="226" r="4" fill="#ffc46a"></circle>
-                  </g>
-                </svg>
-              </div>
-
-              <div class="fp-controls" role="group" aria-label="Floorplan layers">
-                <button class="fp-control active" type="button" data-view="macro">Macro Placement</button>
-                <button class="fp-control" type="button" data-view="std">Standard Cells</button>
-                <button class="fp-control" type="button" data-view="routing">Routing / Congestion</button>
-                <button class="fp-control" type="button" data-view="critical">Critical Path</button>
-              </div>
-
-              <div class="fp-detail" id="fpDetail" aria-live="polite">
-                <strong>Macro placement</strong>
-                <p>20+ floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability.</p>
-              </div>
-            </div>
-
-            <div class="flagship-copy">
-              <div class="explorer-kicker">Professional · Advanced Node</div>
-              <h3>7nm ARM-based CPU Core</h3>
-              <div class="flagship-sub">PHYSICAL DESIGN // SETUP CLOSURE // MCMM // TIMING ECO // DFT TIMING CONSTRAINTS</div>
-              <p>
-                Large-scale implementation work covering floorplan exploration, timing-sensitivity analysis,
-                incremental placement and route tuning, functional-mode DFT timing isolation and manual post-route timing ECOs.
-              </p>
-
-              <div class="tech-paths">
-                <div class="tech-path"><b>Floorplanning</b><span>20+ variants targeting macro locality, wirelength and routability.</span></div>
-                <div class="tech-path"><b>Uncertainty</b><span>Clock-uncertainty sweeps at compile, CTS and route stages with WNS/TNS, runtime and margin analysis.</span></div>
-                <div class="tech-path"><b>Path groups</b><span>Optimization focused on the two most timing-critical path groups to accelerate setup convergence.</span></div>
-                <div class="tech-path"><b>Routing</b><span>Incremental placement and route_auto tuning used to improve timing/DRC convergence.</span></div>
-                <div class="tech-path"><b>DFT timing</b><span>Newly introduced scan/test ports constrained to reduce non-functional timing noise during functional closure.</span></div>
-                <div class="tech-path"><b>Timing ECO</b><span>Cell upsizing, VT swaps and buffer insertion applied to top critical post-route paths.</span></div>
-              </div>
-
-              <div class="flagship-stats">
-                <div class="flagship-stat"><strong>7nm</strong><span>FinFET</span></div>
-                <div class="flagship-stat"><strong>3.5M+</strong><span>Instances</span></div>
-                <div class="flagship-stat"><strong>350+</strong><span>Macros</span></div>
-                <div class="flagship-stat"><strong>9</strong><span>Metal layers</span></div>
-                <div class="flagship-stat"><strong>3</strong><span>PVT corners</span></div>
-                <div class="flagship-stat"><strong>30%</strong><span>Debug reduction</span></div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <div class="project-grid">
-          <details class="project-card reveal">
-            <summary>
-              <div class="project-art">
-                <svg viewBox="0 0 360 155" role="img" aria-label="Conceptual 28nm floorplan and congestion visualization">
-                  <rect width="360" height="155" fill="#07111d"></rect>
-                  <rect x="24" y="18" width="312" height="119" rx="5" fill="none" stroke="rgba(101,220,255,.16)"></rect>
-                  <g fill="rgba(112,239,191,.1)" stroke="rgba(112,239,191,.3)">
-                    <rect x="39" y="33" width="62" height="38" rx="3"></rect>
-                    <rect x="260" y="31" width="61" height="41" rx="3"></rect>
-                    <rect x="51" y="93" width="74" height="31" rx="3"></rect>
-                    <rect x="267" y="87" width="46" height="38" rx="3"></rect>
-                  </g>
-                  <g stroke="rgba(101,170,255,.3)">
-                    <path d="M102 52H260M125 107H267M82 72V93M291 72V88M181 27V130M218 28V130M33 80H327"></path>
-                  </g>
-                  <ellipse cx="202" cy="82" rx="66" ry="44" fill="rgba(255,137,125,.09)"></ellipse>
-                  <ellipse cx="243" cy="105" rx="43" ry="29" fill="rgba(255,196,106,.09)"></ellipse>
-                </svg>
-              </div>
-              <div class="project-body">
-                <div class="project-kicker">Professional · 28nm</div>
-                <h3>ARM Core Implementation</h3>
-                <div class="project-sub">SYNTHESIS // P&R // FORMAL EQUIVALENCE</div>
-                <p>Full physical design flow with synthesis, equivalence verification and repeated floorplan trials for congestion improvement.</p>
-                <div class="project-metrics">
-                  <div><strong>300K+</strong><span>Gates</span></div>
-                  <div><strong>29</strong><span>Macros</span></div>
-                  <div><strong>500 MHz</strong><span>Target met</span></div>
-                </div>
-                <div class="expand-cue">Tap to expand technical details ↓</div>
-              </div>
-            </summary>
-            <div class="project-more">
-              <ul>
-                <li>Logic synthesis using Design Compiler.</li>
-                <li>Post-synthesis netlist equivalence verification using Formality.</li>
-                <li>10+ floorplan trials across core shapes and utilization targets.</li>
-                <li>OpenROAD, Yosys and OpenSTA benchmarked against commercial flow stages.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="project-card reveal">
-            <summary>
-              <div class="project-art">
-                <svg viewBox="0 0 360 155" role="img" aria-label="Conceptual dual-clock CTS visualization">
-                  <rect width="360" height="155" fill="#07111d"></rect>
-                  <g stroke="rgba(101,220,255,.055)">
-                    <path d="M0 39H360M0 78H360M0 117H360M90 0V155M180 0V155M270 0V155"></path>
-                  </g>
-                  <g fill="none" stroke="rgba(101,220,255,.42)" stroke-width="1.4">
-                    <path d="M112 26V52M112 52H65M112 52H155M65 52V88M155 52V88M65 88H38M65 88H91M155 88H131M155 88H181"></path>
-                  </g>
-                  <g fill="none" stroke="rgba(159,148,255,.4)" stroke-width="1.4">
-                    <path d="M251 29V54M251 54H214M251 54H297M214 54V91M297 54V91M214 91H192M214 91H237M297 91H275M297 91H322"></path>
-                  </g>
-                  <g fill="#07111d" stroke="rgba(101,220,255,.55)">
-                    <circle cx="112" cy="26" r="4"></circle><circle cx="38" cy="88" r="3"></circle><circle cx="91" cy="88" r="3"></circle><circle cx="131" cy="88" r="3"></circle><circle cx="181" cy="88" r="3"></circle>
-                  </g>
-                  <g fill="#07111d" stroke="rgba(159,148,255,.55)">
-                    <circle cx="251" cy="29" r="4"></circle><circle cx="192" cy="91" r="3"></circle><circle cx="237" cy="91" r="3"></circle><circle cx="275" cy="91" r="3"></circle><circle cx="322" cy="91" r="3"></circle>
-                  </g>
-                </svg>
-              </div>
-              <div class="project-body">
-                <div class="project-kicker">Professional · 28nm</div>
-                <h3>Synthesis-to-Post-Route Design</h3>
-                <div class="project-sub">FLOORPLAN // PLACEMENT // CTS // ROUTING // TIMING</div>
-                <p>End-to-end implementation of a 72K-gate dual-clock design with floorplan trials addressing physical-design issues.</p>
-                <div class="project-metrics">
-                  <div><strong>72K</strong><span>Gates</span></div>
-                  <div><strong>6</strong><span>Macros</span></div>
-                  <div><strong>454 MHz</strong><span>Frequency</span></div>
-                </div>
-                <div class="expand-cue">Tap to expand technical details ↓</div>
-              </div>
-            </summary>
-            <div class="project-more">
-              <ul>
-                <li>Two clocks and six macros.</li>
-                <li>Synthesis through post-route implementation.</li>
-                <li>Missing-via, pin-density and congestion issues addressed.</li>
-                <li>Keepout-margin optimization and multiple floorplan trials used for convergence.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="project-card reveal">
-            <summary>
-              <div class="project-art">
-                <svg viewBox="0 0 360 155" role="img" aria-label="Conceptual ALU RTL to GDSII implementation flow">
-                  <rect width="360" height="155" fill="#07111d"></rect>
-                  <g font-family="JetBrains Mono, monospace" font-size="8" text-anchor="middle">
-                    <g>
-                      <rect x="18" y="55" width="46" height="42" rx="5" fill="rgba(101,220,255,.06)" stroke="rgba(101,220,255,.21)"></rect>
-                      <text x="41" y="80" fill="#9eb2c1">RTL</text>
-                    </g>
-                    <g>
-                      <rect x="86" y="55" width="56" height="42" rx="5" fill="rgba(101,220,255,.06)" stroke="rgba(101,220,255,.21)"></rect>
-                      <text x="114" y="80" fill="#9eb2c1">SYNTH</text>
-                    </g>
-                    <g>
-                      <rect x="165" y="55" width="58" height="42" rx="5" fill="rgba(112,239,191,.06)" stroke="rgba(112,239,191,.21)"></rect>
-                      <text x="194" y="80" fill="#9eb2c1">P&amp;R</text>
-                    </g>
-                    <g>
-                      <rect x="246" y="55" width="44" height="42" rx="5" fill="rgba(255,196,106,.05)" stroke="rgba(255,196,106,.22)"></rect>
-                      <text x="268" y="80" fill="#9eb2c1">STA</text>
-                    </g>
-                    <g>
-                      <rect x="312" y="55" width="34" height="42" rx="5" fill="rgba(159,148,255,.07)" stroke="rgba(159,148,255,.24)"></rect>
-                      <text x="329" y="80" fill="#9eb2c1">GDS</text>
-                    </g>
-                  </g>
-                  <g stroke="rgba(101,220,255,.28)" fill="none">
-                    <path d="M64 76H86M142 76H165M223 76H246M290 76H312"></path>
-                  </g>
-                </svg>
-              </div>
-              <div class="project-body">
-                <div class="project-kicker">Academic · Physical Design</div>
-                <h3>ALU Design — RTL to GDSII</h3>
-                <div class="project-sub">SUMEDHA IT // SYNOPSYS TOOLS</div>
-                <p>Academic RTL-to-GDSII ALU design completed during the Post Graduate Diploma in Physical Design.</p>
-                <div class="project-metrics">
-                  <div><strong>RTL</strong><span>Entry</span></div>
-                  <div><strong>GDSII</strong><span>Output</span></div>
-                  <div><strong>PD</strong><span>Academic</span></div>
-                </div>
-                <div class="expand-cue">Tap to expand technical details ↓</div>
-              </div>
-            </summary>
-            <div class="project-more">
-              <ul>
-                <li>Listed in the résumé as the physical-design project completed during the postgraduate diploma.</li>
-                <li>The résumé supports the RTL-to-GDSII scope and use of Synopsys tools.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="tools">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">05 // Toolchain & Methodology</div>
-            <h2>Commercial and open-source EDA.</h2>
-          </div>
-          <p>Every tool and methodology shown here is explicitly listed in the current résumé.</p>
-        </div>
-
-        <div class="tool-shell reveal">
-          <div class="tool-head">
-            <span>EDA workbench</span>
-            <span>Implementation · STA · Equivalence · Extraction · Automation</span>
-          </div>
-          <div class="tool-grid">
-            <div class="tool"><small>01</small><strong>Fusion Compiler</strong></div>
-            <div class="tool"><small>02</small><strong>PrimeTime</strong></div>
-            <div class="tool"><small>03</small><strong>IC Compiler II</strong></div>
-            <div class="tool"><small>04</small><strong>Design Compiler</strong></div>
-            <div class="tool"><small>05</small><strong>StarRC</strong></div>
-            <div class="tool"><small>06</small><strong>Formality</strong></div>
-            <div class="tool"><small>07</small><strong>OpenROAD</strong></div>
-            <div class="tool"><small>08</small><strong>Yosys</strong></div>
-            <div class="tool"><small>09</small><strong>OpenSTA</strong></div>
-            <div class="tool"><small>10</small><strong>TCL</strong></div>
-          </div>
+        <div class="tool-marquee reveal">
+          <span class="tool-pill">Fusion Compiler</span>
+          <span class="tool-pill">PrimeTime</span>
+          <span class="tool-pill">IC Compiler II</span>
+          <span class="tool-pill">Design Compiler</span>
+          <span class="tool-pill">StarRC</span>
+          <span class="tool-pill">Formality</span>
+          <span class="tool-pill">OpenROAD</span>
+          <span class="tool-pill">Yosys</span>
+          <span class="tool-pill">OpenSTA</span>
+          <span class="tool-pill">TCL</span>
         </div>
 
         <div class="method-grid reveal">
           <article class="method-card">
-            <h3>Physical-design methodology</h3>
-            <div class="method-list">
-              <span>Floorplanning</span><span>Macro placement</span><span>Placement optimization</span>
-              <span>Routing optimization</span><span>Congestion reduction</span><span>DRC closure</span>
-              <span>Incremental placement</span><span>QoR optimization</span><span>DFT timing constraints</span>
-            </div>
+            <h3>Physical Design</h3>
+            <div class="method-tags"><span>Floorplanning</span><span>Macro Placement</span><span>Placement Optimization</span><span>Routing Optimization</span><span>Congestion Reduction</span><span>DRC Closure</span><span>Incremental Placement</span><span>QoR Optimization</span></div>
           </article>
           <article class="method-card">
-            <h3>Timing methodology</h3>
-            <div class="method-list">
-              <span>WNS / TNS debug</span><span>PBA</span><span>Uncertainty sweep</span>
-              <span>Timing sensitivity</span><span>VT swap</span><span>Buffer insertion</span><span>Cell upsizing</span>
-            </div>
+            <h3>Timing / STA</h3>
+            <div class="method-tags"><span>WNS / TNS Debug</span><span>PBA</span><span>Uncertainty Sweep</span><span>Timing Sensitivity</span><span>VT Swap</span><span>Buffering</span><span>DFT Timing Constraints</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="education">
+    <section class="education">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <div class="eyebrow">06 // Education & Credentials</div>
-            <h2>Foundation in VLSI and ECE.</h2>
+            <div class="section-kicker">04 // Education & Credentials</div>
+            <h2>VLSI FOUNDATION.</h2>
           </div>
-          <p>Education, publication and certification details are taken directly from the current résumé.</p>
+          <p>Kept deliberately minimal: only education, publication and certification explicitly present in the résumé.</p>
         </div>
 
         <div class="edu-grid">
           <article class="edu-card reveal">
-            <div class="year">2022 — 2023</div>
+            <div class="edu-year">2022 — 2023</div>
             <h3>Post Graduate Diploma — Physical Design</h3>
-            <div class="school">Sumedha IT · Hyderabad</div>
+            <div class="edu-school">Sumedha IT · Hyderabad</div>
             <p>ALU Design — RTL-to-GDSII with Synopsys tools.</p>
           </article>
           <article class="edu-card reveal">
-            <div class="year">2018 — 2022</div>
+            <div class="edu-year">2018 — 2022</div>
             <h3>B.Tech — Electronics & Communication Engineering</h3>
-            <div class="school">JNTU · Hyderabad</div>
-            <p>Electronics and communication engineering foundation with VLSI-focused training and publication work.</p>
+            <div class="edu-school">JNTU · Hyderabad</div>
+            <p>Electronics and communication engineering foundation.</p>
           </article>
         </div>
 
         <div class="credential-grid">
-          <article class="credential reveal">
-            <div class="credential-icon">IEEE</div>
-            <div><h3>J-Pole Antenna for ADS-B Signals</h3><p>IEEE publication · April 2022</p></div>
-          </article>
-          <article class="credential reveal">
-            <div class="credential-icon">NPTEL</div>
-            <div><h3>VLSI Design Flow RTL to GDS</h3><p>NPTEL certification</p></div>
-          </article>
+          <article class="credential reveal"><div class="credential-icon">IEEE</div><div><h3>J-Pole Antenna for ADS-B Signals</h3><p>Publication · April 2022</p></div></article>
+          <article class="credential reveal"><div class="credential-icon">NPTEL</div><div><h3>VLSI Design Flow RTL to GDS</h3><p>NPTEL certification</p></div></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="contact" id="contact">
       <div class="wrap">
-        <div class="contact-panel reveal">
-          <div>
-            <div class="eyebrow">07 // Contact</div>
-            <h2>Physical design. Timing. Semiconductor implementation.</h2>
-            <p>
-              Based in Tokyo, Japan, with valid work authorization through July 2030.
-              Public contact information intentionally excludes a phone number.
-            </p>
-          </div>
+        <div class="line-reveal"><span><h2>LET'S BUILD <span>SILICON.</span></h2></span></div>
+        <div class="contact-bottom reveal">
+          <p>Based in Tokyo, Japan, with valid work authorization through July 2030. Public contact details intentionally exclude a phone number.</p>
           <div class="contact-links">
             <a href="mailto:bkbschandu2000@gmail.com"><span>Email</span><span>↗</span></a>
             <a href="https://www.linkedin.com/in/chandrasekhar-bhamidi" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
@@ -1918,192 +1468,233 @@
   <footer>
     <div class="wrap footer-inner">
       <span>© <span id="year"></span> Chandra Sekhar Bhamidi</span>
-      <span class="footer-note">Professional project visuals are conceptual and non-proprietary. No employer design data, customer information, internal reports or proprietary interfaces are published here.</span>
+      <span class="footer-note">Professional project visuals are conceptual and non-proprietary. No employer design database, customer data, internal report or proprietary interface is published here.</span>
     </div>
   </footer>
 
   <script>
     (function(){
-      document.getElementById("year").textContent = new Date().getFullYear();
+      var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      var menuBtn = document.getElementById("menuBtn");
-      var mobileMenu = document.getElementById("mobileMenu");
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-      menuBtn.addEventListener("click", function(){
-        var open = mobileMenu.classList.toggle("open");
-        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      var menuBtn = document.getElementById('menuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+
+      menuBtn.addEventListener('click',function(){
+        var open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded',open ? 'true':'false');
+        document.body.classList.toggle('menu-open',open);
       });
 
-      mobileMenu.querySelectorAll("a").forEach(function(link){
-        link.addEventListener("click", function(){
-          mobileMenu.classList.remove("open");
-          menuBtn.setAttribute("aria-expanded","false");
+      mobileMenu.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click',function(){
+          mobileMenu.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded','false');
+          document.body.classList.remove('menu-open');
+        });
+      });
+
+      document.querySelectorAll('.service-button').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var service = btn.closest('.service');
+          var isOpen = service.classList.contains('open');
+          document.querySelectorAll('.service').forEach(function(item){
+            item.classList.remove('open');
+            var b = item.querySelector('.service-button');
+            if(b){b.setAttribute('aria-expanded','false');}
+          });
+          if(!isOpen){
+            service.classList.add('open');
+            btn.setAttribute('aria-expanded','true');
+          }
         });
       });
 
       var flowData = {
         rtl:{
-          title:"RTL / design entry",
-          description:"The résumé includes an academic ALU project completed from RTL to GDSII, establishing the design-entry stage represented here.",
-          tags:["ALU","RTL-to-GDSII","Academic project"],
-          kind:"rtl"
+          title:'RTL / design entry',
+          text:'The résumé explicitly lists an academic ALU Design project completed from RTL to GDSII during the Post Graduate Diploma in Physical Design.',
+          tags:['ALU','Academic','RTL-to-GDSII'],
+          kind:'rtl'
         },
-        synthesis:{
-          title:"Logic synthesis",
-          description:"Design Compiler was used in the 28nm professional flows, including synthesis of the 300K+ gate ARM core and the 72K-gate design.",
-          tags:["Design Compiler","28nm","Synthesis"],
-          kind:"synthesis"
+        synth:{
+          title:'Logic synthesis',
+          text:'Professional 28nm work includes Design Compiler synthesis. The ZOICX role also includes Formality verification of the 300K-gate post-synthesis netlist.',
+          tags:['Design Compiler','28nm','Formality'],
+          kind:'synth'
         },
-        floorplan:{
-          title:"Floorplanning & macro locality",
-          description:"The 7nm CPU work included 20+ floorplan variants to improve macro locality, critical-path wirelength and routability. The 28nm flows also used multiple floorplan trials for congestion reduction.",
-          tags:["20+ variants","Macro locality","Congestion"],
-          kind:"floorplan"
+        fp:{
+          title:'Floorplanning',
+          text:'The 7nm CPU work includes 20+ floorplan variants for macro locality, critical-path wirelength and routability. The 28nm flows also include repeated floorplan trials for congestion reduction.',
+          tags:['20+ variants','Macro locality','Congestion'],
+          kind:'fp'
         },
-        placement:{
-          title:"Placement optimization",
-          description:"The résumé lists placement optimization and incremental placement as part of physical-design methodology, including convergence work on the 7nm CPU.",
-          tags:["Placement","Incremental placement","QoR"],
-          kind:"placement"
+        place:{
+          title:'Placement optimization',
+          text:'Placement optimization and incremental placement are explicitly listed in the résumé, including 7nm QoR-convergence work.',
+          tags:['Placement','Incremental placement','QoR'],
+          kind:'place'
         },
         cts:{
-          title:"Clock-tree stage",
-          description:"Clock uncertainty was swept and analyzed at compile, CTS and route stages. The RiseTime design also explicitly covered CTS in the synthesis-to-post-route flow.",
-          tags:["CTS","Clock uncertainty","Timing sensitivity"],
-          kind:"cts"
+          title:'Clock-tree stage',
+          text:'The résumé covers clock-uncertainty sweeps at compile, CTS and route stages, while the RiseTime design explicitly includes CTS in the synthesis-to-post-route flow.',
+          tags:['CTS','Clock uncertainty','Timing sensitivity'],
+          kind:'cts'
         },
-        routing:{
-          title:"Routing & congestion convergence",
-          description:"Routing optimization, congestion reduction, route_auto tuning and DRC convergence are all part of the resume-backed implementation work.",
-          tags:["Routing","Congestion","DRC"],
-          kind:"routing"
+        route:{
+          title:'Routing & congestion',
+          text:'Routing optimization, congestion reduction, route_auto tuning and DRC convergence are all resume-backed implementation activities.',
+          tags:['Routing','Congestion','DRC'],
+          kind:'route'
         },
         sta:{
-          title:"Static timing analysis",
-          description:"PrimeTime-based timing work includes WNS/TNS debug, path-based analysis, uncertainty sweeps and setup convergence across worst setup corners.",
-          tags:["PrimeTime","WNS / TNS","PBA"],
-          kind:"sta"
+          title:'Static timing analysis',
+          text:'PrimeTime-based work includes WNS/TNS debug, path-based analysis, setup convergence and uncertainty sensitivity across worst setup corners.',
+          tags:['PrimeTime','WNS/TNS','PBA'],
+          kind:'sta'
         },
         eco:{
-          title:"Timing ECO closure",
-          description:"Manual timing ECOs targeted top critical post-route paths using cell upsizing, VT swaps and buffer insertion.",
-          tags:["Upsizing","VT swap","Buffer insertion"],
-          kind:"eco"
+          title:'Timing ECO closure',
+          text:'Manual post-route timing ECOs targeted setup violations on the top-10 critical paths using cell upsizing, VT swaps and buffer insertion.',
+          tags:['Upsizing','VT swap','Buffer insertion'],
+          kind:'eco'
         },
         gds:{
-          title:"GDSII completion",
-          description:"The résumé explicitly lists the academic ALU project as RTL-to-GDSII. Professional roles are described through post-route implementation and timing closure.",
-          tags:["RTL-to-GDSII","Post-route","Physical Design"],
-          kind:"gds"
+          title:'GDSII completion',
+          text:'The résumé explicitly supports RTL-to-GDSII completion for the academic ALU project. Professional roles are described through post-route implementation and timing closure.',
+          tags:['RTL-to-GDSII','Academic ALU','Post-route'],
+          kind:'gds'
         }
       };
 
-      function stageSvg(kind){
-        if(kind==="rtl"){
-          return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><g fill="rgba(101,220,255,.06)" stroke="rgba(101,220,255,.22)"><rect x="28" y="38" width="72" height="56" rx="6"/><rect x="129" y="28" width="72" height="36" rx="6"/><rect x="129" y="76" width="72" height="36" rx="6"/><rect x="230" y="38" width="72" height="56" rx="6"/></g><g fill="none" stroke="rgba(101,220,255,.32)"><path d="M100 66H129M201 47H230M201 94H230"/></g><g fill="#a9bdcb" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle"><text x="64" y="70">RTL</text><text x="165" y="50">LOGIC</text><text x="165" y="98">CTRL</text><text x="266" y="70">NETLIST</text></g></svg>';
+      function flowSvg(kind){
+        if(kind==='rtl'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g fill="rgba(104,220,255,.06)" stroke="rgba(104,220,255,.22)"><rect x="42" y="83" width="102" height="78" rx="8"/><rect x="210" y="49" width="96" height="62" rx="8"/><rect x="210" y="149" width="96" height="62" rx="8"/><rect x="373" y="83" width="103" height="78" rx="8"/></g><g fill="none" stroke="rgba(104,220,255,.31)" stroke-width="2"><path d="M144 122H210M306 80H373M306 180H373"/></g><g fill="#a4b7c4" font-family="JetBrains Mono,monospace" font-size="13" text-anchor="middle"><text x="93" y="128">RTL</text><text x="258" y="84">DATAPATH</text><text x="258" y="184">CONTROL</text><text x="424" y="128">NETLIST</text></g></svg>';
         }
-        if(kind==="synthesis"){
-          return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><g stroke="rgba(101,220,255,.06)"><path d="M0 34H330M0 68H330M0 102H330M66 0V135M132 0V135M198 0V135M264 0V135"/></g><g fill="none" stroke="rgba(112,239,191,.36)" stroke-width="1.3"><path d="M31 96L66 71L102 85L141 49L180 69L219 38L261 58L299 28"/></g><g fill="#70efbf"><circle cx="31" cy="96" r="3"/><circle cx="141" cy="49" r="3"/><circle cx="219" cy="38" r="3"/><circle cx="299" cy="28" r="3"/></g></svg>';
+        if(kind==='synth'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g stroke="rgba(104,220,255,.055)"><path d="M0 52H520M0 104H520M0 156H520M0 208H520M104 0V260M208 0V260M312 0V260M416 0V260"/></g><polyline points="38,195 91,146 146,166 214,99 285,132 356,70 423,103 482,51" fill="none" stroke="#72edbf" stroke-width="3"/><g fill="#72edbf"><circle cx="38" cy="195" r="4"/><circle cx="214" cy="99" r="4"/><circle cx="356" cy="70" r="4"/><circle cx="482" cy="51" r="4"/></g></svg>';
         }
-        if(kind==="floorplan" || kind==="placement"){
-          return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><rect x="25" y="16" width="280" height="103" rx="5" fill="none" stroke="rgba(101,220,255,.17)"/><g fill="rgba(112,239,191,.1)" stroke="rgba(112,239,191,.3)"><rect x="40" y="30" width="58" height="35" rx="3"/><rect x="235" y="27" width="54" height="38" rx="3"/><rect x="48" y="82" width="68" height="26" rx="3"/><rect x="242" y="77" width="42" height="31" rx="3"/></g><rect x="125" y="30" width="92" height="76" fill="rgba(101,220,255,.025)" stroke="rgba(101,220,255,.06)"/><g stroke="rgba(101,220,255,.055)"><path d="M125 42H217M125 54H217M125 66H217M125 78H217M125 90H217"/></g></svg>';
+        if(kind==='fp' || kind==='place'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><rect x="40" y="25" width="440" height="210" rx="8" fill="none" stroke="rgba(104,220,255,.18)"/><g fill="rgba(114,237,191,.1)" stroke="rgba(114,237,191,.3)"><rect x="65" y="52" width="96" height="61" rx="5"/><rect x="361" y="49" width="91" height="66" rx="5"/><rect x="73" y="166" width="116" height="49" rx="5"/><rect x="373" y="158" width="68" height="57" rx="5"/></g><rect x="205" y="52" width="112" height="156" fill="rgba(104,220,255,.025)" stroke="rgba(104,220,255,.06)"/><g stroke="rgba(104,220,255,.055)"><path d="M205 70H317M205 88H317M205 106H317M205 124H317M205 142H317M205 160H317M205 178H317"/></g></svg>';
         }
-        if(kind==="cts"){
-          return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><g fill="none" stroke="rgba(101,220,255,.42)" stroke-width="1.4"><path d="M165 18V41M165 41H96M165 41H235M96 41V70M235 41V70M96 70H48M96 70H137M235 70H195M235 70H283M48 70V104M137 70V104M195 70V104M283 70V104"/></g><g fill="#07111d" stroke="rgba(101,220,255,.55)"><circle cx="165" cy="18" r="5"/><circle cx="48" cy="104" r="3"/><circle cx="137" cy="104" r="3"/><circle cx="195" cy="104" r="3"/><circle cx="283" cy="104" r="3"/></g><circle cx="165" cy="18" r="3" fill="#65dcff"/></svg>';
+        if(kind==='cts'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g fill="none" stroke="rgba(104,220,255,.44)" stroke-width="2"><path d="M260 35V78M260 78H151M260 78H370M151 78V136M370 78V136M151 136H85M151 136H218M370 136H302M370 136H437M85 136V204M218 136V204M302 136V204M437 136V204"/></g><g fill="#07111b" stroke="rgba(104,220,255,.58)"><circle cx="260" cy="35" r="8"/><circle cx="85" cy="204" r="5"/><circle cx="218" cy="204" r="5"/><circle cx="302" cy="204" r="5"/><circle cx="437" cy="204" r="5"/></g><circle cx="260" cy="35" r="4" fill="#68dcff"/></svg>';
         }
-        if(kind==="routing"){
-          return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><g stroke="rgba(101,170,255,.32)"><path d="M25 29H304M25 50H304M25 71H304M25 92H304M25 113H304M58 17V122M105 17V122M152 17V122M199 17V122M246 17V122M293 17V122"/></g><ellipse cx="166" cy="67" rx="67" ry="41" fill="rgba(255,137,125,.09)"/><ellipse cx="224" cy="88" rx="43" ry="29" fill="rgba(255,196,106,.09)"/></svg>';
+        if(kind==='route'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g stroke="rgba(107,169,255,.33)"><path d="M35 49H486M35 86H486M35 123H486M35 160H486M35 197H486M35 234H486M78 22V240M146 22V240M214 22V240M282 22V240M350 22V240M418 22V240"/></g><ellipse cx="262" cy="127" rx="105" ry="77" fill="rgba(255,136,126,.1)"/><ellipse cx="359" cy="174" rx="67" ry="48" fill="rgba(255,196,106,.09)"/></svg>';
         }
-        if(kind==="sta"){
-          return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><g stroke="rgba(101,220,255,.06)"><path d="M0 27H330M0 54H330M0 81H330M0 108H330M66 0V135M132 0V135M198 0V135M264 0V135"/></g><polyline points="12,101 48,101 48,38 89,38 89,76 132,76 132,51 178,51 178,95 222,95 222,64 270,64 270,84 318,84" fill="none" stroke="#ffc46a" stroke-width="2.3" stroke-linejoin="round"/><line x1="12" y1="113" x2="318" y2="113" stroke="rgba(112,239,191,.34)"/></svg>';
+        if(kind==='sta'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g stroke="rgba(104,220,255,.055)"><path d="M0 52H520M0 104H520M0 156H520M0 208H520M104 0V260M208 0V260M312 0V260M416 0V260"/></g><polyline points="20,194 77,194 77,72 139,72 139,151 210,151 210,99 278,99 278,185 347,185 347,124 421,124 421,161 500,161" fill="none" stroke="#ffc46a" stroke-width="3.2" stroke-linejoin="round"/><line x1="20" y1="220" x2="500" y2="220" stroke="rgba(114,237,191,.37)" stroke-width="2"/></svg>';
         }
-        if(kind==="eco"){
-          return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><g fill="rgba(101,220,255,.06)" stroke="rgba(101,220,255,.22)"><rect x="26" y="47" width="50" height="40" rx="5"/><rect x="108" y="47" width="50" height="40" rx="5"/><rect x="190" y="47" width="50" height="40" rx="5"/><rect x="272" y="47" width="32" height="40" rx="5"/></g><g stroke="rgba(255,196,106,.42)" stroke-width="1.5"><path d="M76 67H108M158 67H190M240 67H272"/></g><g fill="#ffc46a" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle"><text x="133" y="102">VT SWAP</text><text x="215" y="102">BUFFER</text></g></svg>';
+        if(kind==='eco'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g fill="rgba(104,220,255,.06)" stroke="rgba(104,220,255,.22)"><rect x="39" y="91" width="81" height="64" rx="8"/><rect x="169" y="91" width="81" height="64" rx="8"/><rect x="299" y="91" width="81" height="64" rx="8"/><rect x="429" y="91" width="54" height="64" rx="8"/></g><g stroke="rgba(255,196,106,.46)" stroke-width="2.5"><path d="M120 123H169M250 123H299M380 123H429"/></g><g fill="#ffc46a" font-family="JetBrains Mono,monospace" font-size="11" text-anchor="middle"><text x="210" y="180">VT SWAP</text><text x="340" y="180">BUFFER</text></g></svg>';
         }
-        return '<svg viewBox="0 0 330 135" aria-hidden="true"><rect width="330" height="135" fill="#07111d"/><g font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle"><g><rect x="22" y="47" width="48" height="42" rx="5" fill="rgba(101,220,255,.06)" stroke="rgba(101,220,255,.2)"/><text x="46" y="72" fill="#9eb2c1">RTL</text></g><g><rect x="92" y="47" width="58" height="42" rx="5" fill="rgba(101,220,255,.06)" stroke="rgba(101,220,255,.2)"/><text x="121" y="72" fill="#9eb2c1">SYNTH</text></g><g><rect x="174" y="47" width="55" height="42" rx="5" fill="rgba(112,239,191,.06)" stroke="rgba(112,239,191,.2)"/><text x="201" y="72" fill="#9eb2c1">P&amp;R</text></g><g><rect x="253" y="47" width="52" height="42" rx="5" fill="rgba(159,148,255,.06)" stroke="rgba(159,148,255,.22)"/><text x="279" y="72" fill="#9eb2c1">GDSII</text></g></g><g stroke="rgba(101,220,255,.28)"><path d="M70 68H92M150 68H174M229 68H253"/></g></svg>';
+        return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g font-family="JetBrains Mono,monospace" font-size="11" text-anchor="middle"><g><rect x="35" y="92" width="72" height="62" rx="7" fill="rgba(104,220,255,.06)" stroke="rgba(104,220,255,.2)"/><text x="71" y="128" fill="#9eb2c1">RTL</text></g><g><rect x="145" y="92" width="86" height="62" rx="7" fill="rgba(104,220,255,.06)" stroke="rgba(104,220,255,.2)"/><text x="188" y="128" fill="#9eb2c1">SYNTH</text></g><g><rect x="270" y="92" width="78" height="62" rx="7" fill="rgba(114,237,191,.06)" stroke="rgba(114,237,191,.2)"/><text x="309" y="128" fill="#9eb2c1">P&amp;R</text></g><g><rect x="389" y="92" width="92" height="62" rx="7" fill="rgba(158,147,255,.06)" stroke="rgba(158,147,255,.22)"/><text x="435" y="128" fill="#9eb2c1">GDSII</text></g></g><g stroke="rgba(104,220,255,.3)"><path d="M107 123H145M231 123H270M348 123H389"/></g></svg>';
       }
 
-      function setStage(name){
-        var d = flowData[name];
+      function setStage(stage){
+        var d = flowData[stage];
         if(!d){return;}
-        document.getElementById("flowTitle").textContent = d.title;
-        document.getElementById("flowDescription").textContent = d.description;
-        document.getElementById("flowVisual").innerHTML = stageSvg(d.kind);
-        var tags = document.getElementById("flowTags");
-        tags.innerHTML = "";
-        d.tags.forEach(function(tag){
-          var span = document.createElement("span");
-          span.textContent = tag;
-          tags.appendChild(span);
+        document.getElementById('flowArt').innerHTML = flowSvg(d.kind);
+        document.getElementById('flowTitle').textContent = d.title;
+        document.getElementById('flowText').textContent = d.text;
+        var tags = document.getElementById('flowTags');
+        tags.innerHTML = '';
+        d.tags.forEach(function(t){
+          var s = document.createElement('span');
+          s.textContent = t;
+          tags.appendChild(s);
         });
-        document.querySelectorAll(".flow-tab").forEach(function(btn){
-          var selected = btn.getAttribute("data-stage")===name;
-          btn.classList.toggle("active",selected);
-          btn.setAttribute("aria-selected",selected ? "true" : "false");
+        document.querySelectorAll('.flow-tab').forEach(function(btn){
+          var active = btn.getAttribute('data-stage')===stage;
+          btn.classList.toggle('active',active);
+          btn.setAttribute('aria-selected',active?'true':'false');
         });
       }
 
-      document.querySelectorAll(".flow-tab").forEach(function(btn){
-        btn.addEventListener("click",function(){setStage(btn.getAttribute("data-stage"));});
+      document.querySelectorAll('.flow-tab').forEach(function(btn){
+        btn.addEventListener('click',function(){setStage(btn.getAttribute('data-stage'));});
       });
-      setStage("rtl");
-
-      var metricData = {
-        node:["7nm FinFET","Professional work at Synopsys Tokyo includes physical design and setup timing closure on a 7nm ARM-based CPU core."],
-        instances:["3.5M+ instances","The 7nm ARM-based CPU implementation is listed at more than 3.5 million instances."],
-        macros:["350+ macros","The same 7nm CPU implementation includes more than 350 macros, making macro locality and floorplan quality important to timing and routability."],
-        layers:["9 metal layers","The 7nm CPU project is listed with 9 metal layers in the professional-experience section."],
-        target:["2.6 GHz target","The CPU project targeted 2.6 GHz."],
-        predft:["2.54 GHz pre-DFT","The résumé states a 2.54 GHz pre-DFT result achieved through setup timing optimization across worst setup corners."],
-        postdft:["2.47 GHz post-DFT","The résumé states a 2.47 GHz post-DFT result against the 2.6 GHz target."],
-        floorplans:["20+ floorplan variants","More than 20 floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability."],
-        corners:["3 PVT corners","The technical-skills section lists work across 3 PVT corners."],
-        automation:["30% timing-debug reduction","A TCL script that filters and ranks worst-violating path groups by WNS reduced timing-debug turnaround time by 30%."]
-      };
-
-      document.querySelectorAll(".metric-button").forEach(function(btn){
-        btn.addEventListener("click",function(){
-          var key = btn.getAttribute("data-metric");
-          var data = metricData[key];
-          document.querySelectorAll(".metric-button").forEach(function(b){b.classList.remove("active");});
-          btn.classList.add("active");
-          var detail = document.getElementById("metricDetail");
-          detail.innerHTML = "<strong>"+data[0]+":</strong> "+data[1];
-        });
-      });
+      setStage('rtl');
 
       var fpData = {
-        macro:["Macro placement","20+ floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability."],
-        std:["Standard-cell placement","The résumé lists placement optimization and incremental placement as part of the physical-design and QoR-convergence work."],
-        routing:["Routing / congestion","Incremental placement and route_auto tuning were used to improve timing/DRC convergence, while congestion reduction is listed as a core physical-design skill."],
-        critical:["Critical setup path","Path-group prioritization and manual ECOs targeted setup violations on critical paths using cell upsizing, VT swaps and buffer insertion."]
+        macro:['Macro placement','20+ floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability.'],
+        std:['Standard-cell placement','Placement optimization and incremental placement are explicitly listed in the résumé as part of physical-design and QoR convergence.'],
+        routing:['Routing / congestion','Incremental placement and route_auto tuning were used to improve timing/DRC convergence; congestion reduction is a listed physical-design skill.'],
+        critical:['Critical setup path','Path-group prioritization and manual ECOs targeted setup violations using cell upsizing, VT swaps and buffer insertion.'],
+        clock:['Clock-tree / uncertainty','Clock uncertainty was swept at compile, CTS and route stages while WNS/TNS, runtime and timing margin tradeoffs were analyzed.']
       };
 
-      document.querySelectorAll(".fp-control").forEach(function(btn){
-        btn.addEventListener("click",function(){
-          var view = btn.getAttribute("data-view");
-          document.getElementById("floorplanExplorer").setAttribute("data-view",view);
-          document.querySelectorAll(".fp-control").forEach(function(b){b.classList.remove("active");});
-          btn.classList.add("active");
-          var data = fpData[view];
-          document.getElementById("fpDetail").innerHTML = "<strong>"+data[0]+"</strong><p>"+data[1]+"</p>";
+      document.querySelectorAll('.fp-btn').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var layer = btn.getAttribute('data-layer');
+          document.getElementById('floorplan').setAttribute('data-layer',layer);
+          document.querySelectorAll('.fp-btn').forEach(function(b){b.classList.remove('active');});
+          btn.classList.add('active');
+          var d = fpData[layer];
+          document.getElementById('fpDetail').innerHTML = '<strong>'+d[0]+'</strong><p>'+d[1]+'</p>';
         });
       });
 
-      if("IntersectionObserver" in window){
+      var metricData = {
+        node:'7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.',
+        scale:'The professional summary and Synopsys role list a 3.5M+ instance CPU implementation.',
+        macros:'The same advanced-node CPU is listed with 350+ macros.',
+        metal:'The 7nm CPU project is listed with 9 metal layers.',
+        target:'The résumé states a 2.6 GHz target for the CPU implementation.',
+        predft:'The résumé states a 2.54 GHz pre-DFT result against the 2.6 GHz target.',
+        postdft:'The résumé states a 2.47 GHz post-DFT result against the 2.6 GHz target.',
+        debug:'A TCL script for WNS-based path-group ranking reduced timing-debug turnaround time by 30%.'
+      };
+
+      document.querySelectorAll('.case-metric').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          document.querySelectorAll('.case-metric').forEach(function(b){b.classList.remove('active');});
+          btn.classList.add('active');
+          document.getElementById('caseMetricDetail').textContent = metricData[btn.getAttribute('data-key')];
+        });
+      });
+
+      document.querySelectorAll('.impact-card').forEach(function(card){
+        function activate(){
+          document.querySelectorAll('.impact-card').forEach(function(c){c.classList.remove('active');});
+          card.classList.add('active');
+        }
+        card.addEventListener('click',activate);
+        card.addEventListener('focus',activate);
+      });
+
+      if(!reducedMotion && window.matchMedia && window.matchMedia('(pointer:fine)').matches){
+        var art = document.getElementById('heroArt');
+        var scene = document.getElementById('chipScene');
+        art.addEventListener('pointermove',function(e){
+          var r = art.getBoundingClientRect();
+          var x = (e.clientX-r.left)/r.width-.5;
+          var y = (e.clientY-r.top)/r.height-.5;
+          scene.style.transform = 'rotateY('+(x*10)+'deg) rotateX('+(-y*8)+'deg)';
+        });
+        art.addEventListener('pointerleave',function(){scene.style.transform='';});
+      }
+
+      if('IntersectionObserver' in window){
         var observer = new IntersectionObserver(function(entries){
           entries.forEach(function(entry){
             if(entry.isIntersecting){
-              entry.target.classList.add("visible");
+              entry.target.classList.add('visible');
               observer.unobserve(entry.target);
             }
           });
-        },{threshold:.07});
-        document.querySelectorAll(".reveal").forEach(function(el){observer.observe(el);});
+        },{threshold:.08});
+        document.querySelectorAll('.reveal,.line-reveal').forEach(function(el){observer.observe(el);});
       } else {
-        document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+        document.querySelectorAll('.reveal,.line-reveal').forEach(function(el){el.classList.add('visible');});
       }
     })();
   </script>
+
+  <style>
+    @keyframes pathDash{to{stroke-dashoffset:-90}}
+  </style>
 </body>
 </html>
