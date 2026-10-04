@@ -3,398 +3,1687 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Chandra Sekhar Bhamidi — Applications Engineer focused on advanced-node physical design, static timing analysis, timing closure, and EDA automation." />
-  <meta name="theme-color" content="#07111f" />
+  <meta name="description" content="Chandra Sekhar Bhamidi — Applications Engineer specializing in physical design, static timing analysis, timing closure, RTL-to-GDSII implementation, and EDA automation." />
+  <meta name="theme-color" content="#050913" />
+  <meta property="og:title" content="Chandra Sekhar Bhamidi | Physical Design & STA" />
+  <meta property="og:description" content="VLSI semiconductor portfolio — advanced-node CPU implementation, timing closure, physical design and EDA automation." />
   <title>Chandra Sekhar Bhamidi | Physical Design & STA</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#050a12;
-      --bg2:#08111e;
-      --panel:rgba(12,24,39,.76);
-      --panel2:rgba(8,18,31,.9);
-      --line:rgba(111,211,255,.16);
-      --line2:rgba(147,197,253,.1);
-      --text:#edf7ff;
-      --muted:#93a9ba;
-      --cyan:#63dcff;
-      --blue:#4da3ff;
-      --green:#7cf7c4;
-      --amber:#ffc978;
-      --violet:#a995ff;
-      --shadow:0 24px 90px rgba(0,0,0,.38);
+      --ink:#f3f7fb;
+      --muted:#95a7b9;
+      --muted2:#6f8296;
+      --bg:#050913;
+      --bg2:#07101d;
+      --panel:#0a1422;
+      --panel2:#0d1827;
+      --panel3:#101d2e;
+      --line:rgba(155,196,226,.12);
+      --line-strong:rgba(102,221,255,.24);
+      --cyan:#66ddff;
+      --teal:#6df2c0;
+      --blue:#62a9ff;
+      --amber:#ffc46b;
+      --violet:#9d91ff;
+      --danger:#ff8c7e;
+      --shadow:0 30px 90px rgba(0,0,0,.42);
       --radius:22px;
       --max:1180px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--text);
+      color:var(--ink);
       background:
-        radial-gradient(circle at 18% 10%, rgba(77,163,255,.14), transparent 26%),
-        radial-gradient(circle at 85% 20%, rgba(124,247,196,.08), transparent 24%),
-        radial-gradient(circle at 60% 78%, rgba(169,149,255,.08), transparent 24%),
-        linear-gradient(180deg,var(--bg),var(--bg2) 55%,#040810);
+        radial-gradient(circle at 15% 8%, rgba(98,169,255,.11), transparent 24%),
+        radial-gradient(circle at 84% 18%, rgba(109,242,192,.07), transparent 20%),
+        linear-gradient(180deg,#040811 0%,#07101c 52%,#040811 100%);
       min-height:100vh;
       overflow-x:hidden;
-      line-height:1.65;
+      line-height:1.62;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
+
     body:before{
       content:"";
       position:fixed;
       inset:0;
       pointer-events:none;
-      z-index:-2;
+      z-index:-3;
       background-image:
-        linear-gradient(rgba(99,220,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg,rgba(99,220,255,.035) 1px, transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(to bottom,black,transparent 82%);
+        linear-gradient(rgba(102,221,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(102,221,255,.022) 1px, transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 88%);
     }
+
     body:after{
       content:"";
       position:fixed;
-      inset:-20%;
-      z-index:-3;
-      background:conic-gradient(from 180deg at 50% 50%, transparent,rgba(77,163,255,.035),transparent,rgba(124,247,196,.03),transparent);
-      animation:drift 28s linear infinite;
-    }
-    @keyframes drift{to{transform:rotate(360deg)}}
-    a{color:inherit}
-    .mono{font-family:"IBM Plex Mono",monospace}
-    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
-    .nav{
-      position:fixed;top:0;left:0;right:0;z-index:50;
-      border-bottom:1px solid rgba(255,255,255,.06);
-      background:rgba(5,10,18,.72);
-      backdrop-filter:blur(18px);
-    }
-    .nav-inner{
-      height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px
-    }
-    .brand{
-      display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700
-    }
-    .chipmark{
-      width:36px;height:36px;border:1px solid rgba(99,220,255,.58);border-radius:9px;
-      display:grid;place-items:center;color:var(--cyan);font:600 12px "IBM Plex Mono",monospace;
-      box-shadow:inset 0 0 22px rgba(99,220,255,.08),0 0 24px rgba(99,220,255,.08);
-      position:relative
-    }
-    .chipmark:before,.chipmark:after{content:"";position:absolute;left:-5px;right:-5px;height:1px;background:rgba(99,220,255,.45);box-shadow:0 8px rgba(99,220,255,.35),0 -8px rgba(99,220,255,.35)}
-    .brand small{display:block;color:var(--muted);font-weight:500;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
-    .navlinks{display:flex;gap:22px;align-items:center}
-    .navlinks a{
-      text-decoration:none;color:#b9cbd8;font-size:13px;font-weight:600;transition:.2s
-    }
-    .navlinks a:hover{color:var(--cyan)}
-    .nav-cta{
-      border:1px solid rgba(99,220,255,.28);padding:9px 13px;border-radius:10px!important;color:var(--cyan)!important
-    }
-    .hero{padding:152px 0 94px;position:relative}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:68px;align-items:center}
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid rgba(124,247,196,.19);
-      border-radius:999px;color:var(--green);font:500 11px "IBM Plex Mono",monospace;letter-spacing:.06em;
-      background:rgba(124,247,196,.04);margin-bottom:20px
-    }
-    .pulse{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}
-    h1{font-size:clamp(44px,7vw,78px);line-height:.98;letter-spacing:-.055em;margin:0 0 22px;max-width:780px}
-    .gradient{
-      background:linear-gradient(100deg,#fff 15%,#9de9ff 55%,#88f1c8);
-      -webkit-background-clip:text;background-clip:text;color:transparent
-    }
-    .hero-role{
-      font:600 clamp(15px,2vw,18px) "IBM Plex Mono",monospace;color:var(--cyan);margin-bottom:16px
-    }
-    .hero-copy{max-width:710px;color:#a9bccb;font-size:17px;margin:0 0 28px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;text-decoration:none;padding:12px 17px;border-radius:12px;
-      font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.08);transition:.2s
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .btn.primary{color:#001018;background:linear-gradient(135deg,var(--cyan),var(--green));border:0}
-    .btn.secondary{background:rgba(255,255,255,.035);color:#d6e8f4}
-    .hero-meta{margin-top:27px;display:flex;flex-wrap:wrap;gap:18px;color:#7f97aa;font:500 11px "IBM Plex Mono",monospace}
-    .hero-meta span:before{content:"// ";color:#4e6e84}
-    .die{
-      position:relative;aspect-ratio:1/1;max-width:430px;margin-left:auto;
-      border:1px solid rgba(99,220,255,.2);border-radius:28px;padding:28px;
-      background:linear-gradient(145deg,rgba(10,24,40,.88),rgba(4,11,19,.72));box-shadow:var(--shadow);
-      overflow:hidden
-    }
-    .die:before{
-      content:"";position:absolute;inset:19px;border:1px dashed rgba(99,220,255,.13);border-radius:20px
-    }
-    .die-grid{
-      height:100%;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);gap:8px;
-      position:relative;z-index:2
-    }
-    .cell{border:1px solid rgba(99,220,255,.1);background:linear-gradient(135deg,rgba(99,220,255,.08),rgba(77,163,255,.025));border-radius:5px;animation:flicker 5s ease-in-out infinite}
-    .cell:nth-child(4n){background:linear-gradient(135deg,rgba(124,247,196,.12),rgba(124,247,196,.02));border-color:rgba(124,247,196,.13)}
-    .cell:nth-child(7n){background:linear-gradient(135deg,rgba(169,149,255,.12),rgba(169,149,255,.02));border-color:rgba(169,149,255,.13)}
-    @keyframes flicker{0%,100%{opacity:.68}50%{opacity:1}}
-    .die-label{
-      position:absolute;left:34px;bottom:30px;z-index:3;background:rgba(4,10,18,.88);padding:10px 12px;border:1px solid rgba(255,255,255,.07);
-      border-radius:9px;font:600 11px "IBM Plex Mono",monospace;color:var(--cyan)
-    }
-    section{padding:88px 0}
-    .section-head{display:grid;grid-template-columns:.6fr 1.4fr;gap:50px;margin-bottom:42px;align-items:end}
-    .kicker{color:var(--cyan);font:600 11px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.15em}
-    h2{font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.04em;margin:8px 0 0}
-    .section-intro{color:#8fa6b8;max-width:720px;margin:0}
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
-    .stat{
-      background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px;
-      box-shadow:inset 0 1px rgba(255,255,255,.02)
-    }
-    .stat strong{display:block;font-size:28px;letter-spacing:-.04em;color:#fff}
-    .stat span{display:block;color:#87a0b2;font:500 10px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em;margin-top:4px}
-    .expertise{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{
-      background:linear-gradient(180deg,rgba(12,24,39,.82),rgba(8,16,28,.76));
-      border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden
-    }
-    .card:after{content:"";position:absolute;inset:auto -25% -55% 30%;height:180px;background:radial-gradient(circle,rgba(99,220,255,.07),transparent 68%)}
-    .card-num{color:#56758a;font:600 10px "IBM Plex Mono",monospace;margin-bottom:30px}
-    .card h3{margin:0 0 12px;font-size:18px;letter-spacing:-.02em}
-    .card p{margin:0;color:#8fa6b8;font-size:14px}
-    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
-    .tag{
-      border:1px solid rgba(99,220,255,.15);border-radius:999px;padding:6px 9px;color:#a8dff0;
-      background:rgba(99,220,255,.045);font:500 10px "IBM Plex Mono",monospace
-    }
-    .timeline{position:relative;margin-top:12px}
-    .timeline:before{content:"";position:absolute;left:16px;top:12px;bottom:12px;width:1px;background:linear-gradient(var(--cyan),rgba(99,220,255,.05))}
-    .role{display:grid;grid-template-columns:52px 1fr;gap:16px;margin-bottom:20px}
-    .dot{width:33px;height:33px;border:1px solid rgba(99,220,255,.35);border-radius:50%;display:grid;place-items:center;background:#07111d;z-index:2}
-    .dot i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px rgba(99,220,255,.8)}
-    .rolebox{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:24px}
-    .role-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:12px}
-    .role h3{margin:0;font-size:20px}
-    .company{color:var(--cyan);font:600 12px "IBM Plex Mono",monospace;margin-top:5px}
-    .date{color:#7f97aa;font:500 10px "IBM Plex Mono",monospace;white-space:nowrap}
-    .role p{color:#9db0bf;margin:0 0 14px;font-size:14px}
-    .bullets{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px;padding:0;margin:0;list-style:none}
-    .bullets li{color:#8da4b5;font-size:13px;padding-left:14px;position:relative}
-    .bullets li:before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--green)}
-    .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .project{
-      min-height:305px;background:linear-gradient(155deg,rgba(13,27,44,.92),rgba(6,14,24,.9));
-      border:1px solid rgba(255,255,255,.075);border-radius:22px;padding:25px;position:relative;overflow:hidden
-    }
-    .project:before{content:"";position:absolute;right:-35px;top:-35px;width:160px;height:160px;border:1px solid rgba(99,220,255,.09);transform:rotate(45deg)}
-    .project-type{font:600 10px "IBM Plex Mono",monospace;color:var(--green);text-transform:uppercase;letter-spacing:.1em}
-    .project h3{font-size:22px;margin:10px 0 6px;max-width:80%}
-    .project-sub{font:500 11px "IBM Plex Mono",monospace;color:#7991a4;margin-bottom:18px}
-    .project p{font-size:14px;color:#94a9b9;margin:0 0 20px;max-width:92%}
-    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto}
-    .metric{padding:12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.055)}
-    .metric strong{display:block;color:#e9f7ff;font-size:14px}
-    .metric span{display:block;color:#6f899c;font:500 9px "IBM Plex Mono",monospace;margin-top:3px;text-transform:uppercase}
-    .tool-wall{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-    .tool{padding:16px 10px;border:1px solid rgba(255,255,255,.065);border-radius:13px;background:rgba(255,255,255,.027);text-align:center;color:#aec1cf;font:600 11px "IBM Plex Mono",monospace}
-    .tool:hover{border-color:rgba(99,220,255,.26);color:var(--cyan)}
-    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .edu h3{margin:0 0 6px;font-size:18px}
-    .edu .where{color:var(--cyan);font:600 11px "IBM Plex Mono",monospace}
-    .edu p{color:#8da4b5;font-size:14px;margin-bottom:0}
-    .publication{margin-top:18px;border-left:2px solid var(--violet)}
-    .publication .where{color:var(--violet)}
-    .contact{
+      inset:0;
+      z-index:-4;
+      pointer-events:none;
       background:
-        linear-gradient(135deg,rgba(99,220,255,.08),rgba(124,247,196,.035) 45%,rgba(169,149,255,.05)),
-        rgba(7,16,27,.9);
-      border:1px solid rgba(99,220,255,.16);border-radius:28px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center
+        radial-gradient(circle at 50% 44%,rgba(102,221,255,.025),transparent 42%);
     }
-    .contact h2{margin:8px 0 12px}
-    .contact p{color:#93a9ba;max-width:660px}
-    .contact-links{display:grid;gap:10px}
-    .contact-links a{display:flex;justify-content:space-between;gap:20px;align-items:center;text-decoration:none;padding:13px 14px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(0,0,0,.12);font:500 11px "IBM Plex Mono",monospace;color:#b7cbd9}
-    .contact-links a:hover{border-color:rgba(99,220,255,.3);color:var(--cyan)}
-    footer{padding:32px 0 44px;color:#668095;font:500 10px "IBM Plex Mono",monospace}
-    .footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.06);padding-top:24px}
-    .confidentiality{color:#5e7383;max-width:760px}
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+
+    a{color:inherit}
+    button{font:inherit}
+    .mono{font-family:"JetBrains Mono",monospace}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+    .section{padding:94px 0;position:relative}
+    .section + .section{border-top:1px solid rgba(255,255,255,.035)}
+    .muted{color:var(--muted)}
+    .accent{color:var(--cyan)}
+
+    .nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:100;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(4,8,17,.78);
+      backdrop-filter:blur(20px);
+    }
+
+    .nav-inner{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      text-decoration:none;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:38px;height:38px;
+      position:relative;
+      flex:0 0 auto;
+      border:1px solid rgba(102,221,255,.4);
+      border-radius:8px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg,rgba(102,221,255,.09),rgba(109,242,192,.025)),
+        #07111e;
+      box-shadow:inset 0 0 22px rgba(102,221,255,.045),0 0 22px rgba(102,221,255,.04);
+    }
+
+    .brand-mark:before,.brand-mark:after{
+      content:"";
+      position:absolute;
+      left:-5px;right:-5px;
+      height:1px;
+      background:rgba(102,221,255,.36);
+      box-shadow:0 9px rgba(102,221,255,.25),0 -9px rgba(102,221,255,.25);
+    }
+
+    .brand-mark span{
+      font:600 10px "JetBrains Mono",monospace;
+      letter-spacing:.05em;
+      color:var(--cyan);
+    }
+
+    .brand-copy{min-width:0}
+    .brand-copy strong{
+      display:block;
+      font-size:13px;
+      line-height:1.2;
+      letter-spacing:-.01em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand-copy small{
+      display:block;
+      color:var(--muted2);
+      font:500 9px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      margin-top:4px;
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:23px;
+    }
+
+    .nav-links a{
+      color:#aebdcc;
+      text-decoration:none;
+      font-size:12px;
+      font-weight:650;
+      letter-spacing:.01em;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{color:var(--cyan)}
+    .nav-links .contact-btn{
+      color:var(--ink);
+      border:1px solid rgba(102,221,255,.2);
+      background:rgba(102,221,255,.045);
+      border-radius:10px;
+      padding:9px 13px;
+    }
+
+    .menu-btn{
+      display:none;
+      width:40px;height:40px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.025);
+      color:var(--ink);
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+
+    .mobile-menu{
+      display:none;
+      padding:0 24px 16px;
+      background:rgba(4,8,17,.97);
+      border-top:1px solid rgba(255,255,255,.04);
+    }
+
+    .mobile-menu.open{display:grid}
+    .mobile-menu a{
+      padding:13px 0;
+      text-decoration:none;
+      color:#afc0cf;
+      border-bottom:1px solid rgba(255,255,255,.05);
+      font-size:13px;
+      font-weight:600;
+    }
+
+    .hero{
+      min-height:100vh;
+      padding:138px 0 72px;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:700px;height:700px;
+      right:-260px;top:80px;
+      border:1px solid rgba(102,221,255,.04);
+      border-radius:50%;
+      box-shadow:
+        0 0 0 70px rgba(102,221,255,.012),
+        0 0 0 140px rgba(102,221,255,.008);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+      gap:58px;
+      align-items:center;
+    }
+
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:7px 10px;
+      border:1px solid rgba(109,242,192,.17);
+      border-radius:999px;
+      color:var(--teal);
+      background:rgba(109,242,192,.035);
+      font:500 10px "JetBrains Mono",monospace;
+      letter-spacing:.055em;
+      margin-bottom:19px;
+    }
+
+    .status i{
+      width:6px;height:6px;
+      border-radius:50%;
+      background:var(--teal);
+      box-shadow:0 0 10px rgba(109,242,192,.8);
+    }
+
+    .hero-name{
+      color:#9eb0c1;
+      font:500 11px "JetBrains Mono",monospace;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      margin-bottom:13px;
+    }
+
+    h1{
+      margin:0 0 20px;
+      font-size:clamp(48px,6.1vw,78px);
+      line-height:.98;
+      letter-spacing:-.055em;
+      max-width:700px;
+    }
+
+    h1 .line-accent{
+      background:linear-gradient(105deg,#f7fbff 8%,#9ce9ff 58%,#79f0c3 105%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero-role{
+      color:var(--cyan);
+      font:600 clamp(12px,1.5vw,15px) "JetBrains Mono",monospace;
+      line-height:1.6;
+      letter-spacing:.015em;
+      margin-bottom:18px;
+      max-width:740px;
+    }
+
+    .hero-copy{
+      color:#a4b4c3;
+      font-size:16px;
+      max-width:690px;
+      margin:0 0 28px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn{
+      min-height:46px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      padding:0 17px;
+      border-radius:11px;
+      border:1px solid rgba(255,255,255,.085);
+      background:rgba(255,255,255,.028);
+      color:#d9e4ed;
+      text-decoration:none;
+      font-size:12px;
+      font-weight:750;
+      transition:transform .2s ease,border-color .2s ease,background .2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(102,221,255,.26);
+    }
+
+    .btn.primary{
+      color:#03111a;
+      border:0;
+      background:linear-gradient(135deg,var(--cyan),var(--teal));
+      box-shadow:0 12px 36px rgba(102,221,255,.12);
+    }
+
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px 20px;
+      margin-top:25px;
+      color:#71879a;
+      font:500 10px "JetBrains Mono",monospace;
+    }
+    .hero-meta span:before{content:"// ";color:#476277}
+
+    .pd-console{
+      position:relative;
+      border:1px solid rgba(102,221,255,.16);
+      border-radius:24px;
+      background:
+        linear-gradient(180deg,rgba(12,25,41,.95),rgba(6,14,25,.96));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      min-height:510px;
+    }
+
+    .console-top{
+      height:44px;
+      padding:0 15px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(255,255,255,.014);
+    }
+
+    .console-title{
+      color:#8fa5b8;
+      font:500 9px "JetBrains Mono",monospace;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+
+    .console-dots{display:flex;gap:6px}
+    .console-dots i{
+      display:block;
+      width:6px;height:6px;border-radius:50%;
+      background:#365267;
+    }
+    .console-dots i:nth-child(1){background:var(--danger)}
+    .console-dots i:nth-child(2){background:var(--amber)}
+    .console-dots i:nth-child(3){background:var(--teal)}
+
+    .console-body{padding:18px}
+
+    .floorplan{
+      height:320px;
+      border:1px solid rgba(102,221,255,.14);
+      border-radius:15px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(102,221,255,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(102,221,255,.028) 1px,transparent 1px),
+        #07111d;
+      background-size:16px 16px;
+    }
+
+    .core-ring{
+      position:absolute;
+      inset:15px;
+      border:1px solid rgba(102,221,255,.18);
+      border-radius:7px;
+    }
+
+    .std-area{
+      position:absolute;
+      inset:43px 50px 42px 54px;
+      opacity:.76;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(102,221,255,.07) 0,
+          rgba(102,221,255,.07) 4px,
+          transparent 4px,
+          transparent 9px
+        );
+      border:1px solid rgba(102,221,255,.07);
+    }
+
+    .macro{
+      position:absolute;
+      border-radius:4px;
+      border:1px solid rgba(109,242,192,.28);
+      background:
+        linear-gradient(135deg,rgba(109,242,192,.17),rgba(109,242,192,.055));
+      box-shadow:inset 0 0 18px rgba(109,242,192,.025);
+    }
+
+    .m1{left:36px;top:38px;width:76px;height:58px}
+    .m2{right:34px;top:43px;width:88px;height:68px}
+    .m3{left:42px;bottom:35px;width:98px;height:72px}
+    .m4{right:39px;bottom:41px;width:72px;height:85px}
+    .m5{left:44%;top:28px;width:58px;height:48px;border-color:rgba(157,145,255,.3);background:rgba(157,145,255,.09)}
+
+    .route-h,.route-v{
+      position:absolute;
+      background:rgba(98,169,255,.23);
+      box-shadow:0 0 8px rgba(98,169,255,.06);
+    }
+    .route-h{height:2px}
+    .route-v{width:2px}
+    .rh1{left:112px;top:89px;width:180px}
+    .rh2{left:128px;bottom:88px;width:156px}
+    .rh3{left:66px;top:160px;width:260px;opacity:.58}
+    .rv1{left:50%;top:73px;height:178px}
+    .rv2{left:31%;top:100px;height:145px;opacity:.65}
+    .rv3{right:29%;top:111px;height:130px;opacity:.6}
+
+    .timing-path{
+      position:absolute;
+      left:76px;top:116px;
+      width:252px;height:122px;
+      pointer-events:none;
+    }
+
+    .timing-path svg{width:100%;height:100%;overflow:visible}
+    .timing-path path{
+      fill:none;
+      stroke:var(--amber);
+      stroke-width:2;
+      stroke-dasharray:5 6;
+      filter:drop-shadow(0 0 5px rgba(255,196,107,.25));
+      animation:dash 7s linear infinite;
+    }
+
+    @keyframes dash{to{stroke-dashoffset:-60}}
+
+    .timing-path circle{
+      fill:var(--amber);
+      filter:drop-shadow(0 0 5px rgba(255,196,107,.45));
+    }
+
+    .console-legend{
+      position:absolute;
+      left:27px;bottom:30px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      color:#7890a3;
+      font:500 8px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+    }
+
+    .legend-item{display:flex;align-items:center;gap:5px}
+    .legend-item i{width:7px;height:7px;border-radius:2px;background:var(--teal)}
+    .legend-item:nth-child(2) i{background:var(--blue)}
+    .legend-item:nth-child(3) i{background:var(--amber)}
+
+    .qor-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+      margin-top:12px;
+    }
+
+    .qor{
+      min-height:72px;
+      padding:10px;
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:10px;
+      background:rgba(255,255,255,.022);
+    }
+
+    .qor small{
+      display:block;
+      color:#61788c;
+      font:500 8px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:4px;
+    }
+    .qor strong{
+      font-size:15px;
+      letter-spacing:-.025em;
+    }
+    .qor em{
+      display:block;
+      color:#7890a3;
+      font:500 8px "JetBrains Mono",monospace;
+      font-style:normal;
+      margin-top:3px;
+    }
+
+    .flow-strip{
+      border-top:1px solid rgba(255,255,255,.045);
+      border-bottom:1px solid rgba(255,255,255,.045);
+      background:rgba(5,10,18,.55);
+    }
+
+    .flow{
+      min-height:74px;
+      display:grid;
+      grid-template-columns:repeat(8,1fr);
+      align-items:center;
+      gap:0;
+    }
+
+    .flow-step{
+      position:relative;
+      padding:14px 10px;
+      text-align:center;
+      color:#7f95a7;
+      font:500 9px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .flow-step:after{
+      content:"";
+      position:absolute;
+      right:-4px;top:50%;
+      width:8px;height:8px;
+      border-top:1px solid rgba(102,221,255,.2);
+      border-right:1px solid rgba(102,221,255,.2);
+      transform:translateY(-50%) rotate(45deg);
+    }
+    .flow-step:last-child:after{display:none}
+    .flow-step b{color:#dbe7ef;font-weight:600}
+
+    .section-head{
+      display:grid;
+      grid-template-columns:.7fr 1.3fr;
+      gap:56px;
+      align-items:end;
+      margin-bottom:42px;
+    }
+
+    .kicker{
+      color:var(--cyan);
+      font:600 10px "JetBrains Mono",monospace;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    h2{
+      font-size:clamp(32px,4vw,50px);
+      line-height:1.06;
+      letter-spacing:-.043em;
+      margin:0;
+    }
+
+    .section-intro{
+      margin:0;
+      color:#8fa4b7;
+      max-width:720px;
+      font-size:15px;
+    }
+
+    .metric-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric-card{
+      min-height:134px;
+      padding:20px;
+      border-radius:17px;
+      border:1px solid rgba(255,255,255,.065);
+      background:
+        linear-gradient(150deg,rgba(14,29,47,.88),rgba(7,15,26,.8));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .metric-card:before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:2px;
+      background:linear-gradient(90deg,var(--cyan),transparent 75%);
+      opacity:.65;
+    }
+
+    .metric-card .idx{
+      color:#50697d;
+      font:500 8px "JetBrains Mono",monospace;
+      margin-bottom:22px;
+    }
+
+    .metric-card strong{
+      display:block;
+      font-size:29px;
+      line-height:1;
+      letter-spacing:-.05em;
+      margin-bottom:7px;
+    }
+
+    .metric-card span{
+      display:block;
+      color:#8196a8;
+      font:500 9px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .expertise-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
+    }
+
+    .expertise-card{
+      position:relative;
+      min-height:300px;
+      border:1px solid rgba(255,255,255,.065);
+      border-radius:20px;
+      background:
+        linear-gradient(180deg,rgba(14,27,44,.9),rgba(7,15,26,.82));
+      padding:23px;
+      overflow:hidden;
+      transition:transform .22s ease,border-color .22s ease;
+    }
+
+    .expertise-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(102,221,255,.18);
+    }
+
+    .mini-visual{
+      height:105px;
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:13px;
+      margin-bottom:24px;
+      position:relative;
+      overflow:hidden;
+      background:#07111d;
+    }
+
+    .mini-floorplan:before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border:1px solid rgba(102,221,255,.12);
+      background:
+        linear-gradient(rgba(102,221,255,.026) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(102,221,255,.026) 1px,transparent 1px);
+      background-size:11px 11px;
+    }
+
+    .mini-floorplan i{
+      position:absolute;
+      display:block;
+      border:1px solid rgba(109,242,192,.28);
+      background:rgba(109,242,192,.1);
+      border-radius:3px;
+    }
+    .mini-floorplan i:nth-child(1){left:22px;top:25px;width:37px;height:26px}
+    .mini-floorplan i:nth-child(2){right:20px;top:18px;width:48px;height:31px}
+    .mini-floorplan i:nth-child(3){left:34%;bottom:17px;width:42px;height:27px}
+    .mini-floorplan i:nth-child(4){right:32px;bottom:15px;width:30px;height:35px}
+
+    .mini-timing svg{width:100%;height:100%}
+    .mini-timing polyline{
+      fill:none;
+      stroke:var(--amber);
+      stroke-width:2;
+      stroke-linejoin:round;
+      stroke-linecap:round;
+      filter:drop-shadow(0 0 5px rgba(255,196,107,.18));
+    }
+    .mini-timing .gridline{stroke:rgba(102,221,255,.06);stroke-width:1}
+
+    .mini-script{
+      padding:15px;
+      font:500 9px "JetBrains Mono",monospace;
+      color:#668198;
+    }
+    .mini-script span{display:block;margin-bottom:6px}
+    .mini-script .c1{color:var(--cyan)}
+    .mini-script .c2{color:var(--teal)}
+    .mini-script .c3{color:#a6b8c7}
+
+    .expertise-card .num{
+      color:#516a7e;
+      font:500 9px "JetBrains Mono",monospace;
+      margin-bottom:6px;
+    }
+    .expertise-card h3{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+    .expertise-card p{
+      margin:0;
+      color:#8ca1b4;
+      font-size:13px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:16px;
+    }
+
+    .tag{
+      border:1px solid rgba(102,221,255,.11);
+      background:rgba(102,221,255,.035);
+      color:#93cfe0;
+      border-radius:999px;
+      padding:5px 8px;
+      font:500 8px "JetBrains Mono",monospace;
+    }
+
+    .experience{
+      position:relative;
+    }
+
+    .experience:before{
+      content:"";
+      position:absolute;
+      top:19px;bottom:19px;
+      left:17px;
+      width:1px;
+      background:linear-gradient(var(--cyan),rgba(102,221,255,.04));
+    }
+
+    .role{
+      display:grid;
+      grid-template-columns:52px 1fr;
+      gap:16px;
+      margin-bottom:18px;
+      position:relative;
+    }
+
+    .role-marker{
+      width:35px;height:35px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      border:1px solid rgba(102,221,255,.28);
+      background:#07111d;
+      z-index:2;
+      margin-top:3px;
+    }
+    .role-marker i{
+      display:block;
+      width:7px;height:7px;border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 11px rgba(102,221,255,.65);
+    }
+
+    .role-card{
+      border:1px solid rgba(255,255,255,.065);
+      border-radius:19px;
+      background:
+        linear-gradient(180deg,rgba(13,26,43,.88),rgba(7,15,26,.8));
+      padding:23px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .role-card:after{
+      content:"";
+      position:absolute;
+      width:230px;height:230px;
+      right:-90px;top:-100px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(102,221,255,.05),transparent 68%);
+      pointer-events:none;
+    }
+
+    .role-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:22px;
+      margin-bottom:13px;
+      position:relative;
+      z-index:1;
+    }
+
+    .role-card h3{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-.025em;
+    }
+
+    .company{
+      color:var(--cyan);
+      font:600 10px "JetBrains Mono",monospace;
+      margin-top:5px;
+    }
+
+    .date{
+      color:#71889b;
+      font:500 9px "JetBrains Mono",monospace;
+      white-space:nowrap;
+      padding-top:4px;
+    }
+
+    .role-tech{
+      color:#8196a9;
+      font:500 9px "JetBrains Mono",monospace;
+      padding:9px 10px;
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:9px;
+      background:rgba(255,255,255,.02);
+      margin-bottom:15px;
+      position:relative;
+      z-index:1;
+    }
+
+    .role-bullets{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:9px 20px;
+      padding:0;
+      margin:0;
+      list-style:none;
+      position:relative;
+      z-index:1;
+    }
+
+    .role-bullets li{
+      color:#8ca1b3;
+      font-size:12px;
+      padding-left:14px;
+      position:relative;
+    }
+    .role-bullets li:before{
+      content:"";
+      position:absolute;
+      left:0;top:.68em;
+      width:5px;height:5px;border-radius:50%;
+      background:var(--teal);
+    }
+
+    .case-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:16px;
+    }
+
+    .case-card{
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:21px;
+      background:
+        linear-gradient(160deg,rgba(15,30,49,.95),rgba(6,14,24,.94));
+      overflow:hidden;
+      min-height:340px;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+    }
+
+    .case-card.featured{grid-row:span 2;min-height:696px}
+    .case-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg,rgba(102,221,255,.025) 1px,transparent 1px),
+        linear-gradient(rgba(102,221,255,.025) 1px,transparent 1px);
+      background-size:28px 28px;
+      mask-image:linear-gradient(to bottom,black,transparent 65%);
+    }
+
+    .case-visual{
+      height:270px;
+      border-bottom:1px solid rgba(255,255,255,.055);
+      position:relative;
+      overflow:hidden;
+      background:#07111c;
+    }
+
+    .case-card:not(.featured) .case-visual{height:125px}
+
+    .case-visual .fp-outline{
+      position:absolute;
+      inset:28px;
+      border:1px solid rgba(102,221,255,.18);
+    }
+    .case-card:not(.featured) .case-visual .fp-outline{inset:18px}
+
+    .case-visual .block{
+      position:absolute;
+      background:rgba(109,242,192,.11);
+      border:1px solid rgba(109,242,192,.24);
+      border-radius:3px;
+    }
+
+    .case-visual .b1{left:52px;top:52px;width:86px;height:67px}
+    .case-visual .b2{right:48px;top:48px;width:105px;height:76px}
+    .case-visual .b3{left:68px;bottom:45px;width:110px;height:72px}
+    .case-visual .b4{right:62px;bottom:56px;width:78px;height:95px}
+    .case-visual .b5{left:44%;top:92px;width:66px;height:54px;background:rgba(157,145,255,.09);border-color:rgba(157,145,255,.26)}
+
+    .case-card:not(.featured) .case-visual .b1{left:30px;top:31px;width:48px;height:34px}
+    .case-card:not(.featured) .case-visual .b2{right:28px;top:26px;width:60px;height:42px}
+    .case-card:not(.featured) .case-visual .b3{left:38%;bottom:19px;width:52px;height:30px}
+    .case-card:not(.featured) .case-visual .b4{right:43px;bottom:20px;width:38px;height:36px}
+    .case-card:not(.featured) .case-visual .b5{display:none}
+
+    .route-traces{
+      position:absolute;
+      inset:0;
+      opacity:.75;
+    }
+    .route-traces:before,.route-traces:after{
+      content:"";
+      position:absolute;
+      background:rgba(98,169,255,.2);
+    }
+    .route-traces:before{left:35%;top:20%;width:2px;height:60%}
+    .route-traces:after{left:20%;top:51%;width:62%;height:2px}
+
+    .case-content{
+      padding:23px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+      position:relative;
+      z-index:1;
+    }
+
+    .case-kicker{
+      color:var(--teal);
+      font:600 9px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.11em;
+      margin-bottom:9px;
+    }
+
+    .case-content h3{
+      margin:0 0 8px;
+      font-size:23px;
+      letter-spacing:-.03em;
+    }
+
+    .case-card:not(.featured) .case-content h3{font-size:19px}
+
+    .case-sub{
+      color:#71899d;
+      font:500 9px "JetBrains Mono",monospace;
+      margin-bottom:14px;
+    }
+
+    .case-content p{
+      color:#8fa3b5;
+      font-size:13px;
+      margin:0 0 18px;
+    }
+
+    .case-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-top:auto;
+    }
+
+    .case-metric{
+      padding:11px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.055);
+      background:rgba(255,255,255,.024);
+    }
+
+    .case-metric strong{
+      display:block;
+      font-size:14px;
+      letter-spacing:-.02em;
+    }
+
+    .case-metric span{
+      display:block;
+      color:#657c90;
+      font:500 8px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      margin-top:3px;
+    }
+
+    .secondary-cases{
+      display:grid;
+      gap:16px;
+    }
+
+    .tool-shell{
+      border:1px solid rgba(255,255,255,.065);
+      border-radius:20px;
+      overflow:hidden;
+      background:linear-gradient(180deg,rgba(12,25,41,.87),rgba(7,15,26,.82));
+    }
+
+    .tool-shell-head{
+      min-height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 18px;
+      border-bottom:1px solid rgba(255,255,255,.055);
+      color:#71899c;
+      font:500 9px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+    }
+
+    .tool-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+    }
+
+    .tool{
+      min-height:92px;
+      padding:15px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      border-right:1px solid rgba(255,255,255,.045);
+      border-bottom:1px solid rgba(255,255,255,.045);
+      transition:background .2s ease;
+    }
+    .tool:nth-child(5n){border-right:0}
+    .tool:hover{background:rgba(102,221,255,.025)}
+    .tool .tool-index{
+      color:#526b7f;
+      font:500 8px "JetBrains Mono",monospace;
+    }
+    .tool strong{
+      font-size:12px;
+      line-height:1.3;
+      color:#bfd0dc;
+    }
+
+    .method-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:14px;
+    }
+
+    .method-card{
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:17px;
+      background:rgba(255,255,255,.018);
+      padding:20px;
+    }
+
+    .method-card h3{
+      margin:0 0 13px;
+      font-size:15px;
+    }
+
+    .method-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+    }
+
+    .method-list span{
+      color:#8fa6b7;
+      font:500 9px "JetBrains Mono",monospace;
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:8px;
+      padding:7px 9px;
+      background:rgba(255,255,255,.018);
+    }
+
+    .edu-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .edu-card{
+      border:1px solid rgba(255,255,255,.065);
+      border-radius:18px;
+      background:linear-gradient(180deg,rgba(13,26,43,.82),rgba(7,15,26,.78));
+      padding:22px;
+      min-height:188px;
+    }
+
+    .edu-card .year{
+      color:#627b8f;
+      font:500 9px "JetBrains Mono",monospace;
+      margin-bottom:26px;
+    }
+
+    .edu-card h3{
+      margin:0 0 7px;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+
+    .edu-card .school{
+      color:var(--cyan);
+      font:600 10px "JetBrains Mono",monospace;
+    }
+
+    .edu-card p{
+      color:#889eb0;
+      font-size:12px;
+      margin:12px 0 0;
+    }
+
+    .credential-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .credential{
+      min-height:122px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.06);
+      background:rgba(255,255,255,.018);
+      padding:18px;
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+    }
+
+    .credential-icon{
+      width:34px;height:34px;
+      flex:0 0 auto;
+      border-radius:9px;
+      border:1px solid rgba(157,145,255,.18);
+      background:rgba(157,145,255,.05);
+      display:grid;
+      place-items:center;
+      color:var(--violet);
+      font:600 10px "JetBrains Mono",monospace;
+    }
+
+    .credential h3{
+      margin:0 0 4px;
+      font-size:14px;
+    }
+
+    .credential p{
+      margin:0;
+      color:#7d94a7;
+      font-size:11px;
+    }
+
+    .contact-panel{
+      border:1px solid rgba(102,221,255,.13);
+      border-radius:24px;
+      padding:38px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:36px;
+      align-items:center;
+      background:
+        radial-gradient(circle at 10% 10%,rgba(102,221,255,.07),transparent 34%),
+        radial-gradient(circle at 90% 80%,rgba(109,242,192,.04),transparent 30%),
+        #08121f;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contact-panel:after{
+      content:"";
+      position:absolute;
+      right:-70px;top:-70px;
+      width:210px;height:210px;
+      border:1px solid rgba(102,221,255,.08);
+      transform:rotate(45deg);
+    }
+
+    .contact-panel h2{margin-bottom:12px}
+    .contact-panel p{
+      color:#8ca2b4;
+      margin:0;
+      max-width:650px;
+      font-size:14px;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:8px;
+      position:relative;
+      z-index:1;
+    }
+
+    .contact-list a{
+      min-height:46px;
+      padding:0 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.065);
+      background:rgba(0,0,0,.12);
+      color:#adc0cf;
+      text-decoration:none;
+      font:500 10px "JetBrains Mono",monospace;
+      transition:.2s ease;
+    }
+
+    .contact-list a:hover{
+      color:var(--cyan);
+      border-color:rgba(102,221,255,.22);
+      transform:translateX(2px);
+    }
+
+    footer{
+      padding:28px 0 42px;
+      color:#5f768a;
+      font:500 9px "JetBrains Mono",monospace;
+    }
+
+    .footer-inner{
+      padding-top:22px;
+      border-top:1px solid rgba(255,255,255,.045);
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:26px;
+    }
+
+    .footer-note{max-width:720px;text-align:right}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:opacity .6s ease,transform .6s ease;
+    }
     .reveal.visible{opacity:1;transform:none}
-    @media(max-width:900px){
-      .navlinks a:not(.nav-cta){display:none}
-      .hero-grid,.section-head,.contact{grid-template-columns:1fr}
-      .hero{padding-top:130px}
-      .die{margin:25px auto 0;max-width:360px}
-      .stats{grid-template-columns:1fr 1fr}
-      .expertise{grid-template-columns:1fr}
-      .work-grid{grid-template-columns:1fr}
-      .tool-wall{grid-template-columns:repeat(3,1fr)}
-      .bullets{grid-template-columns:1fr}
-      .edu-grid{grid-template-columns:1fr}
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*:before,*:after{
+        animation-duration:.001ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.001ms!important;
+      }
+      .reveal{opacity:1;transform:none}
     }
-    @media(max-width:560px){
-      .wrap{width:min(var(--max),calc(100% - 26px))}
-      .brand .brandtext{font-size:12px}
-      h1{font-size:44px}
-      section{padding:68px 0}
-      .stats{grid-template-columns:1fr 1fr}
-      .stat strong{font-size:23px}
-      .role{grid-template-columns:38px 1fr;gap:10px}
-      .dot{width:28px;height:28px}
-      .rolebox{padding:18px}
-      .role-top{display:block}
-      .date{margin-top:8px}
-      .tool-wall{grid-template-columns:repeat(2,1fr)}
-      .contact{padding:26px}
-      .project h3{max-width:100%}
+
+    @media(max-width:980px){
+      .nav-links{display:none}
+      .menu-btn{display:flex}
+      .hero{min-height:auto;padding:124px 0 64px}
+      .hero-grid{grid-template-columns:1fr;gap:38px}
+      .pd-console{max-width:650px;width:100%;min-height:470px}
+      .floorplan{height:292px}
+      .section-head{grid-template-columns:1fr;gap:16px}
+      .metric-grid{grid-template-columns:1fr 1fr}
+      .expertise-grid{grid-template-columns:1fr}
+      .expertise-card{min-height:auto}
+      .mini-visual{height:125px}
+      .role-bullets{grid-template-columns:1fr}
+      .case-grid{grid-template-columns:1fr}
+      .case-card.featured{grid-row:auto;min-height:auto}
+      .case-card.featured .case-visual{height:230px}
+      .secondary-cases{grid-template-columns:1fr 1fr}
+      .tool-grid{grid-template-columns:repeat(3,1fr)}
+      .tool:nth-child(5n){border-right:1px solid rgba(255,255,255,.045)}
+      .tool:nth-child(3n){border-right:0}
+      .method-grid,.contact-panel{grid-template-columns:1fr}
+    }
+
+    @media(max-width:700px){
+      .wrap{width:min(var(--max),calc(100% - 28px))}
+      .nav-inner{height:64px}
+      .brand-mark{width:34px;height:34px}
+      .brand-copy strong{font-size:12px}
+      .brand-copy small{font-size:8px}
+      .hero{padding:106px 0 48px}
+      .status{margin-bottom:15px;font-size:9px}
+      .hero-name{font-size:9px;margin-bottom:10px}
+      h1{font-size:clamp(42px,12vw,60px);margin-bottom:17px}
+      .hero-role{font-size:11px;margin-bottom:13px}
+      .hero-copy{font-size:14px;line-height:1.65;margin-bottom:22px}
+      .btn{min-height:43px;padding:0 14px;font-size:11px}
+      .hero-actions{gap:8px}
+      .hero-meta{font-size:8.5px;gap:9px 14px;margin-top:18px}
+      .pd-console{min-height:394px;border-radius:18px}
+      .console-top{height:40px}
+      .console-body{padding:12px}
+      .floorplan{height:235px}
+      .core-ring{inset:11px}
+      .std-area{inset:34px 38px 33px 40px}
+      .m1{left:27px;top:29px;width:58px;height:44px}
+      .m2{right:26px;top:34px;width:68px;height:51px}
+      .m3{left:31px;bottom:27px;width:75px;height:53px}
+      .m4{right:29px;bottom:31px;width:55px;height:64px}
+      .m5{left:44%;top:21px;width:44px;height:37px}
+      .rh1{left:84px;top:68px;width:138px}
+      .rh2{left:95px;bottom:67px;width:118px}
+      .rh3{left:50px;top:118px;width:196px}
+      .rv1{top:55px;height:134px}
+      .rv2{top:76px;height:108px}
+      .rv3{top:84px;height:98px}
+      .timing-path{left:58px;top:86px;width:190px;height:94px}
+      .console-legend{left:20px;bottom:20px;gap:9px;font-size:6.8px}
+      .qor-strip{gap:5px;margin-top:8px}
+      .qor{min-height:61px;padding:8px}
+      .qor small{font-size:6.7px}
+      .qor strong{font-size:12px}
+      .qor em{font-size:6.6px}
+      .flow{grid-template-columns:repeat(4,1fr)}
+      .flow-step:nth-child(4):after{display:none}
+      .flow-step{font-size:7.5px;padding:12px 4px}
+      .section{padding:66px 0}
+      .section-head{margin-bottom:28px}
+      .kicker{font-size:9px}
+      h2{font-size:34px}
+      .section-intro{font-size:13px}
+      .metric-grid{gap:8px}
+      .metric-card{min-height:112px;padding:15px}
+      .metric-card .idx{margin-bottom:16px}
+      .metric-card strong{font-size:23px}
+      .metric-card span{font-size:7.5px}
+      .expertise-grid{gap:10px}
+      .expertise-card{padding:17px;border-radius:16px}
+      .mini-visual{height:98px;margin-bottom:18px}
+      .expertise-card h3{font-size:17px}
+      .expertise-card p{font-size:12px}
+      .tag{font-size:7.4px;padding:4px 7px}
+      .experience:before{left:13px}
+      .role{grid-template-columns:39px 1fr;gap:8px;margin-bottom:12px}
+      .role-marker{width:28px;height:28px}
+      .role-card{padding:17px;border-radius:16px}
+      .role-top{display:block;margin-bottom:10px}
+      .role-card h3{font-size:17px}
+      .company{font-size:8.8px}
+      .date{font-size:8px;margin-top:6px}
+      .role-tech{font-size:7.7px;padding:7px 8px;margin-bottom:11px}
+      .role-bullets{gap:7px}
+      .role-bullets li{font-size:11px}
+      .secondary-cases{grid-template-columns:1fr;gap:10px}
+      .case-grid{gap:10px}
+      .case-card{border-radius:17px;min-height:auto}
+      .case-card.featured .case-visual{height:195px}
+      .case-card:not(.featured) .case-visual{height:105px}
+      .case-content{padding:17px}
+      .case-content h3{font-size:19px}
+      .case-card:not(.featured) .case-content h3{font-size:17px}
+      .case-content p{font-size:12px;margin-bottom:14px}
+      .case-kicker,.case-sub{font-size:7.8px}
+      .case-metrics{gap:5px}
+      .case-metric{padding:8px}
+      .case-metric strong{font-size:12px}
+      .case-metric span{font-size:6.7px}
+      .tool-grid{grid-template-columns:repeat(2,1fr)}
+      .tool:nth-child(3n){border-right:1px solid rgba(255,255,255,.045)}
+      .tool:nth-child(2n){border-right:0}
+      .tool{min-height:76px;padding:12px}
+      .tool strong{font-size:11px}
+      .method-grid{gap:10px}
+      .method-card{padding:16px}
+      .method-list span{font-size:7.6px;padding:6px 7px}
+      .edu-grid,.credential-row{grid-template-columns:1fr;gap:10px}
+      .edu-card{min-height:auto;padding:18px}
+      .edu-card .year{margin-bottom:18px}
+      .credential{min-height:auto;padding:15px}
+      .contact-panel{padding:22px;border-radius:18px;gap:22px}
+      .contact-panel p{font-size:12px}
+      .contact-list a{min-height:43px;font-size:9px}
+      .footer-inner{display:block}
+      .footer-note{text-align:left;margin-top:10px}
+    }
+
+    @media(max-width:390px){
+      .brand-copy strong{max-width:210px}
+      h1{font-size:40px}
+      .metric-grid{grid-template-columns:1fr 1fr}
+      .qor-strip{grid-template-columns:1fr 1fr}
+      .pd-console{min-height:450px}
     }
   </style>
 </head>
+
 <body>
-  <nav class="nav">
+  <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#home" aria-label="Home">
-        <span class="chipmark">CSB</span>
-        <span class="brandtext">Chandra Sekhar Bhamidi<small>Physical Design · STA</small></span>
+      <a class="brand" href="#home" aria-label="Chandra Sekhar Bhamidi portfolio home">
+        <span class="brand-mark"><span>CSB</span></span>
+        <span class="brand-copy">
+          <strong>Chandra Sekhar Bhamidi</strong>
+          <small>Physical Design · Static Timing Analysis</small>
+        </span>
       </a>
-      <div class="navlinks">
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#profile">Profile</a>
         <a href="#expertise">Expertise</a>
         <a href="#experience">Experience</a>
         <a href="#work">Implementation</a>
-        <a href="#education">Education</a>
-        <a class="nav-cta" href="#contact">Contact</a>
-      </div>
+        <a href="#tools">Toolchain</a>
+        <a class="contact-btn" href="#contact">Contact</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
-  </nav>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#profile">Profile</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Implementation</a>
+      <a href="#tools">Toolchain</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
   <main id="home">
     <section class="hero">
       <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow"><span class="pulse"></span> Applications Engineer · Tokyo, Japan</div>
-          <h1><span class="gradient">Physical Design.</span><br>Timing Closure.<br>EDA Automation.</h1>
-          <div class="hero-role">7nm CPU Implementation // Static Timing Analysis // RTL-to-GDSII</div>
+        <div class="hero-copy-side">
+          <div class="status"><i></i> Applications Engineer · Tokyo, Japan</div>
+          <div class="hero-name">Chandra Sekhar Bhamidi</div>
+          <h1><span class="line-accent">Physical Design.</span><br>Timing Closure.<br>EDA Automation.</h1>
+          <div class="hero-role">7nm CPU IMPLEMENTATION // STATIC TIMING ANALYSIS // RTL-to-GDSII</div>
           <p class="hero-copy">
             Applications Engineer at Synopsys Tokyo with hands-on experience in advanced-node physical design,
             timing analysis and implementation methodologies. Experience spans floorplanning, routing optimization,
             setup closure, timing ECOs and TCL-based timing-debug automation.
           </p>
+
           <div class="hero-actions">
-            <a class="btn primary" href="#work">Explore Implementation Work →</a>
-            <a class="btn secondary" href="assets/Chandra_Sekhar_Bhamidi_Resume.pdf" target="_blank" rel="noopener">View Résumé</a>
-            <a class="btn secondary" href="https://github.com/thisisme-chandu" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn primary" href="#work">Explore implementation work →</a>
+            <a class="btn" href="assets/Chandra_Sekhar_Bhamidi_Resume.pdf" target="_blank" rel="noopener">View résumé</a>
+            <a class="btn" href="https://github.com/thisisme-chandu" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
+
           <div class="hero-meta">
-            <span>Work authorization: Japan through Jul 2030</span>
+            <span>Japan work authorization through Jul 2030</span>
             <span>No sponsorship required</span>
           </div>
         </div>
-        <div class="die" aria-label="Abstract semiconductor die illustration">
-          <div class="die-grid">
-            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
-            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
-            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
-            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
-            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
-            <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+
+        <div class="pd-console" aria-label="Abstract physical design floorplan and timing path visualization">
+          <div class="console-top">
+            <span class="console-title">Implementation View // Floorplan + Timing Path</span>
+            <span class="console-dots"><i></i><i></i><i></i></span>
           </div>
-          <div class="die-label">ADVANCED-NODE IMPLEMENTATION</div>
+          <div class="console-body">
+            <div class="floorplan">
+              <div class="core-ring"></div>
+              <div class="std-area"></div>
+              <span class="macro m1"></span>
+              <span class="macro m2"></span>
+              <span class="macro m3"></span>
+              <span class="macro m4"></span>
+              <span class="macro m5"></span>
+
+              <span class="route-h rh1"></span>
+              <span class="route-h rh2"></span>
+              <span class="route-h rh3"></span>
+              <span class="route-v rv1"></span>
+              <span class="route-v rv2"></span>
+              <span class="route-v rv3"></span>
+
+              <div class="timing-path">
+                <svg viewBox="0 0 252 122" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M5 92 L42 92 L42 26 L98 26 L98 68 L157 68 L157 38 L203 38 L203 94 L246 94"/>
+                  <circle cx="5" cy="92" r="3"/>
+                  <circle cx="246" cy="94" r="3"/>
+                </svg>
+              </div>
+
+              <div class="console-legend">
+                <span class="legend-item"><i></i>Macro</span>
+                <span class="legend-item"><i></i>Route</span>
+                <span class="legend-item"><i></i>Critical path</span>
+              </div>
+            </div>
+
+            <div class="qor-strip">
+              <div class="qor"><small>Node</small><strong>7nm</strong><em>FinFET</em></div>
+              <div class="qor"><small>Scale</small><strong>3.5M+</strong><em>instances</em></div>
+              <div class="qor"><small>Macros</small><strong>350+</strong><em>blocks</em></div>
+              <div class="qor"><small>Post-DFT</small><strong>2.47</strong><em>GHz</em></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="about">
+    <div class="flow-strip" aria-label="RTL to GDSII implementation flow">
+      <div class="wrap flow">
+        <div class="flow-step"><b>RTL</b></div>
+        <div class="flow-step"><b>Synthesis</b></div>
+        <div class="flow-step"><b>Floorplan</b></div>
+        <div class="flow-step"><b>Placement</b></div>
+        <div class="flow-step"><b>CTS</b></div>
+        <div class="flow-step"><b>Routing</b></div>
+        <div class="flow-step"><b>STA</b></div>
+        <div class="flow-step"><b>ECO</b></div>
+      </div>
+    </div>
+
+    <section class="section" id="profile">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><div class="kicker">01 // Profile</div><h2>Engineering at implementation scale.</h2></div>
+          <div>
+            <div class="kicker">01 // Profile</div>
+            <h2>Implementation at CPU scale.</h2>
+          </div>
           <p class="section-intro">
-            Focused on physical implementation and setup timing convergence for CPU-class designs, with experience
-            using Synopsys implementation and signoff tools alongside open-source EDA benchmarking.
+            Focused on physical implementation and setup timing convergence for CPU-class designs,
+            with experience using Synopsys implementation and signoff tools alongside open-source EDA benchmarking.
           </p>
         </div>
-        <div class="stats reveal">
-          <div class="stat"><strong>7nm</strong><span>Advanced-node CPU</span></div>
-          <div class="stat"><strong>3.5M+</strong><span>Instances</span></div>
-          <div class="stat"><strong>350+</strong><span>Macros</span></div>
-          <div class="stat"><strong>2.47 GHz</strong><span>Post-DFT result</span></div>
+
+        <div class="metric-grid reveal">
+          <article class="metric-card">
+            <div class="idx">NODE / 01</div>
+            <strong>7nm</strong>
+            <span>Advanced-node CPU</span>
+          </article>
+          <article class="metric-card">
+            <div class="idx">SCALE / 02</div>
+            <strong>3.5M+</strong>
+            <span>Instances</span>
+          </article>
+          <article class="metric-card">
+            <div class="idx">FLOORPLAN / 03</div>
+            <strong>20+</strong>
+            <span>Variants explored</span>
+          </article>
+          <article class="metric-card">
+            <div class="idx">AUTOMATION / 04</div>
+            <strong>30%</strong>
+            <span>Timing-debug reduction</span>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="expertise">
+    <section class="section" id="expertise">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><div class="kicker">02 // Core Expertise</div><h2>Physical design with timing awareness.</h2></div>
+          <div>
+            <div class="kicker">02 // Core Expertise</div>
+            <h2>Physical design with timing awareness.</h2>
+          </div>
           <p class="section-intro">
-            Implementation work centered on floorplanning, placement and routing optimization, static timing analysis,
-            QoR convergence and targeted ECO techniques.
+            Implementation work centered on floorplanning, placement and routing optimization,
+            static timing analysis, QoR convergence and targeted ECO techniques.
           </p>
         </div>
-        <div class="expertise">
-          <article class="card reveal">
-            <div class="card-num">PD / 01</div>
+
+        <div class="expertise-grid">
+          <article class="expertise-card reveal">
+            <div class="mini-visual mini-floorplan" aria-hidden="true">
+              <i></i><i></i><i></i><i></i>
+            </div>
+            <div class="num">PD / 01</div>
             <h3>Physical Design</h3>
             <p>Floorplanning, macro placement, placement optimization, routing optimization, congestion reduction and DRC closure.</p>
-            <div class="tags"><span class="tag">Floorplanning</span><span class="tag">Placement</span><span class="tag">CTS</span><span class="tag">Routing</span><span class="tag">DRC</span></div>
+            <div class="tags">
+              <span class="tag">Floorplanning</span><span class="tag">Placement</span><span class="tag">CTS</span><span class="tag">Routing</span><span class="tag">DRC</span>
+            </div>
           </article>
-          <article class="card reveal">
-            <div class="card-num">STA / 02</div>
+
+          <article class="expertise-card reveal">
+            <div class="mini-visual mini-timing" aria-hidden="true">
+              <svg viewBox="0 0 300 105" preserveAspectRatio="none">
+                <path class="gridline" d="M0 26H300M0 52H300M0 78H300M60 0V105M120 0V105M180 0V105M240 0V105"/>
+                <polyline points="10,78 44,78 44,30 92,30 92,66 138,66 138,43 187,43 187,80 239,80 239,52 289,52"/>
+              </svg>
+            </div>
+            <div class="num">STA / 02</div>
             <h3>Static Timing Analysis</h3>
             <p>PrimeTime-based WNS/TNS debug, path-based analysis, setup timing convergence and timing ECO closure.</p>
-            <div class="tags"><span class="tag">PrimeTime</span><span class="tag">PBA</span><span class="tag">WNS/TNS</span><span class="tag">VT Swap</span><span class="tag">Buffering</span></div>
+            <div class="tags">
+              <span class="tag">PrimeTime</span><span class="tag">PBA</span><span class="tag">WNS/TNS</span><span class="tag">VT Swap</span><span class="tag">Buffering</span>
+            </div>
           </article>
-          <article class="card reveal">
-            <div class="card-num">AUTO / 03</div>
+
+          <article class="expertise-card reveal">
+            <div class="mini-visual mini-script" aria-hidden="true">
+              <span><span class="c1">set</span> path_groups [get_path_groups *]</span>
+              <span><span class="c2">foreach</span> group $path_groups &#123;</span>
+              <span class="c3">&nbsp;&nbsp;report_timing -group $group</span>
+              <span class="c3">&nbsp;&nbsp;# rank worst WNS paths</span>
+              <span>&#125;</span>
+            </div>
+            <div class="num">AUTO / 03</div>
             <h3>EDA Automation</h3>
             <p>TCL scripting for timing report parsing, QoR tracking and path filtering to shorten timing-debug turnaround.</p>
-            <div class="tags"><span class="tag">TCL</span><span class="tag">QoR Tracking</span><span class="tag">Report Parsing</span><span class="tag">Path Filtering</span></div>
+            <div class="tags">
+              <span class="tag">TCL</span><span class="tag">QoR Tracking</span><span class="tag">Report Parsing</span><span class="tag">Path Filtering</span>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="experience">
+    <section class="section" id="experience">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><div class="kicker">03 // Experience</div><h2>From synthesis to timing closure.</h2></div>
+          <div>
+            <div class="kicker">03 // Experience</div>
+            <h2>From synthesis to timing closure.</h2>
+          </div>
           <p class="section-intro">
-            Professional experience across 7nm and 28nm implementations using Fusion Compiler, ICC2, PrimeTime,
-            Design Compiler, StarRC and Formality.
+            Professional experience across 7nm and 28nm implementations using Fusion Compiler,
+            IC Compiler II, PrimeTime, Design Compiler, StarRC and Formality.
           </p>
         </div>
-        <div class="timeline">
+
+        <div class="experience">
           <article class="role reveal">
-            <div class="dot"><i></i></div>
-            <div class="rolebox">
+            <div class="role-marker"><i></i></div>
+            <div class="role-card">
               <div class="role-top">
-                <div><h3>Applications Engineer</h3><div class="company">Synopsys · Tokyo, Japan</div></div>
+                <div>
+                  <h3>Applications Engineer</h3>
+                  <div class="company">Synopsys · Tokyo, Japan</div>
+                </div>
                 <div class="date">NOV 2024 — PRESENT</div>
               </div>
-              <p>7nm FinFET ARM-based CPU core · Fusion Compiler · PrimeTime · StarRC · IC Compiler II</p>
-              <ul class="bullets">
+              <div class="role-tech">7nm FinFET · ARM-based CPU · Fusion Compiler · PrimeTime · StarRC · IC Compiler II</div>
+              <ul class="role-bullets">
                 <li>Contributed to physical design and setup timing closure for a 3.5M+ instance, 350+ macro CPU implementation.</li>
                 <li>Contributed to 2.54 GHz pre-DFT and 2.47 GHz post-DFT results against a 2.6 GHz target.</li>
                 <li>Explored 20+ floorplan variants to improve macro locality, critical-path wirelength and routability.</li>
-                <li>Executed clock-uncertainty sweeps and analyzed WNS/TNS, runtime and timing-margin tradeoffs.</li>
-                <li>Performed manual timing ECOs using upsizing, VT swaps and buffer insertion on top critical paths.</li>
-                <li>Built a TCL flow to rank worst path groups by WNS, reducing timing-debug turnaround by 30%.</li>
+                <li>Analyzed clock-uncertainty sweeps across compile, CTS and route stages using WNS/TNS, runtime and timing margin.</li>
+                <li>Performed manual timing ECOs using cell upsizing, VT swaps and buffer insertion on top critical paths.</li>
+                <li>Developed a TCL flow to rank worst path groups by WNS, reducing timing-debug turnaround by 30%.</li>
               </ul>
             </div>
           </article>
 
           <article class="role reveal">
-            <div class="dot"><i></i></div>
-            <div class="rolebox">
+            <div class="role-marker"><i></i></div>
+            <div class="role-card">
               <div class="role-top">
-                <div><h3>Digital Implementation Trainee</h3><div class="company">ZOICX Technologies · Hyderabad, India</div></div>
+                <div>
+                  <h3>Digital Implementation Trainee</h3>
+                  <div class="company">ZOICX Technologies · Hyderabad, India</div>
+                </div>
                 <div class="date">JUN 2024 — OCT 2024</div>
               </div>
-              <p>28nm ARM Core · Design Compiler · IC Compiler II · Formality</p>
-              <ul class="bullets">
+              <div class="role-tech">28nm · ARM Core · Design Compiler · IC Compiler II · Formality</div>
+              <ul class="role-bullets">
                 <li>Executed the physical design flow for a 300K+ gate ARM core with 29 macros and one clock domain.</li>
-                <li>Achieved the 500 MHz target and verified post-synthesis netlist equivalence with Formality.</li>
+                <li>Achieved the 500 MHz target and verified post-synthesis netlist equivalence using Formality.</li>
                 <li>Ran 10+ floorplan trials across core shapes and utilization targets to eliminate routing congestion.</li>
                 <li>Benchmarked OpenROAD, Yosys and OpenSTA against Synopsys commercial flow stages.</li>
               </ul>
@@ -402,17 +1691,20 @@
           </article>
 
           <article class="role reveal">
-            <div class="dot"><i></i></div>
-            <div class="rolebox">
+            <div class="role-marker"><i></i></div>
+            <div class="role-card">
               <div class="role-top">
-                <div><h3>Physical Design Engineer — Trainee</h3><div class="company">RiseTime Semiconductor · Hyderabad, India</div></div>
+                <div>
+                  <h3>Physical Design Engineer — Trainee</h3>
+                  <div class="company">RiseTime Semiconductor · Hyderabad, India</div>
+                </div>
                 <div class="date">OCT 2023 — MAR 2024</div>
               </div>
-              <p>28nm design · Design Compiler · IC Compiler II · Formality</p>
-              <ul class="bullets">
-                <li>Executed synthesis-to-post-route flow for a 72K-gate design with 6 macros and 2 clocks at 454 MHz.</li>
+              <div class="role-tech">28nm · 72K-gate design · Design Compiler · IC Compiler II · Formality</div>
+              <ul class="role-bullets">
+                <li>Executed synthesis-to-post-route physical design for a 72K-gate design with 6 macros and 2 clocks at 454 MHz.</li>
                 <li>Covered synthesis, floorplanning, placement, CTS, routing and timing checks.</li>
-                <li>Resolved missing-via, pin-density and congestion issues through keepout-margin and floorplan optimization.</li>
+                <li>Resolved missing-via, pin-density and congestion issues through keepout-margin optimization and floorplan trials.</li>
               </ul>
             </div>
           </article>
@@ -420,115 +1712,229 @@
       </div>
     </section>
 
-    <section id="work">
+    <section class="section" id="work">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><div class="kicker">04 // Selected Implementation Work</div><h2>Resume-backed design work.</h2></div>
+          <div>
+            <div class="kicker">04 // Selected Implementation Work</div>
+            <h2>Resume-backed VLSI work.</h2>
+          </div>
           <p class="section-intro">
-            Only implementation work explicitly documented in the résumé is shown here. Employer projects are described
-            at a high level and do not expose proprietary design data.
+            Professional implementation work is described only at a résumé-safe level.
+            No proprietary layouts, internal reports, customer data, design databases or confidential scripts are published.
           </p>
         </div>
-        <div class="work-grid">
-          <article class="project reveal">
-            <div class="project-type">Professional · Advanced Node</div>
-            <h3>7nm ARM-based CPU Core</h3>
-            <div class="project-sub">PHYSICAL DESIGN // SETUP CLOSURE // TIMING ECO</div>
-            <p>Large-scale CPU implementation work spanning floorplan exploration, timing sensitivity studies, incremental placement and routing optimization, DFT timing isolation and post-route ECO closure.</p>
-            <div class="metrics">
-              <div class="metric"><strong>3.5M+</strong><span>Instances</span></div>
-              <div class="metric"><strong>350+</strong><span>Macros</span></div>
-              <div class="metric"><strong>2.47 GHz</strong><span>Post-DFT</span></div>
+
+        <div class="case-grid">
+          <article class="case-card featured reveal">
+            <div class="case-visual" aria-hidden="true">
+              <div class="fp-outline"></div>
+              <span class="block b1"></span>
+              <span class="block b2"></span>
+              <span class="block b3"></span>
+              <span class="block b4"></span>
+              <span class="block b5"></span>
+              <span class="route-traces"></span>
+              <div class="timing-path" style="left:18%;top:35%;width:64%;height:38%;">
+                <svg viewBox="0 0 252 122" preserveAspectRatio="none">
+                  <path d="M5 95 L41 95 L41 31 L88 31 L88 70 L145 70 L145 45 L199 45 L199 89 L246 89"/>
+                  <circle cx="5" cy="95" r="3"/>
+                  <circle cx="246" cy="89" r="3"/>
+                </svg>
+              </div>
+            </div>
+            <div class="case-content">
+              <div class="case-kicker">Professional · Advanced Node</div>
+              <h3>7nm ARM-based CPU Core</h3>
+              <div class="case-sub">PHYSICAL DESIGN // SETUP CLOSURE // TIMING ECO // QOR OPTIMIZATION</div>
+              <p>
+                Large-scale CPU implementation work spanning floorplan exploration, timing sensitivity studies,
+                incremental placement and routing optimization, DFT timing isolation and post-route timing ECO closure.
+              </p>
+              <div class="case-metrics">
+                <div class="case-metric"><strong>3.5M+</strong><span>Instances</span></div>
+                <div class="case-metric"><strong>350+</strong><span>Macros</span></div>
+                <div class="case-metric"><strong>2.47 GHz</strong><span>Post-DFT</span></div>
+                <div class="case-metric"><strong>20+</strong><span>Floorplans</span></div>
+                <div class="case-metric"><strong>3</strong><span>PVT corners</span></div>
+                <div class="case-metric"><strong>30%</strong><span>Debug reduction</span></div>
+              </div>
             </div>
           </article>
 
-          <article class="project reveal">
-            <div class="project-type">Professional · 28nm</div>
-            <h3>ARM Core Implementation</h3>
-            <div class="project-sub">SYNTHESIS // P&R // EQUIVALENCE</div>
-            <p>Full physical design flow with synthesis and formal equivalence verification, backed by repeated floorplan trials and congestion-focused optimization.</p>
-            <div class="metrics">
-              <div class="metric"><strong>300K+</strong><span>Gates</span></div>
-              <div class="metric"><strong>29</strong><span>Macros</span></div>
-              <div class="metric"><strong>500 MHz</strong><span>Target Met</span></div>
+          <div class="secondary-cases">
+            <article class="case-card reveal">
+              <div class="case-visual" aria-hidden="true">
+                <div class="fp-outline"></div>
+                <span class="block b1"></span><span class="block b2"></span><span class="block b3"></span><span class="block b4"></span>
+                <span class="route-traces"></span>
+              </div>
+              <div class="case-content">
+                <div class="case-kicker">Professional · 28nm</div>
+                <h3>ARM Core Implementation</h3>
+                <div class="case-sub">SYNTHESIS // P&R // FORMALITY</div>
+                <p>Full physical design flow with synthesis, formal equivalence verification and congestion-focused floorplan optimization.</p>
+                <div class="case-metrics">
+                  <div class="case-metric"><strong>300K+</strong><span>Gates</span></div>
+                  <div class="case-metric"><strong>29</strong><span>Macros</span></div>
+                  <div class="case-metric"><strong>500 MHz</strong><span>Target met</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card reveal">
+              <div class="case-visual" aria-hidden="true">
+                <div class="fp-outline"></div>
+                <span class="block b1"></span><span class="block b2"></span><span class="block b3"></span><span class="block b4"></span>
+                <span class="route-traces"></span>
+              </div>
+              <div class="case-content">
+                <div class="case-kicker">Professional · 28nm</div>
+                <h3>Synthesis-to-Post-Route Design</h3>
+                <div class="case-sub">FLOORPLAN // CTS // ROUTING // TIMING</div>
+                <p>End-to-end implementation of a dual-clock design with floorplan iterations addressing missing-via, pin-density and congestion issues.</p>
+                <div class="case-metrics">
+                  <div class="case-metric"><strong>72K</strong><span>Gates</span></div>
+                  <div class="case-metric"><strong>6</strong><span>Macros</span></div>
+                  <div class="case-metric"><strong>454 MHz</strong><span>Frequency</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card reveal">
+              <div class="case-content">
+                <div class="case-kicker">Academic · Physical Design</div>
+                <h3>ALU Design — RTL to GDSII</h3>
+                <div class="case-sub">SUMEDHA IT // SYNOPSYS TOOLS</div>
+                <p>Academic RTL-to-GDSII ALU design completed as part of the Post Graduate Diploma in Physical Design.</p>
+                <div class="case-metrics">
+                  <div class="case-metric"><strong>RTL</strong><span>Design entry</span></div>
+                  <div class="case-metric"><strong>GDSII</strong><span>Implementation</span></div>
+                  <div class="case-metric"><strong>PD</strong><span>Academic project</span></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">05 // Toolchain & Methodology</div>
+            <h2>Commercial and open-source EDA.</h2>
+          </div>
+          <p class="section-intro">
+            Tools and methodologies shown here are restricted to those explicitly listed in the current résumé.
+          </p>
+        </div>
+
+        <div class="tool-shell reveal">
+          <div class="tool-shell-head">
+            <span>EDA Workbench</span>
+            <span>Implementation · STA · Equivalence · Extraction · Automation</span>
+          </div>
+          <div class="tool-grid">
+            <div class="tool"><span class="tool-index">01</span><strong>Fusion Compiler</strong></div>
+            <div class="tool"><span class="tool-index">02</span><strong>PrimeTime</strong></div>
+            <div class="tool"><span class="tool-index">03</span><strong>IC Compiler II</strong></div>
+            <div class="tool"><span class="tool-index">04</span><strong>Design Compiler</strong></div>
+            <div class="tool"><span class="tool-index">05</span><strong>StarRC</strong></div>
+            <div class="tool"><span class="tool-index">06</span><strong>Formality</strong></div>
+            <div class="tool"><span class="tool-index">07</span><strong>OpenROAD</strong></div>
+            <div class="tool"><span class="tool-index">08</span><strong>Yosys</strong></div>
+            <div class="tool"><span class="tool-index">09</span><strong>OpenSTA</strong></div>
+            <div class="tool"><span class="tool-index">10</span><strong>TCL</strong></div>
+          </div>
+        </div>
+
+        <div class="method-grid reveal">
+          <article class="method-card">
+            <h3>Implementation methodology</h3>
+            <div class="method-list">
+              <span>QoR optimization</span>
+              <span>Incremental placement</span>
+              <span>Routing optimization</span>
+              <span>Congestion reduction</span>
+              <span>DFT timing constraints</span>
+              <span>DRC closure</span>
             </div>
           </article>
-
-          <article class="project reveal">
-            <div class="project-type">Professional · 28nm</div>
-            <h3>Synthesis-to-Post-Route Design</h3>
-            <div class="project-sub">FLOORPLAN // CTS // ROUTING // TIMING</div>
-            <p>End-to-end implementation of a dual-clock design with floorplan iterations addressing missing-via, pin-density and congestion issues.</p>
-            <div class="metrics">
-              <div class="metric"><strong>72K</strong><span>Gates</span></div>
-              <div class="metric"><strong>6</strong><span>Macros</span></div>
-              <div class="metric"><strong>454 MHz</strong><span>Frequency</span></div>
-            </div>
-          </article>
-
-          <article class="project reveal">
-            <div class="project-type">Academic · Physical Design</div>
-            <h3>ALU Design — RTL to GDSII</h3>
-            <div class="project-sub">SUMEDHA IT // SYNOPSYS TOOLS</div>
-            <p>Academic RTL-to-GDSII ALU design work completed as part of the Post Graduate Diploma in Physical Design.</p>
-            <div class="metrics">
-              <div class="metric"><strong>RTL</strong><span>Design Entry</span></div>
-              <div class="metric"><strong>GDSII</strong><span>Implementation</span></div>
-              <div class="metric"><strong>PD</strong><span>Academic Project</span></div>
+          <article class="method-card">
+            <h3>Timing methodology</h3>
+            <div class="method-list">
+              <span>WNS / TNS debug</span>
+              <span>PBA</span>
+              <span>Uncertainty sweep</span>
+              <span>VT swap</span>
+              <span>Buffer insertion</span>
+              <span>Cell upsizing</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="tools">
+    <section class="section" id="education">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><div class="kicker">05 // Toolchain</div><h2>Commercial and open-source EDA.</h2></div>
-          <p class="section-intro">Tools and methodologies explicitly listed in the résumé.</p>
+          <div>
+            <div class="kicker">06 // Education & Credentials</div>
+            <h2>Foundation in VLSI and ECE.</h2>
+          </div>
+          <p class="section-intro">
+            Education, publication and certification details from the current résumé.
+          </p>
         </div>
-        <div class="tool-wall reveal">
-          <div class="tool">Fusion Compiler</div><div class="tool">PrimeTime</div><div class="tool">IC Compiler II</div><div class="tool">Design Compiler</div><div class="tool">StarRC</div>
-          <div class="tool">Formality</div><div class="tool">OpenROAD</div><div class="tool">Yosys</div><div class="tool">OpenSTA</div><div class="tool">TCL</div>
-        </div>
-      </div>
-    </section>
 
-    <section id="education">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div><div class="kicker">06 // Education & Publication</div><h2>Foundation in VLSI and ECE.</h2></div>
-          <p class="section-intro">Education, publication and certification details from the résumé.</p>
-        </div>
         <div class="edu-grid">
-          <article class="card edu reveal">
+          <article class="edu-card reveal">
+            <div class="year">2022 — 2023</div>
             <h3>Post Graduate Diploma — Physical Design</h3>
-            <div class="where">Sumedha IT · Hyderabad · 2022–2023</div>
+            <div class="school">Sumedha IT · Hyderabad</div>
             <p>ALU Design — RTL-to-GDSII with Synopsys tools.</p>
           </article>
-          <article class="card edu reveal">
+          <article class="edu-card reveal">
+            <div class="year">2018 — 2022</div>
             <h3>B.Tech — Electronics & Communication Engineering</h3>
-            <div class="where">JNTU · Hyderabad · 2018–2022</div>
-            <p>NPTEL Certified: VLSI Design Flow RTL to GDS.</p>
+            <div class="school">JNTU · Hyderabad</div>
+            <p>Electronics and communication engineering foundation with VLSI-focused training and publication work.</p>
           </article>
         </div>
-        <article class="card edu publication reveal">
-          <h3>IEEE Publication — J-Pole Antenna for ADS-B Signals</h3>
-          <div class="where">April 2022</div>
-          <p>Publication listed in the résumé under B.Tech education.</p>
-        </article>
+
+        <div class="credential-row">
+          <article class="credential reveal">
+            <div class="credential-icon">IEEE</div>
+            <div>
+              <h3>J-Pole Antenna for ADS-B Signals</h3>
+              <p>IEEE publication · April 2022</p>
+            </div>
+          </article>
+          <article class="credential reveal">
+            <div class="credential-icon">NPTEL</div>
+            <div>
+              <h3>VLSI Design Flow RTL to GDS</h3>
+              <p>NPTEL certification</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="section" id="contact">
       <div class="wrap">
-        <div class="contact reveal">
+        <div class="contact-panel reveal">
           <div>
             <div class="kicker">07 // Contact</div>
-            <h2>Connect for physical design and STA opportunities.</h2>
-            <p>Based in Tokyo, Japan, with work authorization valid through July 2030. Contact details below intentionally exclude a public phone number.</p>
+            <h2>Physical design. Timing. Semiconductor implementation.</h2>
+            <p>
+              Based in Tokyo, Japan, with valid work authorization through July 2030.
+              Public contact information intentionally excludes a phone number.
+            </p>
           </div>
-          <div class="contact-links">
+          <div class="contact-list">
             <a href="mailto:bkbschandu2000@gmail.com"><span>Email</span><span>↗</span></a>
             <a href="https://www.linkedin.com/in/chandrasekhar-bhamidi" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
             <a href="https://github.com/thisisme-chandu" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a>
@@ -541,21 +1947,41 @@
   <footer>
     <div class="wrap footer-inner">
       <span>© <span id="year"></span> Chandra Sekhar Bhamidi</span>
-      <span class="confidentiality">Professional project descriptions intentionally remain high-level; no proprietary employer design data is published here.</span>
+      <span class="footer-note">Professional project descriptions remain high-level. No proprietary employer design data is published in this portfolio.</span>
     </div>
   </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
+
+    var menuBtn = document.getElementById("menuBtn");
+    var mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", function(){
+      var isOpen = mobileMenu.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click", function(){
+        mobileMenu.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded","false");
       });
-    }, { threshold: 0.08 });
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    });
+
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.08});
+      document.querySelectorAll(".reveal").forEach(function(el){observer.observe(el);});
+    } else {
+      document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+    }
   </script>
 </body>
 </html>
