@@ -1207,6 +1207,109 @@
     }
   </style>
 
+
+  <style id="top-contact-relocation">
+    .top-contact{
+      padding:22px 0 30px;
+      background:#070b10;
+      border-top:1px solid rgba(255,255,255,.045);
+      border-bottom:1px solid rgba(255,255,255,.045);
+    }
+    .top-contact-inner{
+      display:grid;
+      grid-template-columns:1.05fr .7fr 1.1fr;
+      gap:26px;
+      align-items:center;
+      padding:22px 24px;
+      border:1px solid rgba(255,255,255,.065);
+      border-radius:18px;
+      background:
+        radial-gradient(circle at 12% 15%,rgba(104,220,255,.055),transparent 28%),
+        linear-gradient(150deg,rgba(14,26,40,.86),rgba(7,13,20,.9));
+    }
+    .top-contact-title > span{
+      display:block;
+      margin-bottom:6px;
+      color:#6f8799;
+      font-size:6.8px;
+      letter-spacing:.14em;
+    }
+    .top-contact-title h2{
+      margin:0;
+      font-size:clamp(25px,3.1vw,39px);
+      line-height:.96;
+      letter-spacing:-.052em;
+    }
+    .top-contact-title h2 em{
+      color:transparent;
+      -webkit-text-stroke:1px rgba(244,247,250,.72);
+      font-style:normal;
+    }
+    .top-contact-copy p{
+      margin:0;
+      color:#8197a9;
+      font-size:10.5px;
+      line-height:1.6;
+    }
+    .top-contact-links{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:7px;
+    }
+    .top-contact-links a{
+      min-height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:9px;
+      padding:0 11px;
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:10px;
+      background:rgba(255,255,255,.016);
+      color:#a8bac7;
+      text-decoration:none;
+      font:600 7.6px "JetBrains Mono",monospace;
+      transition:transform .18s ease,border-color .18s ease,color .18s ease;
+    }
+    .top-contact-links a:hover{
+      transform:translateY(-2px);
+      color:var(--cyan);
+      border-color:rgba(104,220,255,.18);
+    }
+
+    @media(max-width:900px){
+      .top-contact-inner{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+      .top-contact-links{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:720px){
+      .top-contact{
+        padding:12px 0 20px;
+      }
+      .top-contact-inner{
+        padding:17px;
+        border-radius:14px;
+        gap:11px;
+      }
+      .top-contact-title h2{
+        font-size:30px;
+      }
+      .top-contact-copy p{
+        font-size:9.5px;
+      }
+      .top-contact-links{
+        grid-template-columns:1fr;
+        gap:6px;
+      }
+      .top-contact-links a{
+        min-height:41px;
+        padding:0 12px;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1299,6 +1402,23 @@
             </div>
           </div>
           <div class="chip-caption">Conceptual silicon artwork · not proprietary layout data</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="top-contact" id="contact">
+      <div class="wrap top-contact-inner reveal">
+        <div class="top-contact-title">
+          <span class="mono">AVAILABLE TO CONNECT</span>
+          <h2>LET'S BUILD <em>SILICON.</em></h2>
+        </div>
+        <div class="top-contact-copy">
+          <p>Based in Tokyo, Japan, with valid work authorization through July 2030.</p>
+        </div>
+        <div class="top-contact-links">
+          <a href="mailto:bkbschandu2000@gmail.com"><span>Email</span><span>↗</span></a>
+          <a href="https://www.linkedin.com/in/chandra-sekhar-bhamidi-518926176?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
+          <a href="https://github.com/thisisme-chandu" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a>
         </div>
       </div>
     </section>
@@ -1798,19 +1918,7 @@
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="wrap">
-        <div class="line-reveal"><span><h2>LET'S BUILD <span>SILICON.</span></h2></span></div>
-        <div class="contact-bottom reveal">
-          <p>Based in Tokyo, Japan, with valid work authorization through July 2030. Public contact details intentionally exclude a phone number.</p>
-          <div class="contact-links">
-            <a href="mailto:bkbschandu2000@gmail.com"><span>Email</span><span>↗</span></a>
-            <a href="https://www.linkedin.com/in/chandra-sekhar-bhamidi-518926176?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
-            <a href="https://github.com/thisisme-chandu" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
+    
   </main>
 
   <footer>
