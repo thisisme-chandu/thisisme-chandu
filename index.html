@@ -1069,6 +1069,144 @@
 @media(max-width:1020px){.hero-grid{grid-template-columns:1fr;gap:16px}.hero-proof{max-width:720px}}
 @media(max-width:720px){.hero-title{font-size:clamp(39px,11.6vw,50px);line-height:.99}.hero-proof{grid-template-columns:1fr 1fr;max-width:100%;gap:6px;margin-top:14px}.hero-proof div{padding:10px}.hero-proof strong{font-size:14px}.case-metrics{grid-template-columns:1fr 1fr}.hero-art{min-height:300px}}
 </style>
+
+  <style id="resume-section-styles">
+    .resume-btn{
+      border-color:rgba(114,237,191,.20);
+      background:rgba(114,237,191,.045);
+    }
+    .resume-btn:hover{
+      border-color:rgba(114,237,191,.38);
+      background:rgba(114,237,191,.075);
+    }
+    .resume-section{
+      padding:76px 0;
+      background:
+        radial-gradient(circle at 86% 18%,rgba(104,220,255,.07),transparent 24%),
+        #090d13;
+      border-top:1px solid rgba(255,255,255,.045);
+      border-bottom:1px solid rgba(255,255,255,.045);
+    }
+    .resume-panel{
+      display:grid;
+      grid-template-columns:.38fr 1.05fr .72fr;
+      gap:32px;
+      align-items:center;
+      padding:34px;
+      border:1px solid rgba(255,255,255,.075);
+      border-radius:24px;
+      background:
+        linear-gradient(145deg,rgba(16,29,44,.92),rgba(7,13,20,.94));
+      box-shadow:0 28px 75px rgba(0,0,0,.26);
+      position:relative;
+      overflow:hidden;
+    }
+    .resume-panel:after{
+      content:"";
+      position:absolute;
+      width:240px;height:240px;
+      right:-100px;top:-100px;
+      border:1px solid rgba(104,220,255,.06);
+      border-radius:50%;
+      box-shadow:0 0 0 45px rgba(104,220,255,.012),0 0 0 90px rgba(104,220,255,.007);
+      pointer-events:none;
+    }
+    .resume-label{
+      color:var(--cyan);
+      font-size:9px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .resume-main h2{
+      margin:0;
+      max-width:620px;
+      font-size:clamp(32px,4vw,50px);
+      line-height:.96;
+      letter-spacing:-.052em;
+    }
+    .resume-main p{
+      max-width:600px;
+      margin:12px 0 0;
+      color:#8ba0b2;
+      font-size:12px;
+      line-height:1.65;
+    }
+    .resume-actions{
+      display:grid;
+      gap:8px;
+      position:relative;
+      z-index:1;
+    }
+    .resume-download{
+      min-height:88px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 18px;
+      border:1px solid rgba(104,220,255,.18);
+      border-radius:15px;
+      background:rgba(104,220,255,.035);
+      color:#edf6fa;
+      text-decoration:none;
+      transition:transform .2s ease,border-color .2s ease,background .2s ease;
+    }
+    .resume-download:hover{
+      transform:translateY(-3px);
+      border-color:rgba(104,220,255,.36);
+      background:rgba(104,220,255,.065);
+    }
+    .resume-download small{
+      display:block;
+      color:#688195;
+      font-size:6.8px;
+      letter-spacing:.10em;
+    }
+    .resume-download strong{
+      display:block;
+      margin-top:6px;
+      font-size:15px;
+    }
+    .resume-icon{
+      width:42px;height:42px;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:#061019;
+      background:linear-gradient(135deg,var(--cyan),var(--teal));
+      font-size:18px;
+      font-weight:800;
+    }
+    .resume-view{
+      min-height:39px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:10px;
+      background:rgba(255,255,255,.015);
+      color:#8399aa;
+      text-decoration:none;
+      font:600 8px "JetBrains Mono",monospace;
+      transition:.2s ease;
+    }
+    .resume-view:hover{color:var(--cyan);border-color:rgba(104,220,255,.18)}
+    @media(max-width:960px){
+      .resume-panel{grid-template-columns:1fr;gap:18px}
+      .resume-label{margin-bottom:2px}
+      .resume-actions{max-width:520px}
+    }
+    @media(max-width:720px){
+      .resume-section{padding:54px 0}
+      .resume-panel{padding:20px;border-radius:17px}
+      .resume-main h2{font-size:34px}
+      .resume-main p{font-size:10.8px}
+      .resume-download{min-height:76px;padding:13px 14px}
+      .resume-download strong{font-size:14px}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1088,6 +1226,7 @@
         <a href="#flow">Flow</a>
         <a href="#work">Implementation</a>
         <a href="#tools">Toolchain</a>
+        <a href="#resume">Résumé</a>
         <a class="cta" href="#contact">Contact</a>
       </nav>
 
@@ -1104,6 +1243,7 @@
       <a href="#flow">Flow</a>
       <a href="#work">Implementation</a>
       <a href="#tools">Toolchain</a>
+      <a href="#resume">Résumé</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1123,6 +1263,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#work">View implementation work →</a>
+            <a class="btn resume-btn" href="resume_v3_chandra_sekhar_latest.pdf" download="Chandra_Sekhar_Bhamidi_Resume.pdf">Download Résumé ↓</a>
             <a class="btn" href="https://github.com/thisisme-chandu" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
           <div class="hero-meta">
@@ -1631,6 +1772,28 @@
         <div class="credential-grid">
           <article class="credential reveal"><div class="credential-icon">IEEE</div><div><h3>J-Pole Antenna for ADS-B Signals</h3><p>Publication · April 2022</p></div></article>
           <article class="credential reveal"><div class="credential-icon">NPTEL</div><div><h3>VLSI Design Flow RTL to GDS</h3><p>NPTEL certification</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section" id="resume">
+      <div class="wrap">
+        <div class="resume-panel reveal">
+          <div class="resume-label mono">05 // RÉSUMÉ</div>
+          <div class="resume-main">
+            <h2>Want the complete profile?</h2>
+            <p>Download my résumé for the full professional experience, implementation metrics, toolchain and education details.</p>
+          </div>
+          <div class="resume-actions">
+            <a class="resume-download" href="resume_v3_chandra_sekhar_latest.pdf" download="Chandra_Sekhar_Bhamidi_Resume.pdf">
+              <span>
+                <small class="mono">PDF · DIRECT DOWNLOAD</small>
+                <strong>Download Résumé</strong>
+              </span>
+              <span class="resume-icon" aria-hidden="true">↓</span>
+            </a>
+            <a class="resume-view" href="resume_v3_chandra_sekhar_latest.pdf" target="_blank" rel="noopener">View PDF ↗</a>
+          </div>
         </div>
       </div>
     </section>
