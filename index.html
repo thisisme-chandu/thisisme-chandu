@@ -1059,9 +1059,20 @@
     }
   </style>
 
+<style id="premium-cross-tool">
+.scroll-progress{position:fixed;z-index:200;top:0;left:0;right:0;height:2px;pointer-events:none}.scroll-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--cyan),var(--teal));box-shadow:0 0 12px rgba(104,220,255,.35)}
+.hero{background:radial-gradient(circle at 82% 22%,rgba(104,220,255,.075),transparent 22%),radial-gradient(circle at 11% 10%,rgba(107,169,255,.08),transparent 25%),linear-gradient(180deg,#05070b,#070c12 72%,#07090d)}
+.hero-grid{grid-template-columns:minmax(0,1.04fr) minmax(420px,.96fr);gap:72px}.hero-title{font-size:clamp(52px,5.7vw,80px);line-height:.95}.hero-line-accent{background:linear-gradient(97deg,#fff,#beeefe 52%,#79eac0);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy{max-width:590px}
+.hero-proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;max-width:630px;margin-top:20px}.hero-proof div{padding:12px 11px;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:rgba(255,255,255,.02)}.hero-proof strong{display:block;font-size:16px;line-height:1}.hero-proof span{display:block;margin-top:5px;color:#647d91;font:500 7px "JetBrains Mono",monospace;text-transform:uppercase}
+.hero-art:before{content:"";position:absolute;inset:7% 4%;border-radius:48%;background:radial-gradient(circle,rgba(104,220,255,.06),transparent 52%),repeating-radial-gradient(circle,transparent 0 38px,rgba(104,220,255,.035) 39px 40px);transform:rotate(-8deg);pointer-events:none}
+.statement{background:linear-gradient(90deg,rgba(11,17,24,.03) 1px,transparent 1px),linear-gradient(rgba(11,17,24,.03) 1px,transparent 1px),var(--white);background-size:52px 52px}.flow-box,.flagship-grid{box-shadow:0 32px 85px rgba(0,0,0,.28)}.case-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.project-image svg{transition:transform .5s ease}@media(hover:hover) and (pointer:fine){.project-card:hover .project-image svg{transform:scale(1.025)}}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+@media(max-width:1020px){.hero-grid{grid-template-columns:1fr;gap:16px}.hero-proof{max-width:720px}}
+@media(max-width:720px){.hero-title{font-size:clamp(39px,11.6vw,50px);line-height:.99}.hero-proof{grid-template-columns:1fr 1fr;max-width:100%;gap:6px;margin-top:14px}.hero-proof div{padding:10px}.hero-proof strong{font-size:14px}.case-metrics{grid-template-columns:1fr 1fr}.hero-art{min-height:300px}}
+</style>
 </head>
 
 <body>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#home" aria-label="Portfolio home">
@@ -1108,7 +1119,7 @@
           </h1>
           <div class="hero-role">PHYSICAL DESIGN // STATIC TIMING ANALYSIS // 7NM CPU IMPLEMENTATION</div>
           <p class="hero-copy">
-            Advanced-node implementation, timing closure and EDA automation — presented as a visual engineering portfolio.
+            Advanced-node physical implementation, timing closure and EDA automation for CPU-class semiconductor designs.
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#work">View implementation work →</a>
@@ -1117,6 +1128,12 @@
           <div class="hero-meta">
             <span>Japan work authorization through Jul 2030</span>
             <span>No sponsorship required</span>
+          </div>
+          <div class="hero-proof" aria-label="Selected implementation metrics">
+            <div><strong>7nm</strong><span>FinFET</span></div>
+            <div><strong>3.5M+</strong><span>Instances</span></div>
+            <div><strong>350+</strong><span>Macros</span></div>
+            <div><strong>2.47 GHz</strong><span>Post-DFT</span></div>
           </div>
         </div>
 
@@ -1425,7 +1442,7 @@
               <button class="case-metric" type="button" data-key="target"><strong>2.6 GHz</strong><span>Target</span></button>
               <button class="case-metric" type="button" data-key="predft"><strong>2.54 GHz</strong><span>Pre-DFT</span></button>
               <button class="case-metric" type="button" data-key="postdft"><strong>2.47 GHz</strong><span>Post-DFT</span></button>
-              <button class="case-metric" type="button" data-key="debug"><strong>30%</strong><span>Debug reduction</span></button>
+              <button class="case-metric" type="button" data-key="corners"><strong>3</strong><span>PVT corners</span></button>\n              <button class="case-metric" type="button" data-key="debug"><strong>30%</strong><span>Debug reduction</span></button>
             </div>
             <div class="case-metric-detail" id="caseMetricDetail">7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.</div>
           </div>
@@ -1645,6 +1662,9 @@
       var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       document.getElementById('year').textContent = new Date().getFullYear();
+      var scrollProgressBar=document.getElementById('scrollProgressBar');
+      function updateScrollProgress(){if(!scrollProgressBar)return;var max=document.documentElement.scrollHeight-window.innerHeight;scrollProgressBar.style.width=(max>0?Math.min(100,Math.max(0,window.scrollY/max*100)):0)+'%';}
+      updateScrollProgress();window.addEventListener('scroll',updateScrollProgress,{passive:true});
 
       var menuBtn = document.getElementById('menuBtn');
       var mobileMenu = document.getElementById('mobileMenu');
