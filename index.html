@@ -79,26 +79,6 @@
       min-width:0;
       text-decoration:none;
     }
-    .brand-chip{
-      width:38px;height:38px;
-      flex:0 0 auto;
-      display:grid;
-      place-items:center;
-      border-radius:9px;
-      position:relative;
-      border:1px solid rgba(104,220,255,.35);
-      color:var(--cyan);
-      background:linear-gradient(145deg,rgba(104,220,255,.1),rgba(114,237,191,.03)),#09111a;
-      font:600 10px "JetBrains Mono",monospace;
-    }
-    .brand-chip:before,.brand-chip:after{
-      content:"";
-      position:absolute;
-      left:-5px;right:-5px;
-      height:1px;
-      background:rgba(104,220,255,.34);
-      box-shadow:0 9px rgba(104,220,255,.22),0 -9px rgba(104,220,255,.22);
-    }
     .brand-copy{min-width:0}
     .brand-copy strong{display:block;font-size:13px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .brand-copy small{display:block;margin-top:4px;color:#71859a;font:500 8px "JetBrains Mono",monospace;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
@@ -888,13 +868,203 @@
       .case-metrics{grid-template-columns:1fr 1fr}
     }
   </style>
+
+  <style id="portfolio-polish-v2">
+    /* Text-only identity: no monogram, stripes, or decorative logo. */
+    .brand{gap:0}
+    .brand-copy strong{
+      font-size:14px;
+      font-weight:750;
+      letter-spacing:-.015em;
+      white-space:nowrap;
+      overflow:visible;
+      text-overflow:clip;
+    }
+    .brand-copy small{
+      margin-top:5px;
+      color:#75899c;
+      font-size:7.5px;
+      letter-spacing:.12em;
+      white-space:nowrap;
+    }
+
+    /* Cleaner, premium navigation. */
+    .nav{
+      background:linear-gradient(180deg,rgba(6,8,12,.92),rgba(6,8,12,.76));
+      box-shadow:0 8px 30px rgba(0,0,0,.12);
+    }
+    .nav-links a{position:relative}
+    .nav-links a:not(.cta):after{
+      content:"";
+      position:absolute;
+      left:0;right:100%;bottom:-8px;
+      height:1px;
+      background:var(--cyan);
+      transition:right .22s ease;
+    }
+    .nav-links a:not(.cta):hover:after{right:0}
+
+    /* More elegant hero: strong typography without mobile crowding. */
+    .hero{padding-top:126px}
+    .hero-grid{
+      grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);
+      gap:62px;
+    }
+    .hero-title{
+      max-width:720px;
+      margin:0;
+      font-size:clamp(50px,5.6vw,78px);
+      line-height:.96;
+      letter-spacing:-.058em;
+      text-transform:none;
+      text-wrap:balance;
+    }
+    .hero-line{display:block}
+    .hero-line-accent{
+      margin-top:6px;
+      background:linear-gradient(96deg,#ffffff 8%,#a9eaff 56%,#7feec6 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero-role{
+      margin-top:24px;
+      padding-left:13px;
+      border-left:2px solid rgba(104,220,255,.48);
+      line-height:1.55;
+    }
+    .hero-copy{
+      max-width:570px;
+      color:#9fb0bf;
+      line-height:1.7;
+    }
+    .hero-art{
+      min-height:500px;
+      isolation:isolate;
+    }
+    .chip-scene{width:min(400px,86%)}
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:540px;height:540px;
+      right:-230px;bottom:-240px;
+      border-radius:50%;
+      border:1px solid rgba(104,220,255,.04);
+      box-shadow:0 0 0 70px rgba(104,220,255,.01),0 0 0 140px rgba(104,220,255,.006);
+      pointer-events:none;
+    }
+
+    /* Refine major surfaces without adding gimmicks. */
+    .project-card,
+    .flagship-grid,
+    .flow-box,
+    .impact-card,
+    .edu-card,
+    .method-card{
+      transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+    }
+    .project-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 22px 55px rgba(11,17,24,.10);
+      border-color:rgba(11,17,24,.20);
+    }
+    .impact-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(104,220,255,.19);
+    }
+    .service-button{
+      transition:padding .22s ease,background .22s ease;
+    }
+    @media (hover:hover) and (pointer:fine){
+      .service-button:hover{
+        padding-left:10px;
+        padding-right:10px;
+        background:rgba(11,17,24,.025);
+      }
+    }
+
+    /* Better project-card hierarchy. */
+    .project-copy h3{line-height:1.08}
+    .project-kicker{letter-spacing:.12em}
+    .project-image svg{width:100%;height:100%}
+
+    /* Mobile-first fixes for the screenshot issue. */
+    @media(max-width:1020px){
+      .hero-grid{grid-template-columns:1fr;gap:18px}
+      .hero-art{min-height:420px}
+      .chip-scene{width:min(380px,82%)}
+    }
+    @media(max-width:720px){
+      .nav-inner{gap:10px}
+      .brand{max-width:calc(100% - 50px)}
+      .brand-copy strong{
+        font-size:12px;
+        line-height:1.15;
+        white-space:normal;
+      }
+      .brand-copy small{
+        margin-top:4px;
+        font-size:6.7px;
+        letter-spacing:.09em;
+        white-space:normal;
+        line-height:1.35;
+      }
+      .hero{
+        padding-top:94px;
+        padding-bottom:38px;
+      }
+      .hero-grid{gap:5px}
+      .hero-kicker{
+        max-width:100%;
+        white-space:normal;
+        line-height:1.35;
+      }
+      .hero-title{
+        max-width:100%;
+        font-size:clamp(40px,11.4vw,52px);
+        line-height:1.00;
+        letter-spacing:-.052em;
+      }
+      .hero-line-accent{margin-top:3px}
+      .hero-role{
+        margin:17px 0 10px;
+        padding-left:10px;
+        font-size:9.2px;
+        line-height:1.55;
+      }
+      .hero-copy{
+        max-width:100%;
+        font-size:12.5px;
+        line-height:1.62;
+      }
+      .hero-art{
+        min-height:315px;
+        margin-top:2px;
+      }
+      .chip-scene{width:min(300px,82%)}
+      .orbit{inset:11%}
+      .float-label{font-size:5.8px}
+      .fl1{top:16%;left:1%}
+      .fl2{right:0;top:30%}
+      .fl3{right:8%;bottom:11%}
+      .statement h2{font-size:clamp(36px,11vw,46px)}
+      .project-heading h2{font-size:clamp(36px,10.5vw,44px)}
+      .flagship-title{font-size:clamp(38px,11vw,48px)}
+    }
+    @media(max-width:390px){
+      .brand-copy strong{font-size:11.5px}
+      .brand-copy small{font-size:6.3px}
+      .hero-title{font-size:38px}
+      .hero-art{min-height:295px}
+    }
+  </style>
+
 </head>
 
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#home" aria-label="Portfolio home">
-        <span class="brand-chip">CSB</span>
         <span class="brand-copy">
           <strong>Chandra Sekhar Bhamidi</strong>
           <small>Physical Design · Static Timing Analysis</small>
@@ -932,11 +1102,9 @@
       <div class="wrap hero-grid">
         <div>
           <div class="hero-kicker"><i></i> Applications Engineer · Tokyo, Japan</div>
-          <h1 class="hero-title">
-            <span class="grad">HI, I'M</span><br>
-            <span>CHANDRA.</span><br>
-            <span class="outline">I BUILD</span><br>
-            <span>PHYSICAL.</span>
+          <h1 class="hero-title" aria-label="Howdy, I’m Chandra. I build silicon.">
+            <span class="hero-line">Howdy, I’m Chandra.</span>
+            <span class="hero-line hero-line-accent">I build silicon.</span>
           </h1>
           <div class="hero-role">PHYSICAL DESIGN // STATIC TIMING ANALYSIS // 7NM CPU IMPLEMENTATION</div>
           <p class="hero-copy">
@@ -1457,7 +1625,7 @@
           <p>Based in Tokyo, Japan, with valid work authorization through July 2030. Public contact details intentionally exclude a phone number.</p>
           <div class="contact-links">
             <a href="mailto:bkbschandu2000@gmail.com"><span>Email</span><span>↗</span></a>
-            <a href="https://www.linkedin.com/in/chandrasekhar-bhamidi" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
+            <a href="https://www.linkedin.com/in/chandra-sekhar-bhamidi-518926176?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
             <a href="https://github.com/thisisme-chandu" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a>
           </div>
         </div>
