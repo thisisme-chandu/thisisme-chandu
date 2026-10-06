@@ -7,6 +7,18 @@
   <meta name="theme-color" content="#06080c" />
   <meta property="og:title" content="Chandra Sekhar Bhamidi | Physical Design & STA" />
   <meta property="og:description" content="A VLSI semiconductor portfolio focused on advanced-node implementation, timing closure and EDA automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thisisme-chandu.github.io/thisisme-chandu/" />
+  <meta property="og:image" content="https://thisisme-chandu.github.io/thisisme-chandu/og-preview.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chandra Sekhar Bhamidi | Physical Design & STA" />
+  <meta name="twitter:description" content="7nm CPU implementation, physical design, static timing analysis, timing closure and EDA automation." />
+  <meta name="twitter:image" content="https://thisisme-chandu.github.io/thisisme-chandu/og-preview.svg" />
+  <link rel="canonical" href="https://thisisme-chandu.github.io/thisisme-chandu/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <title>Chandra Sekhar Bhamidi | Physical Design & STA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1310,6 +1322,148 @@
     }
   </style>
 
+
+  <style id="final-portfolio-refinements">
+    .hero-focus{
+      margin-top:-10px;
+      margin-bottom:21px;
+      color:#6f8799;
+      font-size:7.8px;
+      letter-spacing:.055em;
+      line-height:1.5;
+    }
+
+    .sta-deep-dive{
+      margin-top:16px;
+      padding:22px;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:22px;
+      background:
+        radial-gradient(circle at 12% 12%,rgba(104,220,255,.045),transparent 28%),
+        linear-gradient(155deg,rgba(13,25,39,.94),rgba(7,13,20,.94));
+    }
+    .sta-head{
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:28px;
+      align-items:end;
+      margin-bottom:17px;
+    }
+    .sta-head h3{
+      margin:0;
+      font-size:clamp(25px,3vw,38px);
+      line-height:.98;
+      letter-spacing:-.045em;
+    }
+    .sta-head p{
+      margin:0;
+      color:#748a9c;
+      font-size:9.5px;
+      text-align:right;
+    }
+    .sta-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:14px;
+    }
+    .sta-visual{
+      min-height:330px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:15px;
+      background:#07111b;
+      overflow:hidden;
+    }
+    .sta-visual svg{width:100%;height:auto}
+    .sta-data-path{animation:staDash 5.4s linear infinite}
+    .sta-pulse{animation:staPulse 2.2s ease-in-out infinite}
+    @keyframes staDash{to{stroke-dashoffset:-100}}
+    @keyframes staPulse{0%,100%{opacity:.45}50%{opacity:1}}
+    .sta-visual[data-mode="path"] .sta-clock,
+    .sta-visual[data-mode="path"] .sta-eco{opacity:.25}
+    .sta-visual[data-mode="uncertainty"] .sta-data-path,
+    .sta-visual[data-mode="uncertainty"] .sta-comb,
+    .sta-visual[data-mode="uncertainty"] .sta-eco{opacity:.24}
+    .sta-visual[data-mode="eco"] .sta-clock{opacity:.2}
+    .sta-visual[data-mode="eco"] .sta-eco{opacity:1}
+    .sta-visual[data-mode="groups"] .sta-clock,
+    .sta-visual[data-mode="groups"] .sta-eco{opacity:.3}
+    .sta-visual g,.sta-visual path{transition:opacity .22s ease}
+
+    .sta-panel{
+      padding:4px 0 4px 2px;
+      display:flex;
+      flex-direction:column;
+    }
+    .sta-mode-tabs{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:6px;
+    }
+    .sta-mode-btn{
+      min-height:43px;
+      padding:7px 9px;
+      border:1px solid rgba(255,255,255,.055);
+      border-radius:9px;
+      background:rgba(255,255,255,.017);
+      color:#748a9d;
+      cursor:pointer;
+      font:500 7.4px "JetBrains Mono",monospace;
+      transition:.18s ease;
+    }
+    .sta-mode-btn:hover,.sta-mode-btn.active{
+      color:var(--cyan);
+      border-color:rgba(104,220,255,.23);
+      background:rgba(104,220,255,.045);
+    }
+    .sta-copy{
+      margin-top:9px;
+      padding:16px;
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:11px;
+      background:rgba(255,255,255,.016);
+    }
+    .sta-copy strong{display:block;font-size:13px}
+    .sta-copy p{
+      margin:7px 0 0;
+      color:#8399aa;
+      font-size:10.5px;
+      line-height:1.65;
+    }
+    .sta-evidence{
+      margin-top:auto;
+      padding-top:13px;
+      color:#536c80;
+      font-size:6.8px;
+      line-height:1.6;
+    }
+
+    @media(max-width:900px){
+      .sta-head{grid-template-columns:1fr;gap:8px}
+      .sta-head p{text-align:left}
+      .sta-grid{grid-template-columns:1fr}
+      .sta-evidence{margin-top:12px}
+    }
+    @media(max-width:720px){
+      .hero-focus{
+        margin-top:-6px;
+        margin-bottom:16px;
+        font-size:6.8px;
+      }
+      .sta-deep-dive{
+        padding:14px;
+        border-radius:16px;
+      }
+      .sta-head h3{font-size:27px}
+      .sta-visual{min-height:215px}
+      .sta-mode-tabs{grid-template-columns:1fr 1fr}
+      .sta-mode-btn{min-height:40px;font-size:6.8px}
+      .sta-copy{padding:13px}
+      .sta-copy p{font-size:9.7px}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1364,6 +1518,7 @@
           <p class="hero-copy">
             Advanced-node physical implementation, timing closure and EDA automation for CPU-class semiconductor designs.
           </p>
+          <div class="hero-focus mono">Physical Design · STA · Timing Closure · CPU Implementation · EDA Automation</div>
           <div class="hero-actions">
             <a class="btn primary" href="#work">View implementation work →</a>
             <a class="btn resume-btn" href="resume_v3_chandra_sekhar_latest.pdf" download="Chandra_Sekhar_Bhamidi_Resume.pdf">Download Résumé ↓</a>
@@ -1409,8 +1564,8 @@
     <section class="top-contact" id="contact">
       <div class="wrap top-contact-inner reveal">
         <div class="top-contact-title">
-          <span class="mono">AVAILABLE TO CONNECT</span>
-          <h2>LET'S BUILD <em>SILICON.</em></h2>
+          <span class="mono">SEMICONDUCTOR / VLSI</span>
+          <h2>LET'S <em>CONNECT.</em></h2>
         </div>
         <div class="top-contact-copy">
           <p>Based in Tokyo, Japan, with valid work authorization through July 2030.</p>
@@ -1703,9 +1858,88 @@
               <button class="case-metric" type="button" data-key="target"><strong>2.6 GHz</strong><span>Target</span></button>
               <button class="case-metric" type="button" data-key="predft"><strong>2.54 GHz</strong><span>Pre-DFT</span></button>
               <button class="case-metric" type="button" data-key="postdft"><strong>2.47 GHz</strong><span>Post-DFT</span></button>
-              <button class="case-metric" type="button" data-key="corners"><strong>3</strong><span>PVT corners</span></button>\n              <button class="case-metric" type="button" data-key="debug"><strong>30%</strong><span>Debug reduction</span></button>
+              <button class="case-metric" type="button" data-key="corners"><strong>3</strong><span>PVT corners</span></button>
+              <button class="case-metric" type="button" data-key="debug"><strong>30%</strong><span>Debug reduction</span></button>
             </div>
             <div class="case-metric-detail" id="caseMetricDetail">7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.</div>
+          </div>
+        </div>
+
+        <div class="sta-deep-dive reveal" id="staDeepDive">
+          <div class="sta-head">
+            <div>
+              <div class="section-kicker">Technical Deep Dive // STA</div>
+              <h3>Setup-path closure, visualized.</h3>
+            </div>
+            <p>Conceptual timing-path illustration only — no proprietary timing values, reports or design data.</p>
+          </div>
+
+          <div class="sta-grid">
+            <div class="sta-visual" id="staVisual" data-mode="path">
+              <svg viewBox="0 0 760 310" role="img" aria-label="Conceptual static timing setup path from launch register through combinational logic to capture register">
+                <defs>
+                  <linearGradient id="staPathGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#68dcff"/>
+                    <stop offset=".72" stop-color="#ffc46a"/>
+                    <stop offset="1" stop-color="#72edbf"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="rgba(104,220,255,.06)">
+                  <path d="M0 62H760M0 124H760M0 186H760M0 248H760M95 0V310M190 0V310M285 0V310M380 0V310M475 0V310M570 0V310M665 0V310"/>
+                </g>
+
+                <g class="sta-registers">
+                  <rect x="46" y="102" width="112" height="92" rx="12" fill="#0d1b28" stroke="rgba(104,220,255,.42)" stroke-width="2"/>
+                  <rect x="602" y="102" width="112" height="92" rx="12" fill="#0d1b28" stroke="rgba(114,237,191,.42)" stroke-width="2"/>
+                  <text x="102" y="141" text-anchor="middle" fill="#d8e6ee" font-family="JetBrains Mono,monospace" font-size="13">LAUNCH</text>
+                  <text x="102" y="163" text-anchor="middle" fill="#7890a4" font-family="JetBrains Mono,monospace" font-size="10">REGISTER</text>
+                  <text x="658" y="141" text-anchor="middle" fill="#d8e6ee" font-family="JetBrains Mono,monospace" font-size="13">CAPTURE</text>
+                  <text x="658" y="163" text-anchor="middle" fill="#7890a4" font-family="JetBrains Mono,monospace" font-size="10">REGISTER</text>
+                </g>
+
+                <g class="sta-comb">
+                  <rect x="228" y="82" width="76" height="52" rx="8" fill="#101d2a" stroke="rgba(104,220,255,.24)"/>
+                  <rect x="344" y="159" width="76" height="52" rx="8" fill="#101d2a" stroke="rgba(104,220,255,.24)"/>
+                  <rect x="462" y="84" width="76" height="52" rx="8" fill="#101d2a" stroke="rgba(104,220,255,.24)"/>
+                  <text x="266" y="113" text-anchor="middle" fill="#8da5b6" font-family="JetBrains Mono,monospace" font-size="9">LOGIC</text>
+                  <text x="382" y="190" text-anchor="middle" fill="#8da5b6" font-family="JetBrains Mono,monospace" font-size="9">LOGIC</text>
+                  <text x="500" y="115" text-anchor="middle" fill="#8da5b6" font-family="JetBrains Mono,monospace" font-size="9">LOGIC</text>
+                </g>
+
+                <path class="sta-data-path" d="M158 148H205V108H228M304 108H326V185H344M420 185H443V110H462M538 110H566V148H602" fill="none" stroke="url(#staPathGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 9"/>
+                <circle class="sta-pulse" cx="158" cy="148" r="6" fill="#68dcff"/>
+                <circle cx="602" cy="148" r="6" fill="#72edbf"/>
+
+                <g class="sta-clock">
+                  <path d="M102 228V258H658V228" fill="none" stroke="rgba(104,220,255,.36)" stroke-width="2"/>
+                  <path d="M102 258H658" stroke="rgba(104,220,255,.36)" stroke-width="2" stroke-dasharray="5 7"/>
+                  <text x="380" y="285" text-anchor="middle" fill="#60798c" font-family="JetBrains Mono,monospace" font-size="10">CLOCK / UNCERTAINTY CONTEXT</text>
+                </g>
+
+                <g class="sta-eco">
+                  <circle cx="266" cy="72" r="18" fill="rgba(255,196,106,.08)" stroke="rgba(255,196,106,.36)"/>
+                  <text x="266" y="76" text-anchor="middle" fill="#ffc46a" font-family="JetBrains Mono,monospace" font-size="9">VT</text>
+                  <circle cx="382" cy="226" r="18" fill="rgba(255,196,106,.08)" stroke="rgba(255,196,106,.36)"/>
+                  <text x="382" y="230" text-anchor="middle" fill="#ffc46a" font-family="JetBrains Mono,monospace" font-size="8">BUF</text>
+                  <circle cx="500" cy="73" r="18" fill="rgba(255,196,106,.08)" stroke="rgba(255,196,106,.36)"/>
+                  <text x="500" y="77" text-anchor="middle" fill="#ffc46a" font-family="JetBrains Mono,monospace" font-size="8">SIZE</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="sta-panel">
+              <div class="sta-mode-tabs" role="tablist" aria-label="STA technical topics">
+                <button class="sta-mode-btn active" type="button" data-sta-mode="path">Path Analysis</button>
+                <button class="sta-mode-btn" type="button" data-sta-mode="uncertainty">Uncertainty</button>
+                <button class="sta-mode-btn" type="button" data-sta-mode="eco">ECO Closure</button>
+                <button class="sta-mode-btn" type="button" data-sta-mode="groups">Path Groups</button>
+              </div>
+              <div class="sta-copy" id="staCopy" aria-live="polite">
+                <strong>PrimeTime path analysis</strong>
+                <p>WNS/TNS debug and path-based analysis (PBA) are part of the résumé-listed STA skill set, with setup closure focused on critical post-route paths.</p>
+              </div>
+              <div class="sta-evidence mono">Résumé-backed topics: PrimeTime · WNS/TNS · PBA · uncertainty sweep · VT swap · buffering · path filtering</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1907,7 +2141,7 @@
           <div class="resume-actions">
             <a class="resume-download" href="resume_v3_chandra_sekhar_latest.pdf" download="Chandra_Sekhar_Bhamidi_Resume.pdf">
               <span>
-                <small class="mono">PDF · DIRECT DOWNLOAD</small>
+                <small class="mono">PDF · CURRENT COPY · OCT 2026</small>
                 <strong>Download Résumé</strong>
               </span>
               <span class="resume-icon" aria-hidden="true">↓</span>
@@ -2076,6 +2310,38 @@
         btn.addEventListener('click',function(){setStage(btn.getAttribute('data-stage'));});
       });
       setStage('rtl');
+
+
+      var staData = {
+        path:{
+          title:'PrimeTime path analysis',
+          text:'WNS/TNS debug and path-based analysis (PBA) are part of the résumé-listed STA skill set, with setup closure focused on critical post-route paths.'
+        },
+        uncertainty:{
+          title:'Clock uncertainty sensitivity',
+          text:'Clock-uncertainty sweeps were analyzed at compile, CTS and route stages using WNS/TNS, runtime and timing-margin tradeoffs.'
+        },
+        eco:{
+          title:'Manual timing ECO closure',
+          text:'Post-route setup violations on the top-10 critical paths were targeted using cell upsizing, VT swaps and buffer insertion.'
+        },
+        groups:{
+          title:'Path-group prioritization',
+          text:'Optimization was focused on the two most timing-critical path groups to accelerate WNS convergence during late-stage timing optimization.'
+        }
+      };
+      document.querySelectorAll('.sta-mode-btn').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var mode=btn.getAttribute('data-sta-mode');
+          document.querySelectorAll('.sta-mode-btn').forEach(function(b){b.classList.remove('active');});
+          btn.classList.add('active');
+          var visual=document.getElementById('staVisual');
+          if(visual){visual.setAttribute('data-mode',mode);}
+          var copy=document.getElementById('staCopy');
+          var d=staData[mode];
+          if(copy&&d){copy.innerHTML='<strong>'+d.title+'</strong><p>'+d.text+'</p>';}
+        });
+      });
 
       var fpData = {
         macro:['Macro placement','20+ floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability.'],
