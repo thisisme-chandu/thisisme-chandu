@@ -1464,6 +1464,72 @@
     }
   </style>
 
+
+  <style id="bilingual-language-switch">
+    .lang-switch{
+      display:flex;
+      align-items:center;
+      gap:3px;
+      padding:3px;
+      border:1px solid rgba(255,255,255,.075);
+      border-radius:10px;
+      background:rgba(255,255,255,.025);
+      flex:0 0 auto;
+    }
+    .lang-btn{
+      min-width:34px;
+      height:28px;
+      padding:0 8px;
+      border:0;
+      border-radius:7px;
+      background:transparent;
+      color:#71869a;
+      cursor:pointer;
+      font:600 8px "JetBrains Mono",monospace;
+      letter-spacing:.04em;
+      transition:background .18s ease,color .18s ease,box-shadow .18s ease;
+    }
+    .lang-btn:hover{color:#d8e7ef}
+    .lang-btn.active{
+      color:#061019;
+      background:linear-gradient(135deg,var(--cyan),var(--teal));
+      box-shadow:0 3px 12px rgba(104,220,255,.12);
+    }
+    .mobile-lang-switch{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:6px;
+      padding:14px 0 0;
+    }
+    .mobile-lang-switch .lang-btn{
+      width:100%;
+      height:40px;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:9px;
+    }
+    .mobile-lang-switch .lang-btn.active{border-color:transparent}
+    html[lang="ja"] body{
+      font-family:Inter,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    }
+    html[lang="ja"] .hero-title,
+    html[lang="ja"] .flagship-title,
+    html[lang="ja"] .statement h2,
+    html[lang="ja"] .project-heading h2,
+    html[lang="ja"] .impact-heading h2,
+    html[lang="ja"] .tool-heading h2{
+      letter-spacing:-.035em;
+    }
+    html[lang="ja"] .service-title{letter-spacing:-.025em}
+    @media(max-width:1100px){
+      .nav-links{gap:14px}
+      .nav-links a{font-size:10px}
+      .lang-btn{min-width:31px;padding:0 6px}
+    }
+    @media(max-width:900px){
+      .nav-links .lang-switch{display:none}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1485,6 +1551,10 @@
         <a href="#tools">Toolchain</a>
         <a href="#resume">Résumé</a>
         <a class="cta" href="#contact">Contact</a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        </div>
       </nav>
 
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">
@@ -1502,6 +1572,10 @@
       <a href="#tools">Toolchain</a>
       <a href="#resume">Résumé</a>
       <a href="#contact">Contact</a>
+      <div class="mobile-lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
+        <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
+      </div>
     </nav>
   </header>
 
@@ -2342,6 +2416,319 @@
           if(copy&&d){copy.innerHTML='<strong>'+d.title+'</strong><p>'+d.text+'</p>';}
         });
       });
+
+
+      var translations = {
+        "About":"概要",
+        "Expertise":"専門分野",
+        "Flow":"フロー",
+        "Implementation":"実装",
+        "Toolchain":"ツールチェーン",
+        "Résumé":"履歴書",
+        "Contact":"お問い合わせ",
+        "Applications Engineer · Tokyo, Japan":"アプリケーションエンジニア · 東京、日本",
+        "Howdy, I’m Chandra.":"こんにちは、Chandraです。",
+        "I build silicon.":"シリコン実装に取り組んでいます。",
+        "PHYSICAL DESIGN // STATIC TIMING ANALYSIS // 7NM CPU IMPLEMENTATION":"フィジカルデザイン // 静的タイミング解析 // 7NM CPU実装",
+        "Advanced-node physical implementation, timing closure and EDA automation for CPU-class semiconductor designs.":"CPUクラスの半導体設計を対象に、先端ノードのフィジカル実装、タイミングクロージャ、EDA自動化に取り組んでいます。",
+        "Physical Design · STA · Timing Closure · CPU Implementation · EDA Automation":"フィジカルデザイン · STA · タイミングクロージャ · CPU実装 · EDA自動化",
+        "View implementation work →":"実装事例を見る →",
+        "Download Résumé ↓":"履歴書をダウンロード ↓",
+        "Japan work authorization through Jul 2030":"日本での就労資格：2030年7月まで有効",
+        "No sponsorship required":"ビザスポンサー不要",
+        "Instances":"インスタンス",
+        "Macros":"マクロ",
+        "Post-DFT":"DFT後",
+        "MACRO PLACEMENT":"マクロ配置",
+        "SETUP CLOSURE":"セットアップクロージャ",
+        "TIMING ECO":"タイミングECO",
+        "Conceptual silicon artwork · not proprietary layout data":"概念図 · 機密レイアウトデータは不使用",
+        "SEMICONDUCTOR / VLSI":"半導体 / VLSI",
+        "LET'S":"お気軽に",
+        "CONNECT.":"ご連絡ください。",
+        "Based in Tokyo, Japan, with valid work authorization through July 2030.":"東京在住。日本での就労資格は2030年7月まで有効です。",
+        "Email":"メール",
+        "01 // About":"01 // 概要",
+        "ENGINEERING":"エンジニアリング",
+        "AT IMPLEMENTATION":"実装スケールで",
+        "SCALE.":"挑む。",
+        "Applications Engineer at Synopsys Tokyo with hands-on experience in advanced-node physical design, timing analysis and implementation methodologies for CPU-class designs.":"Synopsys東京のアプリケーションエンジニアとして、CPUクラス設計における先端ノードのフィジカルデザイン、タイミング解析、実装手法の実務経験があります。",
+        "WHAT I DO.":"専門領域。",
+        "Tap a discipline to reveal the résumé-backed scope and a purpose-built semiconductor visualization.":"項目を選択すると、履歴書に基づく担当範囲と半導体実装の概念図を確認できます。",
+        "Physical Design":"フィジカルデザイン",
+        "Floorplanning, macro placement, placement optimization, routing optimization, congestion reduction and DRC closure.":"フロアプランニング、マクロ配置、配置最適化、配線最適化、輻輳低減、DRCクロージャ。",
+        "Static Timing Analysis":"静的タイミング解析",
+        "PrimeTime, WNS/TNS debug, path-based analysis, clock-uncertainty sweeps and timing sensitivity studies.":"PrimeTime、WNS/TNSデバッグ、パスベース解析、クロック不確かさスイープ、タイミング感度解析。",
+        "DATA PATH":"データパス",
+        "REQUIRED TIME":"要求時間",
+        "Timing Closure":"タイミングクロージャ",
+        "Setup convergence through path-group prioritization and manual ECOs including cell upsizing, VT swaps and buffer insertion.":"パスグループの優先順位付けと、セルアップサイズ、VTスワップ、バッファ挿入などの手動ECOによるセットアップ収束。",
+        "CELL":"セル",
+        "VT SWAP":"VTスワップ",
+        "BUFFER":"バッファ",
+        "SINK":"シンク",
+        "EDA Automation":"EDA自動化",
+        "TCL scripting for timing report parsing, QoR tracking and path filtering, including a WNS-ranking flow that reduced timing-debug turnaround by 30%.":"タイミングレポート解析、QoR追跡、パスフィルタリングのためのTCL自動化。WNSランキングフローによりタイミングデバッグ時間を30%短縮。",
+        "02 // Interactive Flow":"02 // インタラクティブフロー",
+        "RTL → GDSII.":"RTL → GDSII。",
+        "Select a stage. The explanation changes to show only what the résumé actually supports, including where experience comes from an academic project versus professional implementation work.":"工程を選択すると、履歴書で確認できる内容のみを表示します。学術プロジェクトと実務経験の範囲も区別しています。",
+        "Synthesis":"論理合成",
+        "Floorplan":"フロアプラン",
+        "Placement":"配置",
+        "Routing":"配線",
+        "RTL / design entry":"RTL / 設計入力",
+        "The résumé explicitly lists an academic ALU Design project completed from RTL to GDSII during the Post Graduate Diploma in Physical Design.":"フィジカルデザインのPGディプロマ課程で、ALU設計をRTLからGDSIIまで実施した学術プロジェクトを履歴書に記載しています。",
+        "Academic":"学術",
+        "03 // Flagship Case Study":"03 // 代表ケーススタディ",
+        "7NM ARM-BASED":"7NM ARMベース",
+        "CPU CORE.":"CPUコア。",
+        "Synopsys Tokyo · Physical Design · Setup Closure · Timing ECO · EDA Automation":"Synopsys東京 · フィジカルデザイン · セットアップクロージャ · タイミングECO · EDA自動化",
+        "Interactive physical-design explorer":"インタラクティブ・フィジカルデザイン表示",
+        "Conceptual illustration":"概念図",
+        "not proprietary design data":"機密設計データは不使用",
+        "Macro Placement":"マクロ配置",
+        "Standard Cells":"スタンダードセル",
+        "Routing / Congestion":"配線 / 輻輳",
+        "Critical Path":"クリティカルパス",
+        "Clock Tree":"クロックツリー",
+        "Macro placement":"マクロ配置",
+        "20+ floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability.":"マクロの局所性改善、クリティカルパス配線長の短縮、配線性向上のため、20以上のフロアプラン案を検討しました。",
+        "Advanced-node implementation":"先端ノード実装",
+        "Physical implementation at CPU scale.":"CPUスケールのフィジカル実装。",
+        "High-level résumé-backed case study. No employer layout, internal report, customer database or proprietary interface is reproduced.":"履歴書に基づく概要レベルのケーススタディです。企業のレイアウト、内部レポート、顧客データベース、機密インターフェースは再現していません。",
+        "Floorplanning":"フロアプランニング",
+        "20+ variants for macro locality, critical-path wirelength and routability.":"マクロ局所性、クリティカルパス配線長、配線性を改善するため20以上の案を検討。",
+        "Uncertainty":"不確かさ",
+        "Compile / CTS / route sweeps with WNS/TNS, runtime and timing-margin analysis.":"Compile / CTS / Route各工程でスイープを行い、WNS/TNS、実行時間、タイミングマージンを解析。",
+        "Path groups":"パスグループ",
+        "Focused optimization on the two most timing-critical path groups.":"最もタイミングが厳しい2つのパスグループを優先して最適化。",
+        "Incremental placement and route_auto tuning for timing/DRC convergence.":"インクリメンタル配置とroute_auto調整によりタイミング/DRC収束を改善。",
+        "DFT timing":"DFTタイミング",
+        "Scan/test ports constrained to reduce non-functional timing noise during functional closure.":"機能モードのクロージャ時に、非機能タイミングノイズを抑えるためscan/testポートを制約。",
+        "Timing ECO":"タイミングECO",
+        "Cell upsizing, VT swaps and buffer insertion on top-10 critical post-route paths.":"配線後の上位10クリティカルパスに対し、セルアップサイズ、VTスワップ、バッファ挿入を実施。",
+        "Metal layers":"メタル層",
+        "Target":"目標",
+        "Pre-DFT":"DFT前",
+        "PVT corners":"PVTコーナー",
+        "Debug reduction":"デバッグ時間短縮",
+        "7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.":"SynopsysのARMベースCPUプロジェクトでは7nm FinFET技術を使用しています。",
+        "Technical Deep Dive // STA":"技術詳細 // STA",
+        "Setup-path closure, visualized.":"セットアップパスのクロージャを可視化。",
+        "Conceptual timing-path illustration only — no proprietary timing values, reports or design data.":"タイミングパスの概念図です。機密のタイミング値、レポート、設計データは使用していません。",
+        "LAUNCH":"LAUNCH",
+        "REGISTER":"レジスタ",
+        "CAPTURE":"CAPTURE",
+        "LOGIC":"ロジック",
+        "CLOCK / UNCERTAINTY CONTEXT":"クロック / 不確かさ",
+        "Path Analysis":"パス解析",
+        "ECO Closure":"ECOクロージャ",
+        "Path Groups":"パスグループ",
+        "PrimeTime path analysis":"PrimeTimeパス解析",
+        "WNS/TNS debug and path-based analysis (PBA) are part of the résumé-listed STA skill set, with setup closure focused on critical post-route paths.":"履歴書記載のSTAスキルにはWNS/TNSデバッグとパスベース解析（PBA）が含まれ、配線後のクリティカルパスを中心にセットアップクロージャを行っています。",
+        "Résumé-backed topics: PrimeTime · WNS/TNS · PBA · uncertainty sweep · VT swap · buffering · path filtering":"履歴書記載項目: PrimeTime · WNS/TNS · PBA · 不確かさスイープ · VTスワップ · バッファリング · パスフィルタリング",
+        "MORE IMPLEMENTATION WORK.":"その他の実装事例。",
+        "Large visual cards first; deeper technical details are available only when the visitor chooses to expand them.":"まず概要をビジュアルで表示し、必要に応じて技術詳細を展開できます。",
+        "CONCEPTUAL 28NM IMPLEMENTATION VIEW":"28NM実装の概念図",
+        "ZOICX Technologies · 28nm / 9 layers":"ZOICX Technologies · 28nm / 9層",
+        "ARM Core Implementation":"ARMコア実装",
+        "Full physical-design flow with synthesis, equivalence verification and congestion-focused floorplan optimization.":"論理合成、等価性検証、輻輳低減を重視したフロアプラン最適化を含むフル・フィジカルデザインフロー。",
+        "300K+ gates":"300K+ ゲート",
+        "29 macros":"29 マクロ",
+        "1 clock":"1 クロック",
+        "500 MHz achieved":"500 MHz達成",
+        "10+ floorplan trials":"10+ フロアプラン試行",
+        "Technical details":"技術詳細",
+        "Logic synthesis with Design Compiler.":"Design Compilerによる論理合成。",
+        "Post-synthesis netlist equivalence verification using Formality.":"Formalityによる合成後ネットリストの等価性検証。",
+        "Missing-via violations addressed during floorplanning.":"フロアプラン工程でmissing-via違反に対応。",
+        "OpenROAD, Yosys and OpenSTA benchmarked against commercial flow stages.":"OpenROAD、Yosys、OpenSTAを商用フローの各工程と比較評価。",
+        "RiseTime Semiconductor · 28nm / 9 layers":"RiseTime Semiconductor · 28nm / 9層",
+        "Synthesis-to-Post-Route Design":"論理合成から配線後までの設計",
+        "Implementation covering synthesis, floorplanning, placement, CTS, routing and timing checks.":"論理合成、フロアプラン、配置、CTS、配線、タイミングチェックまでを実施。",
+        "72K gates":"72K ゲート",
+        "6 macros":"6 マクロ",
+        "2 clocks":"2 クロック",
+        "Missing-via, pin-density and congestion issues addressed.":"Missing-via、ピン密度、輻輳問題に対応。",
+        "Keepout-margin optimization and multiple floorplan trials used for convergence.":"Keepout margin最適化と複数のフロアプラン試行により収束を改善。",
+        "Sumedha IT · Academic Physical Design":"Sumedha IT · 学術フィジカルデザイン",
+        "ALU Design — RTL to GDSII":"ALU設計 — RTLからGDSII",
+        "Academic RTL-to-GDSII ALU design completed with Synopsys tools during the Post Graduate Diploma in Physical Design.":"フィジカルデザインPGディプロマ課程で、Synopsysツールを用いたALUのRTL-to-GDSII設計を完了。",
+        "The résumé explicitly supports the RTL-to-GDSII scope and use of Synopsys tools.":"履歴書にはRTL-to-GDSIIの範囲とSynopsysツールの使用を明記しています。",
+        "IMPACT.":"成果。",
+        "01 / ADVANCED NODE":"01 / 先端ノード",
+        "Contributed to achieving the pre-DFT result against a 2.60 GHz target through setup timing optimization.":"2.60 GHz目標に対し、セットアップタイミング最適化を通じてDFT前の結果達成に貢献。",
+        "02 / POST-DFT":"02 / DFT後",
+        "Post-DFT result for the 7nm ARM-based CPU core against a 2.60 GHz target.":"7nm ARMベースCPUコアで、2.60 GHz目標に対するDFT後の結果。",
+        "03 / FLOORPLAN":"03 / フロアプラン",
+        "7nm variants":"7nm案",
+        "Explored to improve macro locality, critical-path wirelength and routability.":"マクロ局所性、クリティカルパス配線長、配線性の改善を目的に検討。",
+        "04 / 28NM ARM":"04 / 28NM ARM",
+        "Target achieved":"目標達成",
+        "Achieved on the 300K+ gate, 29-macro ARM core at ZOICX Technologies.":"ZOICX Technologiesの300K+ゲート、29マクロARMコアで達成。",
+        "05 / 28NM FLOORPLAN":"05 / 28NMフロアプラン",
+        "Trials":"試行",
+        "Core shape and utilization trials used to eliminate routing congestion.":"コア形状と利用率の試行により配線輻輳を解消。",
+        "06 / TCL AUTOMATION":"06 / TCL自動化",
+        "Debug turnaround reduction":"デバッグ時間短縮",
+        "WNS-based worst-path-group filtering and ranking shortened timing-debug turnaround.":"WNSベースのワーストパスグループのフィルタリングとランキングにより、タイミングデバッグ時間を短縮。",
+        "EDA TOOLCHAIN.":"EDAツールチェーン。",
+        "Commercial implementation/signoff tools plus the open-source EDA tools explicitly listed in the résumé.":"履歴書に記載した商用の実装/サインオフツールとオープンソースEDAツール。",
+        "Placement Optimization":"配置最適化",
+        "Routing Optimization":"配線最適化",
+        "Congestion Reduction":"輻輳低減",
+        "DRC Closure":"DRCクロージャ",
+        "Incremental Placement":"インクリメンタル配置",
+        "QoR Optimization":"QoR最適化",
+        "Timing / STA":"タイミング / STA",
+        "WNS / TNS Debug":"WNS / TNSデバッグ",
+        "Uncertainty Sweep":"不確かさスイープ",
+        "Timing Sensitivity":"タイミング感度",
+        "VT Swap":"VTスワップ",
+        "Buffering":"バッファリング",
+        "DFT Timing Constraints":"DFTタイミング制約",
+        "04 // Education & Credentials":"04 // 学歴・資格",
+        "VLSI FOUNDATION.":"VLSIの基盤。",
+        "Kept deliberately minimal: only education, publication and certification explicitly present in the résumé.":"履歴書に明記された学歴、論文、資格のみを掲載しています。",
+        "Post Graduate Diploma — Physical Design":"PGディプロマ — フィジカルデザイン",
+        "Sumedha IT · Hyderabad":"Sumedha IT · ハイデラバード",
+        "ALU Design — RTL-to-GDSII with Synopsys tools.":"ALU設計 — SynopsysツールによるRTL-to-GDSII。",
+        "B.Tech — Electronics & Communication Engineering":"B.Tech — 電子・通信工学",
+        "JNTU · Hyderabad":"JNTU · ハイデラバード",
+        "Electronics and communication engineering foundation.":"電子・通信工学の基礎。",
+        "Publication · April 2022":"論文 · 2022年4月",
+        "NPTEL certification":"NPTEL認定",
+        "05 // RÉSUMÉ":"05 // 履歴書",
+        "Want the complete profile?":"詳しい経歴はこちら。",
+        "Download my résumé for the full professional experience, implementation metrics, toolchain and education details.":"職務経験、実装指標、ツールチェーン、学歴の詳細は履歴書をダウンロードしてご覧ください。",
+        "PDF · CURRENT COPY · OCT 2026":"PDF · 最新版 · 2026年10月",
+        "Download Résumé":"履歴書をダウンロード",
+        "View PDF ↗":"PDFを見る ↗",
+        "Professional project visuals are conceptual and non-proprietary. No employer design database, customer data, internal report or proprietary interface is published here.":"プロジェクトの図は概念的かつ非機密の表現です。企業の設計データベース、顧客データ、内部レポート、機密インターフェースは掲載していません。",
+
+        "Logic synthesis":"論理合成",
+        "Professional 28nm work includes Design Compiler synthesis. The ZOICX role also includes Formality verification of the 300K-gate post-synthesis netlist.":"28nmの実務ではDesign Compilerによる論理合成を実施。ZOICXでは300Kゲートの合成後ネットリストをFormalityで等価性検証しました。",
+        "Floorplanning":"フロアプランニング",
+        "The 7nm CPU work includes 20+ floorplan variants for macro locality, critical-path wirelength and routability. The 28nm flows also include repeated floorplan trials for congestion reduction.":"7nm CPUではマクロ局所性、クリティカルパス配線長、配線性を改善するため20以上のフロアプラン案を検討。28nmフローでも輻輳低減のため複数回のフロアプラン試行を実施しました。",
+        "Placement optimization":"配置最適化",
+        "Placement optimization and incremental placement are explicitly listed in the résumé, including 7nm QoR-convergence work.":"履歴書には配置最適化とインクリメンタル配置を明記しており、7nmのQoR収束作業も含まれます。",
+        "Clock-tree stage":"クロックツリー工程",
+        "The résumé covers clock-uncertainty sweeps at compile, CTS and route stages, while the RiseTime design explicitly includes CTS in the synthesis-to-post-route flow.":"Compile、CTS、Route各工程でクロック不確かさスイープを実施。RiseTimeの設計では論理合成から配線後までのフローにCTSを含みます。",
+        "Routing and congestion":"配線と輻輳",
+        "Routing optimization, congestion reduction, route_auto tuning and DRC convergence are all resume-backed implementation activities.":"配線最適化、輻輳低減、route_auto調整、DRC収束はいずれも履歴書記載の実装業務です。",
+        "Static timing analysis":"静的タイミング解析",
+        "PrimeTime-based work includes WNS/TNS debug, path-based analysis, timing sensitivity studies and setup convergence.":"PrimeTimeを用いたWNS/TNSデバッグ、PBA、タイミング感度解析、セットアップ収束を実施。",
+        "Timing ECO / closure":"タイミングECO / クロージャ",
+        "Manual timing ECO work includes cell upsizing, VT swaps and buffer insertion targeting critical post-route setup violations.":"配線後のクリティカルなセットアップ違反に対し、セルアップサイズ、VTスワップ、バッファ挿入による手動タイミングECOを実施。",
+        "GDSII completion":"GDSII完了",
+        "The résumé explicitly supports RTL-to-GDSII completion for the academic ALU project. Professional roles are described through post-route implementation and timing closure.":"学術ALUプロジェクトではRTL-to-GDSII完了を履歴書に明記。実務では配線後実装とタイミングクロージャまでを記載しています。",
+
+        "Clock uncertainty sensitivity":"クロック不確かさ感度",
+        "Clock-uncertainty sweeps were analyzed at compile, CTS and route stages using WNS/TNS, runtime and timing-margin tradeoffs.":"Compile、CTS、Route各工程でクロック不確かさスイープを行い、WNS/TNS、実行時間、タイミングマージンのトレードオフを解析しました。",
+        "Manual timing ECO closure":"手動タイミングECOクロージャ",
+        "Post-route setup violations on the top-10 critical paths were targeted using cell upsizing, VT swaps and buffer insertion.":"配線後の上位10クリティカルパスのセットアップ違反に対し、セルアップサイズ、VTスワップ、バッファ挿入を実施しました。",
+        "Path-group prioritization":"パスグループ優先順位付け",
+        "Optimization was focused on the two most timing-critical path groups to accelerate WNS convergence during late-stage timing optimization.":"後期のタイミング最適化では、WNS収束を早めるため最も厳しい2つのパスグループに最適化を集中しました。",
+
+        "Standard-cell placement":"スタンダードセル配置",
+        "Placement optimization and incremental placement are explicitly listed in the résumé as part of physical-design and QoR convergence.":"配置最適化とインクリメンタル配置は、フィジカルデザインおよびQoR収束の一部として履歴書に明記しています。",
+        "Routing / congestion":"配線 / 輻輳",
+        "Incremental placement and route_auto tuning were used to improve timing/DRC convergence; congestion reduction is a listed implementation skill.":"インクリメンタル配置とroute_auto調整によりタイミング/DRC収束を改善。輻輳低減も実装スキルとして記載しています。",
+        "Critical timing path":"クリティカルタイミングパス",
+        "The portfolio highlights critical setup-path debugging, timing sensitivity and manual ECO techniques without exposing proprietary timing reports.":"機密タイミングレポートを公開せず、クリティカルなセットアップパスのデバッグ、タイミング感度、手動ECO手法を示しています。",
+        "Clock-tree context":"クロックツリーのコンテキスト",
+        "Clock uncertainty was swept at compile, CTS and route stages; CTS is also part of the documented 28nm synthesis-to-post-route flow.":"Compile、CTS、Route各工程でクロック不確かさをスイープ。CTSは28nmの論理合成から配線後までのフローにも含まれます。",
+
+        "The 7nm CPU project is listed with 3.5M+ instances.":"7nm CPUプロジェクトは3.5M+インスタンス規模です。",
+        "The 7nm CPU is listed with 350+ macros.":"7nm CPUは350+マクロ規模です。",
+        "The 7nm CPU project is listed with 9 metal layers.":"7nm CPUプロジェクトは9メタル層です。",
+        "The résumé states a 2.60 GHz target for the CPU implementation.":"CPU実装の目標は2.60 GHzです。",
+        "The résumé states a 2.54 GHz pre-DFT result against the 2.60 GHz target.":"2.60 GHz目標に対するDFT前の結果は2.54 GHzです。",
+        "The corrected post-DFT result is 2.50 GHz against the 2.60 GHz target.":"2.60 GHz目標に対するDFT後の結果は2.50 GHzです。",
+        "The technical-skills section lists work across 3 PVT corners.":"技術スキルには3つのPVTコーナーでの作業を記載しています。",
+        "A TCL script for WNS-based path-group ranking reduced timing-debug turnaround time by 30%.":"WNSベースのパスグループランキング用TCLスクリプトにより、タイミングデバッグ時間を30%短縮しました。"
+      };
+
+      var reverseTranslations = {};
+      Object.keys(translations).forEach(function(k){reverseTranslations[translations[k]]=k;});
+      var translationBusy=false;
+      var currentLanguage='en';
+
+      function translatedValue(value,lang){
+        var trimmed=value.trim();
+        if(!trimmed){return value;}
+        var next=lang==='ja' ? translations[trimmed] : reverseTranslations[trimmed];
+        if(!next){return value;}
+        return value.replace(trimmed,next);
+      }
+
+      function translateTree(root,lang){
+        translationBusy=true;
+        var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+          acceptNode:function(node){
+            var p=node.parentElement;
+            if(!p || /^(SCRIPT|STYLE|NOSCRIPT|CODE)$/i.test(p.tagName)){return NodeFilter.FILTER_REJECT;}
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        var nodes=[],n;
+        while((n=walker.nextNode()))nodes.push(n);
+        nodes.forEach(function(node){node.nodeValue=translatedValue(node.nodeValue,lang);});
+        root.querySelectorAll('[aria-label],[title]').forEach(function(el){
+          ['aria-label','title'].forEach(function(attr){
+            if(el.hasAttribute(attr)){el.setAttribute(attr,translatedValue(el.getAttribute(attr),lang));}
+          });
+        });
+        translationBusy=false;
+      }
+
+      function setLanguage(lang,persist){
+        if(lang!=='ja')lang='en';
+        currentLanguage=lang;
+        document.documentElement.lang=lang;
+        translateTree(document.body,lang);
+        document.querySelectorAll('.lang-btn').forEach(function(btn){
+          var active=btn.getAttribute('data-lang')===lang;
+          btn.classList.toggle('active',active);
+          btn.setAttribute('aria-pressed',active?'true':'false');
+        });
+        if(lang==='ja'){
+          document.title='Chandra Sekhar Bhamidi | フィジカルデザイン & STA';
+          var meta=document.querySelector('meta[name="description"]');
+          if(meta)meta.setAttribute('content','Chandra Sekhar Bhamidi — フィジカルデザイン、静的タイミング解析、タイミングクロージャ、EDA自動化に注力するアプリケーションエンジニア。');
+        }else{
+          document.title='Chandra Sekhar Bhamidi | Physical Design & STA';
+          var metaEn=document.querySelector('meta[name="description"]');
+          if(metaEn)metaEn.setAttribute('content','Chandra Sekhar Bhamidi — Applications Engineer focused on physical design, static timing analysis, timing closure and EDA automation.');
+        }
+        if(persist!==false){
+          try{localStorage.setItem('portfolio-language',lang);}catch(e){}
+        }
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(function(btn){
+        btn.addEventListener('click',function(){setLanguage(btn.getAttribute('data-lang'),true);});
+      });
+
+      var i18nObserver=new MutationObserver(function(mutations){
+        if(translationBusy || currentLanguage!=='ja'){return;}
+        mutations.forEach(function(m){
+          m.addedNodes.forEach(function(node){
+            if(node.nodeType===Node.TEXT_NODE){
+              translationBusy=true;
+              node.nodeValue=translatedValue(node.nodeValue,'ja');
+              translationBusy=false;
+            }else if(node.nodeType===Node.ELEMENT_NODE){
+              translateTree(node,'ja');
+            }
+          });
+        });
+      });
+      i18nObserver.observe(document.body,{childList:true,subtree:true});
+
+      var savedLanguage='en';
+      try{savedLanguage=localStorage.getItem('portfolio-language')||'en';}catch(e){}
+      setLanguage(savedLanguage,false);
 
       var fpData = {
         macro:['Macro placement','20+ floorplan variants were explored to improve macro locality, reduce critical-path wirelength and enhance routability.'],
