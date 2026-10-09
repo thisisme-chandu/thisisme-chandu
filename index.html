@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Chandra Sekhar Bhamidi — Applications Engineer focused on physical design, static timing analysis, timing closure and EDA automation." />
   <meta name="theme-color" content="#06080c" />
+  <script>
+    (function(){
+      try{
+        var saved=localStorage.getItem('portfolio-theme');
+        var theme=saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+        document.documentElement.setAttribute('data-theme',theme);
+      }catch(e){
+        document.documentElement.setAttribute('data-theme','light');
+      }
+    })();
+  </script>
   <meta property="og:title" content="Chandra Sekhar Bhamidi | Physical Design & STA" />
   <meta property="og:description" content="A VLSI semiconductor portfolio focused on advanced-node implementation, timing closure and EDA automation." />
   <meta property="og:type" content="website" />
@@ -2011,6 +2022,344 @@
     }
   </style>
 
+
+  <style id="portfolio-theme-system-v1">
+    :root{
+      --theme-bg:#f2f0e9;
+      --theme-bg-2:#faf9f5;
+      --theme-panel:#ffffff;
+      --theme-panel-2:#e9e7df;
+      --theme-text:#0a0d10;
+      --theme-muted:#5f686f;
+      --theme-line:rgba(10,13,16,.18);
+      --theme-line-soft:rgba(10,13,16,.09);
+      --theme-accent:#43d5e8;
+      --theme-accent-2:#62ddb6;
+      --theme-critical:#e9a23b;
+      --theme-nav:rgba(242,240,233,.94);
+      --theme-dark-panel:#0a1016;
+      --theme-shadow:rgba(0,0,0,.12);
+    }
+    html[data-theme="dark"]{
+      --theme-bg:#080b10;
+      --theme-bg-2:#0c1118;
+      --theme-panel:#101720;
+      --theme-panel-2:#121b26;
+      --theme-text:#f2f5f7;
+      --theme-muted:#8b9ba8;
+      --theme-line:rgba(255,255,255,.18);
+      --theme-line-soft:rgba(255,255,255,.085);
+      --theme-accent:#68dcff;
+      --theme-accent-2:#72edbf;
+      --theme-critical:#ffc46a;
+      --theme-nav:rgba(8,11,16,.94);
+      --theme-dark-panel:#071018;
+      --theme-shadow:rgba(0,0,0,.38);
+      color-scheme:dark;
+    }
+    html[data-theme="light"]{color-scheme:light}
+
+    html,body{
+      background:var(--theme-bg)!important;
+      color:var(--theme-text)!important;
+      transition:background-color .24s ease,color .24s ease;
+    }
+
+    /* Preference controls */
+    .hero-preferences{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:8px;
+      width:max-content;
+      max-width:100%;
+      margin-bottom:20px;
+    }
+    .hero-preferences .hero-language,
+    .hero-theme{
+      margin:0!important;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:4px 5px 4px 9px!important;
+      border:1px solid var(--theme-text)!important;
+      border-radius:2px!important;
+      background:transparent!important;
+      box-shadow:none!important;
+    }
+    .hero-language-label,.hero-theme-label{
+      color:var(--theme-muted)!important;
+      font-size:6.6px;
+      letter-spacing:.12em;
+      white-space:nowrap;
+    }
+    .hero-language-buttons,.hero-theme-buttons{
+      display:flex;
+      align-items:center;
+      gap:3px;
+      padding:2px;
+      background:transparent!important;
+    }
+    .hero-preferences .lang-btn,.theme-btn{
+      min-width:auto!important;
+      height:28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      padding:0 9px!important;
+      border:0!important;
+      border-radius:1px!important;
+      background:transparent!important;
+      color:var(--theme-muted)!important;
+      cursor:pointer;
+      font:600 7.4px "JetBrains Mono",monospace!important;
+      letter-spacing:.025em;
+    }
+    .hero-preferences .lang-btn.active,.theme-btn.active{
+      background:var(--theme-text)!important;
+      color:var(--theme-bg)!important;
+      box-shadow:none!important;
+    }
+    .theme-dot{
+      width:8px;height:8px;border-radius:50%;
+      border:1px solid currentColor;
+      flex:0 0 auto;
+    }
+    .theme-dot-light{background:#f2f0e9}
+    .theme-dot-dark{background:#080b10}
+    .theme-btn.active .theme-dot{border-color:var(--theme-bg)}
+    html[data-theme="dark"] .theme-dot-light{border-color:#d8dde1}
+    html[data-theme="light"] .theme-dot-dark{border-color:#252a2e}
+
+    /* Global Swiss surfaces */
+    .nav{
+      background:var(--theme-nav)!important;
+      border-bottom-color:var(--theme-line)!important;
+    }
+    .brand-copy strong{color:var(--theme-text)!important}
+    .brand-copy small{color:var(--theme-muted)!important}
+    .nav-links a{color:var(--theme-muted)!important}
+    .nav-links a:hover{color:var(--theme-text)!important}
+    .nav-links .cta,.menu-btn{
+      border-color:var(--theme-text)!important;
+      color:var(--theme-text)!important;
+      background:transparent!important;
+    }
+    .mobile-menu{
+      background:var(--theme-bg)!important;
+      border-top-color:var(--theme-line)!important;
+    }
+    .mobile-menu a{
+      color:var(--theme-text)!important;
+      border-bottom-color:var(--theme-line-soft)!important;
+    }
+
+    .hero{
+      color:var(--theme-text)!important;
+      background:
+        linear-gradient(90deg,var(--theme-line-soft) 1px,transparent 1px),
+        linear-gradient(var(--theme-line-soft) 1px,transparent 1px),
+        var(--theme-bg)!important;
+    }
+    .hero-kicker{
+      color:var(--theme-muted)!important;
+      border-bottom-color:var(--swiss-red)!important;
+    }
+    .hero-title,.hero-line-accent{
+      color:var(--theme-text)!important;
+      -webkit-text-fill-color:var(--theme-text)!important;
+    }
+    .hero-line-accent:after{background:var(--theme-accent)!important}
+    .hero-role{
+      color:var(--theme-text)!important;
+      border-left-color:var(--theme-accent)!important;
+    }
+    .hero-copy,.hero-focus,.hero-meta{color:var(--theme-muted)!important}
+    .hero-actions .btn{
+      border-color:var(--theme-text)!important;
+      color:var(--theme-text)!important;
+      background:transparent!important;
+    }
+    .hero-actions .btn.primary{
+      background:var(--theme-text)!important;
+      color:var(--theme-bg)!important;
+    }
+    .hero-actions .resume-btn{
+      background:var(--theme-accent)!important;
+      color:#061019!important;
+    }
+    .hero-proof{
+      border-top-color:var(--theme-text)!important;
+      border-left-color:var(--theme-text)!important;
+    }
+    .hero-proof div{
+      border-right-color:var(--theme-text)!important;
+      border-bottom-color:var(--theme-text)!important;
+      background:color-mix(in srgb,var(--theme-panel) 68%,transparent)!important;
+    }
+    .hero-proof strong{color:var(--theme-text)!important}
+    .hero-proof span{color:var(--theme-muted)!important}
+
+    .hero-art{
+      border-color:var(--theme-text)!important;
+      background:var(--theme-dark-panel)!important;
+      box-shadow:10px 10px 0 var(--theme-accent)!important;
+    }
+
+    .top-contact{
+      background:var(--theme-text)!important;
+      color:var(--theme-bg)!important;
+    }
+    html[data-theme="dark"] .top-contact{
+      background:#eef0ea!important;
+      color:#0a0d10!important;
+    }
+    html[data-theme="dark"] .top-contact-copy p{color:#52606a!important}
+    html[data-theme="dark"] .top-contact-title h2 em{
+      -webkit-text-stroke:1px rgba(10,13,16,.72)!important;
+    }
+    html[data-theme="dark"] .top-contact-links a{
+      color:#263038!important;
+      border-color:rgba(10,13,16,.18)!important;
+      background:rgba(10,13,16,.025)!important;
+    }
+
+    .statement,.services,.project-section,.tools-section,.education{
+      background:var(--theme-bg-2)!important;
+      color:var(--theme-text)!important;
+      border-color:var(--theme-line)!important;
+    }
+    .statement{
+      background:var(--theme-bg)!important;
+      border-top-color:var(--theme-text)!important;
+      border-bottom-color:var(--theme-text)!important;
+    }
+    .statement h2,.light-head h2,.project-heading h2,.tool-heading h2,
+    .education h2,.resume-main h2{
+      color:var(--theme-text)!important;
+    }
+    .statement h2 span,.flagship-title .stroke{
+      -webkit-text-stroke:1px var(--theme-text)!important;
+      color:transparent!important;
+    }
+    .statement p,.light-head p,.project-heading p,.tool-heading p,
+    .education p,.project-copy p,.project-details{
+      color:var(--theme-muted)!important;
+    }
+    .statement-kicker,.section-kicker,.edu-year{color:var(--theme-muted)!important}
+
+    .service{
+      border-color:var(--theme-text)!important;
+    }
+    .service-button{
+      color:var(--theme-text)!important;
+      background:transparent!important;
+    }
+    .service-body{color:var(--theme-text)!important}
+    .service-body p{color:var(--theme-muted)!important}
+    .service-visual{
+      border-color:var(--theme-line)!important;
+      background:var(--theme-panel)!important;
+    }
+
+    .flow-section,.impact,.resume-section{
+      background:var(--theme-dark-panel)!important;
+      color:#f2f5f7!important;
+    }
+    html[data-theme="light"] .flow-section,
+    html[data-theme="light"] .impact,
+    html[data-theme="light"] .resume-section{
+      background:#0a0d10!important;
+      color:#f2f5f7!important;
+    }
+    .flow-box,.sta-deep-dive,.resume-panel{
+      border-color:rgba(255,255,255,.18)!important;
+      background:transparent!important;
+    }
+
+    .flagship{
+      background:var(--theme-bg)!important;
+      color:var(--theme-text)!important;
+    }
+    .flagship-title{color:var(--theme-text)!important}
+    .flagship-sub{color:var(--theme-muted)!important}
+    .flagship-grid{
+      border-color:var(--theme-text)!important;
+      background:var(--theme-dark-panel)!important;
+    }
+    .fp-side,.case-side{background:var(--theme-dark-panel)!important}
+    .case-side,.case-side h3,.case-row b,.case-metric strong{color:#f2f5f7!important}
+    .case-side p,.case-row span,.case-metric span,.case-metric-detail{color:#8da0af!important}
+
+    .project-card,.edu-card{
+      background:var(--theme-panel)!important;
+      color:var(--theme-text)!important;
+      border-color:var(--theme-text)!important;
+    }
+    .project-copy,.project-copy h3,.edu-card h3{color:var(--theme-text)!important}
+    .project-copy p,.project-details,.edu-card p{color:var(--theme-muted)!important}
+    .project-image{
+      background:var(--theme-panel-2)!important;
+      border-color:var(--theme-line)!important;
+    }
+
+    .impact-grid{
+      border-top-color:rgba(255,255,255,.25)!important;
+      border-left-color:rgba(255,255,255,.25)!important;
+    }
+    .impact-card{
+      color:#f2f5f7!important;
+      border-right-color:rgba(255,255,255,.25)!important;
+      border-bottom-color:rgba(255,255,255,.25)!important;
+    }
+    .impact-card p,.impact-index{color:#889baa!important}
+
+    .tool-pill{
+      border-color:var(--theme-text)!important;
+      color:var(--theme-text)!important;
+      background:transparent!important;
+    }
+
+    .resume-download,.resume-view{
+      border-color:rgba(255,255,255,.20)!important;
+      color:#edf6fa!important;
+    }
+
+    footer{
+      background:var(--theme-bg)!important;
+      color:var(--theme-muted)!important;
+      border-top-color:var(--theme-text)!important;
+    }
+
+    /* Ensure common SVG illustrations respond to theme where practical */
+    html[data-theme="dark"] .service-visual svg > rect:first-child,
+    html[data-theme="dark"] .project-image svg > rect:first-child{
+      fill:#101720!important;
+    }
+
+    .scroll-progress span{
+      background:linear-gradient(90deg,var(--theme-accent),var(--theme-accent-2))!important;
+    }
+
+    @media(max-width:720px){
+      .hero-preferences{
+        display:grid;
+        grid-template-columns:1fr;
+        width:max-content;
+        margin-bottom:16px;
+      }
+      .hero-preferences .hero-language,.hero-theme{
+        width:max-content;
+        max-width:100%;
+      }
+      .hero-art{box-shadow:6px 6px 0 var(--theme-accent)!important}
+    }
+    @media(max-width:360px){
+      .hero-language-label,.hero-theme-label{display:none}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -2056,11 +2405,24 @@
     <section class="hero" id="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="hero-language" aria-label="Choose website language">
-            <span class="hero-language-label mono">LANGUAGE / 言語</span>
-            <div class="hero-language-buttons" role="group" aria-label="Language">
-              <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
-              <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          <div class="hero-preferences">
+            <div class="hero-language" aria-label="Choose website language">
+              <span class="hero-language-label mono">LANGUAGE / 言語</span>
+              <div class="hero-language-buttons" role="group" aria-label="Language">
+                <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
+                <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
+              </div>
+            </div>
+            <div class="hero-theme" aria-label="Choose website theme">
+              <span class="hero-theme-label mono">THEME / 配色</span>
+              <div class="hero-theme-buttons" role="group" aria-label="Theme">
+                <button class="theme-btn" type="button" data-theme-choice="light" aria-pressed="false">
+                  <span class="theme-dot theme-dot-light" aria-hidden="true"></span>Light
+                </button>
+                <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+                  <span class="theme-dot theme-dot-dark" aria-hidden="true"></span>Dark
+                </button>
+              </div>
             </div>
           </div>
           <div class="hero-kicker"><i></i> Applications Engineer · Tokyo, Japan</div>
@@ -2898,6 +3260,31 @@
       });
 
 
+
+      function applyTheme(theme,persist){
+        if(theme!=='dark')theme='light';
+        document.documentElement.setAttribute('data-theme',theme);
+        document.querySelectorAll('.theme-btn').forEach(function(btn){
+          var active=btn.getAttribute('data-theme-choice')===theme;
+          btn.classList.toggle('active',active);
+          btn.setAttribute('aria-pressed',active?'true':'false');
+        });
+        var meta=document.querySelector('meta[name="theme-color"]');
+        if(meta){meta.setAttribute('content',theme==='dark'?'#080b10':'#f2f0e9');}
+        if(persist!==false){
+          try{localStorage.setItem('portfolio-theme',theme);}catch(e){}
+        }
+      }
+
+      document.querySelectorAll('.theme-btn').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          applyTheme(btn.getAttribute('data-theme-choice'),true);
+        });
+      });
+
+      var initialTheme=document.documentElement.getAttribute('data-theme')||'light';
+      applyTheme(initialTheme,false);
+
       var translations = {
         "About":"概要",
         "Expertise":"専門分野",
@@ -2906,6 +3293,8 @@
         "Toolchain":"ツールチェーン",
         "Résumé":"履歴書",
         "Contact":"お問い合わせ",
+        "Light":"ライト",
+        "Dark":"ダーク",
         "Applications Engineer · Tokyo, Japan":"アプリケーションエンジニア · 東京、日本",
         "Howdy, I’m Chandra.":"こんにちは、Chandraです。",
         "I build silicon.":"シリコン実装に取り組んでいます。",
