@@ -1530,6 +1530,83 @@
     }
   </style>
 
+
+  <style id="hero-language-switch-v2">
+    .hero-language{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      width:max-content;
+      max-width:100%;
+      margin:0 0 17px;
+      padding:5px 6px 5px 10px;
+      border:1px solid rgba(104,220,255,.13);
+      border-radius:12px;
+      background:rgba(8,18,27,.58);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.015);
+      backdrop-filter:blur(10px);
+    }
+    .hero-language-label{
+      color:#637c90;
+      font-size:6.6px;
+      letter-spacing:.12em;
+      white-space:nowrap;
+    }
+    .hero-language-buttons{
+      display:flex;
+      align-items:center;
+      gap:3px;
+      padding:2px;
+      border-radius:8px;
+      background:rgba(255,255,255,.025);
+    }
+    .hero-language .lang-btn{
+      min-width:auto;
+      height:28px;
+      padding:0 10px;
+      border:0;
+      border-radius:6px;
+      color:#8297a8;
+      background:transparent;
+      font:600 7.5px "JetBrains Mono",monospace;
+      letter-spacing:.025em;
+    }
+    .hero-language .lang-btn.active{
+      color:#061019;
+      background:linear-gradient(135deg,var(--cyan),var(--teal));
+      box-shadow:0 3px 12px rgba(104,220,255,.12);
+    }
+    .hero-language .lang-btn:not(.active):hover{
+      color:#e2edf3;
+      background:rgba(255,255,255,.035);
+    }
+
+    /* The selector remains available only in the hero; remove old nav/mobile language UI. */
+    .nav-links > .lang-switch,
+    .mobile-menu > .mobile-lang-switch{display:none!important}
+
+    @media(max-width:720px){
+      .hero-language{
+        margin-bottom:14px;
+        padding:4px 5px 4px 9px;
+        gap:8px;
+        border-radius:10px;
+      }
+      .hero-language-label{
+        font-size:6.1px;
+      }
+      .hero-language .lang-btn{
+        height:27px;
+        padding:0 9px;
+        font-size:7.1px;
+      }
+    }
+    @media(max-width:360px){
+      .hero-language-label{display:none}
+      .hero-language{padding:4px}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1551,10 +1628,6 @@
         <a href="#tools">Toolchain</a>
         <a href="#resume">Résumé</a>
         <a class="cta" href="#contact">Contact</a>
-        <div class="lang-switch" role="group" aria-label="Language">
-          <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
-        </div>
       </nav>
 
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">
@@ -1572,10 +1645,6 @@
       <a href="#tools">Toolchain</a>
       <a href="#resume">Résumé</a>
       <a href="#contact">Contact</a>
-      <div class="mobile-lang-switch" role="group" aria-label="Language">
-        <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
-        <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
-      </div>
     </nav>
   </header>
 
@@ -1583,6 +1652,13 @@
     <section class="hero" id="hero">
       <div class="wrap hero-grid">
         <div>
+          <div class="hero-language" aria-label="Choose website language">
+            <span class="hero-language-label mono">LANGUAGE / 言語</span>
+            <div class="hero-language-buttons" role="group" aria-label="Language">
+              <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
+              <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
+            </div>
+          </div>
           <div class="hero-kicker"><i></i> Applications Engineer · Tokyo, Japan</div>
           <h1 class="hero-title" aria-label="Howdy, I’m Chandra. I build silicon.">
             <span class="hero-line">Howdy, I’m Chandra.</span>
