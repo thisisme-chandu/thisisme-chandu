@@ -3486,22 +3486,44 @@
   </style>
 
 
-  <style id="impact-grid-15-v1">
+  <style id="impact-grid-15-v2">
     .impact-grid-15{
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(5,minmax(0,1fr));
     }
     .impact-grid-15 .impact-card{
-      min-height:220px;
+      min-height:205px;
+      padding:22px 18px;
+    }
+    .impact-grid-15 .impact-index{
+      font-size:6px;
+      letter-spacing:.07em;
     }
     .impact-grid-15 .impact-card strong{
-      line-height:1.05;
+      font-size:clamp(24px,2.4vw,36px);
+      line-height:1.02;
     }
-    @media(max-width:980px){
+    .impact-grid-15 .impact-card > span{
+      font-size:7px;
+      letter-spacing:.06em;
+    }
+    .impact-grid-15 .impact-card p{
+      font-size:10px;
+      line-height:1.5;
+      max-width:26ch;
+    }
+    @media(max-width:1180px){
+      .impact-grid-15{grid-template-columns:repeat(3,minmax(0,1fr));}
+      .impact-grid-15 .impact-card{min-height:210px;}
+    }
+    @media(max-width:760px){
       .impact-grid-15{grid-template-columns:repeat(2,minmax(0,1fr));}
     }
-    @media(max-width:640px){
+    @media(max-width:520px){
       .impact-grid-15{grid-template-columns:1fr;}
-      .impact-grid-15 .impact-card{min-height:auto;}
+      .impact-grid-15 .impact-card{
+        min-height:auto;
+        padding:20px 18px;
+      }
     }
   </style>
 
