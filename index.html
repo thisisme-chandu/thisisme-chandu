@@ -2793,6 +2793,143 @@
     }
   </style>
 
+
+  <style id="zoicx-formality-highlight">
+    .project-section .projects{
+      grid-template-columns:1fr!important;
+    }
+    .zoicx-featured{
+      display:grid!important;
+      grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr)!important;
+      width:100%!important;
+      border:1px solid rgba(104,220,255,.22)!important;
+      background:
+        linear-gradient(135deg,rgba(104,220,255,.025),rgba(114,237,191,.015)),
+        var(--theme-panel)!important;
+      box-shadow:0 22px 60px rgba(0,0,0,.18)!important;
+      overflow:hidden!important;
+    }
+    .zoicx-featured .project-image{
+      height:auto!important;
+      min-height:430px!important;
+      border-right:1px solid rgba(104,220,255,.12)!important;
+      background:#07121a!important;
+    }
+    .zoicx-featured .project-image svg{
+      width:100%!important;
+      height:100%!important;
+      min-height:430px!important;
+      display:block;
+    }
+    .zoicx-featured .project-copy{
+      padding:34px!important;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .zoicx-featured .project-kicker{
+      color:var(--theme-accent)!important;
+      font-size:7.5px!important;
+      letter-spacing:.12em!important;
+    }
+    .zoicx-featured .project-copy h3{
+      margin:10px 0 12px!important;
+      font-size:clamp(26px,3vw,40px)!important;
+      line-height:1.02!important;
+      letter-spacing:-.05em!important;
+      color:var(--theme-text)!important;
+    }
+    .formality-title-accent{
+      display:block;
+      margin-top:6px;
+      color:var(--theme-accent-2)!important;
+    }
+    .zoicx-featured .project-copy > p{
+      max-width:620px;
+      font-size:12px!important;
+      line-height:1.75!important;
+      color:var(--theme-muted)!important;
+    }
+    .formality-callout{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:14px;
+      align-items:start;
+      margin-top:20px;
+      padding:16px;
+      border:1px solid rgba(114,237,191,.25);
+      border-left:4px solid var(--theme-accent-2);
+      background:rgba(114,237,191,.045);
+    }
+    .formality-mark{
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(114,237,191,.28);
+      color:var(--theme-accent-2);
+      font:700 20px "JetBrains Mono",monospace;
+    }
+    .formality-callout b{
+      display:block;
+      color:var(--theme-accent-2);
+      font:700 7px "JetBrains Mono",monospace;
+      letter-spacing:.13em;
+    }
+    .formality-callout strong{
+      display:block;
+      margin-top:6px;
+      color:var(--theme-text);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .formality-callout p{
+      margin:6px 0 0!important;
+      color:var(--theme-muted)!important;
+      font-size:10.5px!important;
+      line-height:1.65!important;
+    }
+    .zoicx-featured .project-metrics{
+      margin-top:18px!important;
+    }
+    .zoicx-featured .project-metrics span{
+      border-color:rgba(104,220,255,.14)!important;
+      background:rgba(104,220,255,.035)!important;
+      color:#b6c8d2!important;
+    }
+    .zoicx-featured .project-metrics .formality-metric{
+      color:#061016!important;
+      background:linear-gradient(135deg,var(--theme-accent-2),var(--theme-accent))!important;
+      border-color:transparent!important;
+      font-weight:800!important;
+    }
+    .zoicx-featured details.project-details{
+      margin-top:18px!important;
+      padding-top:14px;
+      border-top:1px solid var(--theme-line-soft);
+    }
+    .zoicx-featured details.project-details summary{
+      color:var(--theme-accent)!important;
+    }
+    @media(max-width:900px){
+      .zoicx-featured{
+        grid-template-columns:1fr!important;
+      }
+      .zoicx-featured .project-image{
+        min-height:330px!important;
+        border-right:0!important;
+        border-bottom:1px solid rgba(104,220,255,.12)!important;
+      }
+      .zoicx-featured .project-image svg{min-height:330px!important}
+    }
+    @media(max-width:620px){
+      .zoicx-featured .project-copy{padding:20px!important}
+      .zoicx-featured .project-image,.zoicx-featured .project-image svg{min-height:270px!important}
+      .formality-callout{grid-template-columns:34px 1fr;padding:13px;gap:10px}
+      .formality-mark{width:32px;height:32px;font-size:17px}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -3301,7 +3438,7 @@
         </div>
 
         <div class="projects">
-          <article class="project-card featured reveal">
+          <article class="project-card featured reveal zoicx-featured">
             <div class="project-image">
               <svg viewBox="0 0 720 360" role="img" aria-label="Conceptual 28nm ARM core floorplan and routing">
                 <rect width="720" height="360" fill="#08111a"></rect>
@@ -3320,19 +3457,32 @@
                   <path d="M209 109H511M240 260H530M148 148V226M573 153V216M311 77V282M404 77V282M73 181H648"></path>
                 </g>
                 <ellipse cx="363" cy="181" rx="126" ry="90" fill="rgba(255,136,126,.08)"></ellipse>
+                <g font-family="JetBrains Mono,monospace">
+                  <rect x="275" y="153" width="176" height="56" fill="rgba(7,16,23,.88)" stroke="rgba(114,237,191,.34)"></rect>
+                  <text x="296" y="174" fill="#72edbf" font-size="10">FORMALITY</text>
+                  <text x="296" y="194" fill="#a8bdc8" font-size="9">RTL  ≡  NETLIST</text>
+                </g>
                 <text x="72" y="340" fill="#657d8e" font-family="JetBrains Mono,monospace" font-size="10">CONCEPTUAL 28NM IMPLEMENTATION VIEW</text>
               </svg>
             </div>
             <div class="project-copy">
-              <div class="project-kicker">ZOICX Technologies · 28nm / 9 layers</div>
-              <h3>ARM Core Implementation</h3>
-              <p>Full physical-design flow with synthesis, equivalence verification and congestion-focused floorplan optimization.</p>
-              <div class="project-metrics"><span>300K gates</span><span>29 macros</span><span>9 metal layers</span><span>500 MHz achieved</span><span>10+ floorplan trials</span></div>
+              <div class="project-kicker">ZOICX Technologies · 28nm ARM Core · 9 metal layers</div>
+              <h3>ARM Core Implementation <span class="formality-title-accent">+ Formality Verification</span></h3>
+              <p>Physical-design implementation for a 300K-gate ARM core, combining synthesis, post-synthesis logical equivalence verification, and congestion-focused floorplan optimization.</p>
+              <div class="formality-callout" aria-label="Formality equivalence verification highlight">
+                <span class="formality-mark">≡</span>
+                <div>
+                  <b>FORMALITY VERIFIED</b>
+                  <strong>Post-synthesis netlist equivalence verification using Synopsys Formality</strong>
+                  <p>Verified logical equivalence between the synthesized implementation and its reference design after synthesis.</p>
+                </div>
+              </div>
+              <div class="project-metrics"><span>300K gates</span><span>29 macros</span><span>9 metal layers</span><span>500 MHz achieved</span><span>10+ floorplan trials</span><span class="formality-metric">Formality verified</span></div>
               <details class="project-details">
                 <summary>Technical details</summary>
                 <ul class="detail-list">
                   <li>Logic synthesis with Design Compiler.</li>
-                  <li>Post-synthesis netlist equivalence verification using Formality.</li>
+                  <li><strong>Formality:</strong> verified post-synthesis netlist logical equivalence against the reference design.</li>
                   
                   <li>OpenROAD, Yosys and OpenSTA benchmarked against commercial flow stages.</li>
                 </ul>
@@ -3751,7 +3901,15 @@
         "Selected implementation experience beyond the flagship 7nm CPU project.":"まず概要をビジュアルで表示し、必要に応じて技術詳細を展開できます。",
         "CONCEPTUAL 28NM IMPLEMENTATION VIEW":"28NM実装の概念図",
         "ZOICX Technologies · 28nm / 9 layers":"ZOICX Technologies · 28nm / 9層",
+        "ZOICX Technologies · 28nm ARM Core · 9 metal layers":"ZOICX Technologies · 28nm ARMコア · 9メタル層",
+        "ARM Core Implementation + Formality Verification":"ARMコア実装 + Formality等価性検証",
+        "Physical-design implementation for a 300K-gate ARM core, combining synthesis, post-synthesis logical equivalence verification, and congestion-focused floorplan optimization.":"30万ゲート規模のARMコアで、論理合成、合成後の論理等価性検証、輻輳低減を重視したフロアプラン最適化を含む物理設計を実施。",
+        "FORMALITY VERIFIED":"FORMALITY 検証済み",
+        "Post-synthesis netlist equivalence verification using Synopsys Formality":"Synopsys Formalityによる合成後ネットリストの論理等価性検証",
+        "Verified logical equivalence between the synthesized implementation and its reference design after synthesis.":"論理合成後の実装ネットリストとリファレンス設計の論理等価性を検証。",
+        "Formality verified":"Formality検証済み",
         "ARM Core Implementation":"ARMコア実装",
+        "+ Formality Verification":"+ Formality等価性検証",
         "Full physical-design flow with synthesis, equivalence verification and congestion-focused floorplan optimization.":"論理合成、等価性検証、輻輳低減を重視したフロアプラン最適化を含むフル・フィジカルデザインフロー。",
         "300K+ gates":"300K+ ゲート",
         "29 macros":"29 マクロ",
