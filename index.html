@@ -2930,6 +2930,261 @@
     }
   </style>
 
+
+  <style id="zoicx-flagship-case-v2">
+    .zoicx-case-study{
+      padding:96px 0!important;
+      background:
+        radial-gradient(circle at 82% 18%,rgba(114,237,191,.055),transparent 25%),
+        radial-gradient(circle at 12% 68%,rgba(104,220,255,.045),transparent 26%),
+        var(--theme-bg)!important;
+      border-top:1px solid var(--theme-line-soft);
+      border-bottom:1px solid var(--theme-line-soft);
+    }
+    .zoicx-case-intro{
+      margin-bottom:28px!important;
+    }
+    .zoicx-case-intro .section-kicker{
+      color:var(--theme-accent-2)!important;
+    }
+    .zoicx-case-intro .flagship-title{
+      margin-top:8px!important;
+    }
+    .zoicx-case-intro .flagship-title .stroke{
+      -webkit-text-stroke:1px rgba(114,237,191,.78)!important;
+    }
+    .zoicx-case-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(390px,.95fr);
+      border:1px solid rgba(114,237,191,.22);
+      background:linear-gradient(135deg,rgba(114,237,191,.022),rgba(104,220,255,.012)),#08131c;
+      box-shadow:0 30px 80px rgba(0,0,0,.18);
+    }
+    .zoicx-case-visual{
+      padding:24px;
+      border-right:1px solid rgba(255,255,255,.07);
+      background:#07121a;
+    }
+    .zoicx-visual-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding-bottom:15px;
+      border-bottom:1px solid rgba(255,255,255,.07);
+      color:#6f8898;
+      font-size:7px;
+      letter-spacing:.10em;
+    }
+    .zoicx-status{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      color:var(--theme-accent-2);
+      font:700 7px "JetBrains Mono",monospace;
+      letter-spacing:.08em;
+    }
+    .zoicx-status i{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--theme-accent-2);
+      box-shadow:0 0 12px rgba(114,237,191,.55);
+    }
+    .equiv-flow{
+      display:grid;
+      grid-template-columns:1fr auto 1fr auto 1fr;
+      align-items:center;
+      gap:9px;
+      margin-top:28px;
+    }
+    .equiv-node{
+      min-height:126px;
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border:1px solid rgba(104,220,255,.14);
+      background:rgba(104,220,255,.025);
+    }
+    .equiv-node.synthesis-node{border-color:rgba(255,196,106,.20)}
+    .equiv-node.formality-node{
+      border-color:rgba(114,237,191,.32);
+      background:rgba(114,237,191,.055);
+      box-shadow:inset 0 0 35px rgba(114,237,191,.025);
+    }
+    .equiv-label{
+      color:#648091;
+      font:600 6.5px "JetBrains Mono",monospace;
+      letter-spacing:.12em;
+    }
+    .equiv-node strong{
+      margin-top:8px;
+      color:#eef6f8;
+      font-size:15px;
+      line-height:1.15;
+    }
+    .equiv-node small{
+      margin-top:7px;
+      color:#758c9b;
+      font-size:9px;
+    }
+    .equiv-arrow{
+      color:#4f6f82;
+      font:500 18px "JetBrains Mono",monospace;
+    }
+    .equiv-result{
+      display:grid;
+      grid-template-columns:52px 1fr;
+      gap:14px;
+      align-items:center;
+      margin-top:16px;
+      padding:15px;
+      border:1px solid rgba(114,237,191,.24);
+      border-left:4px solid var(--theme-accent-2);
+      background:rgba(114,237,191,.04);
+    }
+    .equiv-symbol{
+      display:grid;
+      place-items:center;
+      width:48px;height:48px;
+      color:var(--theme-accent-2);
+      border:1px solid rgba(114,237,191,.28);
+      font:700 24px "JetBrains Mono",monospace;
+    }
+    .equiv-result span{
+      display:block;
+      color:var(--theme-accent-2);
+      font-size:6.5px;
+      letter-spacing:.11em;
+    }
+    .equiv-result strong{
+      display:block;
+      margin-top:5px;
+      color:#e9f2f6;
+      font-size:12px;
+      line-height:1.5;
+    }
+    .zoicx-floorplan{
+      margin-top:18px;
+      border:1px solid rgba(104,220,255,.10);
+      overflow:hidden;
+    }
+    .zoicx-floorplan svg{display:block;width:100%;height:auto}
+
+    .zoicx-case-copy{
+      padding:28px;
+      min-width:0;
+    }
+    .zoicx-case-overview > span{
+      color:var(--theme-accent);
+      font-size:7px;
+      letter-spacing:.11em;
+    }
+    .zoicx-case-overview h3{
+      margin:10px 0 0;
+      color:var(--theme-text);
+      font-size:clamp(24px,2.6vw,36px);
+      line-height:1.04;
+      letter-spacing:-.045em;
+    }
+    .zoicx-case-overview p{
+      margin:13px 0 0;
+      color:var(--theme-muted);
+      font-size:11px;
+      line-height:1.75;
+    }
+    .zoicx-proof-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      margin-top:24px;
+      border-top:1px solid rgba(255,255,255,.08);
+      border-left:1px solid rgba(255,255,255,.08);
+    }
+    .zoicx-proof{
+      min-height:178px;
+      padding:17px;
+      border-right:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.012);
+    }
+    .zoicx-proof.formality-proof{
+      background:rgba(114,237,191,.045);
+      box-shadow:inset 3px 0 var(--theme-accent-2);
+    }
+    .zoicx-proof > span{
+      color:#667f90;
+      font-size:6.5px;
+      letter-spacing:.11em;
+    }
+    .zoicx-proof.formality-proof > span{color:var(--theme-accent-2)}
+    .zoicx-proof strong{
+      display:block;
+      margin-top:13px;
+      color:#eaf2f6;
+      font-size:15px;
+      line-height:1.25;
+    }
+    .zoicx-proof p{
+      margin:8px 0 0;
+      color:#8398a6;
+      font-size:9.5px;
+      line-height:1.65;
+    }
+    .zoicx-metric-strip{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      margin-top:20px;
+      border-top:1px solid rgba(255,255,255,.09);
+      border-left:1px solid rgba(255,255,255,.09);
+    }
+    .zoicx-metric-strip > div{
+      padding:12px;
+      border-right:1px solid rgba(255,255,255,.09);
+      border-bottom:1px solid rgba(255,255,255,.09);
+      background:rgba(255,255,255,.01);
+    }
+    .zoicx-metric-strip strong{
+      display:block;
+      color:#f1f6f8;
+      font-size:18px;
+      letter-spacing:-.035em;
+    }
+    .zoicx-metric-strip span{
+      display:block;
+      margin-top:4px;
+      color:#6f8796;
+      font:500 6px "JetBrains Mono",monospace;
+      text-transform:uppercase;
+      line-height:1.35;
+    }
+    .zoicx-formality-metric{
+      background:linear-gradient(135deg,rgba(114,237,191,.11),rgba(104,220,255,.05))!important;
+    }
+    .zoicx-formality-metric strong,
+    .zoicx-formality-metric span{color:var(--theme-accent-2)!important}
+    .zoicx-case-note{
+      margin-top:14px;
+      color:#576f7f;
+      font-size:6.5px;
+      letter-spacing:.04em;
+    }
+
+    @media(max-width:980px){
+      .zoicx-case-grid{grid-template-columns:1fr}
+      .zoicx-case-visual{border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}
+    }
+    @media(max-width:720px){
+      .zoicx-case-study{padding:64px 0!important}
+      .zoicx-case-visual,.zoicx-case-copy{padding:17px}
+      .equiv-flow{grid-template-columns:1fr;gap:7px}
+      .equiv-arrow{transform:rotate(90deg);justify-self:center}
+      .equiv-node{min-height:auto}
+      .zoicx-proof-grid{grid-template-columns:1fr}
+      .zoicx-metric-strip{grid-template-columns:1fr 1fr}
+      .equiv-result{grid-template-columns:42px 1fr}
+      .equiv-symbol{width:40px;height:40px;font-size:20px}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -3430,67 +3685,113 @@
       </div>
     </section>
 
-    <section class="project-section">
+    <section class="project-section zoicx-case-study" id="zoicx-case">
       <div class="wrap">
-        <div class="project-heading reveal">
-          <h2>MORE IMPLEMENTATION WORK.</h2>
-          <p>Selected implementation experience beyond the flagship 7nm CPU project.</p>
+        <div class="flagship-intro reveal zoicx-case-intro">
+          <div class="section-kicker">04 // Formality Case Study</div>
+          <h2 class="flagship-title"><span>28NM ARM</span><br><span class="stroke">CORE.</span></h2>
+          <p class="flagship-sub">ZOICX Technologies · Synthesis · Formality · Floorplanning · Open-source EDA Benchmarking</p>
         </div>
 
-        <div class="projects">
-          <article class="project-card featured reveal zoicx-featured">
-            <div class="project-image">
-              <svg viewBox="0 0 720 360" role="img" aria-label="Conceptual 28nm ARM core floorplan and routing">
-                <rect width="720" height="360" fill="#08111a"></rect>
-                <rect x="58" y="40" width="604" height="280" rx="10" fill="none" stroke="rgba(104,220,255,.18)"></rect>
-                <g stroke="rgba(104,220,255,.038)">
-                  <path d="M58 80H662M58 120H662M58 160H662M58 200H662M58 240H662M58 280H662M128 40V320M198 40V320M268 40V320M338 40V320M408 40V320M478 40V320M548 40V320M618 40V320"></path>
+        <div class="zoicx-case-grid reveal">
+          <div class="zoicx-case-visual">
+            <div class="zoicx-visual-head">
+              <span class="mono">LOGICAL EQUIVALENCE FLOW</span>
+              <span class="zoicx-status"><i></i> FORMALITY VERIFIED</span>
+            </div>
+
+            <div class="equiv-flow" aria-label="Conceptual Formality equivalence verification flow">
+              <div class="equiv-node">
+                <span class="equiv-label">REFERENCE</span>
+                <strong>RTL / Design</strong>
+                <small>Functional reference</small>
+              </div>
+              <div class="equiv-arrow">→</div>
+              <div class="equiv-node synthesis-node">
+                <span class="equiv-label">SYNTHESIS</span>
+                <strong>Design Compiler</strong>
+                <small>Post-synthesis netlist</small>
+              </div>
+              <div class="equiv-arrow">→</div>
+              <div class="equiv-node formality-node">
+                <span class="equiv-label">VERIFY</span>
+                <strong>Formality</strong>
+                <small>Logical equivalence</small>
+              </div>
+            </div>
+
+            <div class="equiv-result">
+              <div class="equiv-symbol">≡</div>
+              <div>
+                <span class="mono">POST-SYNTHESIS CHECK</span>
+                <strong>Reference design and synthesized netlist verified for logical equivalence.</strong>
+              </div>
+            </div>
+
+            <div class="zoicx-floorplan">
+              <svg viewBox="0 0 720 260" role="img" aria-label="Conceptual 28nm ARM core floorplan">
+                <rect width="720" height="260" fill="#07111a"></rect>
+                <rect x="42" y="28" width="636" height="202" fill="none" stroke="rgba(104,220,255,.19)"></rect>
+                <g stroke="rgba(104,220,255,.045)">
+                  <path d="M42 68H678M42 108H678M42 148H678M42 188H678M112 28V230M182 28V230M252 28V230M322 28V230M392 28V230M462 28V230M532 28V230M602 28V230"></path>
                 </g>
-                <g fill="rgba(114,237,191,.1)" stroke="rgba(114,237,191,.3)">
-                  <rect x="83" y="70" width="126" height="78" rx="6"></rect>
-                  <rect x="511" y="67" width="125" height="86" rx="6"></rect>
-                  <rect x="92" y="226" width="148" height="67" rx="6"></rect>
-                  <rect x="530" y="216" width="92" height="77" rx="6"></rect>
+                <g fill="rgba(114,237,191,.10)" stroke="rgba(114,237,191,.34)">
+                  <rect x="70" y="54" width="120" height="58"></rect>
+                  <rect x="530" y="52" width="116" height="64"></rect>
+                  <rect x="78" y="162" width="140" height="48"></rect>
+                  <rect x="548" y="156" width="94" height="55"></rect>
                 </g>
-                <rect x="260" y="77" width="199" height="205" rx="5" fill="rgba(104,220,255,.025)" stroke="rgba(104,220,255,.07)"></rect>
-                <g stroke="rgba(107,169,255,.32)">
-                  <path d="M209 109H511M240 260H530M148 148V226M573 153V216M311 77V282M404 77V282M73 181H648"></path>
+                <rect x="254" y="56" width="214" height="150" fill="rgba(104,220,255,.025)" stroke="rgba(104,220,255,.08)"></rect>
+                <g stroke="rgba(107,169,255,.30)">
+                  <path d="M190 82H530M218 184H548M132 112V162M587 116V156M302 56V206M420 56V206M58 132H662"></path>
                 </g>
-                <ellipse cx="363" cy="181" rx="126" ry="90" fill="rgba(255,136,126,.08)"></ellipse>
-                <g font-family="JetBrains Mono,monospace">
-                  <rect x="275" y="153" width="176" height="56" fill="rgba(7,16,23,.88)" stroke="rgba(114,237,191,.34)"></rect>
-                  <text x="296" y="174" fill="#72edbf" font-size="10">FORMALITY</text>
-                  <text x="296" y="194" fill="#a8bdc8" font-size="9">RTL  ≡  NETLIST</text>
-                </g>
-                <text x="72" y="340" fill="#657d8e" font-family="JetBrains Mono,monospace" font-size="10">CONCEPTUAL 28NM IMPLEMENTATION VIEW</text>
+                <text x="56" y="247" fill="#657d8e" font-family="JetBrains Mono,monospace" font-size="10">CONCEPTUAL 28NM IMPLEMENTATION VIEW · 29 MACROS · 9 METAL LAYERS</text>
               </svg>
             </div>
-            <div class="project-copy">
-              <div class="project-kicker">ZOICX Technologies · 28nm ARM Core · 9 metal layers</div>
-              <h3>ARM Core Implementation <span class="formality-title-accent">+ Formality Verification</span></h3>
-              <p>Physical-design implementation for a 300K-gate ARM core, combining synthesis, post-synthesis logical equivalence verification, and congestion-focused floorplan optimization.</p>
-              <div class="formality-callout" aria-label="Formality equivalence verification highlight">
-                <span class="formality-mark">≡</span>
-                <div>
-                  <b>FORMALITY VERIFIED</b>
-                  <strong>Post-synthesis netlist equivalence verification using Synopsys Formality</strong>
-                  <p>Verified logical equivalence between the synthesized implementation and its reference design after synthesis.</p>
-                </div>
-              </div>
-              <div class="project-metrics"><span>300K gates</span><span>29 macros</span><span>9 metal layers</span><span>500 MHz achieved</span><span>10+ floorplan trials</span><span class="formality-metric">Formality verified</span></div>
-              <details class="project-details">
-                <summary>Technical details</summary>
-                <ul class="detail-list">
-                  <li>Logic synthesis with Design Compiler.</li>
-                  <li><strong>Formality:</strong> verified post-synthesis netlist logical equivalence against the reference design.</li>
-                  
-                  <li>OpenROAD, Yosys and OpenSTA benchmarked against commercial flow stages.</li>
-                </ul>
-              </details>
-            </div>
-          </article>
-
           </div>
+
+          <div class="zoicx-case-copy">
+            <div class="zoicx-case-overview">
+              <span class="mono">PROJECT SCOPE</span>
+              <h3>300K-gate ARM core implementation with synthesis, equivalence verification and congestion-focused floorplanning.</h3>
+              <p>Worked through the physical-design flow for a 28nm ARM core, achieved the 500 MHz target, and used Synopsys Formality to verify the post-synthesis netlist before continuing implementation.</p>
+            </div>
+
+            <div class="zoicx-proof-grid">
+              <article class="zoicx-proof formality-proof">
+                <span class="mono">01 / FORMALITY</span>
+                <strong>Logical Equivalence Verification</strong>
+                <p>Verified post-synthesis netlist equivalence using Synopsys Formality, confirming that synthesis preserved the intended logic before physical implementation.</p>
+              </article>
+              <article class="zoicx-proof">
+                <span class="mono">02 / SYNTHESIS</span>
+                <strong>Design Compiler</strong>
+                <p>Performed logic synthesis using Synopsys Design Compiler as part of the ARM core implementation flow.</p>
+              </article>
+              <article class="zoicx-proof">
+                <span class="mono">03 / FLOORPLAN</span>
+                <strong>10+ Iterations</strong>
+                <p>Explored more than 10 floorplan trials across core shapes and utilization targets to address routing congestion.</p>
+              </article>
+              <article class="zoicx-proof">
+                <span class="mono">04 / BENCHMARKING</span>
+                <strong>OpenROAD · Yosys · OpenSTA</strong>
+                <p>Benchmarked open-source EDA tools against Synopsys commercial flow stages across synthesis, physical implementation and STA.</p>
+              </article>
+            </div>
+
+            <div class="zoicx-metric-strip">
+              <div><strong>300K</strong><span>Gates</span></div>
+              <div><strong>29</strong><span>Macros</span></div>
+              <div><strong>9</strong><span>Metal layers</span></div>
+              <div><strong>500 MHz</strong><span>Target achieved</span></div>
+              <div><strong>10+</strong><span>Floorplan trials</span></div>
+              <div class="zoicx-formality-metric"><strong>≡</strong><span>Formality verified</span></div>
+            </div>
+
+            <div class="zoicx-case-note mono">Conceptual visualization only · no proprietary design database or report reproduced</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -3898,6 +4199,39 @@
         "PrimeTime-based setup analysis, WNS/TNS analysis and path-group analysis support timing closure across critical multi-corner setup paths.":"履歴書記載のSTAスキルにはWNS/TNSデバッグとパスベース解析（MCMM）が含まれ、配線後のクリティカルパスを中心にセットアップクロージャを行っています。",
         "Résumé-backed topics: PrimeTime · MCMM · WNS/TNS · uncertainty sweep · path groups · VT swap · buffering · signoff":"履歴書記載項目: PrimeTime · WNS/TNS · MCMM · 不確かさスイープ · VTスワップ · バッファリング · パスフィルタリング",
         "MORE IMPLEMENTATION WORK.":"その他の実装事例。",
+        "04 // Formality Case Study":"04 // Formality ケーススタディ",
+        "28NM ARM":"28NM ARM",
+        "CORE.":"コア。",
+        "ZOICX Technologies · Synthesis · Formality · Floorplanning · Open-source EDA Benchmarking":"ZOICX Technologies · 論理合成 · Formality · フロアプランニング · オープンソースEDA比較",
+        "LOGICAL EQUIVALENCE FLOW":"論理等価性検証フロー",
+        "FORMALITY VERIFIED":"FORMALITY 検証済み",
+        "REFERENCE":"リファレンス",
+        "RTL / Design":"RTL / 設計",
+        "Functional reference":"機能リファレンス",
+        "SYNTHESIS":"論理合成",
+        "Post-synthesis netlist":"合成後ネットリスト",
+        "VERIFY":"検証",
+        "Logical equivalence":"論理等価性",
+        "POST-SYNTHESIS CHECK":"合成後チェック",
+        "Reference design and synthesized netlist verified for logical equivalence.":"リファレンス設計と合成後ネットリストの論理等価性を検証。",
+        "PROJECT SCOPE":"プロジェクト範囲",
+        "300K-gate ARM core implementation with synthesis, equivalence verification and congestion-focused floorplanning.":"30万ゲート規模のARMコアで、論理合成、等価性検証、輻輳低減を重視したフロアプランニングを含む実装を担当。",
+        "Worked through the physical-design flow for a 28nm ARM core, achieved the 500 MHz target, and used Synopsys Formality to verify the post-synthesis netlist before continuing implementation.":"28nm ARMコアの物理設計フローを実施し、500 MHz目標を達成。Synopsys Formalityを用いて合成後ネットリストの論理等価性を検証。",
+        "01 / FORMALITY":"01 / FORMALITY",
+        "Logical Equivalence Verification":"論理等価性検証",
+        "Verified post-synthesis netlist equivalence using Synopsys Formality, confirming that synthesis preserved the intended logic before physical implementation.":"Synopsys Formalityで合成後ネットリストの等価性を検証し、物理実装前に論理合成後も意図した論理が維持されていることを確認。",
+        "02 / SYNTHESIS":"02 / 論理合成",
+        "Performed logic synthesis using Synopsys Design Compiler as part of the ARM core implementation flow.":"ARMコア実装フローの一部としてSynopsys Design Compilerによる論理合成を実施。",
+        "03 / FLOORPLAN":"03 / フロアプラン",
+        "10+ Iterations":"10回以上の検討",
+        "Explored more than 10 floorplan trials across core shapes and utilization targets to address routing congestion.":"コア形状と利用率を変えながら10回以上のフロアプラン検討を行い、配線輻輳に対応。",
+        "04 / BENCHMARKING":"04 / ベンチマーク",
+        "Benchmarked open-source EDA tools against Synopsys commercial flow stages across synthesis, physical implementation and STA.":"論理合成、物理実装、STA工程でオープンソースEDAツールをSynopsys商用フローと比較評価。",
+        "Gates":"ゲート",
+        "Target achieved":"目標達成",
+        "Floorplan trials":"フロアプラン試行",
+        "Formality verified":"Formality検証済み",
+        "Conceptual visualization only · no proprietary design database or report reproduced":"概念図のみ · 機密の設計データベースやレポートは再現していません",
         "Selected implementation experience beyond the flagship 7nm CPU project.":"まず概要をビジュアルで表示し、必要に応じて技術詳細を展開できます。",
         "CONCEPTUAL 28NM IMPLEMENTATION VIEW":"28NM実装の概念図",
         "ZOICX Technologies · 28nm / 9 layers":"ZOICX Technologies · 28nm / 9層",
