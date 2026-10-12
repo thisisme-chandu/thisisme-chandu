@@ -3415,6 +3415,69 @@
     }
   </style>
 
+
+  <style id="hero-resume-downloads-v1">
+    .hero-actions-resume{
+      align-items:stretch;
+    }
+    .hero-actions-resume .resume-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-width:154px;
+      justify-content:center;
+    }
+    .hero-actions-resume .resume-code{
+      display:grid;
+      place-items:center;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      background:rgba(104,220,255,.10);
+      border:1px solid rgba(104,220,255,.18);
+      color:var(--cyan);
+      font:700 7px "JetBrains Mono",monospace;
+      letter-spacing:.06em;
+      flex:0 0 auto;
+    }
+    .hero-actions-resume .resume-ja .resume-code{
+      color:var(--teal);
+      border-color:rgba(114,237,191,.18);
+      background:rgba(114,237,191,.08);
+    }
+    .hero-actions-resume .resume-btn:hover{
+      border-color:rgba(104,220,255,.28);
+      background:rgba(104,220,255,.035);
+    }
+    .hero-actions-resume .resume-ja:hover{
+      border-color:rgba(114,237,191,.28);
+      background:rgba(114,237,191,.03);
+    }
+    @media(max-width:720px){
+      .hero-actions-resume{
+        display:grid!important;
+        grid-template-columns:1fr 1fr;
+        gap:8px!important;
+      }
+      .hero-actions-resume .btn.primary{
+        grid-column:1/-1;
+      }
+      .hero-actions-resume .resume-btn{
+        min-width:0;
+        width:100%;
+        padding:0 10px;
+      }
+    }
+    @media(max-width:430px){
+      .hero-actions-resume{
+        grid-template-columns:1fr;
+      }
+      .hero-actions-resume .btn.primary{
+        grid-column:auto;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -3491,9 +3554,14 @@
             2+ years of hands-on experience in advanced-node ASIC physical design, STA, timing closure, post-route ECO, parasitic extraction and signoff.
           </p>
           <div class="hero-focus mono">Physical Design · STA · Timing Closure · CPU Implementation · EDA Automation</div>
-          <div class="hero-actions">
+          <div class="hero-actions hero-actions-resume">
             <a class="btn primary" href="#work">View implementation work →</a>
-            <a class="btn resume-btn" href="#resume">Download Résumé ↓</a>
+            <a class="btn resume-btn resume-en" href="Eng_Bhamidi_Chandra_Res_Final_v1.pdf" download="Chandra_Sekhar_Bhamidi_Resume_English.pdf">
+              <span class="resume-code">EN</span><span>English Résumé ↓</span>
+            </a>
+            <a class="btn resume-btn resume-ja" href="Jap_Bhamidi_Chandra_Res_Final-Japanese_v1.pdf" download="Chandra_Sekhar_Bhamidi_Resume_Japanese.pdf">
+              <span class="resume-code">JP</span><span>日本語 Résumé ↓</span>
+            </a>
           </div>
           <div class="hero-proof" aria-label="Selected implementation metrics">
             <div><strong>7nm</strong><span>FinFET</span></div>
@@ -4302,6 +4370,8 @@
         "2+ years of hands-on experience in advanced-node ASIC physical design, STA, timing closure, post-route ECO, parasitic extraction and signoff.":"CPUクラスの半導体設計を対象に、先端ノードのフィジカル実装、タイミングクロージャ、EDA自動化に取り組んでいます。",
         "Physical Design · STA · Timing Closure · CPU Implementation · EDA Automation":"フィジカルデザイン · STA · タイミングクロージャ · CPU実装 · EDA自動化",
         "View implementation work →":"実装事例を見る →",
+        "English Résumé ↓":"英語版履歴書 ↓",
+        "日本語 Résumé ↓":"日本語版履歴書 ↓",
         "Request Updated Résumé ↗":"最新版履歴書を依頼 ↗",
         "":"日本での就労資格は2030年7月まで有効",
         "No sponsorship required":"ビザスポンサー不要",
