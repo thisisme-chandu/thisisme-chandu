@@ -3485,6 +3485,26 @@
     }
   </style>
 
+
+  <style id="impact-grid-15-v1">
+    .impact-grid-15{
+      grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+    .impact-grid-15 .impact-card{
+      min-height:220px;
+    }
+    .impact-grid-15 .impact-card strong{
+      line-height:1.05;
+    }
+    @media(max-width:980px){
+      .impact-grid-15{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+    @media(max-width:640px){
+      .impact-grid-15{grid-template-columns:1fr;}
+      .impact-grid-15 .impact-card{min-height:auto;}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -4151,13 +4171,22 @@
     <section class="impact">
       <div class="wrap">
         <h2 class="impact-title reveal">ENGINEERING <span class="stroke">IMPACT</span></h2>
-        <div class="impact-grid">
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">01 / 7NM CPU FREQUENCY</div><strong>2.54 → 2.50 GHz</strong><span>Pre-DFT → Post-DFT</span><p>Against a 2.60 GHz target, the 7nm ARM-based CPU achieved 2.54 GHz pre-DFT and 2.50 GHz post-DFT.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">02 / FLOORPLAN</div><strong>20+</strong><span>7nm variants</span><p>Explored to improve macro locality and reduce critical-path wire length.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">03 / 28NM ARM</div><strong>500 MHz</strong><span>Target achieved</span><p>Achieved on the 300K-gate, 29-macro ARM core at ZOICX Technologies.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">04 / FORMALITY</div><strong>LEC</strong><span>Formality</span><p>Verified post-synthesis netlist equivalence against the reference design using Synopsys Formality.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">05 / 28NM FLOORPLAN</div><strong>10+</strong><span>Trials</span><p>Core-shape and utilization trials were used to address routing congestion.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">06 / TCL AUTOMATION</div><strong>WNS</strong><span>Path-group ranking</span><p>TCL automation filtered and ranked worst-violating path groups, improving timing-debug turnaround.</p></article>
+        <div class="impact-grid impact-grid-15">
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">01 / 7NM CPU</div><strong>7nm</strong><span>Advanced-node CPU implementation</span><p>Hands-on physical-design and timing-closure work on a 7nm FinFET ARM-based CPU core.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">02 / DESIGN SCALE</div><strong>3.5M+</strong><span>Instances</span><p>Large-scale CPU implementation experience beyond training-sized blocks.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">03 / MACRO SCALE</div><strong>350+</strong><span>Macros</span><p>Macro-intensive implementation requiring floorplan locality and critical-path awareness.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">04 / CPU FREQUENCY</div><strong>2.54 → 2.50 GHz</strong><span>Pre-DFT → Post-DFT</span><p>Against a 2.60 GHz target, the 7nm CPU achieved 2.54 GHz pre-DFT and 2.50 GHz post-DFT.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">05 / RTL TO GDSII</div><strong>FULL FLOW</strong><span>Physical implementation</span><p>Experience spanning synthesis, floorplanning, placement, CTS, routing, optimization, timing closure and signoff.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">06 / STA</div><strong>PrimeTime</strong><span>MCMM timing analysis</span><p>Setup timing, WNS/TNS, path-group analysis, clock uncertainty and timing signoff across multiple corners.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">07 / TIMING CLOSURE</div><strong>Closure</strong><span>Critical setup paths</span><p>Timing convergence through path-group prioritization, implementation optimization and focused debug.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">08 / POST-ROUTE ECO</div><strong>ECO</strong><span>Upsize · VT swap · Buffer</span><p>Post-route setup fixes using cell upsizing, VT swaps and buffer insertion on critical paths.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">09 / FLOORPLANNING</div><strong>20+</strong><span>7nm floorplan iterations</span><p>Island-style, edge-based, hybrid and freestyle trials to improve macro locality and reduce critical-path wire length.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">10 / MCMM</div><strong>4+</strong><span>PVT corners</span><p>Timing closure and signoff performed across 4+ MCMM PVT corners.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">11 / EXTRACTION</div><strong>StarRC</strong><span>SPEF → PrimeTime</span><p>Post-route SPEF generation and extracted RC parasitic integration for multi-corner timing signoff.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">12 / DFT TIMING</div><strong>DFT</strong><span>Scan-port constraints</span><p>Debugged DFT-induced timing degradation and applied appropriate false-path constraints to scan ports.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">13 / FORMALITY</div><strong>LEC</strong><span>Formality</span><p>Verified post-synthesis logical equivalence between the synthesized netlist and reference design using Synopsys Formality.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">14 / 28NM ARM</div><strong>500 MHz</strong><span>Target achieved</span><p>Implemented a 300K-gate, 29-macro ARM core at 28nm and achieved the 500 MHz target.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">15 / EDA AUTOMATION</div><strong>TCL</strong><span>WNS path-group ranking</span><p>Automated timing-report parsing, path-group filtering, QoR tracking and WNS-based ranking to improve debug turnaround.</p></article>
         </div>
       </div>
     </section>
@@ -4592,6 +4621,45 @@
         "01 / 7NM CPU FREQUENCY":"01 / 7NM CPU周波数",
         "Pre-DFT → Post-DFT":"DFT前 → DFT後",
         "Against a 2.60 GHz target, the 7nm ARM-based CPU achieved 2.54 GHz pre-DFT and 2.50 GHz post-DFT.":"2.60 GHzの目標に対し、7nm ARMベースCPUはDFT前に2.54 GHz、DFT後に2.50 GHzを達成しました。",
+        "01 / 7NM CPU":"01 / 7NM CPU",
+        "Advanced-node CPU implementation":"先端ノードCPU実装",
+        "Hands-on physical-design and timing-closure work on a 7nm FinFET ARM-based CPU core.":"7nm FinFET ARMベースCPUコアで、フィジカルデザインとタイミングクロージャを担当。",
+        "02 / DESIGN SCALE":"02 / 設計規模",
+        "Large-scale CPU implementation experience beyond training-sized blocks.":"トレーニング規模を超える大規模CPU実装を経験。",
+        "03 / MACRO SCALE":"03 / マクロ規模",
+        "Macro-intensive implementation requiring floorplan locality and critical-path awareness.":"多数のマクロを含む設計で、フロアプラン局所性とクリティカルパスを考慮した実装を経験。",
+        "04 / CPU FREQUENCY":"04 / CPU周波数",
+        "05 / RTL TO GDSII":"05 / RTL TO GDSII",
+        "Physical implementation":"フィジカル実装",
+        "Experience spanning synthesis, floorplanning, placement, CTS, routing, optimization, timing closure and signoff.":"論理合成、フロアプラン、配置、CTS、配線、最適化、タイミングクロージャ、サインオフまで経験。",
+        "06 / STA":"06 / STA",
+        "MCMM timing analysis":"MCMMタイミング解析",
+        "Setup timing, WNS/TNS, path-group analysis, clock uncertainty and timing signoff across multiple corners.":"複数コーナーでセットアップタイミング、WNS/TNS、パスグループ解析、クロック不確かさ、タイミングサインオフを実施。",
+        "07 / TIMING CLOSURE":"07 / タイミングクロージャ",
+        "Critical setup paths":"クリティカルセットアップパス",
+        "Timing convergence through path-group prioritization, implementation optimization and focused debug.":"パスグループ優先順位付け、実装最適化、重点デバッグによりタイミング収束を実施。",
+        "08 / POST-ROUTE ECO":"08 / 配線後ECO",
+        "Upsize · VT swap · Buffer":"アップサイズ · VTスワップ · バッファ",
+        "Post-route setup fixes using cell upsizing, VT swaps and buffer insertion on critical paths.":"クリティカルパスに対し、セルアップサイズ、VTスワップ、バッファ挿入による配線後セットアップ修正を実施。",
+        "09 / FLOORPLANNING":"09 / フロアプランニング",
+        "7nm floorplan iterations":"7nmフロアプラン試行",
+        "Island-style, edge-based, hybrid and freestyle trials to improve macro locality and reduce critical-path wire length.":"マクロ局所性改善とクリティカルパス配線長短縮のため、island、edge、hybrid、freestyleの各方式を検討。",
+        "10 / MCMM":"10 / MCMM",
+        "PVT corners":"PVTコーナー",
+        "Timing closure and signoff performed across 4+ MCMM PVT corners.":"4つ以上のMCMM PVTコーナーでタイミングクロージャとサインオフを実施。",
+        "11 / EXTRACTION":"11 / 抽出",
+        "SPEF → PrimeTime":"SPEF → PrimeTime",
+        "Post-route SPEF generation and extracted RC parasitic integration for multi-corner timing signoff.":"配線後SPEF生成と抽出RC寄生のPrimeTime統合により、マルチコーナータイミングサインオフを実施。",
+        "12 / DFT TIMING":"12 / DFTタイミング",
+        "Scan-port constraints":"スキャンポート制約",
+        "Debugged DFT-induced timing degradation and applied appropriate false-path constraints to scan ports.":"DFT起因のタイミング劣化を解析し、スキャンポートに適切なfalse-path制約を適用。",
+        "13 / FORMALITY":"13 / FORMALITY",
+        "Verified post-synthesis logical equivalence between the synthesized netlist and reference design using Synopsys Formality.":"Synopsys Formalityを使用し、合成後ネットリストとリファレンス設計の論理等価性を検証。",
+        "14 / 28NM ARM":"14 / 28NM ARM",
+        "Implemented a 300K-gate, 29-macro ARM core at 28nm and achieved the 500 MHz target.":"28nmで300Kゲート・29マクロのARMコアを実装し、500 MHz目標を達成。",
+        "15 / EDA AUTOMATION":"15 / EDA自動化",
+        "WNS path-group ranking":"WNSパスグループランキング",
+        "Automated timing-report parsing, path-group filtering, QoR tracking and WNS-based ranking to improve debug turnaround.":"タイミングレポート解析、パスグループフィルタリング、QoR追跡、WNSベースのランキングを自動化し、デバッグ効率を改善。",
         "04 / FORMALITY":"04 / FORMALITY",
         "Logical equivalence verified":"論理等価性検証済み",
         "Logic Equivalence Check":"論理等価性チェック",
