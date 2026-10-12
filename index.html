@@ -434,7 +434,7 @@
     }
     .flow-tabs{
       display:grid;
-      grid-template-columns:repeat(9,1fr);
+      grid-template-columns:repeat(10,1fr);
       gap:0;
       border-bottom:1px solid rgba(255,255,255,.06);
       overflow:auto;
@@ -3185,6 +3185,11 @@
     }
   </style>
 
+  <style id="formality-flow-tab">
+    .flow-tab-formality{color:var(--teal)!important;background:rgba(114,237,191,.028)!important}
+    .flow-tab-formality span{color:rgba(114,237,191,.55)!important}
+    .flow-tab-formality.active{background:rgba(114,237,191,.075)!important;box-shadow:inset 0 -2px var(--teal)!important}
+  </style>
 </head>
 
 <body>
@@ -3335,7 +3340,7 @@
       <div class="wrap">
         <div class="light-head reveal">
           <h2>WHAT I DO.</h2>
-          <p>Tap a discipline to reveal the résumé-backed scope and a purpose-built semiconductor visualization.</p>
+          <p>Explore each discipline through concise implementation details and semiconductor-focused visualizations.</p>
         </div>
 
         <div class="service-list">
@@ -3472,27 +3477,28 @@
             <div class="section-kicker">02 // Interactive Flow</div>
             <h2>RTL → GDSII.</h2>
           </div>
-          <p>Select a stage to explore the implementation flow supported by the current résumé, from RTL-to-GDSII physical design through timing closure and signoff.</p>
+          <p>Select a stage to explore the implementation flow from RTL-to-GDSII, including synthesis, Formality verification, physical design, timing closure and signoff.</p>
         </div>
 
         <div class="flow-box reveal">
           <div class="flow-tabs" role="tablist" aria-label="RTL to GDSII flow">
             <button class="flow-tab active" type="button" role="tab" aria-selected="true" data-stage="rtl"><span>01</span>RTL</button>
             <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="synth"><span>02</span>Synthesis</button>
-            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="fp"><span>03</span>Floorplan</button>
-            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="place"><span>04</span>Placement</button>
-            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="cts"><span>05</span>CTS</button>
-            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="route"><span>06</span>Routing</button>
-            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="sta"><span>07</span>STA</button>
-            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="eco"><span>08</span>ECO</button>
-            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="gds"><span>09</span>GDSII</button>
+            <button class="flow-tab flow-tab-formality" type="button" role="tab" aria-selected="false" data-stage="formality"><span>03</span>Formality</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="fp"><span>04</span>Floorplan</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="place"><span>05</span>Placement</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="cts"><span>06</span>CTS</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="route"><span>07</span>Routing</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="sta"><span>08</span>STA</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="eco"><span>09</span>ECO</button>
+            <button class="flow-tab" type="button" role="tab" aria-selected="false" data-stage="gds"><span>10</span>GDSII</button>
           </div>
 
           <div class="flow-stage">
             <div class="flow-art" id="flowArt" aria-live="polite"></div>
             <div class="flow-copy">
               <h3 id="flowTitle">RTL / design entry</h3>
-              <p id="flowText">The current résumé states complete RTL-to-GDSII physical-design implementation for the 7nm ARM-based CPU core.</p>
+              <p id="flowText">Complete RTL-to-GDSII physical-design implementation for a 7nm ARM-based CPU core.</p>
               <div class="flow-tags" id="flowTags"><span>7nm CPU</span><span>Professional</span><span>RTL-to-GDSII</span></div>
             </div>
           </div>
@@ -3581,7 +3587,7 @@
           <div class="case-side">
             <div class="case-tag">Advanced-node implementation</div>
             <h3>Physical implementation at CPU scale.</h3>
-            <p>High-level résumé-backed case study. No employer layout, internal report, customer database or proprietary interface is reproduced.</p>
+            <p>Large-scale CPU implementation spanning floorplanning, timing closure, routing optimization, DFT timing debug, ECO and multi-corner signoff.</p>
 
             <div class="case-row"><b>Floorplanning</b><span>20+ iterations across island-style, edge-based, hybrid and freestyle approaches for macro locality and critical-path wire length.</span></div>
             <div class="case-row"><b>Uncertainty</b><span>Clock-uncertainty sweeps across the physical-design flow with WNS/TNS sensitivity analysis to identify closure margins across 4+ PVT corners.</span></div>
@@ -3601,7 +3607,7 @@
               <button class="case-metric" type="button" data-key="corners"><strong>4+</strong><span>MCMM PVT corners</span></button>
               <button class="case-metric" type="button" data-key="debug"><strong>TCL</strong><span>WNS ranking</span></button>
             </div>
-            <div class="case-metric-detail" id="caseMetricDetail">7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.</div>
+            <div class="case-metric-detail" id="caseMetricDetail">The Synopsys ARM-based CPU implementation uses 7nm FinFET technology.</div>
           </div>
         </div>
 
@@ -3813,7 +3819,7 @@
       <div class="wrap">
         <div class="tools-head reveal">
           <h2>EDA TOOLCHAIN.</h2>
-          <p>Commercial implementation/signoff tools plus the open-source EDA tools explicitly listed in the résumé.</p>
+          <p>Commercial implementation and signoff tools complemented by open-source EDA tools used for benchmarking and flow exploration.</p>
         </div>
 
         <div class="tool-marquee reveal">
@@ -3849,7 +3855,7 @@
             <div class="section-kicker">04 // Education & Credentials</div>
             <h2>VLSI FOUNDATION.</h2>
           </div>
-          <p>Kept deliberately minimal: only education, publication and certification explicitly present in the résumé.</p>
+          <p>Education, technical certification, publication and VLSI-focused credentials.</p>
         </div>
 
         <div class="edu-grid">
@@ -3949,60 +3955,16 @@
       });
 
       var flowData = {
-        rtl:{
-          title:'RTL / design entry',
-          text:'The current résumé states complete RTL-to-GDSII physical-design implementation for the 7nm ARM-based CPU core.',
-          tags:['ALU','Academic','RTL-to-GDSII'],
-          kind:'rtl'
-        },
-        synth:{
-          title:'Logic synthesis',
-          text:'Professional 28nm work includes Design Compiler synthesis. The ZOICX role also includes Formality verification of the 300K-gate post-synthesis netlist.',
-          tags:['Design Compiler','28nm','Formality'],
-          kind:'synth'
-        },
-        fp:{
-          title:'Floorplanning',
-          text:'The 7nm CPU work includes 20+ floorplan variants for macro locality, critical-path wirelength and routability. The 28nm flows also include repeated floorplan trials for congestion reduction.',
-          tags:['20+ variants','Macro locality','Congestion'],
-          kind:'fp'
-        },
-        place:{
-          title:'Placement optimization',
-          text:'Placement optimization and incremental placement are explicitly listed in the résumé, including 7nm QoR-convergence work.',
-          tags:['Placement','Incremental placement','QoR'],
-          kind:'place'
-        },
-        cts:{
-          title:'Clock-tree stage',
-          text:'The résumé covers clock-uncertainty sweeps at compile, CTS and route stages, while the RiseTime design explicitly includes CTS in the synthesis-to-post-route flow.',
-          tags:['CTS','Clock uncertainty','Timing sensitivity'],
-          kind:'cts'
-        },
-        route:{
-          title:'Routing & congestion',
-          text:'Routing optimization, congestion reduction, incremental placement and multiple route-optimization iterations are supported by the current résumé.',
-          tags:['Routing','Congestion','DRC'],
-          kind:'route'
-        },
-        sta:{
-          title:'Static timing analysis',
-          text:'PrimeTime-based work includes WNS/TNS debug, path-based analysis, setup convergence and uncertainty sensitivity across worst setup corners.',
-          tags:['PrimeTime','WNS/TNS','MCMM'],
-          kind:'sta'
-        },
-        eco:{
-          title:'Timing ECO closure',
-          text:'Manual post-route timing ECOs targeted setup violations on the top critical setup paths using cell upsizing, VT swaps and buffer insertion.',
-          tags:['Upsizing','VT swap','Buffer insertion'],
-          kind:'eco'
-        },
-        gds:{
-          title:'GDSII completion',
-          text:'The résumé explicitly supports RTL-to-GDSII completion for the academic ALU project. Professional roles are described through post-route implementation and timing closure.',
-          tags:['RTL-to-GDSII','Academic ALU','Post-route'],
-          kind:'gds'
-        }
+        rtl:{title:'RTL / design entry',text:'Complete RTL-to-GDSII physical-design implementation for a 7nm ARM-based CPU core.',tags:['7nm CPU','RTL-to-GDSII','Physical Design'],kind:'rtl'},
+        synth:{title:'Logic synthesis',text:'Logic synthesis was performed using Synopsys Design Compiler as part of the 28nm ARM core implementation flow.',tags:['Design Compiler','28nm ARM','Synthesis'],kind:'synth'},
+        formality:{title:'Formality equivalence verification',text:'Post-synthesis netlist logical equivalence was verified against the reference design using Synopsys Formality before continuing physical implementation.',tags:['Formality','Logical Equivalence','Post-synthesis'],kind:'formality'},
+        fp:{title:'Floorplanning',text:'The 7nm CPU work included 20+ floorplan iterations for macro locality and critical-path wire length, while the 28nm ARM core used 10+ floorplan trials to address routing congestion.',tags:['20+ 7nm iterations','10+ 28nm trials','Macro locality'],kind:'fp'},
+        place:{title:'Placement optimization',text:'Placement optimization and incremental placement were used during 7nm QoR and timing-convergence work.',tags:['Placement','Incremental placement','QoR'],kind:'place'},
+        cts:{title:'Clock-tree stage',text:'CTS formed part of the 28nm synthesis-to-post-route flow, with clock uncertainty analyzed as part of implementation and timing closure.',tags:['CTS','Clock uncertainty','Timing closure'],kind:'cts'},
+        route:{title:'Routing & congestion',text:'Routing optimization, congestion reduction, incremental placement and multiple route-optimization iterations were used to improve implementation convergence.',tags:['Routing','Congestion','Optimization'],kind:'route'},
+        sta:{title:'Static timing analysis',text:'PrimeTime work includes MCMM analysis, setup timing, WNS/TNS analysis, path-group analysis, clock uncertainty and timing signoff.',tags:['PrimeTime','MCMM','WNS/TNS'],kind:'sta'},
+        eco:{title:'Timing ECO closure',text:'Post-route timing ECOs targeted critical setup paths using cell upsizing, VT swaps and buffer insertion.',tags:['Upsizing','VT swap','Buffer insertion'],kind:'eco'},
+        gds:{title:'GDSII completion',text:'RTL-to-GDSII implementation experience includes advanced-node CPU physical design, post-route optimization, parasitic extraction and multi-corner signoff.',tags:['RTL-to-GDSII','Post-route','Signoff'],kind:'gds'}
       };
 
       function flowSvg(kind){
@@ -4011,6 +3973,9 @@
         }
         if(kind==='synth'){
           return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g stroke="rgba(104,220,255,.055)"><path d="M0 52H520M0 104H520M0 156H520M0 208H520M104 0V260M208 0V260M312 0V260M416 0V260"/></g><polyline points="38,195 91,146 146,166 214,99 285,132 356,70 423,103 482,51" fill="none" stroke="#72edbf" stroke-width="3"/><g fill="#72edbf"><circle cx="38" cy="195" r="4"/><circle cx="214" cy="99" r="4"/><circle cx="356" cy="70" r="4"/><circle cx="482" cy="51" r="4"/></g></svg>';
+        }
+        if(kind==='formality'){
+          return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><g stroke="rgba(104,220,255,.045)"><path d="M0 52H520M0 104H520M0 156H520M0 208H520M104 0V260M208 0V260M312 0V260M416 0V260"/></g><rect x="32" y="82" width="124" height="92" rx="7" fill="rgba(104,220,255,.045)" stroke="rgba(104,220,255,.25)"/><rect x="198" y="82" width="124" height="92" rx="7" fill="rgba(255,196,106,.04)" stroke="rgba(255,196,106,.22)"/><rect x="364" y="68" width="124" height="120" rx="7" fill="rgba(114,237,191,.07)" stroke="rgba(114,237,191,.40)"/><path d="M156 128H198M322 128H364" stroke="rgba(104,220,255,.40)" stroke-width="2"/><text x="94" y="116" text-anchor="middle" fill="#68dcff" font-family="JetBrains Mono,monospace" font-size="11">REFERENCE</text><text x="94" y="143" text-anchor="middle" fill="#b5c7d1" font-family="JetBrains Mono,monospace" font-size="14">RTL / DESIGN</text><text x="260" y="116" text-anchor="middle" fill="#ffc46a" font-family="JetBrains Mono,monospace" font-size="11">POST-SYNTH</text><text x="260" y="143" text-anchor="middle" fill="#b5c7d1" font-family="JetBrains Mono,monospace" font-size="14">NETLIST</text><text x="426" y="102" text-anchor="middle" fill="#72edbf" font-family="JetBrains Mono,monospace" font-size="11">FORMALITY</text><text x="426" y="137" text-anchor="middle" fill="#e7f2f4" font-family="JetBrains Mono,monospace" font-size="28">≡</text><text x="426" y="163" text-anchor="middle" fill="#72edbf" font-family="JetBrains Mono,monospace" font-size="10">EQUIVALENT</text></svg>';
         }
         if(kind==='fp' || kind==='place'){
           return '<svg viewBox="0 0 520 260" aria-hidden="true"><rect width="520" height="260" fill="#07111b"/><rect x="40" y="25" width="440" height="210" rx="8" fill="none" stroke="rgba(104,220,255,.18)"/><g fill="rgba(114,237,191,.1)" stroke="rgba(114,237,191,.3)"><rect x="65" y="52" width="96" height="61" rx="5"/><rect x="361" y="49" width="91" height="66" rx="5"/><rect x="73" y="166" width="116" height="49" rx="5"/><rect x="373" y="158" width="68" height="57" rx="5"/></g><rect x="205" y="52" width="112" height="156" fill="rgba(104,220,255,.025)" stroke="rgba(104,220,255,.06)"/><g stroke="rgba(104,220,255,.055)"><path d="M205 70H317M205 88H317M205 106H317M205 124H317M205 142H317M205 160H317M205 178H317"/></g></svg>';
@@ -4125,7 +4090,7 @@
         "SCALE.":"挑む。",
         "Physical Design and STA Engineer with 2+ years of hands-on experience in advanced-node ASIC implementation and timing closure, including a 7nm FinFET ARM-based CPU core.":"Synopsys東京のアプリケーションエンジニアとして、CPUクラス設計における先端ノードのフィジカルデザイン、タイミング解析、実装手法の実務経験があります。",
         "WHAT I DO.":"専門領域。",
-        "Tap a discipline to reveal the résumé-backed scope and a purpose-built semiconductor visualization.":"項目を選択すると、履歴書に基づく担当範囲と半導体実装の概念図を確認できます。",
+        "Explore each discipline through concise implementation details and semiconductor-focused visualizations.":"項目を選択すると、履歴書に基づく担当範囲と半導体実装の概念図を確認できます。",
         "Physical Design":"フィジカルデザイン",
         "Floorplanning, macro placement, placement optimization, routing optimization, congestion reduction and DRC closure.":"フロアプランニング、マクロ配置、配置最適化、配線最適化、輻輳低減、DRCクロージャ。",
         "Static Timing Analysis":"静的タイミング解析",
@@ -4142,13 +4107,17 @@
         "TCL scripting for timing-report parsing, path-group filtering, QoR automation and WNS-based ranking to improve timing-debug turnaround.":"タイミングレポート解析、QoR追跡、パスフィルタリングのためのTCL自動化。WNSランキングフローによりタイミングデバッグ時間を30%短縮。",
         "02 // Interactive Flow":"02 // インタラクティブフロー",
         "RTL → GDSII.":"RTL → GDSII。",
-        "Select a stage to explore the implementation flow supported by the current résumé, from RTL-to-GDSII physical design through timing closure and signoff.":"工程を選択すると、履歴書で確認できる内容のみを表示します。学術プロジェクトと実務経験の範囲も区別しています。",
+        "Select a stage to explore the implementation flow from RTL-to-GDSII, including synthesis, Formality verification, physical design, timing closure and signoff.":"工程を選択すると、履歴書で確認できる内容のみを表示します。学術プロジェクトと実務経験の範囲も区別しています。",
         "Synthesis":"論理合成",
+        "Formality equivalence verification":"Formality等価性検証",
+        "Post-synthesis netlist logical equivalence was verified against the reference design using Synopsys Formality before continuing physical implementation.":"物理実装へ進む前に、Synopsys Formalityを使用して合成後ネットリストとリファレンス設計の論理等価性を検証。",
+        "Logical Equivalence":"論理等価性",
+        "Post-synthesis":"合成後",
         "Floorplan":"フロアプラン",
         "Placement":"配置",
         "Routing":"配線",
         "RTL / design entry":"RTL / 設計入力",
-        "The current résumé states complete RTL-to-GDSII physical-design implementation for the 7nm ARM-based CPU core.":"フィジカルデザインのPGディプロマ課程で、ALU設計をRTLからGDSIIまで実施した学術プロジェクトを履歴書に記載しています。",
+        "Complete RTL-to-GDSII physical-design implementation for a 7nm ARM-based CPU core.":"フィジカルデザインのPGディプロマ課程で、ALU設計をRTLからGDSIIまで実施した学術プロジェクトを履歴書に記載しています。",
         "Academic":"学術",
         "03 // Flagship Case Study":"03 // 代表ケーススタディ",
         "7NM ARM-BASED":"7NM ARMベース",
@@ -4166,7 +4135,7 @@
         "20+ floorplan iterations across island-style, edge-based, hybrid and freestyle approaches were explored to improve macro locality and reduce critical-path wire length.":"マクロの局所性改善、クリティカルパス配線長の短縮、配線性向上のため、20以上のフロアプラン案を検討しました。",
         "Advanced-node implementation":"先端ノード実装",
         "Physical implementation at CPU scale.":"CPUスケールのフィジカル実装。",
-        "High-level résumé-backed case study. No employer layout, internal report, customer database or proprietary interface is reproduced.":"履歴書に基づく概要レベルのケーススタディです。企業のレイアウト、内部レポート、顧客データベース、機密インターフェースは再現していません。",
+        "Large-scale CPU implementation spanning floorplanning, timing closure, routing optimization, DFT timing debug, ECO and multi-corner signoff.":"履歴書に基づく概要レベルのケーススタディです。企業のレイアウト、内部レポート、顧客データベース、機密インターフェースは再現していません。",
         "Floorplanning":"フロアプランニング",
         "20+ iterations across island-style, edge-based, hybrid and freestyle approaches for macro locality and critical-path wire length.":"マクロ局所性、クリティカルパス配線長、配線性を改善するため20以上の案を検討。",
         "Uncertainty":"不確かさ",
@@ -4183,7 +4152,7 @@
         "Pre-DFT":"DFT前",
         "PVT corners":"PVTコーナー",
         "Debug reduction":"デバッグ時間短縮",
-        "7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.":"SynopsysのARMベースCPUプロジェクトでは7nm FinFET技術を使用しています。",
+        "The Synopsys ARM-based CPU implementation uses 7nm FinFET technology.":"SynopsysのARMベースCPUプロジェクトでは7nm FinFET技術を使用しています。",
         "Technical Deep Dive // STA":"技術詳細 // STA",
         "Setup-path closure, visualized.":"セットアップパスのクロージャを可視化。",
         "Conceptual timing-path illustration only — no proprietary timing values, reports or design data.":"タイミングパスの概念図です。機密のタイミング値、レポート、設計データは使用していません。",
@@ -4266,7 +4235,7 @@
         "Sumedha IT · Academic Physical Design":"Sumedha IT · 学術フィジカルデザイン",
         "7nm CPU — RTL to GDSII":"ALU設計 — RTLからGDSII",
         "Post Graduate Diploma in Physical Design completed at Sumedha Institute of Technology.":"フィジカルデザインPGディプロマ課程で、Synopsysツールを用いたALUのRTL-to-GDSII設計を完了。",
-        "The current résumé supports professional RTL-to-GDSII implementation on the 7nm ARM-based CPU project.":"履歴書にはRTL-to-GDSIIの範囲とSynopsysツールの使用を明記しています。",
+        "Professional RTL-to-GDSII implementation was completed on the 7nm ARM-based CPU project.":"履歴書にはRTL-to-GDSIIの範囲とSynopsysツールの使用を明記しています。",
         "IMPACT.":"成果。",
         "01 / ADVANCED NODE":"01 / 先端ノード",
         "Contributed to achieving the pre-DFT result against a 2.60 GHz target through setup timing optimization.":"2.60 GHz目標に対し、セットアップタイミング最適化を通じてDFT前の結果達成に貢献。",
@@ -4285,7 +4254,7 @@
         "Debug turnaround reduction":"デバッグ時間短縮",
         "WNS-based worst-path-group filtering and ranking shortened timing-debug turnaround.":"WNSベースのワーストパスグループのフィルタリングとランキングにより、タイミングデバッグ時間を短縮。",
         "EDA TOOLCHAIN.":"EDAツールチェーン。",
-        "Commercial implementation/signoff tools plus the open-source EDA tools explicitly listed in the résumé.":"履歴書に記載した商用の実装/サインオフツールとオープンソースEDAツール。",
+        "Commercial implementation and signoff tools complemented by open-source EDA tools used for benchmarking and flow exploration.":"履歴書に記載した商用の実装/サインオフツールとオープンソースEDAツール。",
         "Placement Optimization":"配置最適化",
         "Routing Optimization":"配線最適化",
         "Congestion Reduction":"輻輳低減",
@@ -4301,7 +4270,7 @@
         "DFT Timing Constraints":"DFTタイミング制約",
         "04 // Education & Credentials":"04 // 学歴・資格",
         "VLSI FOUNDATION.":"VLSIの基盤。",
-        "Kept deliberately minimal: only education, publication and certification explicitly present in the résumé.":"履歴書に明記された学歴、論文、資格のみを掲載しています。",
+        "Education, technical certification, publication and VLSI-focused credentials.":"履歴書に明記された学歴、論文、資格のみを掲載しています。",
         "Physical Design Certification":"フィジカルデザイン認定資格",
         "Sumedha Institute of Technology · Hyderabad":"Sumedha IT · ハイデラバード",
         "Certification in Physical Design.":"フィジカルデザイン認定資格。",
@@ -4328,17 +4297,17 @@
         "Floorplanning":"フロアプランニング",
         "The 7nm CPU work includes 20+ floorplan variants for macro locality, critical-path wirelength and routability. The 28nm flows also include repeated floorplan trials for congestion reduction.":"7nm CPUではマクロ局所性、クリティカルパス配線長、配線性を改善するため20以上のフロアプラン案を検討。28nmフローでも輻輳低減のため複数回のフロアプラン試行を実施しました。",
         "Placement optimization":"配置最適化",
-        "Placement optimization and incremental placement are explicitly listed in the résumé, including 7nm QoR-convergence work.":"履歴書には配置最適化とインクリメンタル配置を明記しており、7nmのQoR収束作業も含まれます。",
+        "Placement optimization and incremental placement were used during 7nm QoR and timing-convergence work.":"履歴書には配置最適化とインクリメンタル配置を明記しており、7nmのQoR収束作業も含まれます。",
         "Clock-tree stage":"クロックツリー工程",
-        "The résumé covers clock-uncertainty sweeps at compile, CTS and route stages, while the RiseTime design explicitly includes CTS in the synthesis-to-post-route flow.":"Compile、CTS、Route各工程でクロック不確かさスイープを実施。RiseTimeの設計では論理合成から配線後までのフローにCTSを含みます。",
+        "Clock uncertainty was analyzed across implementation stages, while CTS formed part of the 28nm synthesis-to-post-route flow.":"Compile、CTS、Route各工程でクロック不確かさスイープを実施。RiseTimeの設計では論理合成から配線後までのフローにCTSを含みます。",
         "Routing and congestion":"配線と輻輳",
-        "Routing optimization, congestion reduction, incremental placement and multiple route-optimization iterations are supported by the current résumé.":"配線最適化、輻輳低減、複数回の配線最適化、DRC収束はいずれも履歴書記載の実装業務です。",
+        "Routing optimization, congestion reduction, incremental placement and multiple route-optimization iterations were used to improve implementation convergence.":"配線最適化、輻輳低減、複数回の配線最適化、DRC収束はいずれも履歴書記載の実装業務です。",
         "Static timing analysis":"静的タイミング解析",
         "PrimeTime-based work includes MCMM analysis, setup timing, WNS/TNS analysis, path-group analysis, clock uncertainty and timing signoff.":"PrimeTimeを用いたWNS/TNSデバッグ、MCMM、タイミング感度解析、セットアップ収束を実施。",
         "Timing ECO / closure":"タイミングECO / クロージャ",
         "Manual timing ECO work includes cell upsizing, VT swaps and buffer insertion targeting critical post-route setup violations.":"配線後のクリティカルなセットアップ違反に対し、セルアップサイズ、VTスワップ、バッファ挿入による手動タイミングECOを実施。",
         "GDSII completion":"GDSII完了",
-        "The résumé explicitly supports RTL-to-GDSII completion for the academic ALU project. Professional roles are described through post-route implementation and timing closure.":"学術ALUプロジェクトではRTL-to-GDSII完了を履歴書に明記。実務では配線後実装とタイミングクロージャまでを記載しています。",
+        "RTL-to-GDSII implementation experience spans professional CPU implementation together with synthesis, post-route optimization and timing closure.":"学術ALUプロジェクトではRTL-to-GDSII完了を履歴書に明記。実務では配線後実装とタイミングクロージャまでを記載しています。",
 
         "Clock uncertainty sensitivity":"クロック不確かさ感度",
         "Clock-uncertainty sweeps were analyzed at compile, CTS and route stages using WNS/TNS, runtime and timing-margin tradeoffs.":"Compile、CTS、Route各工程でクロック不確かさスイープを行い、WNS/TNS、実行時間、タイミングマージンのトレードオフを解析しました。",
@@ -4348,7 +4317,7 @@
         "Path-group optimization weighting prioritized the most critical violating groups during signoff.":"後期のタイミング最適化では、WNS収束を早めるため最も厳しい2つのパスグループに最適化を集中しました。",
 
         "Standard-cell placement":"スタンダードセル配置",
-        "Placement optimization and incremental placement are explicitly listed in the résumé as part of physical-design and QoR convergence.":"配置最適化とインクリメンタル配置は、フィジカルデザインおよびQoR収束の一部として履歴書に明記しています。",
+        "Placement optimization and incremental placement are used in the implementation flow as part of physical-design and QoR convergence.":"配置最適化とインクリメンタル配置は、フィジカルデザインおよびQoR収束の一部として履歴書に明記しています。",
         "Routing / congestion":"配線 / 輻輳",
         "Incremental placement and multiple route-optimization iterations were used to improve timing convergence; congestion reduction is a listed implementation skill.":"インクリメンタル配置と複数回の配線最適化によりタイミング/DRC収束を改善。輻輳低減も実装スキルとして記載しています。",
         "Critical timing path":"クリティカルタイミングパス",
@@ -4358,11 +4327,11 @@
 
         "The 7nm CPU project is listed with 3.5M+ instances.":"7nm CPUプロジェクトは3.5M+インスタンス規模です。",
         "The 7nm CPU is listed with 350+ macros.":"7nm CPUは350+マクロ規模です。",
-        "The 7nm CPU project is listed with 13 metal layers.":"7nm CPUプロジェクトは13メタル層です。",
-        "The résumé states a 2.60 GHz target for the CPU implementation.":"CPU実装の目標は2.60 GHzです。",
-        "The résumé states a 2.54 GHz pre-DFT result against the 2.60 GHz target.":"2.60 GHz目標に対するDFT前の結果は2.54 GHzです。",
+        "The 7nm CPU implementation uses 13 metal layers.":"7nm CPUプロジェクトは13メタル層です。",
+        "The CPU implementation target is 2.60 GHz.":"CPU実装の目標は2.60 GHzです。",
+        "The pre-DFT result is 2.54 GHz against the 2.60 GHz target.":"2.60 GHz目標に対するDFT前の結果は2.54 GHzです。",
         "The corrected post-DFT result is 2.50 GHz against the 2.60 GHz target.":"2.60 GHz目標に対するDFT後の結果は2.50 GHzです。",
-        "The current résumé lists timing closure across 4+ MCMM PVT corners.":"最新版履歴書では4つ以上のMCMM PVTコーナーでのタイミングクロージャを記載しています。",
+        "Timing closure was performed across 4+ MCMM PVT corners.":"最新版履歴書では4つ以上のMCMM PVTコーナーでのタイミングクロージャを記載しています。",
         "TCL automation filtered and ranked worst-violating path groups by WNS, improving timing-debug turnaround.":"TCL自動化によりWNSベースで違反パスグループを抽出・順位付けし、タイミングデバッグ効率を改善しました。"
       };
 
@@ -4449,8 +4418,8 @@
 
       var fpData = {
         macro:['Macro placement','20+ floorplan iterations across island-style, edge-based, hybrid and freestyle approaches were explored to improve macro locality and reduce critical-path wire length.'],
-        std:['Standard-cell placement','Placement optimization and incremental placement are explicitly listed in the résumé as part of physical-design and QoR convergence.'],
-        routing:['Routing / congestion','Incremental placement and multiple route-optimization iterations were used to improve timing/DRC convergence; congestion reduction is a listed physical-design skill.'],
+        std:['Standard-cell placement','Placement optimization and incremental placement were used during physical-design QoR and timing convergence.'],
+        routing:['Routing / congestion','Incremental placement and multiple route-optimization iterations were used to improve timing and routing convergence.'],
         critical:['Critical setup path','Path-group prioritization and manual ECOs targeted setup violations using cell upsizing, VT swaps and buffer insertion.'],
         clock:['Clock-tree / uncertainty','Clock uncertainty was swept at compile, CTS and route stages while WNS/TNS, runtime and timing margin tradeoffs were analyzed.']
       };
@@ -4467,13 +4436,14 @@
       });
 
       var metricData = {
-        node:'7nm FinFET technology is explicitly listed for the Synopsys ARM-based CPU project.',
-        scale:'The professional summary and Synopsys role list a 3.5M+ instance CPU implementation.',
-        macros:'The same advanced-node CPU is listed with 350+ macros.',
-        metal:'The 7nm CPU project is listed with 13 metal layers.',
-        target:'The résumé states a 2.60 GHz target for the CPU implementation.',
-        predft:'The résumé states a 2.54 GHz pre-DFT result against the 2.60 GHz target.',
-        postdft:'The corrected post-DFT result is 2.50 GHz against the 2.60 GHz target.',
+        node:'The ARM-based CPU implementation uses 7nm FinFET technology.',
+        scale:'The 7nm CPU implementation contains 3.5M+ instances.',
+        macros:'The advanced-node CPU contains 350+ macros.',
+        metal:'The 7nm CPU implementation uses 13 metal layers.',
+        target:'The CPU implementation target is 2.60 GHz.',
+        predft:'The pre-DFT result is 2.54 GHz against the 2.60 GHz target.',
+        postdft:'The post-DFT result is 2.50 GHz against the 2.60 GHz target.',
+        corners:'Timing closure was performed across 4+ MCMM PVT corners.',
         debug:'TCL automation filtered and ranked worst-violating path groups by WNS, improving timing-debug turnaround.'
       };
 
