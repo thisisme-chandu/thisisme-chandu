@@ -4695,9 +4695,12 @@
       function translatedValue(value,lang){
         var trimmed=value.trim();
         if(!trimmed){return value;}
-        var next=lang==='ja' ? translations[trimmed] : reverseTranslations[trimmed];
+        var normalized=trimmed.replace(/\s+/g,' ');
+        var next=lang==='ja' ? translations[normalized] : reverseTranslations[normalized];
         if(!next){return value;}
-        return value.replace(trimmed,next);
+        var leading=(value.match(/^\s*/)||[''])[0];
+        var trailing=(value.match(/\s*$/)||[''])[0];
+        return leading+next+trailing;
       }
 
       function translateTree(root,lang){
