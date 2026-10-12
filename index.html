@@ -1,21 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Chandra Sekhar Bhamidi — Applications Engineer focused on physical design, static timing analysis, timing closure and EDA automation." />
-  <meta name="theme-color" content="#06080c" />
-  <script>
-    (function(){
-      try{
-        var saved=localStorage.getItem('portfolio-theme');
-        var theme=saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
-        document.documentElement.setAttribute('data-theme',theme);
-      }catch(e){
-        document.documentElement.setAttribute('data-theme','light');
-      }
-    })();
-  </script>
+  <meta name="theme-color" content="#080b10" />
   <meta property="og:title" content="Chandra Sekhar Bhamidi | Physical Design & STA" />
   <meta property="og:description" content="A VLSI semiconductor portfolio focused on advanced-node implementation, timing closure and EDA automation." />
   <meta property="og:type" content="website" />
@@ -2363,6 +2352,31 @@
 
   
 
+
+  <style id="dark-only-lock">
+    :root,
+    html[data-theme="dark"]{
+      --theme-bg:#080b10;
+      --theme-bg-2:#0c1118;
+      --theme-panel:#101720;
+      --theme-panel-2:#121b26;
+      --theme-text:#f2f5f7;
+      --theme-muted:#8b9ba8;
+      --theme-line:rgba(255,255,255,.18);
+      --theme-line-soft:rgba(255,255,255,.085);
+      --theme-accent:#68dcff;
+      --theme-accent-2:#72edbf;
+      --theme-critical:#ffc46a;
+      --theme-nav:rgba(8,11,16,.94);
+      --theme-dark-panel:#071018;
+      --theme-shadow:rgba(0,0,0,.38);
+      color-scheme:dark;
+    }
+    .hero-preferences{display:block!important;width:max-content!important}
+    .hero-language{margin:0 0 20px!important}
+    .hero-theme,.hero-theme-buttons,.theme-btn{display:none!important}
+  </style>
+
 </head>
 
 <body>
@@ -2414,17 +2428,6 @@
               <div class="hero-language-buttons" role="group" aria-label="Language">
                 <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
                 <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
-              </div>
-            </div>
-            <div class="hero-theme" aria-label="Choose website theme">
-              <span class="hero-theme-label mono">THEME / 配色</span>
-              <div class="hero-theme-buttons" role="group" aria-label="Theme">
-                <button class="theme-btn" type="button" data-theme-choice="light" aria-pressed="false">
-                  <span class="theme-dot theme-dot-light" aria-hidden="true"></span>Light
-                </button>
-                <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
-                  <span class="theme-dot theme-dot-dark" aria-hidden="true"></span>Dark
-                </button>
               </div>
             </div>
           </div>
@@ -3264,30 +3267,6 @@
 
 
 
-      function applyTheme(theme,persist){
-        if(theme!=='dark')theme='light';
-        document.documentElement.setAttribute('data-theme',theme);
-        document.querySelectorAll('.theme-btn').forEach(function(btn){
-          var active=btn.getAttribute('data-theme-choice')===theme;
-          btn.classList.toggle('active',active);
-          btn.setAttribute('aria-pressed',active?'true':'false');
-        });
-        var meta=document.querySelector('meta[name="theme-color"]');
-        if(meta){meta.setAttribute('content',theme==='dark'?'#080b10':'#f2f0e9');}
-        if(persist!==false){
-          try{localStorage.setItem('portfolio-theme',theme);}catch(e){}
-        }
-      }
-
-      document.querySelectorAll('.theme-btn').forEach(function(btn){
-        btn.addEventListener('click',function(){
-          applyTheme(btn.getAttribute('data-theme-choice'),true);
-        });
-      });
-
-      var initialTheme=document.documentElement.getAttribute('data-theme')||'light';
-      applyTheme(initialTheme,false);
-
       var translations = {
         "About":"概要",
         "Expertise":"専門分野",
@@ -3296,8 +3275,6 @@
         "Toolchain":"ツールチェーン",
         "Résumé":"履歴書",
         "Contact":"お問い合わせ",
-        "Light":"ライト",
-        "Dark":"ダーク",
         "Applications Engineer · Tokyo, Japan":"アプリケーションエンジニア · 東京、日本",
         "Howdy, I’m Chandra.":"こんにちは、Chandraです。",
         "I build silicon.":"シリコン実装に取り組んでいます。",
