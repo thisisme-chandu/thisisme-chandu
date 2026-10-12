@@ -3486,44 +3486,27 @@
   </style>
 
 
-  <style id="impact-grid-15-v2">
-    .impact-grid-15{
-      grid-template-columns:repeat(5,minmax(0,1fr));
+  <style id="impact-grid-8-v1">
+    .impact-grid-8{
+      grid-template-columns:repeat(4,minmax(0,1fr));
     }
-    .impact-grid-15 .impact-card{
-      min-height:205px;
-      padding:22px 18px;
+    .impact-grid-8 .impact-card{
+      min-height:225px;
+      padding:24px 20px;
     }
-    .impact-grid-15 .impact-index{
-      font-size:6px;
-      letter-spacing:.07em;
+    .impact-grid-8 .impact-card strong{
+      line-height:1.05;
     }
-    .impact-grid-15 .impact-card strong{
-      font-size:clamp(24px,2.4vw,36px);
-      line-height:1.02;
+    .impact-grid-8 .impact-card p{
+      font-size:10.5px;
+      line-height:1.55;
     }
-    .impact-grid-15 .impact-card > span{
-      font-size:7px;
-      letter-spacing:.06em;
+    @media(max-width:1100px){
+      .impact-grid-8{grid-template-columns:repeat(2,minmax(0,1fr));}
     }
-    .impact-grid-15 .impact-card p{
-      font-size:10px;
-      line-height:1.5;
-      max-width:26ch;
-    }
-    @media(max-width:1180px){
-      .impact-grid-15{grid-template-columns:repeat(3,minmax(0,1fr));}
-      .impact-grid-15 .impact-card{min-height:210px;}
-    }
-    @media(max-width:760px){
-      .impact-grid-15{grid-template-columns:repeat(2,minmax(0,1fr));}
-    }
-    @media(max-width:520px){
-      .impact-grid-15{grid-template-columns:1fr;}
-      .impact-grid-15 .impact-card{
-        min-height:auto;
-        padding:20px 18px;
-      }
+    @media(max-width:560px){
+      .impact-grid-8{grid-template-columns:1fr;}
+      .impact-grid-8 .impact-card{min-height:auto;}
     }
   </style>
 
@@ -4193,22 +4176,15 @@
     <section class="impact">
       <div class="wrap">
         <h2 class="impact-title reveal">ENGINEERING <span class="stroke">IMPACT</span></h2>
-        <div class="impact-grid impact-grid-15">
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">01 / 7NM CPU</div><strong>7nm</strong><span>Advanced-node CPU implementation</span><p>Hands-on physical-design and timing-closure work on a 7nm FinFET ARM-based CPU core.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">02 / DESIGN SCALE</div><strong>3.5M+</strong><span>Instances</span><p>Large-scale CPU implementation experience beyond training-sized blocks.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">03 / MACRO SCALE</div><strong>350+</strong><span>Macros</span><p>Macro-intensive implementation requiring floorplan locality and critical-path awareness.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">04 / CPU FREQUENCY</div><strong>2.54 → 2.50 GHz</strong><span>Pre-DFT → Post-DFT</span><p>Against a 2.60 GHz target, the 7nm CPU achieved 2.54 GHz pre-DFT and 2.50 GHz post-DFT.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">05 / RTL TO GDSII</div><strong>FULL FLOW</strong><span>Physical implementation</span><p>Experience spanning synthesis, floorplanning, placement, CTS, routing, optimization, timing closure and signoff.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">06 / STA</div><strong>PrimeTime</strong><span>MCMM timing analysis</span><p>Setup timing, WNS/TNS, path-group analysis, clock uncertainty and timing signoff across multiple corners.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">07 / TIMING CLOSURE</div><strong>Closure</strong><span>Critical setup paths</span><p>Timing convergence through path-group prioritization, implementation optimization and focused debug.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">08 / POST-ROUTE ECO</div><strong>ECO</strong><span>Upsize · VT swap · Buffer</span><p>Post-route setup fixes using cell upsizing, VT swaps and buffer insertion on critical paths.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">09 / FLOORPLANNING</div><strong>20+</strong><span>7nm floorplan iterations</span><p>Island-style, edge-based, hybrid and freestyle trials to improve macro locality and reduce critical-path wire length.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">10 / MCMM</div><strong>4+</strong><span>PVT corners</span><p>Timing closure and signoff performed across 4+ MCMM PVT corners.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">11 / EXTRACTION</div><strong>StarRC</strong><span>SPEF → PrimeTime</span><p>Post-route SPEF generation and extracted RC parasitic integration for multi-corner timing signoff.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">12 / DFT TIMING</div><strong>DFT</strong><span>Scan-port constraints</span><p>Debugged DFT-induced timing degradation and applied appropriate false-path constraints to scan ports.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">13 / FORMALITY</div><strong>LEC</strong><span>Formality</span><p>Verified post-synthesis logical equivalence between the synthesized netlist and reference design using Synopsys Formality.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">14 / 28NM ARM</div><strong>500 MHz</strong><span>Target achieved</span><p>Implemented a 300K-gate, 29-macro ARM core at 28nm and achieved the 500 MHz target.</p></article>
-          <article class="impact-card reveal" tabindex="0"><div class="impact-index">15 / EDA AUTOMATION</div><strong>TCL</strong><span>WNS path-group ranking</span><p>Automated timing-report parsing, path-group filtering, QoR tracking and WNS-based ranking to improve debug turnaround.</p></article>
+        <div class="impact-grid impact-grid-8">
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">01 / 7NM CPU FREQUENCY</div><strong>2.54 → 2.50 GHz</strong><span>Pre-DFT → Post-DFT</span><p>Against a 2.60 GHz target, the 7nm CPU achieved 2.54 GHz pre-DFT and 2.50 GHz post-DFT.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">02 / FLOORPLAN</div><strong>20+</strong><span>7nm variants</span><p>Explored to improve macro locality and reduce critical-path wire length.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">03 / 28NM ARM</div><strong>500 MHz</strong><span>Target achieved</span><p>Achieved on the 300K-gate, 29-macro ARM core at ZOICX Technologies.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">04 / 28NM FLOORPLAN</div><strong>10+</strong><span>Trials</span><p>Core-shape and utilization trials were used to address routing congestion.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">05 / TCL AUTOMATION</div><strong>WNS</strong><span>Path-group ranking</span><p>TCL automation filtered and ranked worst-violating path groups, improving timing-debug turnaround.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">06 / MCMM SIGNOFF</div><strong>4+</strong><span>PVT corners</span><p>Timing closure and signoff were performed across 4+ MCMM PVT corners.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">07 / FORMALITY</div><strong>LEC</strong><span>Formality</span><p>Verified post-synthesis netlist equivalence against the reference design using Synopsys Formality.</p></article>
+          <article class="impact-card reveal" tabindex="0"><div class="impact-index">08 / EDA TOOLCHAIN</div><strong>10 Tools</strong><span>Commercial + Open-source</span><p>Fusion Compiler · ICC2 · PrimeTime · StarRC · Design Compiler · Formality · OpenROAD · Yosys · OpenSTA · TCL</p></article>
         </div>
       </div>
     </section>
@@ -4750,6 +4726,12 @@
         "RTL-to-GDSII implementation experience includes advanced-node CPU physical design, post-route optimization, parasitic extraction and multi-corner signoff.":"RTL-to-GDSII実装では、先端ノードCPUのフィジカルデザイン、配線後最適化、寄生抽出、マルチコーナーサインオフまで経験しています。",
         "Routing & congestion":"配線・輻輳",
         "TCL automation filtered and ranked worst-violating path groups, improving timing-debug turnaround.":"TCL自動化により違反の大きいパスグループを抽出・順位付けし、タイミングデバッグの効率を改善しました。",
+        "06 / MCMM SIGNOFF":"06 / MCMMサインオフ",
+        "Timing closure and signoff were performed across 4+ MCMM PVT corners.":"4つ以上のMCMM PVTコーナーでタイミングクロージャとサインオフを実施。",
+        "07 / FORMALITY":"07 / FORMALITY",
+        "08 / EDA TOOLCHAIN":"08 / EDAツールチェーン",
+        "10 Tools":"10ツール",
+        "Commercial + Open-source":"商用 + オープンソース",
         "Professional project visuals are conceptual and non-proprietary. No employer design database, customer data, internal report or proprietary interface is published here.":"プロジェクトの図は概念的かつ非機密の表現です。企業の設計データベース、顧客データ、内部レポート、機密インターフェースは掲載していません。",
 
         "Logic synthesis":"論理合成",
