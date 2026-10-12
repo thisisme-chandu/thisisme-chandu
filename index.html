@@ -2766,6 +2766,33 @@
     }
   </style>
 
+
+  <style id="bilingual-resume-downloads">
+    .resume-language-actions{
+      display:grid!important;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:9px!important;
+      width:min(100%,520px);
+    }
+    .resume-language-actions .resume-download{
+      min-width:0;
+      width:100%;
+    }
+    .resume-language-actions .resume-icon{
+      font:700 8px "JetBrains Mono",monospace;
+      letter-spacing:.06em;
+    }
+    .resume-download-ja{
+      border-color:rgba(114,237,191,.18)!important;
+    }
+    .resume-download-ja .resume-icon{
+      background:linear-gradient(135deg,var(--teal),var(--cyan))!important;
+    }
+    @media(max-width:620px){
+      .resume-language-actions{grid-template-columns:1fr}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -2844,7 +2871,7 @@
           <div class="hero-focus mono">Physical Design · STA · Timing Closure · CPU Implementation · EDA Automation</div>
           <div class="hero-actions">
             <a class="btn primary" href="#work">View implementation work →</a>
-            <a class="btn resume-btn" href="mailto:bkbschandu2000@gmail.com?subject=Updated%20Resume%20Request">Request Updated Résumé ↗</a>
+            <a class="btn resume-btn" href="#resume">Download Résumé ↓</a>
           </div>
           <div class="hero-meta">
             <span>Japan work authorization through Jul 2030</span>
@@ -3377,9 +3404,9 @@
         <div class="edu-grid">
           <article class="edu-card reveal">
             <div class="edu-year">OCT 2022 — MAY 2023</div>
-            <h3>Post Graduate Diploma — Physical Design</h3>
+            <h3>Physical Design Certification</h3>
             <div class="edu-school">Sumedha Institute of Technology · Hyderabad</div>
-            <p>Post Graduate Diploma in Physical Design.</p>
+            <p>Certification in Physical Design.</p>
           </article>
           <article class="edu-card reveal">
             <div class="edu-year">AUG 2022</div>
@@ -3402,11 +3429,17 @@
           <div class="resume-label mono">05 // RÉSUMÉ</div>
           <div class="resume-main">
             <h2>Want the complete profile?</h2>
-            <p>Request the current résumé for the full professional experience, implementation metrics, toolchain and education details.</p>
+            <p>Download the current résumé in English or Japanese.</p>
           </div>
-          <div class="resume-actions">
-            <a class="resume-download" href="mailto:bkbschandu2000@gmail.com?subject=Updated%20Resume%20Request"><span class="resume-icon" aria-hidden="true">↗</span><span><strong>Request Updated Résumé</strong><small>Current version available by email</small></span></a>
-            <a class="resume-view" href="mailto:bkbschandu2000@gmail.com?subject=Updated%20Resume%20Request">Email request ↗</a>
+          <div class="resume-actions resume-language-actions">
+            <a class="resume-download" href="Eng_Bhamidi_Chandra_Res_Final_v1.pdf" download="Chandra_Sekhar_Bhamidi_Resume_English.pdf">
+              <span class="resume-icon" aria-hidden="true">EN</span>
+              <span><strong>English Résumé</strong><small>Download PDF · English</small></span>
+            </a>
+            <a class="resume-download resume-download-ja" href="Jap_Bhamidi_Chandra_Res_Final-Japanese_v1.pdf" download="Chandra_Sekhar_Bhamidi_Resume_Japanese.pdf">
+              <span class="resume-icon" aria-hidden="true">JP</span>
+              <span><strong>Japanese Résumé</strong><small>Download PDF · 日本語</small></span>
+            </a>
           </div>
         </div>
       </div>
@@ -3777,19 +3810,24 @@
         "04 // Education & Credentials":"04 // 学歴・資格",
         "VLSI FOUNDATION.":"VLSIの基盤。",
         "Kept deliberately minimal: only education, publication and certification explicitly present in the résumé.":"履歴書に明記された学歴、論文、資格のみを掲載しています。",
-        "Post Graduate Diploma — Physical Design":"PGディプロマ — フィジカルデザイン",
+        "Physical Design Certification":"フィジカルデザイン認定資格",
         "Sumedha Institute of Technology · Hyderabad":"Sumedha IT · ハイデラバード",
-        "Post Graduate Diploma in Physical Design.":"ALU設計 — SynopsysツールによるRTL-to-GDSII。",
+        "Certification in Physical Design.":"フィジカルデザイン認定資格。",
         "B.Tech — Electronics & Communication Engineering":"B.Tech — 電子・通信工学",
-        "CVR College of Engineering · Hyderabad":"JNTU · ハイデラバード",
+        "CVR College of Engineering · Hyderabad":"CVR College of Engineering · ハイデラバード",
         "Electronics and communication engineering foundation.":"電子・通信工学の基礎。",
-        "Publication · April 2023":"論文 · 2022年4月",
-        "NPTEL certification · 66% · November 2023":"NPTEL認定",
+        "Publication · April 2023":"論文 · 2023年4月",
+        "NPTEL certification · 66% · November 2023":"NPTEL認定 · 66% · 2023年11月",
         "05 // RÉSUMÉ":"05 // 履歴書",
         "Want the complete profile?":"詳しい経歴はこちら。",
-        "Request the current résumé for the full professional experience, implementation metrics, toolchain and education details.":"職務経験、実装指標、ツールチェーン、学歴の詳細は履歴書をダウンロードしてご覧ください。",
+        "Download the current résumé in English or Japanese.":"最新版の履歴書を英語版または日本語版でダウンロードできます。",
+        "English Résumé":"英語版履歴書",
+        "Japanese Résumé":"日本語版履歴書",
+        "Download PDF · English":"PDFダウンロード · 英語",
+        "Download PDF · 日本語":"PDFダウンロード · 日本語",
+        "Download the current résumé in English or Japanese.":"最新版の履歴書を英語版または日本語版でダウンロードできます。",
         "CURRENT RÉSUMÉ · UPDATED FACTS":"PDF · 最新版 · 2026年10月",
-        "Request Updated Résumé":"最新版履歴書を依頼",
+        "Download Résumé ↓":"履歴書をダウンロード ↓",
         "Email request ↗":"メールで依頼 ↗",
         "Professional project visuals are conceptual and non-proprietary. No employer design database, customer data, internal report or proprietary interface is published here.":"プロジェクトの図は概念的かつ非機密の表現です。企業の設計データベース、顧客データ、内部レポート、機密インターフェースは掲載していません。",
 
