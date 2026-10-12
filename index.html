@@ -2377,6 +2377,107 @@
     .hero-theme,.hero-theme-buttons,.theme-btn{display:none!important}
   </style>
 
+
+  <style id="language-selector-polish-v2">
+    .hero-preferences{
+      margin-bottom:20px!important;
+    }
+    .language-card{
+      display:flex!important;
+      align-items:center!important;
+      gap:12px!important;
+      width:max-content!important;
+      max-width:100%!important;
+      padding:6px 7px 6px 10px!important;
+      border:1px solid rgba(104,220,255,.22)!important;
+      border-radius:8px!important;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012))!important;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.02),
+        0 8px 28px rgba(0,0,0,.16)!important;
+      backdrop-filter:blur(10px)!important;
+    }
+    .language-card-heading{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding-right:3px;
+    }
+    .language-globe{
+      display:grid;
+      place-items:center;
+      width:25px;
+      height:25px;
+      color:var(--theme-accent);
+      border:1px solid rgba(104,220,255,.18);
+      border-radius:6px;
+      background:rgba(104,220,255,.055);
+      flex:0 0 auto;
+    }
+    .language-card .hero-language-label{
+      color:#91a4b2!important;
+      font-size:6.4px!important;
+      letter-spacing:.105em!important;
+    }
+    .language-segmented{
+      display:flex!important;
+      align-items:center!important;
+      gap:3px!important;
+      padding:3px!important;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:6px!important;
+      background:rgba(255,255,255,.025)!important;
+    }
+    .language-card .lang-btn{
+      display:flex!important;
+      align-items:center!important;
+      gap:6px!important;
+      min-width:76px!important;
+      height:32px!important;
+      padding:0 10px!important;
+      border-radius:4px!important;
+      color:#8295a4!important;
+      background:transparent!important;
+      transition:background .18s ease,color .18s ease,transform .18s ease!important;
+    }
+    .language-card .lang-btn:hover{
+      color:#eef6f8!important;
+      background:rgba(255,255,255,.04)!important;
+    }
+    .language-card .lang-btn.active{
+      color:#061016!important;
+      background:linear-gradient(135deg,var(--theme-accent),var(--theme-accent-2))!important;
+      box-shadow:0 4px 14px rgba(104,220,255,.16)!important;
+    }
+    .language-card .lang-btn:active{
+      transform:translateY(1px);
+    }
+    .lang-code{
+      font:700 7px "JetBrains Mono",monospace;
+      letter-spacing:.08em;
+      opacity:.76;
+    }
+    .lang-name{
+      font:650 9px Inter,"Noto Sans JP",sans-serif;
+      letter-spacing:-.01em;
+    }
+    @media(max-width:520px){
+      .language-card{
+        gap:7px!important;
+        padding:5px!important;
+      }
+      .language-card-heading{
+        padding-left:2px;
+      }
+      .language-card .hero-language-label{display:none!important}
+      .language-card .lang-btn{
+        min-width:72px!important;
+        height:31px!important;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -2423,11 +2524,23 @@
       <div class="wrap hero-grid">
         <div>
           <div class="hero-preferences">
-            <div class="hero-language" aria-label="Choose website language">
-              <span class="hero-language-label mono">LANGUAGE / 言語</span>
-              <div class="hero-language-buttons" role="group" aria-label="Language">
-                <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
-                <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
+            <div class="hero-language language-card" aria-label="Choose website language">
+              <div class="language-card-heading">
+                <span class="language-globe" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="15" height="15">
+                    <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                    <path d="M3.8 12h16.4M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5S14.2 18.2 12 20.5M12 3.5C9.8 5.8 8.7 8.6 8.7 12s1.1 6.2 3.3 8.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="hero-language-label mono">SELECT LANGUAGE / 言語</span>
+              </div>
+              <div class="hero-language-buttons language-segmented" role="group" aria-label="Language">
+                <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">
+                  <span class="lang-code">EN</span><span class="lang-name">English</span>
+                </button>
+                <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false">
+                  <span class="lang-code">JP</span><span class="lang-name">日本語</span>
+                </button>
               </div>
             </div>
           </div>
@@ -2444,7 +2557,6 @@
           <div class="hero-actions">
             <a class="btn primary" href="#work">View implementation work →</a>
             <a class="btn resume-btn" href="resume_v3_chandra_sekhar_latest.pdf" download="Chandra_Sekhar_Bhamidi_Resume.pdf">Download Résumé ↓</a>
-            <a class="btn" href="https://github.com/thisisme-chandu" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
           <div class="hero-meta">
             <span>Japan work authorization through Jul 2030</span>
