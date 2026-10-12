@@ -3479,24 +3479,50 @@
   </style>
 
 
-  <style id="hero-japanese-level-v1">
+  <style id="hero-japanese-level-v2">
     .hero-japanese-level{
       width:max-content;
       max-width:100%;
-      margin-top:12px;
-      padding:7px 10px;
-      border-left:2px solid var(--teal);
-      background:rgba(114,237,191,.035);
-      color:#8ea6b4;
-      font:500 8px "JetBrains Mono",monospace;
+      margin-top:14px;
+      padding:9px 12px 9px 9px;
+      display:flex;
+      align-items:center;
+      gap:9px;
+      border:1px solid rgba(114,237,191,.22);
+      border-left:3px solid var(--teal);
+      border-radius:8px;
+      background:linear-gradient(90deg,rgba(114,237,191,.085),rgba(104,220,255,.025));
+      color:#d7e9e3;
+      font:600 8.4px "JetBrains Mono",monospace;
       line-height:1.55;
       letter-spacing:.025em;
+      box-shadow:0 8px 26px rgba(0,0,0,.12), inset 0 0 18px rgba(114,237,191,.018);
+    }
+    .jp-badge{
+      min-width:42px;
+      height:27px;
+      padding:0 8px;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      border-radius:6px;
+      border:1px solid rgba(114,237,191,.28);
+      background:rgba(114,237,191,.10);
+      color:var(--teal);
+      font:700 9px Inter,"Noto Sans JP",sans-serif;
+      letter-spacing:.03em;
     }
     @media(max-width:720px){
       .hero-japanese-level{
         width:100%;
-        font-size:7.5px;
-        line-height:1.6;
+        align-items:flex-start;
+        font-size:7.8px;
+        line-height:1.65;
+      }
+      .jp-badge{
+        min-width:39px;
+        height:25px;
+        font-size:8.5px;
       }
     }
   </style>
@@ -3577,7 +3603,10 @@
             2+ years of hands-on experience in advanced-node ASIC physical design, STA, timing closure, post-route ECO, parasitic extraction and signoff.
           </p>
           <div class="hero-focus mono">Physical Design · STA · Timing Closure · CPU Implementation · EDA Automation</div>
-          <div class="hero-japanese-level">Japanese: Conversational proficiency around JLPT N4 level · Currently studying toward N3</div>
+          <div class="hero-japanese-level">
+            <span class="jp-badge" aria-hidden="true">日本語</span>
+            <span>Japanese: Conversational proficiency around JLPT N4 level · Currently studying toward N3</span>
+          </div>
           <div class="hero-actions hero-actions-resume">
             <a class="btn primary" href="#work">View implementation work →</a>
             <a class="btn resume-btn resume-en" href="Eng_Bhamidi_Chandra_Res_Final_v1.pdf" download="Chandra_Sekhar_Bhamidi_Resume_English.pdf">
