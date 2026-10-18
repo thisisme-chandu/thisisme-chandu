@@ -22,7 +22,7 @@
   <title>Chandra Sekhar Bhamidi | Physical Design & STA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -163,10 +163,18 @@
     .hero-title{
       margin:0;
       max-width:780px;
-      font-size:clamp(54px,7.2vw,94px);
-      line-height:.88;
-      letter-spacing:-.067em;
-      text-transform:uppercase;
+      font-family:"Manrope",Inter,system-ui,sans-serif;
+      font-size:clamp(54px,7vw,92px);
+      font-weight:800;
+      line-height:.94;
+      letter-spacing:-.052em;
+      text-transform:none;
+    }
+    .hero-title .hero-line{
+      display:block;
+    }
+    .hero-title .hero-line-accent{
+      margin-top:.04em;
     }
     .hero-title .outline{
       color:transparent;
